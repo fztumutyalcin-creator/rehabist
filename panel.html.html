@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panelim — Rehabist</title>
+<meta name="description" content="Rehabist kişisel paneliniz. Ağrı takibi, karne ve öneriler.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --white: #ffffff;
+    --off-white: #fafbfc;
+    --surface: #f5f7fa;
+    --border: #e4e8ed;
+    --border-strong: #d0d6dd;
+    --ink-900: #0f172a;
+    --ink-700: #1e293b;
+    --ink-500: #475569;
+    --ink-400: #64748b;
+    --ink-300: #94a3b8;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-500: #3b82f6;
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --green-500: #10b981;
+    --amber-500: #f59e0b;
+    --red-500: #ef4444;
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink-700);
+    background: var(--off-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  .nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 18px;
+    letter-spacing: -0.02em; color: var(--ink-900);
+  }
+  .logo-mark {
+    width: 28px; height: 28px;
+    background: var(--blue-600); border-radius: 7px;
+    display: grid; place-items: center; color: var(--white);
+  }
+  .logo-mark svg { width: 15px; height: 15px; }
+  .nav-actions { display: flex; align-items: center; gap: 10px; }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; background: var(--surface);
+    border-radius: 6px; font-size: 13px; font-weight: 500;
+    color: var(--ink-700);
+  }
+  .back-btn svg { width: 14px; height: 14px; }
+  .logout-btn {
+    background: none; border: 1px solid var(--border-strong);
+    padding: 8px 14px; border-radius: 6px; font-size: 13px;
+    color: var(--ink-700); cursor: pointer; font-family: inherit;
+  }
+
+  /* GATE */
+  #accessGate {
+    display: none; min-height: 70vh;
+    align-items: center; justify-content: center;
+    padding: 40px 24px;
+  }
+  #accessGate.visible { display: flex; }
+  .gate-content { max-width: 440px; text-align: center; }
+  .gate-icon {
+    width: 64px; height: 64px;
+    background: var(--white); border: 1px solid var(--border);
+    color: var(--blue-600); border-radius: 16px;
+    display: grid; place-items: center;
+    margin: 0 auto 24px;
+  }
+  .gate-icon svg { width: 26px; height: 26px; }
+  .gate-content h1 {
+    font-size: 24px; font-weight: 600;
+    letter-spacing: -0.025em; color: var(--ink-900);
+    margin-bottom: 12px;
+  }
+  .gate-content > p {
+    font-size: 15px; color: var(--ink-500);
+    margin-bottom: 28px;
+  }
+  .gate-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 20px; border-radius: 8px;
+    font-size: 14px; font-weight: 500;
+    cursor: pointer; border: 1px solid transparent;
+    font-family: inherit; transition: all .15s;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--blue-600); color: var(--white); }
+  .btn-primary:hover { background: var(--blue-700); }
+  .btn-outline {
+    background: var(--white); color: var(--ink-900);
+    border-color: var(--border-strong);
+  }
+  .btn-outline:hover { border-color: var(--ink-400); }
+  .btn svg { width: 15px; height: 15px; }
+
+  /* PANEL CONTENT */
+  #panelContent { display: none; padding: 32px 0 60px; }
+  #panelContent.visible { display: block; }
+
+  .page-header {
+    margin-bottom: 28px;
+  }
+  .page-header h1 {
+    font-size: 28px; font-weight: 600;
+    letter-spacing: -0.025em; color: var(--ink-900);
+    margin-bottom: 4px;
+  }
+  .page-header h1 .accent {
+    font-family: var(--serif); font-weight: 500;
+    font-style: italic; color: var(--blue-700);
+  }
+  .page-header p {
+    font-size: 15px; color: var(--ink-500);
+  }
+
+  /* KARNE (score card) */
+  .karne-card {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    border-radius: 20px; padding: 32px;
+    color: var(--white); margin-bottom: 24px;
+    position: relative; overflow: hidden;
+  }
+  .karne-card::before {
+    content: ''; position: absolute;
+    top: -50%; right: -20%;
+    width: 60%; height: 200%;
+    background: radial-gradient(circle, rgba(147, 197, 253, 0.2), transparent 60%);
+    pointer-events: none;
+  }
+  .karne-header {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 20px;
+    position: relative;
+  }
+  .karne-header h2 {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .karne-header .karne-date {
+    font-size: 12px; opacity: 0.7;
+  }
+  .karne-score {
+    display: flex; align-items: baseline;
+    gap: 10px; margin-bottom: 20px;
+    position: relative;
+  }
+  .karne-score-num {
+    font-size: 56px; font-weight: 700;
+    line-height: 1; letter-spacing: -0.03em;
+  }
+  .karne-score-max {
+    font-size: 20px; opacity: 0.6;
+  }
+  .karne-label {
+    font-size: 14px; opacity: 0.85;
+    margin-bottom: 20px; position: relative;
+  }
+  .karne-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 20px; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    position: relative;
+  }
+  .karne-stat-label {
+    font-size: 11px; font-weight: 500;
+    opacity: 0.7; letter-spacing: 0.04em;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .karne-stat-value {
+    font-size: 20px; font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  /* Grid */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .card-header {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 16px;
+  }
+  .card-header h3 {
+    font-size: 16px; font-weight: 600;
+    color: var(--ink-900); letter-spacing: -0.01em;
+  }
+  .card-header-action {
+    font-size: 13px; color: var(--blue-700);
+    font-weight: 500; cursor: pointer;
+    background: none; border: none; font-family: inherit;
+  }
+
+  /* Ağrı kayıt formu */
+  .track-form {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .form-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .form-group label {
+    display: block; font-size: 13px; font-weight: 500;
+    color: var(--ink-700); margin-bottom: 6px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 10px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px; font-size: 14px;
+    font-family: inherit; color: var(--ink-900);
+    background: var(--white); transition: border-color .15s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none; border-color: var(--blue-500);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+  }
+
+  /* Intensity slider */
+  .intensity-wrap {
+    margin-top: 4px;
+  }
+  .intensity-slider {
+    width: 100%; appearance: none; -webkit-appearance: none;
+    background: linear-gradient(to right, #10b981 0%, #f59e0b 50%, #ef4444 100%);
+    height: 8px; border-radius: 4px; outline: none;
+  }
+  .intensity-slider::-webkit-slider-thumb {
+    appearance: none; -webkit-appearance: none;
+    width: 22px; height: 22px;
+    background: var(--white);
+    border: 3px solid var(--ink-900);
+    border-radius: 50%; cursor: pointer;
+  }
+  .intensity-slider::-moz-range-thumb {
+    width: 22px; height: 22px;
+    background: var(--white);
+    border: 3px solid var(--ink-900);
+    border-radius: 50%; cursor: pointer;
+  }
+  .intensity-display {
+    display: flex; justify-content: space-between;
+    margin-top: 8px; font-size: 11px;
+    color: var(--ink-400);
+  }
+  .intensity-value {
+    display: inline-block; margin-left: 8px;
+    font-weight: 600; color: var(--ink-900);
+  }
+
+  /* Message banner */
+  .msg-banner {
+    display: none; padding: 10px 14px;
+    border-radius: 8px; font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .msg-banner.visible { display: block; }
+  .msg-banner.success {
+    background: #d1fae5; color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+  .msg-banner.error {
+    background: #fee2e2; color: #991b1b;
+    border: 1px solid #fecaca;
+  }
+
+  /* Recent logs */
+  .log-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .log-item {
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 12px;
+    padding: 12px 14px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .log-info {
+    display: flex; flex-direction: column; gap: 2px;
+    min-width: 0; flex: 1;
+  }
+  .log-region {
+    font-size: 14px; font-weight: 600;
+    color: var(--ink-900); letter-spacing: -0.01em;
+  }
+  .log-date {
+    font-size: 12px; color: var(--ink-400);
+  }
+  .log-note {
+    font-size: 12.5px; color: var(--ink-500);
+    margin-top: 2px; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+  }
+  .log-intensity {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 12px; border-radius: 100px;
+    font-size: 13px; font-weight: 600;
+    flex-shrink: 0;
+  }
+  .log-intensity.low { background: #d1fae5; color: #065f46; }
+  .log-intensity.mid { background: #fef3c7; color: #92400e; }
+  .log-intensity.high { background: #fee2e2; color: #991b1b; }
+  .log-delete {
+    background: none; border: none;
+    color: var(--ink-300); cursor: pointer;
+    padding: 4px; display: grid; place-items: center;
+    border-radius: 4px;
+  }
+  .log-delete:hover { color: var(--red-500); background: #fee2e2; }
+  .log-delete svg { width: 15px; height: 15px; }
+
+  .log-empty {
+    text-align: center; padding: 30px 20px;
+    color: var(--ink-400); font-size: 14px;
+  }
+
+  /* Chart */
+  .chart-wrap {
+    height: 200px;
+    position: relative;
+    margin: 10px 0;
+  }
+  .chart-svg {
+    width: 100%; height: 100%;
+    display: block;
+  }
+  .chart-line {
+    fill: none;
+    stroke: var(--blue-600);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+  }
+  .chart-area {
+    fill: url(#chartGradient);
+  }
+  .chart-dot {
+    fill: var(--blue-600);
+    stroke: var(--white);
+    stroke-width: 2;
+  }
+  .chart-grid {
+    stroke: var(--border);
+    stroke-width: 1;
+    stroke-dasharray: 2 3;
+  }
+  .chart-label {
+    font-size: 11px;
+    fill: var(--ink-400);
+  }
+  .chart-empty {
+    display: grid; place-items: center;
+    height: 100%; color: var(--ink-400);
+    font-size: 14px;
+  }
+
+  /* Right column */
+  .side-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .side-card h3 {
+    font-size: 13px; font-weight: 600;
+    color: var(--ink-500); letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .quick-link {
+    display: flex; align-items: center;
+    gap: 12px; padding: 12px;
+    border-radius: 10px; transition: background .15s;
+    cursor: pointer; text-decoration: none;
+    color: inherit;
+  }
+  .quick-link:hover { background: var(--off-white); }
+  .quick-link-icon {
+    width: 36px; height: 36px;
+    background: var(--blue-50);
+    color: var(--blue-700);
+    border-radius: 10px;
+    display: grid; place-items: center;
+    flex-shrink: 0;
+  }
+  .quick-link-icon svg { width: 17px; height: 17px; }
+  .quick-link-text {
+    flex: 1;
+    font-size: 14px; font-weight: 500;
+    color: var(--ink-900);
+  }
+  .quick-link-text small {
+    display: block; color: var(--ink-400);
+    font-weight: 400; font-size: 12px;
+    margin-top: 2px;
+  }
+  .quick-link-arrow {
+    color: var(--ink-300);
+  }
+  .quick-link-arrow svg { width: 14px; height: 14px; }
+
+  /* Activity badges */
+  .badges {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 12px; font-weight: 500;
+    color: var(--ink-700);
+  }
+  .badge.earned {
+    background: var(--blue-50);
+    border-color: var(--blue-100);
+    color: var(--blue-700);
+  }
+  .badge.earned svg { color: var(--blue-600); }
+  .badge svg { width: 13px; height: 13px; color: var(--ink-300); }
+
+  @media (max-width: 800px) {
+    .content-grid { grid-template-columns: 1fr; }
+    .karne-stats { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .karne-score-num { font-size: 44px; }
+  }
+  @media (max-width: 600px) {
+    .container { padding: 0 18px; }
+    .form-row { grid-template-columns: 1fr; }
+    .karne-card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+      </span>
+      Rehabist
+    </a>
+    <div class="nav-actions">
+      <a href="/" class="back-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Ana Sayfa
+      </a>
+      <button type="button" class="logout-btn" onclick="handleLogout()" id="logoutBtn" style="display:none;">Çıkış</button>
+    </div>
+  </div>
+</nav>
+
+<!-- GATE (üye değilse) -->
+<section id="accessGate">
+  <div class="gate-content">
+    <div class="gate-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 013 3v7a3 3 0 01-6 0V5a3 3 0 013-3zM19 10v2a7 7 0 01-14 0v-2M12 19v3M8 22h8"/></svg>
+    </div>
+    <h1>Panel üyelere özeldir</h1>
+    <p>Kişisel panelinizi görüntülemek ve ağrı takibi yapabilmek için ücretsiz üye olmanız yeterli.</p>
+    <div class="gate-actions">
+      <a href="/" class="btn btn-primary">Ana Sayfaya Dön</a>
+      <a href="harita.html" class="btn btn-outline">Ağrı Haritası</a>
+    </div>
+  </div>
+</section>
+
+<!-- PANEL (üye ise) -->
+<main id="panelContent">
+  <div class="container">
+
+    <div class="page-header">
+      <h1>Merhaba <span class="accent" id="greetingName">!</span></h1>
+      <p>Rehabist panelinize hoş geldiniz. Ağrı takibinizi buradan yönetebilirsiniz.</p>
+    </div>
+
+    <!-- KARNE -->
+    <div class="karne-card">
+      <div class="karne-header">
+        <h2>Rehabist Karnesi</h2>
+        <span class="karne-date" id="karneDate"></span>
+      </div>
+      <div class="karne-score">
+        <span class="karne-score-num" id="karneScore">—</span>
+        <span class="karne-score-max">/ 100</span>
+      </div>
+      <p class="karne-label" id="karneLabel">Karneniz ağrı takibinize göre hesaplanıyor...</p>
+      <div class="karne-stats">
+        <div>
+          <div class="karne-stat-label">Kayıt</div>
+          <div class="karne-stat-value" id="statRecords">0</div>
+        </div>
+        <div>
+          <div class="karne-stat-label">Son 7 Gün</div>
+          <div class="karne-stat-value" id="statWeek">0</div>
+        </div>
+        <div>
+          <div class="karne-stat-label">Ort. Şiddet</div>
+          <div class="karne-stat-value" id="statAvg">—</div>
+        </div>
+        <div>
+          <div class="karne-stat-label">Seri</div>
+          <div class="karne-stat-value" id="statStreak">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-grid">
+
+      <!-- SOL KOLON -->
+      <div>
+        <!-- Ağrı kaydı formu -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Yeni Ağrı Kaydı</h3>
+          </div>
+          <div class="msg-banner" id="formMsg"></div>
+          <form class="track-form" id="trackForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="region">Bölge</label>
+                <select id="region" required>
+                  <option value="">Seçiniz...</option>
+                  <option value="boyun">Boyun</option>
+                  <option value="omuz">Omuz</option>
+                  <option value="sirt">Sırt</option>
+                  <option value="bel">Bel</option>
+                  <option value="dirsek">Dirsek</option>
+                  <option value="elbilegi">El Bileği</option>
+                  <option value="kalca">Kalça</option>
+                  <option value="uyluk">Uyluk</option>
+                  <option value="diz">Diz</option>
+                  <option value="baldir">Baldır</option>
+                  <option value="ayak">Ayak/Ayak Bileği</option>
+                  <option value="gogus">Göğüs</option>
+                  <option value="karin">Karın</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="date">Tarih</label>
+                <input type="date" id="date" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Şiddet <span class="intensity-value" id="intensityValue">5</span></label>
+              <div class="intensity-wrap">
+                <input type="range" id="intensity" class="intensity-slider" min="1" max="10" value="5" oninput="document.getElementById('intensityValue').textContent = this.value">
+                <div class="intensity-display">
+                  <span>1 (Hafif)</span>
+                  <span>5 (Orta)</span>
+                  <span>10 (Şiddetli)</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="note">Not (İsteğe bağlı)</label>
+              <textarea id="note" rows="2" placeholder="Örn: Sabah uyandığımda başladı, hareket ettikçe arttı..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="justify-content:center;" id="submitBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Kaydet
+            </button>
+          </form>
+        </div>
+
+        <!-- Grafik -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Son 30 Gün</h3>
+          </div>
+          <div class="chart-wrap" id="chartWrap">
+            <div class="chart-empty">Henüz yeterli veri yok. İlk kaydınızı yaparak başlayın.</div>
+          </div>
+        </div>
+
+        <!-- Kayıtlar -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Kayıtlarım</h3>
+          </div>
+          <ul class="log-list" id="logList">
+            <li class="log-empty">Henüz kayıt eklemediniz.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SAĞ KOLON -->
+      <div>
+        <div class="side-card">
+          <h3>Hızlı Erişim</h3>
+          <a href="harita.html" class="quick-link">
+            <div class="quick-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <div class="quick-link-text">
+              Ağrı Haritası
+              <small>Ağrılı bölgeyi seç</small>
+            </div>
+            <span class="quick-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+          </a>
+          <a href="blog.html" class="quick-link">
+            <div class="quick-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            </div>
+            <div class="quick-link-text">
+              Blog Yazıları
+              <small>Tüm içerikleri oku</small>
+            </div>
+            <span class="quick-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+          </a>
+          <a href="https://wa.me/905345840913?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" class="quick-link">
+            <div class="quick-link-icon" style="background:#d1fae5; color:#065f46;">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+            </div>
+            <div class="quick-link-text">
+              Randevu Al
+              <small>WhatsApp üzerinden</small>
+            </div>
+            <span class="quick-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+          </a>
+        </div>
+
+        <div class="side-card">
+          <h3>Rozetler</h3>
+          <div class="badges" id="badges">
+            <span class="badge" id="badge1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+              İlk Kayıt
+            </span>
+            <span class="badge" id="badge7">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+              7 Günlük Seri
+            </span>
+            <span class="badge" id="badge30">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              30 Kayıt
+            </span>
+            <span class="badge" id="badgeImprove">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              İyileşme
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script>
+(function() {
+  'use strict';
+
+  var SUPABASE_URL = 'https://vphmzrxiynjtdwxjtnvw.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_GPelhhr1szU9qzmSNw0VLw_jaeNDp6I';
+
+  var sb = null;
+  try {
+    if (window.supabase && window.supabase.createClient) {
+      sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    }
+  } catch(e) {}
+
+  var REGION_LABELS = {
+    boyun: 'Boyun', omuz: 'Omuz', sirt: 'Sırt', bel: 'Bel',
+    dirsek: 'Dirsek', elbilegi: 'El Bileği', kalca: 'Kalça',
+    uyluk: 'Uyluk', diz: 'Diz', baldir: 'Baldır',
+    ayak: 'Ayak', gogus: 'Göğüs', karin: 'Karın'
+  };
+
+  var currentUser = null;
+  var logs = [];
+
+  // ============================================
+  // INIT
+  // ============================================
+  async function init() {
+    // Tarih alanını bugüne ayarla
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').value = today;
+    document.getElementById('date').max = today;
+
+    // Karne tarihini göster
+    var now = new Date();
+    var months = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+    document.getElementById('karneDate').textContent = now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+
+    if (!sb) {
+      showGate();
+      return;
+    }
+
+    try {
+      var r = await sb.auth.getSession();
+      if (r.data && r.data.session) {
+        currentUser = r.data.session.user;
+        showPanel();
+      } else {
+        showGate();
+      }
+    } catch(e) {
+      showGate();
+    }
+  }
+
+  function showGate() {
+    document.getElementById('accessGate').classList.add('visible');
+    document.getElementById('panelContent').classList.remove('visible');
+    document.getElementById('logoutBtn').style.display = 'none';
+  }
+
+  async function showPanel() {
+    document.getElementById('accessGate').classList.remove('visible');
+    document.getElementById('panelContent').classList.add('visible');
+    document.getElementById('logoutBtn').style.display = '';
+
+    // İsim
+    var firstName = (currentUser.user_metadata && currentUser.user_metadata.first_name)
+      ? currentUser.user_metadata.first_name
+      : 'Üye';
+    document.getElementById('greetingName').textContent = firstName;
+
+    // Logları yükle
+    await loadLogs();
+  }
+
+  // ============================================
+  // LOGLAR
+  // ============================================
+  async function loadLogs() {
+    if (!sb || !currentUser) return;
+
+    try {
+      var r = await sb.from('pain_logs')
+        .select('*')
+        .eq('user_id', currentUser.id)
+        .order('date', { ascending: false })
+        .limit(100);
+
+      if (r.error) throw r.error;
+      logs = r.data || [];
+      renderLogs();
+      renderKarne();
+      renderChart();
+      renderBadges();
+    } catch(e) {
+      console.error('Logları yüklerken hata:', e);
+      // Tablo henüz yoksa sessiz geç
+    }
+  }
+
+  function renderLogs() {
+    var list = document.getElementById('logList');
+    if (!logs.length) {
+      list.innerHTML = '<li class="log-empty">Henüz kayıt eklemediniz. İlk kaydınızı yukarıdan ekleyebilirsiniz.</li>';
+      return;
+    }
+
+    var html = '';
+    logs.slice(0, 10).forEach(function(log) {
+      var intensity = log.intensity;
+      var cls = intensity <= 3 ? 'low' : (intensity <= 6 ? 'mid' : 'high');
+      var date = formatDate(log.date);
+      var region = REGION_LABELS[log.region] || log.region;
+
+      html += '<li class="log-item">';
+      html += '<div class="log-info">';
+      html += '<span class="log-region">' + region + '</span>';
+      html += '<span class="log-date">' + date + '</span>';
+      if (log.note) {
+        html += '<span class="log-note">' + escapeHtml(log.note) + '</span>';
+      }
+      html += '</div>';
+      html += '<span class="log-intensity ' + cls + '">' + intensity + '/10</span>';
+      html += '<button type="button" class="log-delete" onclick="deleteLog(\'' + log.id + '\')" title="Sil">';
+      html += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 01-2 2H9a2 2 0 01-2-2L5 6M10 11v6M14 11v6"/></svg>';
+      html += '</button>';
+      html += '</li>';
+    });
+    list.innerHTML = html;
+  }
+
+  function formatDate(d) {
+    var date = new Date(d);
+    var months = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
+    return date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function(m) {
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[m];
+    });
+  }
+
+  // ============================================
+  // KARNE
+  // ============================================
+  function renderKarne() {
+    var total = logs.length;
+    var now = new Date();
+    var weekAgo = new Date(now.getTime() - 7 * 86400000);
+
+    var lastWeek = logs.filter(function(l) {
+      return new Date(l.date) >= weekAgo;
+    });
+
+    var avg = total ? (logs.reduce(function(s, l) { return s + l.intensity; }, 0) / total) : 0;
+
+    // Streak (ardışık günler)
+    var streak = calculateStreak();
+
+    // Skor hesaplama
+    var score = calculateScore(total, lastWeek.length, avg, streak);
+
+    document.getElementById('statRecords').textContent = total;
+    document.getElementById('statWeek').textContent = lastWeek.length;
+    document.getElementById('statAvg').textContent = total ? avg.toFixed(1) : '—';
+    document.getElementById('statStreak').textContent = streak;
+    document.getElementById('karneScore').textContent = score;
+
+    var label;
+    if (total === 0) {
+      label = 'İlk kaydınızla birlikte karneniz oluşmaya başlayacak.';
+    } else if (score >= 80) {
+      label = 'Harika gidiyorsunuz! Takibinizi çok düzenli yapıyorsunuz.';
+    } else if (score >= 60) {
+      label = 'İyi bir başlangıç. Düzenli kayıt ile skorunuzu yükseltin.';
+    } else if (score >= 40) {
+      label = 'Ağrı takibiniz henüz düzenli değil. Daha sık kayıt eklemeyi deneyin.';
+    } else {
+      label = 'Yeni başlıyorsunuz. Düzenli takip ile iyileşme sürecinize katkı sağlayın.';
+    }
+    document.getElementById('karneLabel').textContent = label;
+  }
+
+  function calculateStreak() {
+    if (!logs.length) return 0;
+    var dates = {};
+    logs.forEach(function(l) { dates[l.date] = true; });
+
+    var streak = 0;
+    var check = new Date();
+    for (var i = 0; i < 365; i++) {
+      var key = check.toISOString().split('T')[0];
+      if (dates[key]) {
+        streak++;
+      } else if (i === 0) {
+        // Bugün kayıt yoksa dünü kontrol et
+      } else {
+        break;
+      }
+      check.setDate(check.getDate() - 1);
+    }
+    return streak;
+  }
+
+  function calculateScore(total, week, avg, streak) {
+    if (total === 0) return 0;
+    var score = 0;
+    // Toplam kayıt (max 30 puan)
+    score += Math.min(total * 2, 30);
+    // Son hafta aktiflik (max 25 puan)
+    score += Math.min(week * 4, 25);
+    // Seri (max 25 puan)
+    score += Math.min(streak * 3, 25);
+    // Düşük ortalama şiddet bonusu (max 20 puan)
+    if (avg > 0) {
+      score += Math.round(20 * (10 - avg) / 10);
+    }
+    return Math.min(Math.round(score), 100);
+  }
+
+  // ============================================
+  // CHART
+  // ============================================
+  function renderChart() {
+    var wrap = document.getElementById('chartWrap');
+    if (logs.length < 2) {
+      wrap.innerHTML = '<div class="chart-empty">En az 2 kayıt ile grafik görünür.</div>';
+      return;
+    }
+
+    // Son 30 günü filtrele
+    var now = new Date();
+    var monthAgo = new Date(now.getTime() - 30 * 86400000);
+    var recent = logs.filter(function(l) {
+      return new Date(l.date) >= monthAgo;
+    }).sort(function(a, b) {
+      return new Date(a.date) - new Date(b.date);
+    });
+
+    if (recent.length < 2) {
+      wrap.innerHTML = '<div class="chart-empty">Son 30 günde en az 2 kayıt gerekli.</div>';
+      return;
+    }
+
+    var width = wrap.clientWidth;
+    var height = 200;
+    var padding = { top: 20, right: 20, bottom: 30, left: 30 };
+
+    var minDate = new Date(recent[0].date).getTime();
+    var maxDate = new Date(recent[recent.length - 1].date).getTime();
+    var xRange = maxDate - minDate || 1;
+
+    var points = recent.map(function(log) {
+      var x = padding.left + ((new Date(log.date).getTime() - minDate) / xRange) * (width - padding.left - padding.right);
+      var y = padding.top + ((10 - log.intensity) / 10) * (height - padding.top - padding.bottom);
+      return { x: x, y: y, log: log };
+    });
+
+    // Path
+    var pathD = 'M' + points.map(function(p) { return p.x + ',' + p.y; }).join(' L');
+    var areaD = pathD + ' L' + points[points.length-1].x + ',' + (height - padding.bottom) + ' L' + points[0].x + ',' + (height - padding.bottom) + ' Z';
+
+    var svg = '<svg class="chart-svg" viewBox="0 0 ' + width + ' ' + height + '" xmlns="http://www.w3.org/2000/svg">';
+    svg += '<defs><linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">';
+    svg += '<stop offset="0%" stop-color="#2563eb" stop-opacity="0.25"/>';
+    svg += '<stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>';
+    svg += '</linearGradient></defs>';
+
+    // Y grid lines
+    [2, 5, 8].forEach(function(y) {
+      var yPos = padding.top + ((10 - y) / 10) * (height - padding.top - padding.bottom);
+      svg += '<line class="chart-grid" x1="' + padding.left + '" y1="' + yPos + '" x2="' + (width - padding.right) + '" y2="' + yPos + '"/>';
+      svg += '<text class="chart-label" x="4" y="' + (yPos + 3) + '">' + y + '</text>';
+    });
+
+    svg += '<path class="chart-area" d="' + areaD + '"/>';
+    svg += '<path class="chart-line" d="' + pathD + '"/>';
+
+    points.forEach(function(p) {
+      svg += '<circle class="chart-dot" cx="' + p.x + '" cy="' + p.y + '" r="4"><title>' + p.log.intensity + '/10 - ' + formatDate(p.log.date) + '</title></circle>';
+    });
+
+    // İlk ve son tarih
+    svg += '<text class="chart-label" x="' + padding.left + '" y="' + (height - 10) + '">' + formatDateShort(recent[0].date) + '</text>';
+    svg += '<text class="chart-label" x="' + (width - padding.right) + '" y="' + (height - 10) + '" text-anchor="end">' + formatDateShort(recent[recent.length-1].date) + '</text>';
+
+    svg += '</svg>';
+    wrap.innerHTML = svg;
+  }
+
+  function formatDateShort(d) {
+    var date = new Date(d);
+    var months = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
+    return date.getDate() + ' ' + months[date.getMonth()];
+  }
+
+  // ============================================
+  // BADGES
+  // ============================================
+  function renderBadges() {
+    var total = logs.length;
+    var streak = calculateStreak();
+
+    // İlk kayıt
+    document.getElementById('badge1').classList.toggle('earned', total >= 1);
+    // 7 günlük seri
+    document.getElementById('badge7').classList.toggle('earned', streak >= 7);
+    // 30 kayıt
+    document.getElementById('badge30').classList.toggle('earned', total >= 30);
+    // İyileşme: son 5 kayıtın ortalaması ilk 5'ten düşük
+    if (logs.length >= 10) {
+      var sorted = logs.slice().sort(function(a, b) { return new Date(a.date) - new Date(b.date); });
+      var firstAvg = sorted.slice(0, 5).reduce(function(s, l) { return s + l.intensity; }, 0) / 5;
+      var lastAvg = sorted.slice(-5).reduce(function(s, l) { return s + l.intensity; }, 0) / 5;
+      if (lastAvg < firstAvg - 1) {
+        document.getElementById('badgeImprove').classList.add('earned');
+      }
+    }
+  }
+
+  // ============================================
+  // FORM SUBMIT
+  // ============================================
+  document.getElementById('trackForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (!sb || !currentUser) return;
+
+    var region = document.getElementById('region').value;
+    var date = document.getElementById('date').value;
+    var intensity = parseInt(document.getElementById('intensity').value, 10);
+    var note = document.getElementById('note').value.trim();
+    var btn = document.getElementById('submitBtn');
+    var msg = document.getElementById('formMsg');
+
+    if (!region || !date) {
+      showMsg('error', 'Lütfen bölge ve tarih seçin.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Kaydediliyor...';
+
+    try {
+      var r = await sb.from('pain_logs').insert({
+        user_id: currentUser.id,
+        region: region,
+        intensity: intensity,
+        note: note || null,
+        date: date
+      });
+
+      if (r.error) throw r.error;
+
+      showMsg('success', 'Kayıt eklendi!');
+      // Formu resetle
+      document.getElementById('region').value = '';
+      document.getElementById('note').value = '';
+      document.getElementById('intensity').value = 5;
+      document.getElementById('intensityValue').textContent = '5';
+
+      await loadLogs();
+    } catch(err) {
+      console.error(err);
+      if (String(err.message || err).indexOf('pain_logs') > -1 || String(err.message || err).indexOf('relation') > -1) {
+        showMsg('error', 'Veritabanı tablosu henüz kurulmamış. Lütfen site yöneticisi ile iletişime geçin.');
+      } else {
+        showMsg('error', 'Kayıt eklenirken hata: ' + (err.message || 'Bilinmiyor'));
+      }
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg> Kaydet';
+    }
+  });
+
+  function showMsg(type, text) {
+    var msg = document.getElementById('formMsg');
+    msg.className = 'msg-banner visible ' + type;
+    msg.textContent = text;
+    setTimeout(function() {
+      msg.classList.remove('visible');
+    }, 4000);
+  }
+
+  // ============================================
+  // DELETE
+  // ============================================
+  window.deleteLog = async function(id) {
+    if (!sb || !currentUser) return;
+    if (!confirm('Bu kaydı silmek istediğinize emin misiniz?')) return;
+
+    try {
+      var r = await sb.from('pain_logs').delete().eq('id', id).eq('user_id', currentUser.id);
+      if (r.error) throw r.error;
+      await loadLogs();
+    } catch(err) {
+      console.error(err);
+      alert('Silinirken hata oluştu.');
+    }
+  };
+
+  // ============================================
+  // LOGOUT
+  // ============================================
+  window.handleLogout = async function() {
+    if (sb) {
+      try { await sb.auth.signOut(); } catch(e) {}
+    }
+    window.location.href = 'index.html';
+  };
+
+  // URL parametresiyle bölge seçilmişse forma yerleştir
+  var params = new URLSearchParams(window.location.search);
+  var regionParam = params.get('bolge');
+
+  // Ekran yenilenirken resize chart
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(renderChart, 200);
+  });
+
+  init().then(function() {
+    if (regionParam && REGION_LABELS[regionParam]) {
+      document.getElementById('region').value = regionParam;
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
