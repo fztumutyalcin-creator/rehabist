@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3–6 Yaş Çocuk Postür Rehberi | Rehabist</title>
+<meta name="description" content="Okul öncesi çocuklar için postür rehberi. Bu yaşta neyin normal, neyin endişe verici olduğunu öğrenin. Gelişimsel oyunlar, ayakkabı seçimi ve uzman tavsiyeleri.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   REHABIST — SHARED THEME
+   Bu dosya tüm sayfaların ortak temelini sağlar.
+   Tek bir yerden değiştirildiğinde tüm sayfalar güncellenir.
+   ============================================================ */
+
+:root {
+–white: #ffffff;
+–off-white: #fafbfc;
+–surface: #f5f7fa;
+–border: #e4e8ed;
+–border-strong: #d0d6dd;
+–ink-900: #0f172a;
+–ink-800: #1e293b;
+–ink-700: #334155;
+–ink-500: #475569;
+–ink-400: #64748b;
+–ink-300: #94a3b8;
+–blue-50: #eff6ff;
+–blue-100: #dbeafe;
+–blue-500: #3b82f6;
+–blue-600: #2563eb;
+–blue-700: #1d4ed8;
+–blue-900: #1e3a8a;
+–green-50: #ecfdf5;
+–green-500: #10b981;
+–green-600: #059669;
+–amber-50: #fffbeb;
+–amber-500: #f59e0b;
+–red-50: #fef2f2;
+–red-500: #ef4444;
+–red-700: #b91c1c;
+
+–serif: ‘Newsreader’, Georgia, serif;
+–sans: ‘DM Sans’, -apple-system, BlinkMacSystemFont, sans-serif;
+
+–container-max: 1200px;
+–container-px: 24px;
+
+–shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+–shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+–shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+–shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
+}
+
+/* NAV */
+.rb-nav {
+position: sticky;
+top: 0;
+z-index: 100;
+background: rgba(255, 255, 255, 0.85);
+backdrop-filter: saturate(180%) blur(20px);
+-webkit-backdrop-filter: saturate(180%) blur(20px);
+border-bottom: 1px solid transparent;
+transition: all 0.3s;
+}
+.rb-nav.scrolled {
+border-bottom-color: var(–border);
+background: rgba(255, 255, 255, 0.95);
+}
+.rb-nav-inner {
+max-width: var(–container-max);
+margin: 0 auto;
+padding: 0 var(–container-px);
+height: 64px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.rb-logo {
+display: flex;
+align-items: center;
+gap: 10px;
+font-family: var(–sans);
+font-weight: 700;
+font-size: 18px;
+letter-spacing: -0.02em;
+color: var(–ink-900);
+}
+.rb-logo-mark {
+width: 30px;
+height: 30px;
+background: var(–ink-900);
+border-radius: 8px;
+display: grid;
+place-items: center;
+color: var(–white);
+}
+.rb-logo-mark svg { width: 16px; height: 16px; }
+
+.rb-nav-links {
+display: flex;
+align-items: center;
+gap: 28px;
+}
+.rb-nav-link {
+font-family: var(–sans);
+font-size: 14px;
+font-weight: 500;
+color: var(–ink-500);
+transition: color 0.15s;
+}
+.rb-nav-link:hover { color: var(–ink-900); }
+.rb-nav-cta {
+font-family: var(–sans);
+font-size: 14px;
+font-weight: 600;
+background: var(–ink-900);
+color: var(–white);
+padding: 10px 16px;
+border-radius: 10px;
+transition: all 0.2s;
+}
+.rb-nav-cta:hover {
+background: var(–blue-700);
+transform: translateY(-1px);
+}
+.rb-menu-btn {
+display: none;
+width: 40px;
+height: 40px;
+border-radius: 10px;
+background: var(–surface);
+color: var(–ink-900);
+align-items: center;
+justify-content: center;
+}
+.rb-menu-btn svg { width: 20px; height: 20px; }
+
+@media (max-width: 768px) {
+.rb-nav-links { display: none; }
+.rb-menu-btn { display: flex; }
+}
+
+/* MOBILE MENU */
+.rb-mobile-menu {
+position: fixed;
+inset: 0;
+background: var(–white);
+z-index: 150;
+transform: translateX(100%);
+transition: transform 0.3s ease;
+overflow-y: auto;
+padding: 80px 24px 40px;
+visibility: hidden;
+}
+.rb-mobile-menu.open {
+transform: translateX(0);
+visibility: visible;
+}
+.rb-mobile-close {
+position: absolute;
+top: 20px;
+right: 20px;
+width: 40px;
+height: 40px;
+border-radius: 10px;
+background: var(–surface);
+display: grid;
+place-items: center;
+color: var(–ink-900);
+}
+.rb-mobile-close svg { width: 20px; height: 20px; }
+.rb-mobile-section-label {
+font-family: var(–sans);
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: var(–ink-400);
+margin: 24px 0 12px;
+}
+.rb-mobile-link {
+display: flex;
+align-items: center;
+padding: 14px 0;
+font-family: var(–sans);
+font-size: 17px;
+font-weight: 500;
+color: var(–ink-900);
+border-bottom: 1px solid var(–border);
+}
+.rb-mobile-link.tool-link {
+gap: 14px;
+padding: 16px;
+margin-bottom: 8px;
+background: var(–surface);
+border-radius: 12px;
+border: none;
+}
+.rb-mobile-link-icon {
+width: 36px;
+height: 36px;
+background: var(–white);
+border-radius: 9px;
+display: grid;
+place-items: center;
+color: var(–blue-600);
+flex-shrink: 0;
+}
+.rb-mobile-link-icon svg { width: 18px; height: 18px; }
+.rb-mobile-cta {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+margin-top: 24px;
+width: 100%;
+padding: 14px 22px;
+background: #25D366;
+color: var(–white);
+border-radius: 12px;
+font-family: var(–sans);
+font-size: 15px;
+font-weight: 600;
+}
+.rb-mobile-cta svg { width: 16px; height: 16px; }
+
+/* FOOTER */
+.rb-footer {
+background: var(–ink-900);
+color: rgba(255, 255, 255, 0.5);
+padding: 48px 0 32px;
+border-top: 1px solid rgba(255, 255, 255, 0.08);
+font-family: var(–sans);
+font-size: 13px;
+}
+.rb-footer-inner {
+max-width: var(–container-max);
+margin: 0 auto;
+padding: 0 var(–container-px);
+display: flex;
+justify-content: space-between;
+gap: 20px;
+flex-wrap: wrap;
+}
+.rb-footer-left {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+.rb-footer-logo-mark {
+width: 24px;
+height: 24px;
+background: rgba(255, 255, 255, 0.12);
+border-radius: 6px;
+display: grid;
+place-items: center;
+color: var(–white);
+}
+.rb-footer-logo-mark svg { width: 12px; height: 12px; }
+.rb-footer a {
+color: rgba(255, 255, 255, 0.5);
+transition: color 0.15s;
+}
+.rb-footer a:hover { color: var(–white); }
+
+/* ============================================================
+COCUK REHBER — SHARED STYLE
+3 yaş rehberi sayfasının ortak CSS’i
+============================================================ */
+
+/* Fallback değişkenler — shared-theme.css yüklenmezse temel görünüm korunur */
+:root {
+–white: #ffffff;
+–off-white: #fafbfc;
+–surface: #f5f7fa;
+–border: #e4e8ed;
+–border-strong: #d0d6dd;
+–ink-900: #0f172a;
+–ink-800: #1e293b;
+–ink-700: #334155;
+–ink-500: #475569;
+–ink-400: #64748b;
+–ink-300: #94a3b8;
+–blue-50: #eff6ff;
+–blue-100: #dbeafe;
+–blue-500: #3b82f6;
+–blue-600: #2563eb;
+–blue-700: #1d4ed8;
+–blue-900: #1e3a8a;
+–green-50: #ecfdf5;
+–green-500: #10b981;
+–green-600: #059669;
+–amber-50: #fffbeb;
+–amber-500: #f59e0b;
+–red-50: #fef2f2;
+–red-500: #ef4444;
+–red-700: #b91c1c;
+–serif: ‘Newsreader’, Georgia, serif;
+–sans: ‘DM Sans’, -apple-system, BlinkMacSystemFont, sans-serif;
+–shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+–shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+–shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+–shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
+}
+
+- { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+/* Global media reset — SVG ve img’in taşmasını engeller */
+img, svg { display: block; max-width: 100%; height: auto; }
+
+html { scroll-behavior: smooth; }
+body {
+font-family: var(–sans);
+color: var(–ink-700);
+background: var(–off-white);
+line-height: 1.6;
+font-size: 16px;
+-webkit-font-smoothing: antialiased;
+min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.container { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+/* ============= HERO ============= */
+.guide-hero { padding: 64px 0 40px; text-align: left; }
+
+.guide-kicker {
+display: inline-flex; align-items: center; gap: 8px;
+padding: 6px 14px; border-radius: 100px;
+font-size: 11.5px; font-weight: 700;
+letter-spacing: 0.08em; text-transform: uppercase;
+margin-bottom: 22px; color: var(–white);
+background: linear-gradient(135deg, var(–blue-600), #6d28d9);
+}
+.guide-kicker-dot { width: 6px; height: 6px; background: var(–white); border-radius: 50%; }
+
+h1 {
+font-size: clamp(34px, 5.5vw, 52px); font-weight: 700;
+color: var(–ink-900); letter-spacing: -0.04em;
+line-height: 1.02; margin-bottom: 22px;
+}
+h1 .accent {
+font-family: var(–serif); font-style: italic; font-weight: 500;
+color: var(–blue-700); letter-spacing: -0.025em;
+}
+
+.guide-lead {
+font-size: 18px; color: var(–ink-500);
+line-height: 1.55; max-width: 620px; margin-bottom: 28px;
+}
+
+.guide-meta {
+display: flex; gap: 22px; flex-wrap: wrap;
+font-size: 13px; color: var(–ink-500);
+padding-top: 22px; border-top: 1px solid var(–border);
+}
+.guide-meta-item { display: inline-flex; align-items: center; gap: 7px; }
+.guide-meta-item svg { width: 14px; height: 14px; color: var(–ink-400); }
+
+/* ============= TOC ============= */
+.toc {
+background: var(–white); border: 1px solid var(–border);
+border-radius: 18px; padding: 24px 26px; margin: 36px 0;
+box-shadow: var(–shadow-sm);
+}
+.toc h3 {
+font-size: 11px; font-weight: 700; color: var(–ink-400);
+text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
+}
+.toc-list { display: flex; flex-direction: column; list-style: none; }
+.toc-list a {
+display: flex; align-items: center; gap: 14px;
+padding: 10px 0; font-size: 14.5px; color: var(–ink-700);
+font-weight: 500; transition: all 0.15s;
+border-bottom: 1px dashed var(–border);
+}
+.toc-list li:last-child a { border-bottom: none; }
+.toc-list a:hover { color: var(–ink-900); padding-left: 4px; }
+.toc-num {
+font-family: var(–serif); font-style: italic;
+color: var(–blue-700); font-weight: 600; font-size: 16px; min-width: 26px;
+}
+
+/* ============= SECTIONS ============= */
+section.guide-section { padding: 48px 0 8px; scroll-margin-top: 80px; }
+
+.section-num {
+font-family: var(–serif); font-style: italic;
+font-size: 15px; font-weight: 600; color: var(–blue-700);
+letter-spacing: 0.02em; margin-bottom: 10px; display: block;
+}
+
+h2 {
+font-size: clamp(26px, 4vw, 34px); font-weight: 700;
+color: var(–ink-900); letter-spacing: -0.03em;
+line-height: 1.1; margin-bottom: 18px;
+}
+h2 .accent {
+font-family: var(–serif); font-style: italic;
+color: var(–blue-700); font-weight: 500; letter-spacing: -0.02em;
+}
+
+h3 {
+font-size: 19px; font-weight: 700; color: var(–ink-900);
+margin: 28px 0 14px; letter-spacing: -0.015em;
+}
+
+p { margin-bottom: 16px; line-height: 1.65; color: var(–ink-700); font-size: 16px; }
+p strong { color: var(–ink-900); font-weight: 600; }
+
+.intro-para {
+font-size: 17px; line-height: 1.65; color: var(–ink-700);
+margin-bottom: 24px; padding-left: 18px;
+border-left: 3px solid var(–blue-600);
+}
+
+/* ============= TIP CARD ============= */
+.tip-card {
+background: var(–white); border: 1px solid var(–border);
+border-radius: 14px; padding: 20px 22px; margin: 14px 0;
+display: flex; gap: 16px; align-items: flex-start;
+transition: transform 0.15s;
+}
+.tip-card:hover { transform: translateY(-1px); box-shadow: var(–shadow-md); }
+
+.tip-icon {
+width: 42px; height: 42px; border-radius: 12px;
+display: grid; place-items: center; flex-shrink: 0;
+}
+.tip-icon svg { width: 20px; height: 20px; }
+.tip-icon.green { background: var(–green-50); color: var(–green-600); }
+.tip-icon.amber { background: var(–amber-50); color: #a16207; }
+.tip-icon.red { background: var(–red-50); color: var(–red-700); }
+.tip-icon.blue { background: var(–blue-50); color: var(–blue-700); }
+.tip-icon.purple { background: #ede9fe; color: #6d28d9; }
+
+.tip-content { flex: 1; }
+.tip-content h4 {
+font-size: 15.5px; font-weight: 700; color: var(–ink-900);
+margin-bottom: 6px; letter-spacing: -0.01em;
+}
+.tip-content p {
+font-size: 14px; color: var(–ink-500);
+margin-bottom: 0; line-height: 1.55;
+}
+
+/* ============= STAT GRID ============= */
+.stat-grid {
+display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+gap: 12px; margin: 20px 0;
+}
+.stat-card {
+background: var(–white); border: 1px solid var(–border);
+border-radius: 14px; padding: 20px 18px; text-align: center;
+}
+.stat-num {
+font-family: var(–serif); font-style: italic;
+font-size: 36px; font-weight: 600; color: var(–blue-700);
+letter-spacing: -0.03em; line-height: 1;
+margin-bottom: 6px; display: block;
+}
+.stat-label { font-size: 12.5px; color: var(–ink-500); line-height: 1.4; }
+
+/* ============= CHECKLIST ============= */
+.checklist {
+background: var(–white); border: 1px solid var(–border);
+border-radius: 16px; padding: 22px 24px; margin: 18px 0;
+}
+.checklist h4 {
+font-size: 12px; font-weight: 700; color: var(–ink-500);
+text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;
+}
+.checklist ul { list-style: none; }
+.checklist li {
+display: flex; align-items: flex-start; gap: 12px;
+padding: 9px 0; font-size: 14.5px; line-height: 1.6;
+color: var(–ink-700); border-bottom: 1px dashed var(–border);
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before {
+content: ‘’; width: 18px; height: 18px;
+background: var(–green-50); border-radius: 50%;
+background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ viewBox=‘0 0 24 24’ fill=‘none’ stroke=’%2310b981’ stroke-width=‘3’ stroke-linecap=‘round’ stroke-linejoin=‘round’%3E%3Cpolyline points=‘20 6 9 17 4 12’/%3E%3C/svg%3E”);
+background-size: 11px; background-position: center; background-repeat: no-repeat;
+flex-shrink: 0; margin-top: 3px;
+}
+
+.avoid-list li::before {
+background: var(–red-50);
+background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ viewBox=‘0 0 24 24’ fill=‘none’ stroke=’%23ef4444’ stroke-width=‘3’ stroke-linecap=‘round’ stroke-linejoin=‘round’%3E%3Cline x1=‘18’ y1=‘6’ x2=‘6’ y2=‘18’/%3E%3Cline x1=‘6’ y1=‘6’ x2=‘18’ y2=‘18’/%3E%3C/svg%3E”);
+background-size: 11px;
+}
+
+/* ============= CALLOUT ============= */
+.callout {
+background: linear-gradient(135deg, var(–blue-50), #f5f7fa);
+border-left: 4px solid var(–blue-600);
+border-radius: 12px; padding: 20px 24px; margin: 24px 0;
+font-size: 15.5px; line-height: 1.6; color: var(–ink-700);
+}
+.callout strong { color: var(–ink-900); }
+.callout-label {
+display: block; font-size: 11px; font-weight: 700;
+color: var(–blue-700); text-transform: uppercase;
+letter-spacing: 0.08em; margin-bottom: 6px;
+}
+
+/* ============= EXERCISE CARDS ============= */
+.exercise-card {
+background: var(–white); border: 1px solid var(–border);
+border-radius: 16px; padding: 22px 24px;
+margin-bottom: 14px; transition: all 0.15s;
+}
+.exercise-card:hover {
+border-color: var(–ink-300); box-shadow: var(–shadow-md);
+}
+
+.exercise-head {
+display: flex; align-items: flex-start; justify-content: space-between;
+gap: 14px; margin-bottom: 14px; padding-bottom: 14px;
+border-bottom: 1px solid var(–border);
+}
+.exercise-name {
+font-size: 16.5px; font-weight: 700; color: var(–ink-900);
+letter-spacing: -0.015em; display: flex; align-items: center; gap: 10px;
+}
+.exercise-num {
+width: 28px; height: 28px; background: var(–ink-900);
+color: var(–white); border-radius: 50%;
+display: grid; place-items: center;
+font-size: 13px; font-weight: 700; flex-shrink: 0;
+}
+.exercise-meta {
+font-family: var(–serif); font-style: italic;
+font-size: 13.5px; color: var(–blue-700);
+font-weight: 500; white-space: nowrap; padding-top: 4px;
+}
+
+.exercise-steps { list-style: none; counter-reset: step; }
+.exercise-steps li {
+counter-increment: step; padding: 8px 0 8px 32px;
+font-size: 14.5px; line-height: 1.6;
+color: var(–ink-700); position: relative;
+}
+.exercise-steps li::before {
+content: counter(step); position: absolute;
+left: 0; top: 9px; width: 22px; height: 22px;
+background: var(–surface); border-radius: 50%;
+display: grid; place-items: center;
+font-size: 11.5px; font-weight: 700; color: var(–ink-700);
+}
+
+/* ============= COMPARE BLOCK ============= */
+.compare-block {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 14px; margin: 20px 0;
+}
+@media (max-width: 600px) { .compare-block { grid-template-columns: 1fr; } }
+.compare-side {
+background: var(–white); border: 1px solid var(–border);
+border-radius: 14px; padding: 18px 20px;
+}
+.compare-side.bad {
+background: linear-gradient(180deg, #fef2f2, var(–white));
+border-color: #fecaca;
+}
+.compare-side.good {
+background: linear-gradient(180deg, #ecfdf5, var(–white));
+border-color: #a7f3d0;
+}
+.compare-label {
+display: inline-flex; align-items: center; gap: 6px;
+font-size: 11px; font-weight: 700;
+letter-spacing: 0.08em; text-transform: uppercase;
+margin-bottom: 10px; padding: 3px 10px; border-radius: 100px;
+}
+.compare-side.bad .compare-label { background: var(–red-50); color: var(–red-700); }
+.compare-side.good .compare-label { background: var(–green-50); color: var(–green-600); }
+.compare-side h4 {
+font-size: 15px; font-weight: 700;
+color: var(–ink-900); margin-bottom: 6px; letter-spacing: -0.01em;
+}
+.compare-side p {
+font-size: 13.5px; color: var(–ink-500);
+line-height: 1.55; margin-bottom: 0;
+}
+
+/* ============= RED FLAGS ============= */
+.red-flags-block {
+background: linear-gradient(135deg, var(–red-50), #fee2e2);
+border: 2px solid #fca5a5; border-radius: 18px;
+padding: 28px; margin: 32px 0;
+}
+.red-flags-block h3 {
+color: var(–red-700); margin-top: 0; margin-bottom: 12px;
+display: flex; align-items: center; gap: 12px; font-size: 20px;
+}
+.red-flags-block h3 svg { width: 24px; height: 24px; flex-shrink: 0; }
+.red-flags-block p {
+color: var(–ink-700); margin-bottom: 16px; font-size: 14.5px;
+}
+.red-flags-block ul { list-style: none; padding: 0; }
+.red-flags-block li {
+padding: 9px 0 9px 26px; font-size: 14.5px;
+color: var(–ink-700); position: relative;
+line-height: 1.55; border-bottom: 1px dashed rgba(252, 165, 165, 0.5);
+}
+.red-flags-block li:last-child { border-bottom: none; }
+.red-flags-block li::before {
+content: ‘’; position: absolute;
+left: 0; top: 16px; width: 8px; height: 8px;
+background: var(–red-500); border-radius: 50%;
+}
+
+/* ============= CTA ============= */
+.guide-cta {
+background: linear-gradient(135deg, var(–ink-900), #1e1b4b);
+color: var(–white); border-radius: 22px;
+padding: 40px 32px; margin: 44px 0;
+text-align: center; position: relative; overflow: hidden;
+}
+.guide-cta::before {
+content: ‘’; position: absolute;
+top: -50%; left: -20%; width: 60%; height: 200%;
+background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, transparent 60%);
+pointer-events: none;
+}
+.guide-cta > * { position: relative; }
+.guide-cta h3 {
+color: var(–white); font-size: 26px; font-weight: 700;
+letter-spacing: -0.02em; margin: 0 0 10px;
+}
+.guide-cta p {
+color: rgba(255, 255, 255, 0.7); font-size: 15px;
+margin-bottom: 24px; max-width: 480px;
+margin-left: auto; margin-right: auto;
+}
+.guide-cta-buttons {
+display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+}
+
+.btn {
+display: inline-flex; align-items: center; justify-content: center;
+gap: 8px; padding: 14px 22px; border-radius: 12px;
+font-size: 14.5px; font-weight: 600;
+transition: all 0.2s; line-height: 1; cursor: pointer; border: none;
+}
+.btn-primary { background: var(–white); color: var(–ink-900); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); }
+.btn-wa { background: #25D366; color: var(–white); }
+.btn-wa:hover { background: #20b859; transform: translateY(-2px); }
+.btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ============= OTHER GUIDES ============= */
+.other-guides { margin: 44px 0; }
+.other-guides h3 {
+font-size: 12px; font-weight: 700; color: var(–ink-400);
+text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;
+}
+.other-guides-grid {
+display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+@media (max-width: 480px) { .other-guides-grid { grid-template-columns: 1fr; } }
+.other-guide-link {
+background: var(–white); border: 1px solid var(–border);
+border-radius: 14px; padding: 18px 20px;
+transition: all 0.15s; display: block;
+}
+.other-guide-link:hover {
+border-color: var(–ink-700); transform: translateY(-2px);
+box-shadow: var(–shadow-md);
+}
+.other-guide-age {
+font-family: var(–serif); font-style: italic;
+font-size: 22px; font-weight: 600; color: var(–blue-700);
+margin-bottom: 4px; letter-spacing: -0.02em;
+}
+.other-guide-label { font-size: 13px; color: var(–ink-500); }
+
+/* ============= DISCLAIMER ============= */
+.guide-disclaimer {
+background: var(–surface); border-radius: 12px;
+padding: 18px 20px; margin: 36px 0 64px;
+font-size: 13px; color: var(–ink-500); line-height: 1.6;
+border-left: 3px solid var(–ink-300);
+}
+.guide-disclaimer strong { color: var(–ink-700); }
+
+/* ============= QUICK REF BOX ============= */
+.quick-ref {
+background: var(–white); border: 2px solid var(–ink-900);
+border-radius: 16px; padding: 22px 24px; margin: 24px 0;
+}
+.quick-ref-label {
+display: inline-block; font-size: 11px; font-weight: 700;
+background: var(–ink-900); color: var(–white);
+padding: 4px 10px; border-radius: 6px;
+letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
+}
+.quick-ref h4 {
+font-size: 17px; font-weight: 700;
+color: var(–ink-900); margin-bottom: 8px;
+}
+.quick-ref p { font-size: 14.5px; color: var(–ink-700); margin-bottom: 0; }
+
+/* ============= AGE VARIANTS ============= */
+body.age-3-6 .guide-kicker { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+body.age-3-6 .section-num,
+body.age-3-6 h1 .accent,
+body.age-3-6 h2 .accent,
+body.age-3-6 .toc-num,
+body.age-3-6 .other-guide-age,
+body.age-3-6 .stat-num,
+body.age-3-6 .exercise-meta,
+body.age-3-6 .callout-label { color: #d97706; }
+body.age-3-6 .callout {
+background: linear-gradient(135deg, var(–amber-50), #fef3c7);
+border-left-color: #f59e0b;
+}
+body.age-3-6 .intro-para { border-left-color: #f59e0b; }
+
+body.age-13-18 .guide-kicker { background: linear-gradient(135deg, #6d28d9, var(–ink-900)); }
+body.age-13-18 .section-num,
+body.age-13-18 h1 .accent,
+body.age-13-18 h2 .accent,
+body.age-13-18 .toc-num,
+body.age-13-18 .other-guide-age,
+body.age-13-18 .stat-num,
+body.age-13-18 .exercise-meta,
+body.age-13-18 .callout-label { color: #6d28d9; }
+body.age-13-18 .callout {
+background: linear-gradient(135deg, #ede9fe, #f5f3ff);
+border-left-color: #7c3aed;
+}
+body.age-13-18 .intro-para { border-left-color: #7c3aed; }
+
+</style>
+</head>
+<body class="age-3-6">
+
+<div id="rb-nav-mount"></div>
+
+<main>
+  <div class="container">
+    <header class="guide-hero">
+      <span class="guide-kicker">
+        <span class="guide-kicker-dot"></span>
+        Veli Rehberi · 3–6 Yaş
+      </span>
+      <h1>Bu yaşta endişelendiğin çoğu şey <span class="accent">aslında normal.</span></h1>
+      <p class="guide-lead">X bacaklar, belirgin bel çukurluğu, düz tabanlık — okul öncesi dönemin doğal aşamaları. Bu rehber neyi merak etmeli, neyi rahat bırakmalısın anlatıyor.</p>
+      <div class="guide-meta">
+        <span class="guide-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ~7 dk okuma
+        </span>
+        <span class="guide-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Kanıta dayalı
+        </span>
+        <span class="guide-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          AAP & Pediatrik FT kaynaklı
+        </span>
+      </div>
+    </header>
+
+```
+<nav class="toc">
+  <h3>Bu sayfada</h3>
+  <ul class="toc-list">
+    <li><a href="#normal"><span class="toc-num">01</span>Bu yaşta neler normal sayılır?</a></li>
+    <li><a href="#hareket"><span class="toc-num">02</span>Postürün gerçek temeli: hareket</a></li>
+    <li><a href="#oturma"><span class="toc-num">03</span>Yer oturuşları ve W oturma</a></li>
+    <li><a href="#ayakkabi"><span class="toc-num">04</span>Ayakkabı seçimi</a></li>
+    <li><a href="#oyun"><span class="toc-num">05</span>Postür için 3 oyun</a></li>
+    <li><a href="#kirmizi"><span class="toc-num">06</span>Ne zaman fizyoterapist görmeli?</a></li>
+  </ul>
+</nav>
+
+<section class="guide-section" id="normal">
+  <span class="section-num">01</span>
+  <h2>Bu yaşta <span class="accent">neler normal sayılır?</span></h2>
+
+  <p class="intro-para">Pediatrik fizyoterapide en sık duyduğum cümle: <em>"Çocuğumun bacakları X gibi, normal mi?"</em> 3–6 yaş arası çocuklarda büyük çoğunluk için cevap evet — ve bu yaşta <strong>düzeltmeye çalışmak çoğunlukla zarar verir.</strong></p>
+
+  <h3>Üç şey çoğu zaman gelişimseldir</h3>
+
+  <div class="tip-card">
+    <div class="tip-icon green">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="tip-content">
+      <h4>Hafif X bacak (genu valgum)</h4>
+      <p>3–4 yaşta dizler birbirine değer, ayaklar birbirinden uzak durur. Bu yaşın anatomik normalidir. Yaklaşık 7 yaşa kadar kendiliğinden düzelir.</p>
+    </div>
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-icon green">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="tip-content">
+      <h4>Belirgin bel çukurluğu (lordoz)</h4>
+      <p>Karın kasları henüz tam gelişmediği için pelvis öne eğikçe durur, bel bölgesi içe çukurlaşır. Bu görünüm 6–7 yaşa kadar yumuşar.</p>
+    </div>
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-icon green">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="tip-content">
+      <h4>Düz tabanlık (pes planus)</h4>
+      <p>3 yaşa kadar neredeyse tüm çocuklar düz tabanlıdır. Ayak kemerini oluşturan yağ yastıkçığı 4–6 yaşta erir, gerçek kemer ortaya çıkar. Çocuk ağrısız ve aktifse müdahale gerekmez.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="callout-label">Önemli ayrım</span>
+    Bu yaşta bakılan şey "düzgün postür" değil, <strong>simetri</strong> ve <strong>kaba motor uyum</strong>. Çocuğun iki tarafı eşit gelişiyor ve yaşına uygun hareket edebiliyorsa, görüntü ne olursa olsun, çoğunlukla yolundadır.
+  </div>
+</section>
+
+<section class="guide-section" id="hareket">
+  <span class="section-num">02</span>
+  <h2>Postürün gerçek temeli: <span class="accent">hareket.</span></h2>
+
+  <p>3–6 yaşta postürü "düzeltme" çabasından çok, çocuğun bol ve çeşitli hareket etmesini sağlamak çok daha değerli. Postür bu yaşta egzersizle değil, oyunla şekillenir.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <span class="stat-num">3 sa</span>
+      <div class="stat-label">Günlük toplam aktif hareket (WHO)</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">1 sa</span>
+      <div class="stat-label">Orta–yüksek tempo aktivite</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">&lt;1 sa</span>
+      <div class="stat-label">Ekran süresi (eğitim hariç)</div>
+    </div>
+  </div>
+
+  <h3>Bu yaşta günlük rutin</h3>
+
+  <div class="checklist">
+    <ul>
+      <li><strong>Mümkün olduğunca açık havada.</strong> İç mekândaki "hareket" çoğunlukla yetersiz kalır.</li>
+      <li><strong>Çeşitli aktiviteler:</strong> Sadece bisiklet veya sadece kaydırak değil — tırmanma, atlama, koşma, yuvarlanma karışık.</li>
+      <li><strong>Çocukla beraber hareket etmek</strong> davranışı tetikler. Sadece dışarı bırakmak yerine sen de katıl.</li>
+      <li><strong>Bahane üretme.</strong> Yağmurda yürümek, soğukta park, sıcakta kova-kürek — kıyafet doğru olduktan sonra yıl boyu mümkün.</li>
+    </ul>
+  </div>
+
+  <div class="quick-ref">
+    <span class="quick-ref-label">Çabuk Cevap</span>
+    <h4>Çocuğum çok az hareket ediyor, ne yapayım?</h4>
+    <p>Yapılandırılmış spor yerine "ailecek aktivite" düşün: parka gitmek, akşam yürüyüşü, bahçede oyun. 3–6 yaş yapılandırılmış spora hazır değil — değer doğal serbestlikte.</p>
+  </div>
+</section>
+
+<section class="guide-section" id="oturma">
+  <span class="section-num">03</span>
+  <h2>Yer oturuşları ve <span class="accent">"W oturma".</span></h2>
+
+  <p>Çocuk yere oturduğunda bacaklarını arkaya, harf "W" şeklinde geriyorsa buna <strong>W oturuş</strong> denir. Bu pozisyonda denge kolaylaştığı için çocuklar çok severler — ama uzun vadede bazı sorunlara yol açabilir.</p>
+
+  <div class="compare-block">
+    <div class="compare-side bad">
+      <span class="compare-label">Kaçınılmalı</span>
+      <h4>W oturuş</h4>
+      <p>Kalçayı iç rotasyona zorlar, gövde dönüşünü engeller, kor kasları kullanılmaz. Sürekli olduğunda alt ekstremite gelişimini etkileyebilir.</p>
+    </div>
+    <div class="compare-side good">
+      <span class="compare-label">Tercih edilmeli</span>
+      <h4>Bağdaş, yan, uzun oturuş</h4>
+      <p>Gövde kaslarını çalıştırır, kalça eklemini doğal pozisyonda tutar, gövde rotasyonu için yer açar.</p>
+    </div>
+  </div>
+
+  <h3>Önerilen oturuş şekilleri</h3>
+  <div class="checklist">
+    <ul>
+      <li><strong>Bağdaş kurarak</strong> — gövde kaslarını çalıştırır, kalça için iyi.</li>
+      <li><strong>Bacaklar uzanmış</strong> halde — hamstring esnekliğini korur.</li>
+      <li><strong>Yan oturuş</strong> — her iki yöne değişimli yapılırsa simetri korunur.</li>
+      <li><strong>Diz çökmüş</strong> halde (bacaklar paralel arkada, W değil).</li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <span class="callout-label">Uygulama notu</span>
+    Çocuk W oturuyorsa anında düzelt diye kasılmayın — utandırmak alışkanlığı pekiştirir. Yarı kalkıp pozisyon değişmesini teşvik et: "Bana bağdaş kurarak gel, sana bir şey okuyacağım."
+  </div>
+</section>
+
+<section class="guide-section" id="ayakkabi">
+  <span class="section-num">04</span>
+  <h2>Doğru <span class="accent">ayakkabı seçimi.</span></h2>
+
+  <p>Bu yaşta yanlış ayakkabı, gelişen ayak yapısını etkileyebilir. İyi haber: pahalı "ortopedik" ayakkabı şart değil — hatta çoğu zaman zararlı. Önemli olan ayağın doğal hareketine izin vermesi.</p>
+
+  <div class="compare-block">
+    <div class="compare-side bad">
+      <span class="compare-label">Yanlış</span>
+      <h4>Kalın, sert tabanlı, dolgulu</h4>
+      <p>"Ortopedik" diye satılan kalın tabanlı ayakkabılar ayak kaslarını tembelleştirir. Ayak kemeri gelişimini engelleyebilir.</p>
+    </div>
+    <div class="compare-side good">
+      <span class="compare-label">Doğru</span>
+      <h4>İnce, esnek, hafif</h4>
+      <p>Ön kısım esnek, taban ince ama dayanıklı, parmaklara yer var. Ayak kasları bu sayede aktif çalışır.</p>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <h4>Doğru ayakkabı için</h4>
+    <ul>
+      <li><strong>Ön kısım esnek</strong> olmalı — parmakların hareketine izin versin. Ayakkabıyı elinle bük: kolayca bükülmeli.</li>
+      <li><strong>Tabanı ince</strong>, ama yere temasta dayanıklı. Yeryüzünü hissetmek motor gelişim için kıymetli.</li>
+      <li><strong>Topuk hafif sert</strong> olmalı — ayağı yandan sarsın, ama içini sıkmasın.</li>
+      <li><strong>Bağcık veya cırt cırt</strong> ile ayak sabitlenmeli, ama dolaşımı kesmemeli.</li>
+      <li><strong>Ev içinde mümkünse çıplak ayak</strong> — ayak kasları en iyi böyle gelişir.</li>
+    </ul>
+  </div>
+
+  <div class="quick-ref">
+    <span class="quick-ref-label">Sık Soru</span>
+    <h4>Düz tabanlık için tabanlık (insol) gerekli mi?</h4>
+    <p>Çocuk ağrısız ve aktifse genelde gerekmez. 6 yaş öncesi düz tabanlık çoğunlukla fizyolojiktir. İlk önce bir pediatrik fizyoterapiste danışın — gereksiz tabanlık ayak gelişimini olumsuz etkileyebilir.</p>
+    </div>
+</section>
+
+<section class="guide-section" id="oyun">
+  <span class="section-num">05</span>
+  <h2>Postürü destekleyen <span class="accent">3 oyun.</span></h2>
+
+  <p>3–6 yaşta yapılandırılmış egzersiz pek işe yaramaz — çocuk sıkılır, isteksizleşir. Bunun yerine doğal hareket gelişimini destekleyen oyunlar kuralım.</p>
+
+  <div class="exercise-card">
+    <div class="exercise-head">
+      <div class="exercise-name">
+        <span class="exercise-num">1</span>
+        Hayvan yürüyüşleri
+      </div>
+      <span class="exercise-meta">5 dk · günde</span>
+    </div>
+    <ol class="exercise-steps">
+      <li><strong>Ayı yürüyüşü:</strong> Eller ve ayaklar yerde, popo havada. Salonun bir ucundan diğerine yürüsün.</li>
+      <li><strong>Yengeç yürüyüşü:</strong> Sırt yere bakıyor, eller-ayaklar yerde, ters yürüme.</li>
+      <li><strong>Kurbağa zıplaması:</strong> Çömelerek aşağı, sıçrayarak yukarı. 5–10 zıplama.</li>
+      <li><strong>Penguen yürüyüşü:</strong> Topuklar üzerinde küçük adımlarla yürüme.</li>
+      <li>Çocukla beraber yapın — çocuk sizi taklit ederken hem hareket hem bağ.</li>
+    </ol>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-head">
+      <div class="exercise-name">
+        <span class="exercise-num">2</span>
+        Denge oyunları
+      </div>
+      <span class="exercise-meta">10 dk · haftada 3</span>
+    </div>
+    <ol class="exercise-steps">
+      <li>Yere uzun bir bant veya ip yapıştırın, üzerinde yürüsün.</li>
+      <li>Tek ayak üstünde 5 saniye durmaya çalışsın (her iki ayakta da).</li>
+      <li>Yastıkların üzerinden geçmesi (yumuşak zemin denge bozar, oyunlaştırır).</li>
+      <li>Gözleri kapalı bir adım atma — yetişkin elinden tutsun, güvenle.</li>
+      <li>Hatasız geçince alkış, küçük başarı kutlaması.</li>
+    </ol>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-head">
+      <div class="exercise-name">
+        <span class="exercise-num">3</span>
+        Süper kahraman
+      </div>
+      <span class="exercise-meta">3 dk · günde</span>
+    </div>
+    <ol class="exercise-steps">
+      <li><strong>Köprü:</strong> Sırtüstü yatıp dizleri kıvırsın, kalçayı havaya kaldırsın. 5 saniye tutsun.</li>
+      <li><strong>Süpermen:</strong> Yüzüstü yatıp kollar ileri uzansın. Kolları ve bacakları aynı anda yerden hafifçe kaldırsın. 3 sn tutsun.</li>
+      <li>"Süper kahraman uçuyor" diye anlatın — oyun olduğu için isteyerek yapar.</li>
+      <li>Boyun zorlanmasın — başını yere baksın.</li>
+    </ol>
+  </div>
+
+  <div class="callout">
+    <span class="callout-label">En Çok Etki Eden</span>
+    Bu egzersizlerin hepsi güzel — ama hiçbiri <strong>serbest açık hava oyununun</strong> yerini tutmaz. Park, koşu, ip atlama, bisiklet, kova-kürek, taklalar. Çocuğun postürü doğal yoldan ve hiç fark ettirmeden burada şekillenir.
+  </div>
+</section>
+
+<section class="guide-section" id="kirmizi">
+  <div class="red-flags-block">
+    <h3>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+      Ne zaman fizyoterapist görmeli?
+    </h3>
+    <p>Aşağıdakilerden biri varsa beklemeden bir pediatrik fizyoterapist veya çocuk hekimi ile görüşün:</p>
+    <ul>
+      <li>3 yaşına kadar koşamıyor veya merdivene çıkamıyor</li>
+      <li>X bacak şekli 6 yaşa rağmen düzelmiyor veya çok belirgin</li>
+      <li>Çocuk sürekli düşüyor, dengesi akranlarına göre çok geri</li>
+      <li>Tek ayağını sürüklüyor, asimetrik yürüyor</li>
+      <li>Sırt veya bacak ağrısından şikayet ediyor</li>
+      <li>Bir tarafa yatık duruyor, başını sürekli bir tarafa eğiyor</li>
+      <li>Sırt veya kalça simetrisinde belirgin bir fark görüyorsun</li>
+      <li>Doğum yorgun veya zor olduysa, motor gelişiminden endişe duyuyorsan</li>
+    </ul>
+  </div>
+</section>
+
+<div class="guide-cta">
+  <h3>Çocuğunun postürünü değerlendirelim</h3>
+  <p>Aydın çevresindeyseniz Fzt. Umut Yalçın ile evde değerlendirme randevusu alabilirsiniz. Çevrimiçi olarak da çocuğunun postürünü kendi kendine tarayabilirsin.</p>
+  <div class="guide-cta-buttons">
+    <a href="/cocuk-postur-analizi.html" class="btn btn-primary">
+      Postür Taraması Yap
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="https://wa.me/905345840913?text=Merhaba%2C%20%C3%A7ocu%C4%9Fum%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+      WhatsApp Randevu
+    </a>
+  </div>
+</div>
+
+<div class="other-guides">
+  <h3>Diğer yaş rehberleri</h3>
+  <div class="other-guides-grid">
+    <a href="/cocuk-rehber-7-12.html" class="other-guide-link">
+      <div class="other-guide-age">7–12</div>
+      <div class="other-guide-label">Okul çağı rehberi</div>
+    </a>
+    <a href="/cocuk-rehber-13-18.html" class="other-guide-link">
+      <div class="other-guide-age">13–18</div>
+      <div class="other-guide-label">Ergenlik rehberi</div>
+    </a>
+  </div>
+</div>
+
+<div class="guide-disclaimer">
+  <strong>Önemli:</strong> Bu rehber genel bilgilendirme amaçlıdır ve fizyoterapist veya hekim değerlendirmesinin yerini tutmaz. Çocuğunda spesifik bir bulgu varsa veya bu öneriler yetersiz kalıyorsa, mutlaka bir uzmanla görüşün.
+</div>
+```
+
+  </div>
+</main>
+
+<div id="rb-footer-mount"></div>
+
+<script src="shared-nav.js" defer></script>
+
+</body>
+</html>

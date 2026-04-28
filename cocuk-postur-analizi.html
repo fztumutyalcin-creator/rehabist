@@ -1,0 +1,3770 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Çocuk Postür Analizi — Pediatrik Tarama | Rehabist</title>
+<meta name="description" content="3-18 yaş çocuklar için postür değerlendirme. Veliler için tarama, klinisyenler için hızlı muayene aracı. Skolyoz, kifoz ve dizilim için kanıta dayalı kontrol.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared-theme.css">
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink-700);
+    background: var(--off-white);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  img, svg { display: block; max-width: 100%; }
+
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* SCREENS — sadece active olan görünür */
+  .screen { display: none; padding: 48px 0 80px; }
+  .screen.active { display: block; }
+
+  /* KICKER */
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: var(--white);
+    border-radius: 100px;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 22px;
+  }
+  .kicker-dot {
+    width: 6px; height: 6px;
+    background: var(--white); border-radius: 50%;
+  }
+
+  /* HEADINGS */
+  h1 {
+    font-size: clamp(32px, 5vw, 48px); font-weight: 700;
+    color: var(--ink-900); letter-spacing: -0.035em;
+    line-height: 1.05; margin-bottom: 20px;
+  }
+  h1 .accent {
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    color: var(--blue-700);
+  }
+  h2 {
+    font-size: clamp(24px, 3.6vw, 34px); font-weight: 700;
+    color: var(--ink-900); letter-spacing: -0.025em;
+    line-height: 1.15; margin-bottom: 16px;
+  }
+  .lead {
+    font-size: 17px; color: var(--ink-500);
+    max-width: 640px; line-height: 1.55;
+    margin-bottom: 36px;
+  }
+
+  /* MODE CARDS */
+  .mode-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  @media (max-width: 720px) {
+    .mode-grid { grid-template-columns: 1fr; }
+  }
+  .mode-card {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 28px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+    text-align: left;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .mode-card:hover {
+    border-color: var(--ink-900);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+  .mode-card-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    display: grid; place-items: center;
+    margin-bottom: 22px;
+  }
+  .mode-card.parent .mode-card-icon {
+    background: linear-gradient(135deg, var(--blue-50), #c7d2fe);
+    color: var(--blue-700);
+  }
+  .mode-card.clinic .mode-card-icon {
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    color: #6d28d9;
+  }
+  .mode-card-icon svg { width: 26px; height: 26px; }
+  .mode-card h3 {
+    font-size: 22px; font-weight: 700;
+    color: var(--ink-900); letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .mode-card p {
+    font-size: 14.5px; color: var(--ink-500);
+    line-height: 1.55; flex: 1; margin-bottom: 20px;
+  }
+  .mode-card-tag {
+    font-size: 11.5px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-400);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .mode-card-arrow {
+    position: absolute; top: 28px; right: 28px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--ink-700);
+    display: grid; place-items: center;
+    transition: all 0.2s;
+  }
+  .mode-card:hover .mode-card-arrow {
+    background: var(--ink-900); color: var(--white);
+    transform: translateX(4px);
+  }
+  .mode-card-arrow svg { width: 14px; height: 14px; }
+
+  /* AGE PICKER */
+  .age-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 32px 0;
+  }
+  @media (max-width: 640px) {
+    .age-grid { grid-template-columns: 1fr; }
+  }
+  .age-card {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+  }
+  .age-card:hover {
+    border-color: var(--ink-700);
+    transform: translateY(-2px);
+  }
+  .age-card.selected {
+    border-color: var(--blue-600);
+    background: var(--blue-50);
+  }
+  .age-card-range {
+    font-family: var(--serif); font-style: italic;
+    font-size: 30px; font-weight: 600;
+    color: var(--ink-900); letter-spacing: -0.02em;
+    line-height: 1; margin-bottom: 10px;
+  }
+  .age-card.selected .age-card-range { color: var(--blue-700); }
+  .age-card-label {
+    font-size: 13.5px; font-weight: 600;
+    color: var(--ink-700); margin-bottom: 4px;
+  }
+  .age-card-note {
+    font-size: 12.5px; color: var(--ink-500);
+    line-height: 1.45;
+  }
+
+  /* DOB (DOĞUM TARİHİ) */
+  .dob-row {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .dob-input {
+    padding: 14px 14px;
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-900);
+    transition: border-color 0.15s;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 14px;
+    padding-right: 32px;
+  }
+  .dob-input:focus {
+    outline: none;
+    border-color: var(--blue-600);
+  }
+  .age-result {
+    margin-top: 14px;
+    padding: 14px 18px;
+    background: var(--blue-50);
+    border-left: 4px solid var(--blue-600);
+    border-radius: 10px;
+    font-size: 14.5px;
+    color: var(--ink-700);
+    line-height: 1.5;
+  }
+  .age-result strong {
+    color: var(--ink-900);
+    font-weight: 700;
+  }
+  .age-result.warn {
+    background: var(--amber-50);
+    border-left-color: #f59e0b;
+  }
+  .age-result.error {
+    background: var(--red-50);
+    border-left-color: var(--red-500);
+    color: var(--red-700);
+  }
+  .age-result-group {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--blue-700);
+    font-weight: 600;
+  }
+
+  /* GENDER */
+  .gender-row {
+    display: flex; gap: 10px;
+    margin: 16px 0 32px;
+    flex-wrap: wrap;
+  }
+  .gender-btn {
+    flex: 1; min-width: 120px;
+    padding: 14px 18px;
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 14.5px; font-weight: 600;
+    color: var(--ink-700);
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .gender-btn:hover { border-color: var(--ink-700); }
+  .gender-btn.selected {
+    border-color: var(--blue-600);
+    background: var(--blue-50);
+    color: var(--blue-700);
+  }
+
+  /* RED FLAGS */
+  .form-group { margin-bottom: 28px; }
+  .form-label {
+    font-size: 14px; font-weight: 600;
+    color: var(--ink-900); margin-bottom: 12px;
+    display: block;
+  }
+  .form-hint {
+    font-size: 13px; color: var(--ink-500);
+    margin-bottom: 14px;
+  }
+  .checkbox-row {
+    display: flex; align-items: flex-start;
+    gap: 12px; padding: 14px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-bottom: 8px;
+  }
+  .checkbox-row:hover {
+    border-color: var(--ink-700);
+    background: var(--surface);
+  }
+  .checkbox-row.checked {
+    border-color: var(--red-500);
+    background: var(--red-50);
+  }
+  .checkbox-row input[type="checkbox"] {
+    width: 20px; height: 20px;
+    accent-color: var(--red-500);
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+  }
+  .checkbox-content { flex: 1; }
+  .checkbox-title {
+    font-size: 14.5px; font-weight: 600;
+    color: var(--ink-900); margin-bottom: 2px;
+  }
+  .checkbox-note {
+    font-size: 12.5px; color: var(--ink-500);
+    line-height: 1.5;
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: linear-gradient(135deg, #fef3c7, var(--amber-50));
+    border: 1px solid #fde68a;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin: 24px 0;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .disclaimer-icon {
+    width: 24px; height: 24px;
+    color: #a16207;
+    flex-shrink: 0;
+  }
+  .disclaimer-content {
+    font-size: 13px; color: var(--ink-700);
+    line-height: 1.55;
+  }
+  .disclaimer-content strong { color: var(--ink-900); }
+
+  /* RED FLAG ALERT */
+  .red-flag-alert {
+    background: linear-gradient(135deg, var(--red-50), #fee2e2);
+    border: 2px solid #fca5a5;
+    border-radius: 18px;
+    padding: 28px;
+    margin-top: 24px;
+    display: none;
+  }
+  .red-flag-alert.show { display: block; }
+  .red-flag-alert h3 {
+    font-size: 18px; font-weight: 700;
+    color: var(--red-700);
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .red-flag-alert h3 svg {
+    width: 22px; height: 22px;
+    color: var(--red-500);
+  }
+  .red-flag-alert p {
+    font-size: 14.5px; color: var(--ink-700);
+    line-height: 1.55; margin-bottom: 16px;
+  }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14.5px; font-weight: 600;
+    transition: all 0.2s;
+    white-space: nowrap;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .btn-primary {
+    background: var(--ink-900);
+    color: var(--white);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--blue-700);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .btn-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .btn-secondary {
+    background: var(--white);
+    color: var(--ink-900);
+    border: 1px solid var(--border-strong);
+  }
+  .btn-secondary:hover {
+    border-color: var(--ink-900);
+  }
+  .btn-wa {
+    background: #25D366;
+    color: var(--white);
+  }
+  .btn-wa:hover {
+    background: #20b859;
+    transform: translateY(-2px);
+  }
+  .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  .button-row {
+    display: flex; gap: 10px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 480px) {
+    .btn { width: 100%; }
+    .button-row { flex-direction: column; }
+  }
+
+  /* PROGRESS */
+  .progress-track {
+    display: flex; gap: 6px;
+    margin-bottom: 32px;
+  }
+  .progress-step {
+    flex: 1; height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    transition: background 0.3s;
+  }
+  .progress-step.done { background: var(--blue-600); }
+  .progress-step.active { background: var(--blue-600); }
+
+  /* BACK LINK */
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13.5px; font-weight: 500;
+    color: var(--ink-500);
+    margin-bottom: 16px;
+    transition: color 0.15s;
+    cursor: pointer;
+  }
+  .back-link:hover { color: var(--ink-900); }
+  .back-link svg { width: 14px; height: 14px; }
+
+  /* MODE-SPECIFIC INDICATOR */
+  .mode-indicator {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600;
+    color: var(--ink-500);
+    padding: 4px 10px;
+    background: var(--surface);
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .mode-indicator-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .mode-indicator.parent .mode-indicator-dot { background: var(--blue-600); }
+  .mode-indicator.clinic .mode-indicator-dot { background: #6d28d9; }
+
+  /* ============= ADIM 2 — STİLLER ============= */
+
+  /* ============= 3.4 — MEDIAPIPE OTOMATİK TARAMA ============= */
+  .ai-banner {
+    background: linear-gradient(135deg, var(--amber-50), #fef3c7);
+    border: 1px solid #fcd34d;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 16px 0;
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .ai-banner-icon {
+    width: 22px; height: 22px;
+    color: #a16207;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .ai-banner-icon svg { width: 22px; height: 22px; }
+  .ai-banner-content { flex: 1; color: var(--ink-700); }
+  .ai-banner-content strong { color: var(--ink-900); }
+
+  .ai-analyze-btn {
+    width: 100%;
+    padding: 14px 22px;
+    background: linear-gradient(135deg, #6d28d9, #7c3aed);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .ai-analyze-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .ai-analyze-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .ai-analyze-btn svg { width: 18px; height: 18px; }
+
+  .ai-loading {
+    display: none;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .ai-loading.show { display: block; }
+  .ai-loading-spinner {
+    width: 36px; height: 36px;
+    border: 3px solid var(--border);
+    border-top-color: #6d28d9;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    animation: aiSpin 0.8s linear infinite;
+  }
+  @keyframes aiSpin { to { transform: rotate(360deg); } }
+  .ai-loading-text {
+    font-size: 14px;
+    color: var(--ink-700);
+    font-weight: 500;
+  }
+  .ai-loading-sub {
+    font-size: 12.5px;
+    color: var(--ink-500);
+    margin-top: 4px;
+  }
+
+  .ai-results {
+    display: none;
+    background: var(--white);
+    border: 2px solid #ddd6fe;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin: 16px 0;
+  }
+  .ai-results.show { display: block; }
+  .ai-results h4 {
+    font-size: 14px; font-weight: 700;
+    color: var(--ink-900);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .ai-results h4 .ai-tag {
+    font-size: 10px;
+    background: #ede9fe;
+    color: #6d28d9;
+    padding: 2px 7px;
+    border-radius: 5px;
+    letter-spacing: 0.04em;
+  }
+  .ai-measurement {
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .ai-measurement:last-child { border-bottom: none; }
+  .ai-measurement-label {
+    font-size: 13px;
+    color: var(--ink-500);
+    margin-bottom: 4px;
+  }
+  .ai-measurement-value {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink-900);
+    letter-spacing: -0.02em;
+  }
+  .ai-measurement-uncertainty {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-style: normal;
+    color: var(--ink-400);
+    font-weight: 500;
+    margin-left: 6px;
+  }
+  .ai-measurement-note {
+    font-size: 12.5px;
+    color: var(--ink-500);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .ai-failed {
+    background: var(--amber-50);
+    border: 1px solid #fcd34d;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 12px 0;
+    font-size: 13.5px;
+    color: var(--ink-700);
+    line-height: 1.55;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .ai-failed svg {
+    width: 20px; height: 20px;
+    color: #a16207;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .ai-disclaimer-final {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: var(--ink-500);
+    line-height: 1.55;
+    border-left: 3px solid var(--ink-400);
+  }
+  .ai-disclaimer-final strong { color: var(--ink-700); }
+
+  /* PHOTO UPLOAD (parent mode) */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 24px 0;
+  }
+  @media (max-width: 640px) {
+    .photo-grid { grid-template-columns: 1fr; }
+  }
+  .photo-slot {
+    background: var(--white);
+    border: 2px dashed var(--border-strong);
+    border-radius: 16px;
+    aspect-ratio: 3/4;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-slot:hover {
+    border-color: var(--blue-600);
+    background: var(--blue-50);
+  }
+  .photo-slot.has-image {
+    border-style: solid;
+    border-color: var(--blue-600);
+    padding: 0;
+  }
+  .photo-slot img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+  .photo-slot-icon {
+    width: 44px; height: 44px;
+    background: var(--surface);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: var(--ink-500);
+    margin-bottom: 12px;
+  }
+  .photo-slot-icon svg { width: 20px; height: 20px; }
+  .photo-slot-label {
+    font-size: 14px; font-weight: 700;
+    color: var(--ink-900);
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .photo-slot-hint {
+    font-size: 12px;
+    color: var(--ink-500);
+    text-align: center;
+    line-height: 1.4;
+  }
+  .photo-slot-remove {
+    position: absolute;
+    top: 8px; right: 8px;
+    width: 28px; height: 28px;
+    background: rgba(15, 23, 42, 0.8);
+    color: var(--white);
+    border-radius: 50%;
+    display: none;
+    align-items: center; justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .photo-slot.has-image .photo-slot-remove { display: flex; }
+  .photo-slot-remove svg { width: 14px; height: 14px; }
+
+  .photo-slot input[type="file"] {
+    position: absolute; inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .photo-slot.has-image input[type="file"] { display: none; }
+
+  /* PHOTO GUIDE */
+  .photo-guide {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin: 24px 0;
+  }
+  .photo-guide h4 {
+    font-size: 15px; font-weight: 700;
+    color: var(--ink-900);
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .photo-guide h4 svg {
+    width: 18px; height: 18px;
+    color: var(--blue-600);
+  }
+  .photo-guide ul {
+    list-style: none;
+    padding: 0;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .photo-guide li {
+    font-size: 13.5px;
+    color: var(--ink-700);
+    line-height: 1.55;
+    padding-left: 22px;
+    position: relative;
+  }
+  .photo-guide li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 14px; height: 14px;
+    background: var(--green-50);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-size: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* CLINIC CHECKLIST */
+  .check-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .check-section-head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .check-section h3 {
+    font-size: 16px; font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -0.015em;
+  }
+  .check-section-tag {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    background: var(--blue-50);
+    color: var(--blue-700);
+    border-radius: 6px;
+  }
+  .check-section-tag.warn {
+    background: var(--amber-50);
+    color: #a16207;
+  }
+  .check-section p.section-note {
+    font-size: 13px;
+    color: var(--ink-500);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  /* RADIO PILLS */
+  .radio-pills {
+    display: flex; gap: 8px;
+    flex-wrap: wrap;
+  }
+  .radio-pill {
+    flex: 1; min-width: 100px;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    font-size: 13.5px; font-weight: 600;
+    color: var(--ink-700);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+  }
+  .radio-pill:hover { border-color: var(--ink-300); }
+  .radio-pill.selected {
+    background: var(--white);
+    border-color: var(--blue-600);
+    color: var(--blue-700);
+  }
+  .radio-pill.selected.danger {
+    border-color: var(--red-500);
+    color: var(--red-700);
+  }
+  .radio-pill.selected.warn {
+    border-color: var(--amber-500);
+    color: #a16207;
+  }
+  .radio-pill.selected.ok {
+    border-color: var(--green-500);
+    color: var(--green-600);
+  }
+
+  /* RANGE INPUT */
+  .range-row {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 12px;
+  }
+  .range-input {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    outline: none;
+  }
+  .range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px; height: 22px;
+    background: var(--blue-600);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid var(--white);
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.2);
+  }
+  .range-input::-moz-range-thumb {
+    width: 22px; height: 22px;
+    background: var(--blue-600);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid var(--white);
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.2);
+  }
+  .range-value {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--ink-900);
+    min-width: 70px;
+    text-align: right;
+  }
+  .range-value.danger { color: var(--red-700); }
+  .range-value.warn { color: #a16207; }
+  .range-value.ok { color: var(--green-600); }
+
+  /* TEXT INPUT */
+  .text-input {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink-900);
+    transition: border-color 0.15s;
+  }
+  .text-input:focus {
+    outline: none;
+    background: var(--white);
+    border-color: var(--blue-600);
+  }
+  textarea.text-input {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  /* RESULT SCREEN */
+  .result-card {
+    border-radius: 20px;
+    padding: 32px 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 2px solid;
+  }
+  .result-card.green {
+    background: linear-gradient(135deg, var(--green-50), #d1fae5);
+    border-color: #6ee7b7;
+  }
+  .result-card.amber {
+    background: linear-gradient(135deg, #fffbeb, #fef3c7);
+    border-color: #fcd34d;
+  }
+  .result-card.red {
+    background: linear-gradient(135deg, var(--red-50), #fee2e2);
+    border-color: #fca5a5;
+  }
+  .result-icon {
+    width: 56px; height: 56px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--white);
+  }
+  .result-card.green .result-icon { color: var(--green-600); }
+  .result-card.amber .result-icon { color: #a16207; }
+  .result-card.red .result-icon { color: var(--red-700); }
+  .result-icon svg { width: 28px; height: 28px; }
+  .result-card h2 {
+    margin-bottom: 8px;
+  }
+  .result-card.green h2 { color: var(--green-600); }
+  .result-card.amber h2 { color: #a16207; }
+  .result-card.red h2 { color: var(--red-700); }
+  .result-card p {
+    font-size: 15px;
+    color: var(--ink-700);
+    line-height: 1.55;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .result-findings {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .result-findings h4 {
+    font-size: 14px; font-weight: 700;
+    color: var(--ink-900);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .result-finding {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--ink-700);
+  }
+  .result-finding:last-child { border-bottom: none; }
+  .result-finding-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .result-finding-dot.green { background: var(--green-500); }
+  .result-finding-dot.amber { background: var(--amber-500); }
+  .result-finding-dot.red { background: var(--red-500); }
+  .result-finding-text { flex: 1; line-height: 1.5; }
+  .result-finding-text strong {
+    color: var(--ink-900);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ============= PRINT — KLİNİK RAPOR ============= */
+  /* Print only elements - normal görünümde gizli */
+  .print-only { display: none; }
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 16mm 14mm 18mm 14mm;
+    }
+
+    /* Reset */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    html, body {
+      background: var(--white) !important;
+      font-size: 10.5pt;
+      line-height: 1.4;
+    }
+
+    /* Hide non-print elements */
+    .rb-nav, .rb-mobile-menu, .rb-footer, .back-link, .progress-track,
+    .button-row, .mode-indicator, #resultBackLink { display: none !important; }
+
+    /* Show only result screen */
+    .screen { display: block !important; padding: 0 !important; }
+    .screen:not(.active) { display: none !important; }
+
+    /* Show print-only elements */
+    .print-only { display: block !important; }
+    .print-only.flex { display: flex !important; }
+
+    /* Result card — print için sadeleşir */
+    .result-card {
+      border-radius: 0 !important;
+      padding: 14px 18px !important;
+      margin-bottom: 14px !important;
+      page-break-inside: avoid;
+      border-left-width: 4px !important;
+      border-top-width: 1px !important;
+      border-right-width: 1px !important;
+      border-bottom-width: 1px !important;
+    }
+    .result-card h2 { font-size: 15pt !important; margin-bottom: 4px !important; }
+    .result-card p { font-size: 10pt !important; }
+    .result-icon { display: none !important; }
+
+    .result-findings {
+      border-radius: 0 !important;
+      padding: 12px 14px !important;
+      margin-bottom: 12px !important;
+      page-break-inside: avoid;
+      box-shadow: none !important;
+      border: 1px solid #ccc !important;
+    }
+    .result-findings h4 {
+      font-size: 9pt !important;
+      margin-bottom: 8px !important;
+    }
+    .result-finding {
+      padding: 6px 0 !important;
+      font-size: 10pt !important;
+    }
+
+    /* Visit history - print için kompakt */
+    .visit-history {
+      page-break-inside: avoid;
+      border-radius: 0 !important;
+    }
+
+    /* Container - print için tam genişlik */
+    .container { max-width: 100% !important; padding: 0 !important; }
+  }
+
+  /* PRINT HEADER (logo + başlık şeridi) */
+  .print-header {
+    border-bottom: 3px solid var(--ink-900);
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+  }
+  .print-header-top {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px;
+  }
+  .print-logo {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .print-logo-mark {
+    width: 32px; height: 32px;
+    background: var(--ink-900);
+    color: var(--white);
+    border-radius: 6px;
+    display: grid; place-items: center;
+  }
+  .print-logo-mark svg { width: 18px; height: 18px; }
+  .print-logo-text strong {
+    font-size: 16pt; font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -0.02em;
+    display: block;
+  }
+  .print-logo-text span {
+    font-size: 9pt;
+    color: var(--ink-500);
+  }
+  .print-meta-block {
+    text-align: right;
+    font-size: 9pt;
+    color: var(--ink-700);
+    line-height: 1.4;
+  }
+  .print-meta-block strong { color: var(--ink-900); }
+
+  .print-title {
+    margin-top: 10px;
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -0.01em;
+  }
+
+  /* PRINT PATIENT TABLE */
+  .print-patient-table {
+    border: 1px solid var(--ink-900);
+    border-radius: 4px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .print-patient-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 130px 1fr;
+    border-bottom: 1px solid #ddd;
+  }
+  .print-patient-row:last-child { border-bottom: none; }
+  .print-patient-cell {
+    padding: 7px 10px;
+    font-size: 9.5pt;
+    border-right: 1px solid #ddd;
+  }
+  .print-patient-cell:last-child { border-right: none; }
+  .print-patient-cell.label {
+    background: #f5f5f5;
+    font-weight: 700;
+    color: var(--ink-700);
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .print-patient-cell.value {
+    color: var(--ink-900);
+    font-weight: 500;
+  }
+
+  /* ============= 3.3 — TAKİP HATIRLATMASI ============= */
+  .followup-card {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border: 1px solid #93c5fd;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin: 18px 0;
+  }
+  .followup-card h4 {
+    font-size: 13px; font-weight: 700;
+    color: var(--ink-900);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .followup-card h4 svg {
+    width: 16px; height: 16px;
+    color: var(--blue-700);
+  }
+  .followup-suggestion {
+    font-size: 13.5px;
+    color: var(--ink-700);
+    margin-bottom: 14px;
+    line-height: 1.55;
+  }
+  .followup-suggestion strong { color: var(--ink-900); }
+  .followup-options {
+    display: flex; gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .followup-option {
+    padding: 10px 14px;
+    background: var(--white);
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-700);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .followup-option:hover { border-color: var(--ink-300); }
+  .followup-option.selected {
+    background: var(--blue-700);
+    color: var(--white);
+    border-color: var(--blue-700);
+  }
+  .followup-date-display {
+    background: var(--white);
+    border: 1px solid var(--blue-700);
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .followup-date-text {
+    font-size: 14px;
+    color: var(--ink-700);
+  }
+  .followup-date-text strong {
+    color: var(--ink-900);
+    font-weight: 700;
+  }
+  .followup-date-input {
+    padding: 8px 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--ink-900);
+    cursor: pointer;
+  }
+  .followup-ics-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 12px;
+    background: var(--ink-900);
+    color: var(--white);
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: none;
+  }
+  .followup-ics-btn:hover { background: var(--blue-700); }
+  .followup-ics-btn svg { width: 14px; height: 14px; }
+
+  /* Hasta kartında yaklaşan kontrol badge'i */
+  .case-card-badge.followup {
+    background: var(--amber-50);
+    color: #a16207;
+  }
+  .case-card-badge.followup-due {
+    background: var(--red-50);
+    color: var(--red-700);
+  }
+
+  /* PRINT FOOTER (imza + KVKK) */
+  .print-footer {
+    margin-top: 28px;
+    page-break-inside: avoid;
+  }
+  .print-signatures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 22px;
+  }
+  .print-signature {
+    border-top: 1px solid var(--ink-900);
+    padding-top: 6px;
+    font-size: 9pt;
+    color: var(--ink-700);
+    text-align: center;
+    min-height: 60px;
+  }
+  .print-signature strong {
+    display: block;
+    color: var(--ink-900);
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .print-followup {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    font-size: 9.5pt;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .print-followup strong {
+    color: var(--ink-900);
+    flex-shrink: 0;
+  }
+  .print-followup-line {
+    flex: 1;
+    border-bottom: 1px solid #999;
+    min-height: 14px;
+  }
+  .print-disclaimer {
+    font-size: 8.5pt;
+    color: var(--ink-500);
+    line-height: 1.4;
+    padding-top: 12px;
+    border-top: 1px dashed #ddd;
+  }
+  .print-disclaimer strong { color: var(--ink-700); }
+
+  /* ============= 3.1 — HASTA DOSYALAMA ============= */
+
+  .case-list {
+    display: flex; flex-direction: column;
+    gap: 10px;
+    margin: 24px 0 28px;
+  }
+  .case-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex; align-items: center; gap: 14px;
+    text-align: left;
+    width: 100%;
+  }
+  .case-card:hover {
+    border-color: var(--ink-700);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  .case-card-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    color: #6d28d9;
+    display: grid; place-items: center;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .case-card-body {
+    flex: 1; min-width: 0;
+  }
+  .case-card-name {
+    font-size: 15px; font-weight: 700;
+    color: var(--ink-900);
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .case-card-meta {
+    font-size: 12.5px; color: var(--ink-500);
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+  }
+  .case-card-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 5px;
+    background: var(--blue-50);
+    color: var(--blue-700);
+  }
+  .case-card-badge.amber { background: var(--amber-50); color: #a16207; }
+  .case-card-badge.red { background: var(--red-50); color: var(--red-700); }
+  .case-card-badge.green { background: var(--green-50); color: var(--green-600); }
+  .case-card-arrow {
+    color: var(--ink-300);
+    flex-shrink: 0;
+  }
+  .case-card-arrow svg { width: 18px; height: 18px; }
+
+  /* New patient action card */
+  .new-patient-card {
+    background: var(--white);
+    border: 2px dashed var(--ink-900);
+    border-radius: 16px;
+    padding: 20px 22px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; gap: 14px;
+    text-align: left;
+    width: 100%;
+  }
+  .new-patient-card:hover {
+    background: var(--ink-900);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  .new-patient-card:hover .new-patient-icon {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+  }
+  .new-patient-card:hover .new-patient-text small {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .new-patient-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--ink-900);
+    color: var(--white);
+    display: grid; place-items: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .new-patient-icon svg { width: 20px; height: 20px; }
+  .new-patient-text { flex: 1; }
+  .new-patient-text strong {
+    display: block;
+    font-size: 15.5px;
+    color: inherit;
+    margin-bottom: 2px;
+  }
+  .new-patient-text small {
+    font-size: 12.5px;
+    color: var(--ink-500);
+    transition: color 0.2s;
+  }
+
+  /* Case section title */
+  .cases-section-title {
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 28px 0 14px;
+  }
+  .cases-section-title h3 {
+    font-size: 14px; font-weight: 700;
+    color: var(--ink-900);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .cases-count {
+    font-size: 12px;
+    color: var(--ink-500);
+    background: var(--surface);
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 32px 24px;
+    background: var(--surface);
+    border-radius: 14px;
+    color: var(--ink-500);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  /* Comparison line in result */
+  .delta-row {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+  .delta-arrow {
+    width: 18px; height: 18px;
+    flex-shrink: 0;
+  }
+  .delta-improved { color: var(--green-600); }
+  .delta-worse { color: var(--red-700); }
+  .delta-same { color: var(--ink-500); }
+
+  /* Visit history in result */
+  .visit-history {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .visit-history h4 {
+    font-size: 13px; font-weight: 700;
+    color: var(--ink-900);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .visit-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 13.5px;
+  }
+  .visit-row:last-child { border-bottom: none; }
+  .visit-date {
+    font-weight: 600;
+    color: var(--ink-900);
+    min-width: 100px;
+  }
+  .visit-summary {
+    flex: 1;
+    color: var(--ink-500);
+  }
+  .visit-status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .visit-status-dot.green { background: var(--green-500); }
+  .visit-status-dot.amber { background: var(--amber-500); }
+  .visit-status-dot.red { background: var(--red-500); }
+
+  /* Delete case button */
+  .case-delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--ink-300);
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: grid; place-items: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .case-delete-btn:hover {
+    background: var(--red-50);
+    color: var(--red-700);
+  }
+  .case-delete-btn svg { width: 16px; height: 16px; }
+
+  /* COMING SOON */
+  .coming-soon {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--white);
+    border: 1px dashed var(--border-strong);
+    border-radius: 18px;
+    margin-top: 16px;
+  }
+  .coming-soon-icon {
+    width: 56px; height: 56px;
+    margin: 0 auto 16px;
+    background: var(--surface);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: var(--ink-500);
+  }
+  .coming-soon h3 {
+    font-size: 18px; font-weight: 700;
+    color: var(--ink-900); margin-bottom: 6px;
+  }
+  .coming-soon p {
+    font-size: 14px; color: var(--ink-500);
+    max-width: 420px; margin: 0 auto;
+  }
+</style>
+
+</head>
+<body>
+
+<div id="rb-nav-mount"></div>
+
+<main>
+
+<!-- ============= SCREEN 1: MODE SELECT ============= -->
+
+<section class="screen active" id="screenMode">
+  <div class="container">
+    <span class="kicker"><span class="kicker-dot"></span> PEDİATRİK POSTÜR</span>
+    <h1>Çocuğun postürünü <span class="accent">doğru biçimde</span> değerlendir.</h1>
+    <p class="lead">Bu araç 3–18 yaş arası çocuklar için tasarlandı. Veliler için yönlendirici tarama, fizyoterapistler için klinik muayene desteği.</p>
+
+```
+<div class="mode-grid">
+  <button type="button" class="mode-card parent" data-mode="parent">
+    <div class="mode-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    <div class="mode-card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-12a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+    </div>
+    <h3>Veli olarak değerlendiriyorum</h3>
+    <p>Çocuğunun fotoğrafını çek, sistemden ön tarama al. Sonuca göre fizyoterapist görmesi gerekip gerekmediğini öğren.</p>
+    <span class="mode-card-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Tarama Aracı</span>
+  </button>
+  <button type="button" class="mode-card clinic" data-mode="clinic">
+    <div class="mode-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    <div class="mode-card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.29 1.5 4.04 3 5.5l7 7z"/><path d="M2 8.5h6L9 6l3 6 3-6 1 2.5h6"/></svg>
+    </div>
+    <h3>Klinisyen modu</h3>
+    <p>Hızlı muayene için checklist, kanıta dayalı eşikler, otomatik rapor çıktısı. Pediatrik fizyoterapistler için.</p>
+    <span class="mode-card-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Klinik Araç</span>
+  </button>
+</div>
+
+<div class="disclaimer" style="margin-top: 32px;">
+  <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+  <div class="disclaimer-content">
+    <strong>Önemli:</strong> Bu sistem teşhis koymaz. Veriler tarama amaçlıdır ve bir fizyoterapist veya hekim değerlendirmesinin yerini tutmaz.
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ============= SCREEN 2: AGE & GENDER ============= -->
+
+<section class="screen" id="screenAge">
+  <div class="container">
+    <a class="back-link" data-back="screenMode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Geri
+    </a>
+
+```
+<div class="progress-track">
+  <div class="progress-step active"></div>
+  <div class="progress-step"></div>
+  <div class="progress-step"></div>
+</div>
+
+<div class="mode-indicator parent" id="modeIndicator">
+  <span class="mode-indicator-dot"></span>
+  <span id="modeIndicatorLabel">Veli modu</span>
+</div>
+
+<h2>Çocuğun bilgileri</h2>
+<p class="form-hint">Doğum tarihinden yaş otomatik hesaplanır. Yaşa göre farklı klinik normlar uygulanır — doğru sonuç için kritik.</p>
+
+<div class="form-group">
+  <label class="form-label">Doğum tarihi</label>
+  <div class="dob-row">
+    <select class="dob-input" id="dobDay" aria-label="Gün">
+      <option value="">Gün</option>
+    </select>
+    <select class="dob-input" id="dobMonth" aria-label="Ay">
+      <option value="">Ay</option>
+      <option value="1">Ocak</option>
+      <option value="2">Şubat</option>
+      <option value="3">Mart</option>
+      <option value="4">Nisan</option>
+      <option value="5">Mayıs</option>
+      <option value="6">Haziran</option>
+      <option value="7">Temmuz</option>
+      <option value="8">Ağustos</option>
+      <option value="9">Eylül</option>
+      <option value="10">Ekim</option>
+      <option value="11">Kasım</option>
+      <option value="12">Aralık</option>
+    </select>
+    <select class="dob-input" id="dobYear" aria-label="Yıl">
+      <option value="">Yıl</option>
+    </select>
+  </div>
+  <div class="age-result" id="ageResult" style="display:none;"></div>
+</div>
+
+<div class="form-group">
+  <label class="form-label">Cinsiyet</label>
+  <div class="gender-row">
+    <button type="button" class="gender-btn" data-gender="f">Kız</button>
+    <button type="button" class="gender-btn" data-gender="m">Erkek</button>
+  </div>
+</div>
+
+<div class="button-row">
+  <button type="button" class="btn btn-primary" id="ageNextBtn" disabled>
+    Devam Et
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </button>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ============= SCREEN 3: RED FLAGS ============= -->
+
+<section class="screen" id="screenRedFlags">
+  <div class="container">
+    <a class="back-link" data-back="screenAge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Geri
+    </a>
+
+```
+<div class="progress-track">
+  <div class="progress-step done"></div>
+  <div class="progress-step active"></div>
+  <div class="progress-step"></div>
+</div>
+
+<div class="mode-indicator parent" id="modeIndicator2">
+  <span class="mode-indicator-dot"></span>
+  <span id="modeIndicatorLabel2">Veli modu</span>
+</div>
+
+<h2>Önce kırmızı bayraklar</h2>
+<p class="form-hint" id="redFlagsIntro">Postür değerlendirmeden önce, çocuğunda aşağıdakilerden biri varsa <strong>doğrudan bir fizyoterapist veya hekime başvurman</strong> gerekir. Lütfen geçerli olanları işaretle.</p>
+
+<div class="form-group">
+  <div id="redFlagsList"></div>
+</div>
+
+<div class="red-flag-alert" id="redFlagAlert">
+  <h3>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+    Doğrudan değerlendirme gerekli
+  </h3>
+  <p>İşaretlediğin bulgular, ev tarama aracının kapsamı dışında. Çocuğun bir fizyoterapist veya hekim tarafından değerlendirilmesi gerekiyor. Aydın çevresindeyseniz Fzt. Umut Yalçın ile WhatsApp üzerinden iletişime geçebilirsiniz.</p>
+  <div class="button-row" style="margin-top: 16px;">
+    <a href="https://wa.me/905345840913?text=Merhaba%2C%20%C3%A7ocu%C4%9Fum%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+      WhatsApp ile İletişim
+    </a>
+    <a href="/" class="btn btn-secondary">Ana Sayfa</a>
+  </div>
+</div>
+
+<div class="button-row" id="redFlagsActions">
+  <button type="button" class="btn btn-primary" id="redFlagsNextBtn">
+    Bayrak Yok, Devam Et
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </button>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ============= SCREEN 4: COMING SOON (placeholder) ============= -->
+
+<!-- ============= SCREEN 4A: PARENT — PHOTO UPLOAD ============= -->
+
+<section class="screen" id="screenParent">
+  <div class="container">
+    <a class="back-link" data-back="screenRedFlags">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Geri
+    </a>
+
+```
+<div class="progress-track">
+  <div class="progress-step done"></div>
+  <div class="progress-step done"></div>
+  <div class="progress-step active"></div>
+</div>
+
+<div class="mode-indicator parent">
+  <span class="mode-indicator-dot"></span>
+  <span>Veli modu</span>
+</div>
+
+<h2>Üç açıdan fotoğraf</h2>
+<p class="form-hint">Çocuğun postürünü değerlendirmek için ön, arka ve yan açılardan birer fotoğrafa ihtiyacımız var. Fotoğraflar cihazından çıkmaz — değerlendirme tarayıcında yapılır.</p>
+
+<div class="photo-guide">
+  <h4>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+    Doğru fotoğraf için
+  </h4>
+  <ul>
+    <li>Çocuk düz duvar önünde, çıplak ayak, rahat duruşta</li>
+    <li>Üstte sıfırlı kıyafet veya streç tişört (omurga görünür)</li>
+    <li>Tüm vücut görünür olmalı: baştan ayağa</li>
+    <li>Telefonu yere paralel tut, omuz hizasında çek</li>
+    <li>3 metre mesafe ideal, ışık yandan değil önden</li>
+    <li>Adams testi (yan görüntü) için: ayaklar bitişik, dizler düz, kollar serbest sarkık öne eğil</li>
+  </ul>
+</div>
+
+<div class="photo-grid">
+  <label class="photo-slot" data-slot="front">
+    <img id="photoFrontImg" alt="Ön görüntü" style="display:none">
+    <div class="photo-slot-content">
+      <div class="photo-slot-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+      </div>
+      <div class="photo-slot-label">Ön</div>
+      <div class="photo-slot-hint">Çocuk yüzü kameraya dönük</div>
+    </div>
+    <div class="photo-slot-remove" data-remove="front">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </div>
+    <input type="file" accept="image/*" data-input="front">
+  </label>
+  <label class="photo-slot" data-slot="back">
+    <img id="photoBackImg" alt="Arka görüntü" style="display:none">
+    <div class="photo-slot-content">
+      <div class="photo-slot-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="8" r="3"/></svg>
+      </div>
+      <div class="photo-slot-label">Arka</div>
+      <div class="photo-slot-hint">Çocuk sırtı kameraya dönük</div>
+    </div>
+    <div class="photo-slot-remove" data-remove="back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </div>
+    <input type="file" accept="image/*" data-input="back">
+  </label>
+  <label class="photo-slot" data-slot="side">
+    <img id="photoSideImg" alt="Yan görüntü" style="display:none">
+    <div class="photo-slot-content">
+      <div class="photo-slot-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 014 4v2M12 2a4 4 0 00-4 4v2M8 8s-2 4-2 8c0 2 1 4 2 4M16 8s2 4 2 8c0 2-1 4-2 4"/></svg>
+      </div>
+      <div class="photo-slot-label">Yan + Adams</div>
+      <div class="photo-slot-hint">Profil ve öne eğilmiş hali</div>
+    </div>
+    <div class="photo-slot-remove" data-remove="side">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </div>
+    <input type="file" accept="image/*" data-input="side">
+  </label>
+</div>
+
+<div class="form-group">
+  <label class="form-label">Bu konuda eklemek istediğin başka bir şey var mı? <span style="color: var(--ink-400); font-weight: 400;">(opsiyonel)</span></label>
+  <textarea class="text-input" id="parentNote" placeholder="Örnek: Çocuğum sırt çantası takınca öne eğiliyor, çıkarınca düzeliyor..."></textarea>
+</div>
+
+<div class="disclaimer">
+  <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+  <div class="disclaimer-content">
+    <strong>Gizlilik:</strong> Fotoğraflar telefonundan veya bilgisayarından <strong>hiçbir sunucuya gönderilmez</strong>. Tüm değerlendirme tarayıcında yapılır, sayfa kapatıldığında veriler silinir.
+  </div>
+</div>
+
+<!-- AI Otomatik Tarama (opsiyonel) -->
+<div class="ai-banner">
+  <svg class="ai-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+  <div class="ai-banner-content">
+    <strong>Otomatik tarama opsiyonel.</strong> Sistem fotoğraflardan kabaca asimetri tespit etmeyi deneyebilir. <strong>Bu bir teşhis değil, AI tahminidir</strong> — sonuç ne olursa olsun, belirgin endişen varsa bir fizyoterapist görmen önerilir.
+  </div>
+</div>
+
+<button type="button" class="ai-analyze-btn" id="aiAnalyzeBtn" disabled>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+  Otomatik Tarama Yap (opsiyonel)
+</button>
+
+<div class="ai-loading" id="aiLoading">
+  <div class="ai-loading-spinner"></div>
+  <div class="ai-loading-text" id="aiLoadingText">Görüntüler analiz ediliyor...</div>
+  <div class="ai-loading-sub">Bu işlem 5-10 saniye sürebilir. Sayfayı kapatma.</div>
+</div>
+
+<div class="ai-results" id="aiResults">
+  <h4>
+    AI Tarama Sonucu
+    <span class="ai-tag">TAHMİN</span>
+  </h4>
+  <div id="aiResultsContent"></div>
+  <div class="ai-disclaimer-final">
+    <strong>Önemli:</strong> Bu sonuçlar fotoğraf üzerinden yapılan kaba bir tahmindir, klinik teşhis değildir. Çocuk fotoğrafı analizi pose, kıyafet ve mesafeden etkilenir; doğruluk sınırlıdır. <strong>Belirgin asimetri veya endişe varsa mutlaka bir fizyoterapist görüşülmelidir.</strong>
+  </div>
+</div>
+
+<div class="button-row">
+  <button type="button" class="btn btn-primary" id="parentAnalyzeBtn" disabled>
+    Tarayıcı Sonucu Hesapla
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </button>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ============= SCREEN 3.5: CLINIC CASES (HASTA LİSTESİ) ============= -->
+
+<section class="screen" id="screenClinicCases">
+  <div class="container">
+    <a class="back-link" data-back="screenMode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Mod seçimine dön
+    </a>
+
+```
+<div class="mode-indicator clinic">
+  <span class="mode-indicator-dot"></span>
+  <span>Klinisyen modu</span>
+</div>
+
+<h2>Hasta listesi</h2>
+<p class="form-hint">Yeni bir muayene başlat veya önceki bir hastana ek değerlendirme ekle. <strong>Veriler sadece bu cihazda tutulur</strong>, hiçbir sunucuya gönderilmez.</p>
+
+<button type="button" class="new-patient-card" id="newCaseBtn">
+  <span class="new-patient-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+  </span>
+  <span class="new-patient-text">
+    <strong>Yeni hasta değerlendirmesi</strong>
+    <small>Boş forma başla</small>
+  </span>
+</button>
+
+<div class="cases-section-title">
+  <h3>Önceki hastalar</h3>
+  <span class="cases-count" id="casesCount">0 hasta</span>
+</div>
+
+<div class="case-list" id="caseList"></div>
+
+<div class="disclaimer" style="margin-top: 16px;">
+  <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  <div class="disclaimer-content">
+    <strong>KVKK & Gizlilik:</strong> Hasta kayıtları sadece cihazının tarayıcı belleğinde (localStorage) tutulur. Tarayıcı verileri silindiğinde veya farklı cihazda açıldığında veriler erişilemez. Yedek istiyorsan her muayene sonunda raporu PDF olarak yazdır.
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ============= SCREEN 4B: CLINIC — EXAM CHECKLIST ============= -->
+
+<section class="screen" id="screenClinic">
+  <div class="container">
+    <a class="back-link" data-back="screenRedFlags">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Geri
+    </a>
+
+```
+<div class="progress-track">
+  <div class="progress-step done"></div>
+  <div class="progress-step done"></div>
+  <div class="progress-step active"></div>
+</div>
+
+<div class="mode-indicator clinic">
+  <span class="mode-indicator-dot"></span>
+  <span>Klinisyen modu</span>
+</div>
+
+<h2>Pediatrik postür muayenesi</h2>
+<p class="form-hint">Hasta başında doldur. Tüm alanlar opsiyonel; doldurduğun veriler raporda görünür.</p>
+
+<!-- Hasta bilgisi -->
+<div class="check-section">
+  <div class="check-section-head">
+    <h3>Hasta bilgisi</h3>
+  </div>
+  <p class="section-note">Yaş ve cinsiyet zaten girildi. İsim ve şikayet sadece raporda görünür, hiçbir yerde kayıt edilmez.</p>
+  <div class="form-group">
+    <label class="form-label">Hasta adı / kodu (opsiyonel)</label>
+    <input type="text" class="text-input" id="clinicPatientName" placeholder="Ör: H.Y. veya hasta numarası">
+  </div>
+  <div class="form-group" style="margin-bottom: 0;">
+    <label class="form-label">Geliş şikayeti</label>
+    <textarea class="text-input" id="clinicComplaint" placeholder="Ör: Anne şikayet: çocuğun sırtı eğri duruyor, son 2 aydır fark ettiler..."></textarea>
+  </div>
+</div>
+
+<!-- Postür gözlemi -->
+<div class="check-section">
+  <div class="check-section-head">
+    <h3>1. Postür gözlemi</h3>
+  </div>
+  <p class="section-note">Ön ve arka görüntüde simetri kontrolü.</p>
+  <div class="form-group">
+    <label class="form-label">Omuz seviyesi</label>
+    <div class="radio-pills" data-field="shoulderLevel">
+      <button type="button" class="radio-pill" data-value="symmetric" data-tone="ok">Simetrik</button>
+      <button type="button" class="radio-pill" data-value="rightHigh" data-tone="warn">Sağ yüksek</button>
+      <button type="button" class="radio-pill" data-value="leftHigh" data-tone="warn">Sol yüksek</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Skapula seviyesi</label>
+    <div class="radio-pills" data-field="scapulaLevel">
+      <button type="button" class="radio-pill" data-value="symmetric" data-tone="ok">Simetrik</button>
+      <button type="button" class="radio-pill" data-value="winged" data-tone="warn">Kanatlanma</button>
+      <button type="button" class="radio-pill" data-value="asymmetric" data-tone="warn">Asimetrik</button>
+    </div>
+  </div>
+  <div class="form-group" style="margin-bottom: 0;">
+    <label class="form-label">Pelvis seviyesi</label>
+    <div class="radio-pills" data-field="pelvisLevel">
+      <button type="button" class="radio-pill" data-value="symmetric" data-tone="ok">Simetrik</button>
+      <button type="button" class="radio-pill" data-value="rightHigh" data-tone="warn">Sağ yüksek</button>
+      <button type="button" class="radio-pill" data-value="leftHigh" data-tone="warn">Sol yüksek</button>
+    </div>
+  </div>
+</div>
+
+<!-- Adams testi -->
+<div class="check-section">
+  <div class="check-section-head">
+    <h3>2. Adams forward bend testi</h3>
+    <span class="check-section-tag">Skolyoz tarama</span>
+  </div>
+  <p class="section-note">Çocuk ayaklar bitişik, dizler düz, kollar serbest öne eğilir. Sırt yatay düzleme paraleldir. Skoliometre ile veya görsel inspeksiyon.</p>
+  <div class="form-group">
+    <label class="form-label">Test sonucu</label>
+    <div class="radio-pills" data-field="adamsResult">
+      <button type="button" class="radio-pill" data-value="negative" data-tone="ok">Negatif</button>
+      <button type="button" class="radio-pill" data-value="suspicious" data-tone="warn">Şüpheli</button>
+      <button type="button" class="radio-pill" data-value="positive" data-tone="danger">Pozitif</button>
+    </div>
+  </div>
+  <div class="form-group" style="margin-bottom: 0;">
+    <label class="form-label">Skoliometre / ATR (Angle of Trunk Rotation)</label>
+    <p class="section-note" style="margin-bottom: 8px;">≥5° şüpheli, ≥7° X-ray önerilir.</p>
+    <div class="range-row">
+      <input type="range" class="range-input" id="atrRange" min="0" max="20" value="0" step="1">
+      <div class="range-value" id="atrValue">0°</div>
+    </div>
+  </div>
+</div>
+
+<!-- Sagittal -->
+<div class="check-section">
+  <div class="check-section-head">
+    <h3>3. Sagittal plan (yan görünüm)</h3>
+  </div>
+  <p class="section-note">Yaşa göre normal değişir. Okul öncesinde lordoz fizyolojiktir.</p>
+  <div class="form-group">
+    <label class="form-label">Servikal lordoz</label>
+    <div class="radio-pills" data-field="cervicalCurve">
+      <button type="button" class="radio-pill" data-value="normal" data-tone="ok">Normal</button>
+      <button type="button" class="radio-pill" data-value="forwardHead" data-tone="warn">Baş öne</button>
+      <button type="button" class="radio-pill" data-value="straight" data-tone="warn">Düz</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Torakal kifoz</label>
+    <div class="radio-pills" data-field="thoracicCurve">
+      <button type="button" class="radio-pill" data-value="normal" data-tone="ok">Normal</button>
+      <button type="button" class="radio-pill" data-value="increased" data-tone="warn">Artmış</button>
+      <button type="button" class="radio-pill" data-value="flattened" data-tone="warn">Azalmış</button>
+    </div>
+  </div>
+  <div class="form-group" style="margin-bottom: 0;">
+    <label class="form-label">Lumbal lordoz</label>
+    <div class="radio-pills" data-field="lumbarCurve">
+      <button type="button" class="radio-pill" data-value="normal" data-tone="ok">Normal</button>
+      <button type="button" class="radio-pill" data-value="increased" data-tone="warn">Artmış</button>
+      <button type="button" class="radio-pill" data-value="flattened" data-tone="warn">Azalmış</button>
+    </div>
+  </div>
+</div>
+
+<!-- Alt ekstremite -->
+<div class="check-section">
+  <div class="check-section-head">
+    <h3>4. Alt ekstremite dizilimi</h3>
+    <span class="check-section-tag warn">Yaşa duyarlı</span>
+  </div>
+  <p class="section-note">3-6 yaş: hafif genu valgum fizyolojiktir. 7+ yaş: persistent valgum patolojik olabilir.</p>
+  <div class="form-group">
+    <label class="form-label">Diz dizilimi</label>
+    <div class="radio-pills" data-field="kneeAlignment">
+      <button type="button" class="radio-pill" data-value="neutral" data-tone="ok">Nötr</button>
+      <button type="button" class="radio-pill" data-value="valgum" data-tone="warn">Valgum (X)</button>
+      <button type="button" class="radio-pill" data-value="varum" data-tone="warn">Varum (O)</button>
+    </div>
+  </div>
+  <div class="form-group" style="margin-bottom: 0;">
+    <label class="form-label">Ayak postürü</label>
+    <div class="radio-pills" data-field="footPosture">
+      <button type="button" class="radio-pill" data-value="neutral" data-tone="ok">Nötr</button>
+      <button type="button" class="radio-pill" data-value="pronated" data-tone="warn">Pronasyon</button>
+      <button type="button" class="radio-pill" data-value="supinated" data-tone="warn">Supinasyon</button>
+      <button type="button" class="radio-pill" data-value="pesPlanus" data-tone="warn">Pes planus</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cinsel olgunlaşma (opsiyonel - skolyoz takibi için) -->
+<div class="check-section">
+  <div class="check-section-head">
+    <h3>5. Cinsel olgunlaşma <span style="color: var(--ink-400); font-weight: 500;">(opsiyonel)</span></h3>
+    <span class="check-section-tag">Skolyoz takibi</span>
+  </div>
+  <p class="section-note">Skolyoz progresyon riski Tanner 2–3 + Risser 0–2 döneminde en yüksektir. Olgunlaşma tamamlanınca eğri ilerleme riski azalır. <strong>Sadece skolyoz takibinde gerekli.</strong></p>
+
+  <div class="form-group">
+    <label class="form-label">Tanner evresi</label>
+    <div class="radio-pills" data-field="tannerStage">
+      <button type="button" class="radio-pill" data-value="t1" data-tone="ok">T1 — Prepubertal</button>
+      <button type="button" class="radio-pill" data-value="t2" data-tone="warn">T2 — Başlangıç</button>
+      <button type="button" class="radio-pill" data-value="t3" data-tone="danger">T3 — Hızlı büyüme</button>
+      <button type="button" class="radio-pill" data-value="t4" data-tone="warn">T4 — Yavaşlama</button>
+      <button type="button" class="radio-pill" data-value="t5" data-tone="ok">T5 — Olgun</button>
+    </div>
+  </div>
+  <div class="form-group" style="margin-bottom: 0;">
+    <label class="form-label">Risser işareti (radyolojik — opsiyonel)</label>
+    <p class="section-note" style="margin-bottom: 8px;">İliak kemik epifiz olgunlaşması (0–5). Risser 0–2: yüksek progresyon riski. Risser 4–5: kemik füzyonu tamam.</p>
+    <div class="radio-pills" data-field="risserSign">
+      <button type="button" class="radio-pill" data-value="r0" data-tone="danger">0</button>
+      <button type="button" class="radio-pill" data-value="r1" data-tone="danger">1</button>
+      <button type="button" class="radio-pill" data-value="r2" data-tone="warn">2</button>
+      <button type="button" class="radio-pill" data-value="r3" data-tone="warn">3</button>
+      <button type="button" class="radio-pill" data-value="r4" data-tone="ok">4</button>
+      <button type="button" class="radio-pill" data-value="r5" data-tone="ok">5</button>
+    </div>
+  </div>
+</div>
+
+<!-- Klinisyen notu -->
+<div class="check-section">
+  <div class="check-section-head">
+    <h3>6. Klinik not ve plan</h3>
+  </div>
+  <div class="form-group" style="margin-bottom: 0;">
+    <label class="form-label">Klinisyen notu / öneri</label>
+    <textarea class="text-input" id="clinicNote" placeholder="Ek bulgular, öneriler, tedavi planı..." style="min-height: 110px;"></textarea>
+  </div>
+</div>
+
+<div class="button-row">
+  <button type="button" class="btn btn-primary" id="clinicAnalyzeBtn">
+    Raporu Oluştur
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+  </button>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ============= SCREEN 5: RESULT ============= -->
+
+<section class="screen" id="screenResult">
+  <div class="container">
+    <a class="back-link" id="resultBackLink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Geri
+    </a>
+
+```
+<div class="progress-track">
+  <div class="progress-step done"></div>
+  <div class="progress-step done"></div>
+  <div class="progress-step done"></div>
+</div>
+
+<!-- Print only header (sadece yazdırılırken görünür) -->
+<div class="print-header print-only">
+  <div class="print-header-top">
+    <div class="print-logo">
+      <span class="print-logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+      </span>
+      <span class="print-logo-text">
+        <strong>Rehabist</strong>
+        <span>Pediatrik Fizyoterapi</span>
+      </span>
+    </div>
+    <div class="print-meta-block">
+      <strong>Fzt. Umut Yalçın</strong><br>
+      <span>Aydın · Efeler · 0534 584 0913</span><br>
+      <span>Rapor tarihi: <strong id="printDate"></strong></span>
+    </div>
+  </div>
+  <div class="print-title">Pediatrik Postür Değerlendirme Raporu</div>
+</div>
+
+<!-- Print only patient table (sadece yazdırılırken görünür) -->
+<div class="print-patient-table print-only" id="printPatientTable"></div>
+
+<div id="resultContent"></div>
+
+<!-- Print only footer (sadece yazdırılırken görünür) -->
+<div class="print-footer print-only">
+  <div class="print-followup">
+    <strong>Sonraki kontrol:</strong>
+    <span class="print-followup-line"></span>
+  </div>
+  <div class="print-signatures">
+    <div class="print-signature">
+      <strong>Fzt. Umut Yalçın</strong>
+      <span>Klinisyen imzası</span>
+    </div>
+    <div class="print-signature">
+      <strong>Veli</strong>
+      <span>Ad-soyad ve imza</span>
+    </div>
+  </div>
+  <div class="print-disclaimer">
+    <strong>Önemli:</strong> Bu rapor pediatrik fizyoterapi değerlendirme bulgularını içerir; tıbbi tanı koymaz. Belirli bulgularda hekim veya ortopedi uzmanı görüşü gerekebilir. Veriler KVKK kapsamında yalnızca bu cihazın tarayıcı belleğinde tutulur, sunucuya aktarılmaz.
+  </div>
+</div>
+
+<div class="button-row" style="margin-top: 24px;">
+  <button type="button" class="btn btn-secondary" id="resultPrintBtn" style="display:none;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Raporu Yazdır / PDF
+  </button>
+  <a href="#" class="btn btn-primary" id="resultGuideBtn" style="display:none;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    <span id="resultGuideBtnText">Yaş Rehberini Oku</span>
+  </a>
+  <a href="https://wa.me/905345840913?text=Merhaba%2C%20%C3%A7ocu%C4%9Fum%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa" id="resultWhatsappBtn" style="display:none;">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+    Randevu Al
+  </a>
+  <button type="button" class="btn btn-secondary" id="resultRestartBtn">Yeni Değerlendirme</button>
+</div>
+```
+
+  </div>
+</section>
+
+</main>
+
+<div id="rb-footer-mount"></div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ============== STATE ==============
+  var state = {
+    mode: null,        // 'parent' | 'clinic'
+    age: null,         // 'early' | 'school' | 'adolescent'
+    gender: null,      // 'f' | 'm'
+    redFlags: []
+  };
+
+  // ============== RED FLAG DATA ==============
+  // Yaşa göre farklı kırmızı bayraklar
+  var RED_FLAGS = {
+    common: [
+      { id: 'pain_persistent', title: 'Sürekli veya gece artan ağrı', note: 'Postür kaynaklı ağrılar genelde aktiviteyle değişir; gece uyandıran ağrı farklı sebepleri düşündürür.' },
+      { id: 'fever_weight', title: 'Açıklanamayan ateş veya kilo kaybı', note: 'Sistemik bir hastalığın işareti olabilir; öncelikle hekim değerlendirmesi gerekir.' },
+      { id: 'gait_abnormal', title: 'Belirgin yürüme bozukluğu veya topallama', note: 'Kalça, diz veya ayak kaynaklı yapısal bir sorun göstergesi olabilir.' },
+      { id: 'neuro_symptoms', title: 'Uyuşma, güçsüzlük veya idrar kontrol sorunu', note: 'Nörolojik tutulum olasılığı; ivedi tıbbi değerlendirme gerekir.' }
+    ],
+    early: [
+      { id: 'gross_motor_delay', title: 'Yaşına göre gros motor gecikme', note: 'Henüz yürümeyen 18 ay üstü, koşamayan 3 yaş üstü gibi.' }
+    ],
+    school: [
+      { id: 'recent_trauma', title: 'Son 3 ayda ciddi düşme veya yaralanma öyküsü', note: 'Tarama öncesi mutlaka tıbbi muayene gerekir.' }
+    ],
+    adolescent: [
+      { id: 'rapid_growth_pain', title: 'Hızlı boy uzaması ile birlikte sırt veya bel ağrısı', note: 'Scheuermann hastalığı veya idiyopatik skolyozu düşündürebilir.' },
+      { id: 'family_scoliosis', title: 'Ailede skolyoz öyküsü', note: 'Genetik yatkınlık varsa daha dikkatli izlenmeli.' }
+    ]
+  };
+
+  // ============== SCREEN NAV ==============
+  function showScreen(id) {
+    var screens = document.querySelectorAll('.screen');
+    for (var i = 0; i < screens.length; i++) {
+      screens[i].classList.remove('active');
+    }
+    var target = document.getElementById(id);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  // ============== MODE SELECT ==============
+  var modeCards = document.querySelectorAll('.mode-card');
+  for (var i = 0; i < modeCards.length; i++) {
+    modeCards[i].addEventListener('click', function() {
+      state.mode = this.dataset.mode;
+      updateModeIndicators();
+      if (state.mode === 'clinic') {
+        renderCaseList();
+        showScreen('screenClinicCases');
+      } else {
+        showScreen('screenAge');
+      }
+    });
+  }
+
+  function updateModeIndicators() {
+    var label = state.mode === 'clinic' ? 'Klinisyen modu' : 'Veli modu';
+    var indicators = document.querySelectorAll('.mode-indicator');
+    for (var i = 0; i < indicators.length; i++) {
+      indicators[i].classList.remove('parent', 'clinic');
+      indicators[i].classList.add(state.mode === 'clinic' ? 'clinic' : 'parent');
+    }
+    var labelEls = ['modeIndicatorLabel', 'modeIndicatorLabel2'];
+    for (var j = 0; j < labelEls.length; j++) {
+      var el = document.getElementById(labelEls[j]);
+      if (el) el.textContent = label;
+    }
+    // Klinisyen modunda kırmızı bayrak intro metnini değiştir
+    var intro = document.getElementById('redFlagsIntro');
+    if (intro) {
+      if (state.mode === 'clinic') {
+        intro.innerHTML = 'Anamnezde aşağıdakilerden biri varsa <strong>tarama dışı klinik değerlendirme</strong> öncelikli. Geçerli olanları işaretle.';
+      } else {
+        intro.innerHTML = 'Postür değerlendirmeden önce, çocuğunda aşağıdakilerden biri varsa <strong>doğrudan bir fizyoterapist veya hekime başvurman</strong> gerekir. Lütfen geçerli olanları işaretle.';
+      }
+    }
+  }
+
+  // ============== AGE & GENDER ==============
+  // ============== AGE — DOB BASED ==============
+  // Doğum tarihi seçicilerini doldur
+  var dobDay = document.getElementById('dobDay');
+  var dobMonth = document.getElementById('dobMonth');
+  var dobYear = document.getElementById('dobYear');
+  var ageResult = document.getElementById('ageResult');
+
+  // Gün 1-31
+  for (var d = 1; d <= 31; d++) {
+    var opt = document.createElement('option');
+    opt.value = d;
+    opt.textContent = d;
+    dobDay.appendChild(opt);
+  }
+  // Yıl: bu yıldan 25 yıl öncesine kadar (2-22 yaş aralığını kapsasın)
+  var currentYear = new Date().getFullYear();
+  for (var y = currentYear - 1; y >= currentYear - 25; y--) {
+    var opt = document.createElement('option');
+    opt.value = y;
+    opt.textContent = y;
+    dobYear.appendChild(opt);
+  }
+
+  function calculateAge(day, month, year) {
+    var today = new Date();
+    var birth = new Date(year, month - 1, day);
+    if (birth > today) return null; // Gelecek tarih
+    var years = today.getFullYear() - birth.getFullYear();
+    var months = today.getMonth() - birth.getMonth();
+    if (months < 0 || (months === 0 && today.getDate() < birth.getDate())) {
+      years--;
+      months += 12;
+    }
+    if (today.getDate() < birth.getDate()) months--;
+    if (months < 0) months += 12;
+    return { years: years, months: months, totalMonths: years * 12 + months };
+  }
+
+  function getAgeGroup(years) {
+    if (years < 3) return null;
+    if (years <= 6) return 'early';
+    if (years <= 12) return 'school';
+    if (years <= 18) return 'adolescent';
+    return null;
+  }
+
+  function getAgeGroupLabel(group) {
+    if (group === 'early') return 'Okul öncesi (3–6 yaş)';
+    if (group === 'school') return 'Okul çağı (7–12 yaş)';
+    if (group === 'adolescent') return 'Ergen (13–18 yaş)';
+    return null;
+  }
+
+  function updateAgeFromDob() {
+    var d = parseInt(dobDay.value, 10);
+    var m = parseInt(dobMonth.value, 10);
+    var y = parseInt(dobYear.value, 10);
+
+    if (!d || !m || !y) {
+      ageResult.style.display = 'none';
+      state.age = null;
+      state.dob = null;
+      checkAgeReady();
+      return;
+    }
+
+    // Geçerli tarih kontrolü
+    var birth = new Date(y, m - 1, d);
+    if (birth.getFullYear() !== y || birth.getMonth() !== m - 1 || birth.getDate() !== d) {
+      ageResult.className = 'age-result error';
+      ageResult.innerHTML = 'Geçersiz tarih. Gün ve ay kombinasyonunu kontrol et.';
+      ageResult.style.display = 'block';
+      state.age = null;
+      checkAgeReady();
+      return;
+    }
+
+    var age = calculateAge(d, m, y);
+    if (!age) {
+      ageResult.className = 'age-result error';
+      ageResult.innerHTML = 'Doğum tarihi gelecekte olamaz.';
+      ageResult.style.display = 'block';
+      state.age = null;
+      checkAgeReady();
+      return;
+    }
+
+    var group = getAgeGroup(age.years);
+    if (!group) {
+      ageResult.className = 'age-result error';
+      if (age.years < 3) {
+        ageResult.innerHTML = '<strong>Bu sistem 3–18 yaş arası içindir.</strong><br>3 yaş altı çocuklar için doğrudan bir pediatrik fizyoterapist veya çocuk hekimi ile görüşülmesi önerilir.';
+      } else {
+        ageResult.innerHTML = '<strong>Bu sistem 3–18 yaş arası içindir.</strong><br>18 yaş üstü için yetişkin postür analizi sayfasına yönlendirilir.';
+      }
+      ageResult.style.display = 'block';
+      state.age = null;
+      checkAgeReady();
+      return;
+    }
+
+    // Geçerli yaş
+    var ageText = age.years + ' yaş';
+    if (age.months > 0) ageText += ' ' + age.months + ' ay';
+
+    ageResult.className = 'age-result';
+    ageResult.innerHTML =
+      'Çocuğun yaşı: <strong>' + ageText + '</strong>' +
+      '<br><span class="age-result-group">→ ' + getAgeGroupLabel(group) + '</span>';
+    ageResult.style.display = 'block';
+    state.age = group;
+    state.dob = { day: d, month: m, year: y, ageYears: age.years, ageMonths: age.months };
+    checkAgeReady();
+  }
+
+  dobDay.addEventListener('change', updateAgeFromDob);
+  dobMonth.addEventListener('change', updateAgeFromDob);
+  dobYear.addEventListener('change', updateAgeFromDob);
+
+  var genderBtns = document.querySelectorAll('.gender-btn');
+  for (var gi = 0; gi < genderBtns.length; gi++) {
+    genderBtns[gi].addEventListener('click', function() {
+      for (var j = 0; j < genderBtns.length; j++) genderBtns[j].classList.remove('selected');
+      this.classList.add('selected');
+      state.gender = this.dataset.gender;
+      checkAgeReady();
+    });
+  }
+
+  function checkAgeReady() {
+    var btn = document.getElementById('ageNextBtn');
+    btn.disabled = !(state.age && state.gender);
+  }
+
+  document.getElementById('ageNextBtn').addEventListener('click', function() {
+    buildRedFlags();
+    showScreen('screenRedFlags');
+  });
+
+  // ============== RED FLAGS ==============
+  function buildRedFlags() {
+    var list = document.getElementById('redFlagsList');
+    list.innerHTML = '';
+    var flags = RED_FLAGS.common.concat(RED_FLAGS[state.age] || []);
+    for (var i = 0; i < flags.length; i++) {
+      var f = flags[i];
+      var row = document.createElement('label');
+      row.className = 'checkbox-row';
+      row.innerHTML =
+        '<input type="checkbox" data-flag-id="' + f.id + '">' +
+        '<div class="checkbox-content">' +
+          '<div class="checkbox-title">' + f.title + '</div>' +
+          '<div class="checkbox-note">' + f.note + '</div>' +
+        '</div>';
+      list.appendChild(row);
+    }
+    // Checkbox değişimini dinle
+    var checks = list.querySelectorAll('input[type="checkbox"]');
+    for (var j = 0; j < checks.length; j++) {
+      checks[j].addEventListener('change', updateRedFlagState);
+    }
+    state.redFlags = [];
+    updateRedFlagState();
+  }
+
+  function updateRedFlagState() {
+    var checks = document.querySelectorAll('#redFlagsList input[type="checkbox"]');
+    state.redFlags = [];
+    for (var i = 0; i < checks.length; i++) {
+      var row = checks[i].closest('.checkbox-row');
+      if (checks[i].checked) {
+        state.redFlags.push(checks[i].dataset.flagId);
+        row.classList.add('checked');
+      } else {
+        row.classList.remove('checked');
+      }
+    }
+    var alert = document.getElementById('redFlagAlert');
+    var actions = document.getElementById('redFlagsActions');
+    var nextBtn = document.getElementById('redFlagsNextBtn');
+    if (state.redFlags.length > 0) {
+      alert.classList.add('show');
+      // Devam butonu metni değişsin
+      nextBtn.innerHTML = 'Yine de devam et' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    } else {
+      alert.classList.remove('show');
+      nextBtn.innerHTML = 'Bayrak Yok, Devam Et' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    }
+  }
+
+  document.getElementById('redFlagsNextBtn').addEventListener('click', function() {
+    if (state.mode === 'clinic') {
+      showScreen('screenClinic');
+    } else {
+      showScreen('screenParent');
+    }
+  });
+
+  // ============== PARENT MODE — PHOTO UPLOAD ==============
+  var photoSlots = document.querySelectorAll('.photo-slot');
+  var photoInputs = document.querySelectorAll('[data-input]');
+  var photoData = { front: null, back: null, side: null };
+
+  for (var pi = 0; pi < photoInputs.length; pi++) {
+    photoInputs[pi].addEventListener('change', function(e) {
+      var key = e.target.dataset.input;
+      var file = e.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function(ev) {
+        photoData[key] = ev.target.result;
+        var slot = document.querySelector('.photo-slot[data-slot="' + key + '"]');
+        var img = document.getElementById('photo' + key.charAt(0).toUpperCase() + key.slice(1) + 'Img');
+        img.src = ev.target.result;
+        img.style.display = 'block';
+        slot.classList.add('has-image');
+        // İçeriği gizle
+        var content = slot.querySelector('.photo-slot-content');
+        if (content) content.style.display = 'none';
+        updateParentReady();
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  var removeButtons = document.querySelectorAll('[data-remove]');
+  for (var ri = 0; ri < removeButtons.length; ri++) {
+    removeButtons[ri].addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var key = e.currentTarget.dataset.remove;
+      photoData[key] = null;
+      var slot = document.querySelector('.photo-slot[data-slot="' + key + '"]');
+      var img = document.getElementById('photo' + key.charAt(0).toUpperCase() + key.slice(1) + 'Img');
+      var input = document.querySelector('[data-input="' + key + '"]');
+      img.src = '';
+      img.style.display = 'none';
+      input.value = '';
+      slot.classList.remove('has-image');
+      var content = slot.querySelector('.photo-slot-content');
+      if (content) content.style.display = '';
+      updateParentReady();
+    });
+  }
+
+  function updateParentReady() {
+    var btn = document.getElementById('parentAnalyzeBtn');
+    var aiBtn = document.getElementById('aiAnalyzeBtn');
+    // En az 1 fotoğraf gerekli (esnek tutalım — ön + arka şart, yan opsiyonel)
+    var count = 0;
+    if (photoData.front) count++;
+    if (photoData.back) count++;
+    if (photoData.side) count++;
+    btn.disabled = count < 2;
+    if (aiBtn) aiBtn.disabled = count < 1; // AI için en az 1 foto yeter
+  }
+
+  document.getElementById('parentAnalyzeBtn').addEventListener('click', function() {
+    state.parentNote = document.getElementById('parentNote').value.trim();
+    state.photos = { hasFront: !!photoData.front, hasBack: !!photoData.back, hasSide: !!photoData.side };
+    renderParentResult();
+    showScreen('screenResult');
+  });
+
+  // ============== 3.4 — MEDIAPIPE OTOMATİK TARAMA ==============
+  var mediaPipeLoaded = false;
+  var poseInstance = null;
+
+  // MediaPipe'ı dinamik yükle (sadece gerektiğinde)
+  function loadMediaPipe(callback) {
+    if (mediaPipeLoaded && window.Pose) {
+      callback(null);
+      return;
+    }
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5/pose.js';
+    script.crossOrigin = 'anonymous';
+    script.onload = function() {
+      mediaPipeLoaded = true;
+      callback(null);
+    };
+    script.onerror = function() {
+      callback(new Error('MediaPipe yüklenemedi'));
+    };
+    document.head.appendChild(script);
+  }
+
+  // Görüntüden pose landmarkları çıkar
+  function detectPose(imageDataUrl) {
+    return new Promise(function(resolve, reject) {
+      var img = new Image();
+      img.onload = function() {
+        try {
+          if (!poseInstance) {
+            poseInstance = new window.Pose({
+              locateFile: function(file) {
+                return 'https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5/' + file;
+              }
+            });
+            poseInstance.setOptions({
+              modelComplexity: 1,
+              smoothLandmarks: false,
+              enableSegmentation: false,
+              minDetectionConfidence: 0.5,
+              minTrackingConfidence: 0.5
+            });
+          }
+          poseInstance.onResults(function(results) {
+            if (!results.poseLandmarks) {
+              resolve({ success: false, reason: 'Vücut algılanamadı' });
+              return;
+            }
+            resolve({
+              success: true,
+              landmarks: results.poseLandmarks,
+              imageWidth: img.naturalWidth,
+              imageHeight: img.naturalHeight
+            });
+          });
+          poseInstance.send({ image: img }).catch(function(e) {
+            reject(e);
+          });
+        } catch(e) {
+          reject(e);
+        }
+      };
+      img.onerror = function() { reject(new Error('Görüntü yüklenemedi')); };
+      img.src = imageDataUrl;
+    });
+  }
+
+  // Açı ölçümleri
+  // Omuz asimetri: sol omuz (11) - sağ omuz (12) yatay açısı
+  function measureShoulderAsymmetry(landmarks) {
+    var leftShoulder = landmarks[11];
+    var rightShoulder = landmarks[12];
+    if (!leftShoulder || !rightShoulder) return null;
+    var minVis = Math.min(leftShoulder.visibility || 0, rightShoulder.visibility || 0);
+    if (minVis < 0.7) return { confidence: 'low', visibility: minVis };
+    var dy = leftShoulder.y - rightShoulder.y;
+    var dx = leftShoulder.x - rightShoulder.x;
+    var angle = Math.abs(Math.atan2(dy, dx) * 180 / Math.PI);
+    // 0° = mükemmel yatay, 90° = dikey
+    var asymmetry = Math.min(angle, 180 - angle);
+    return {
+      confidence: minVis >= 0.85 ? 'high' : 'medium',
+      angle: asymmetry.toFixed(1),
+      visibility: minVis
+    };
+  }
+
+  // Pelvis tilt: sol kalça (23) - sağ kalça (24)
+  function measurePelvisTilt(landmarks) {
+    var leftHip = landmarks[23];
+    var rightHip = landmarks[24];
+    if (!leftHip || !rightHip) return null;
+    var minVis = Math.min(leftHip.visibility || 0, rightHip.visibility || 0);
+    if (minVis < 0.7) return { confidence: 'low', visibility: minVis };
+    var dy = leftHip.y - rightHip.y;
+    var dx = leftHip.x - rightHip.x;
+    var angle = Math.abs(Math.atan2(dy, dx) * 180 / Math.PI);
+    var asymmetry = Math.min(angle, 180 - angle);
+    return {
+      confidence: minVis >= 0.85 ? 'high' : 'medium',
+      angle: asymmetry.toFixed(1),
+      visibility: minVis
+    };
+  }
+
+  // Baş öne kayması: kulak (7 veya 8) - omuz (11 veya 12) dikey hizası (yan görüntü)
+  function measureForwardHead(landmarks) {
+    // Yan görüntüde sadece bir taraf görünür - daha visible olanı al
+    var leftEar = landmarks[7];
+    var rightEar = landmarks[8];
+    var leftShoulder = landmarks[11];
+    var rightShoulder = landmarks[12];
+    if (!leftEar || !rightEar || !leftShoulder || !rightShoulder) return null;
+    // En görünür kulak-omuz çiftini seç
+    var leftPair = Math.min(leftEar.visibility || 0, leftShoulder.visibility || 0);
+    var rightPair = Math.min(rightEar.visibility || 0, rightShoulder.visibility || 0);
+    var ear, shoulder, vis;
+    if (leftPair > rightPair) {
+      ear = leftEar; shoulder = leftShoulder; vis = leftPair;
+    } else {
+      ear = rightEar; shoulder = rightShoulder; vis = rightPair;
+    }
+    if (vis < 0.6) return { confidence: 'low', visibility: vis };
+    var dx = ear.x - shoulder.x;
+    var dy = shoulder.y - ear.y; // negatif olmamalı (kulak omzun üstünde)
+    if (dy <= 0) return { confidence: 'low', visibility: vis };
+    var angle = Math.atan2(Math.abs(dx), dy) * 180 / Math.PI;
+    return {
+      confidence: vis >= 0.8 ? 'high' : 'medium',
+      angle: angle.toFixed(1),
+      visibility: vis
+    };
+  }
+
+  // AI butonu handler
+  document.getElementById('aiAnalyzeBtn').addEventListener('click', function() {
+    runAiAnalysis();
+  });
+
+  function runAiAnalysis() {
+    var loading = document.getElementById('aiLoading');
+    var loadingText = document.getElementById('aiLoadingText');
+    var results = document.getElementById('aiResults');
+    var resultsContent = document.getElementById('aiResultsContent');
+    var btn = document.getElementById('aiAnalyzeBtn');
+
+    loading.classList.add('show');
+    results.classList.remove('show');
+    btn.disabled = true;
+    loadingText.textContent = 'Sistem yükleniyor...';
+
+    loadMediaPipe(function(err) {
+      if (err) {
+        loading.classList.remove('show');
+        btn.disabled = false;
+        showAiFailed('AI sistemi yüklenemedi. İnternet bağlantını kontrol et.');
+        return;
+      }
+      loadingText.textContent = 'Görüntüler analiz ediliyor...';
+      analyzePhotos();
+    });
+  }
+
+  function analyzePhotos() {
+    var measurements = {
+      shoulder: null,
+      pelvis: null,
+      forwardHead: null
+    };
+
+    var tasks = [];
+    if (photoData.front) {
+      tasks.push(detectPose(photoData.front).then(function(r) {
+        if (r.success) {
+          measurements.shoulder = measureShoulderAsymmetry(r.landmarks);
+          measurements.pelvis = measurePelvisTilt(r.landmarks);
+        }
+        return r;
+      }).catch(function() { return { success: false }; }));
+    }
+    if (photoData.side) {
+      tasks.push(detectPose(photoData.side).then(function(r) {
+        if (r.success) {
+          measurements.forwardHead = measureForwardHead(r.landmarks);
+        }
+        return r;
+      }).catch(function() { return { success: false }; }));
+    }
+
+    Promise.all(tasks).then(function() {
+      document.getElementById('aiLoading').classList.remove('show');
+      document.getElementById('aiAnalyzeBtn').disabled = false;
+      renderAiResults(measurements);
+    });
+  }
+
+  function renderAiResults(m) {
+    var content = document.getElementById('aiResultsContent');
+    var results = document.getElementById('aiResults');
+    var html = '';
+
+    var anyValid = false;
+
+    // Omuz asimetri
+    if (m.shoulder) {
+      if (m.shoulder.confidence === 'low') {
+        html += '<div class="ai-failed">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>' +
+          '<div><strong>Omuz hizası:</strong> Görüntü yetersiz, ölçüm güvenilir değil. Daha iyi aydınlatma ve pozisyonla tekrar dene.</div>' +
+        '</div>';
+      } else {
+        anyValid = true;
+        var sa = parseFloat(m.shoulder.angle);
+        var saNote = sa < 2 ? 'Belirgin asimetri yok.' : (sa < 5 ? 'Hafif asimetri görüldü.' : 'Belirgin asimetri görüldü — fizyoterapist görmen önerilir.');
+        html += '<div class="ai-measurement">' +
+          '<div class="ai-measurement-label">Omuz hizası asimetrisi (ön görüntü)</div>' +
+          '<div class="ai-measurement-value">~' + sa + '°<span class="ai-measurement-uncertainty">± 2°</span></div>' +
+          '<div class="ai-measurement-note">' + saNote + '</div>' +
+        '</div>';
+      }
+    }
+
+    // Pelvis tilt
+    if (m.pelvis) {
+      if (m.pelvis.confidence === 'low') {
+        html += '<div class="ai-failed">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>' +
+          '<div><strong>Pelvis hizası:</strong> Görüntü yetersiz (kalçalar açık görünmüyor olabilir). Ölçüm güvenilir değil.</div>' +
+        '</div>';
+      } else {
+        anyValid = true;
+        var pa = parseFloat(m.pelvis.angle);
+        var paNote = pa < 2 ? 'Belirgin asimetri yok.' : (pa < 4 ? 'Hafif asimetri görüldü.' : 'Belirgin asimetri görüldü — fizyoterapist görmen önerilir.');
+        html += '<div class="ai-measurement">' +
+          '<div class="ai-measurement-label">Pelvis (kalça) hizası asimetrisi (ön görüntü)</div>' +
+          '<div class="ai-measurement-value">~' + pa + '°<span class="ai-measurement-uncertainty">± 2°</span></div>' +
+          '<div class="ai-measurement-note">' + paNote + '</div>' +
+        '</div>';
+      }
+    }
+
+    // Forward head (yan görüntü)
+    if (m.forwardHead) {
+      if (m.forwardHead.confidence === 'low') {
+        html += '<div class="ai-failed">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>' +
+          '<div><strong>Baş pozisyonu:</strong> Yan görüntü yeterince net değil veya kulak/omuz tam görünmüyor.</div>' +
+        '</div>';
+      } else {
+        anyValid = true;
+        var fh = parseFloat(m.forwardHead.angle);
+        var fhNote = fh < 10 ? 'Baş omuz hizasında — normal.' : (fh < 20 ? 'Hafif baş öne kayması.' : 'Belirgin baş öne kayması — postür çalışması önerilir.');
+        html += '<div class="ai-measurement">' +
+          '<div class="ai-measurement-label">Baş öne kayma açısı (yan görüntü)</div>' +
+          '<div class="ai-measurement-value">~' + fh + '°<span class="ai-measurement-uncertainty">± 3°</span></div>' +
+          '<div class="ai-measurement-note">' + fhNote + '</div>' +
+        '</div>';
+      }
+    }
+
+    // Hiç ölçüm yapılamadıysa
+    if (!html) {
+      html = '<div class="ai-failed">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>' +
+        '<div><strong>Görüntülerden ölçüm yapılamadı.</strong> Daha iyi aydınlatma, çocuğun düz duruşu ve tüm vücudun kareye girmesi için fotoğrafları yenileyebilirsin.</div>' +
+      '</div>';
+    }
+
+    content.innerHTML = html;
+    results.classList.add('show');
+    // State'e kaydet (sonuç ekranında da gösterilebilir ileride)
+    state.aiMeasurements = m;
+    // Sonuçların yanına scroll
+    results.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function showAiFailed(message) {
+    var results = document.getElementById('aiResults');
+    var content = document.getElementById('aiResultsContent');
+    content.innerHTML = '<div class="ai-failed">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>' +
+      '<div>' + message + '</div>' +
+    '</div>';
+    results.classList.add('show');
+  }
+
+  // ============== CLINIC MODE — CHECKLIST ==============
+  state.clinicData = {};
+
+  var radioPills = document.querySelectorAll('.radio-pills .radio-pill');
+  for (var rpi = 0; rpi < radioPills.length; rpi++) {
+    radioPills[rpi].addEventListener('click', function() {
+      var group = this.closest('.radio-pills');
+      var field = group.dataset.field;
+      var siblings = group.querySelectorAll('.radio-pill');
+      for (var s = 0; s < siblings.length; s++) {
+        siblings[s].classList.remove('selected', 'ok', 'warn', 'danger');
+      }
+      this.classList.add('selected');
+      var tone = this.dataset.tone;
+      if (tone) this.classList.add(tone);
+      state.clinicData[field] = { value: this.dataset.value, tone: tone };
+    });
+  }
+
+  // ATR range
+  var atrRange = document.getElementById('atrRange');
+  var atrValue = document.getElementById('atrValue');
+  if (atrRange) {
+    atrRange.addEventListener('input', function() {
+      var v = parseInt(this.value, 10);
+      atrValue.textContent = v + '°';
+      atrValue.classList.remove('ok', 'warn', 'danger');
+      var tone;
+      if (v < 5) { atrValue.classList.add('ok'); tone = 'ok'; }
+      else if (v < 7) { atrValue.classList.add('warn'); tone = 'warn'; }
+      else { atrValue.classList.add('danger'); tone = 'danger'; }
+      state.clinicData.atr = { value: v, tone: tone };
+    });
+  }
+
+  document.getElementById('clinicAnalyzeBtn').addEventListener('click', function() {
+    state.clinicData.patientName = document.getElementById('clinicPatientName').value.trim();
+    state.clinicData.complaint = document.getElementById('clinicComplaint').value.trim();
+    state.clinicData.note = document.getElementById('clinicNote').value.trim();
+    renderClinicResult();
+    showScreen('screenResult');
+  });
+
+  // ============== RESULT — PARENT ==============
+  function renderParentResult() {
+    var ageLabels = { early: '3–6 yaş (okul öncesi)', school: '7–12 yaş (okul çağı)', adolescent: '13–18 yaş (ergen)' };
+    var content = document.getElementById('resultContent');
+    var hasRedFlags = state.redFlags && state.redFlags.length > 0;
+    var photoCount = (state.photos.hasFront ? 1 : 0) + (state.photos.hasBack ? 1 : 0) + (state.photos.hasSide ? 1 : 0);
+
+    // Karar mantığı
+    // - Kırmızı bayrak varsa: kırmızı sonuç
+    // - Yan görüntü yoksa: sarı (yetersiz veri)
+    // - Aksi: yeşil (genel öneri)
+    var status, title, message;
+    if (hasRedFlags) {
+      status = 'red';
+      title = 'Fizyoterapist görmesi önerilir';
+      message = 'İşaretlediğin kırmızı bayraklar bu tarama aracının kapsamı dışında. Çocuğun yaş grubuna (' + ageLabels[state.age] + ') uygun pediatrik fizyoterapi değerlendirmesi gerekiyor.';
+    } else if (photoCount < 3) {
+      status = 'amber';
+      title = 'Daha fazla bilgi gerekiyor';
+      message = 'Verdiğin fotoğraflar genel bir izlenim için yeterli ama tam değerlendirme için 3 açıdan görüntü ve klinisyen muayenesi öneriyoruz. Şimdilik kırmızı bayrak yok.';
+    } else {
+      status = 'green';
+      title = 'Şimdilik bayrak yok';
+      message = 'İşaretlediğin maddelerde kırmızı bayrak yok ve fotoğraflar üç açıdan da var. Yine de yaşa uygun rutin kontrol önerilir — özellikle ' + (state.age === 'adolescent' ? 'hızlı büyüme döneminde 6 ayda bir' : 'okul yıllık muayenelerinde') + '.';
+    }
+
+    var iconSvg = {
+      red: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>',
+      amber: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>',
+      green: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
+    };
+
+    var html =
+      '<div class="result-card ' + status + '">' +
+        '<div class="result-icon">' + iconSvg[status] + '</div>' +
+        '<h2>' + title + '</h2>' +
+        '<p>' + message + '</p>' +
+      '</div>';
+
+    // Bulgular
+    html += '<div class="result-findings">';
+    html += '<h4>Değerlendirme özeti</h4>';
+    html += '<div class="result-finding">' +
+      '<span class="result-finding-dot ' + (state.gender === 'f' ? 'green' : 'green') + '"></span>' +
+      '<div class="result-finding-text">' +
+        '<strong>Yaş grubu</strong>' + ageLabels[state.age] +
+      '</div>' +
+    '</div>';
+    html += '<div class="result-finding">' +
+      '<span class="result-finding-dot ' + (hasRedFlags ? 'red' : 'green') + '"></span>' +
+      '<div class="result-finding-text">' +
+        '<strong>Kırmızı bayrak taraması</strong>' + (hasRedFlags ? state.redFlags.length + ' bayrak işaretlendi' : 'Bayrak yok') +
+      '</div>' +
+    '</div>';
+    html += '<div class="result-finding">' +
+      '<span class="result-finding-dot ' + (photoCount === 3 ? 'green' : 'amber') + '"></span>' +
+      '<div class="result-finding-text">' +
+        '<strong>Fotoğraf sayısı</strong>' + photoCount + ' / 3 görüntü yüklendi' +
+      '</div>' +
+    '</div>';
+    if (state.parentNote) {
+      html += '<div class="result-finding">' +
+        '<span class="result-finding-dot green"></span>' +
+        '<div class="result-finding-text">' +
+          '<strong>Aile notu</strong>' + escapeHtml(state.parentNote) +
+        '</div>' +
+      '</div>';
+    }
+    html += '</div>';
+
+    // Öneri
+    html += '<div class="result-findings">';
+    html += '<h4>Sırada ne var?</h4>';
+    if (status === 'red' || status === 'amber') {
+      html += '<p style="font-size: 14px; color: var(--ink-700); line-height: 1.6;">' +
+        'Aydın çevresindeyseniz Fzt. Umut Yalçın ile WhatsApp üzerinden randevu alabilirsiniz. Aksi halde bulunduğunuz şehirde bir <strong>pediatrik fizyoterapist</strong> veya <strong>çocuk ortopedi uzmanı</strong> ile görüşmenizi öneririz.' +
+      '</p>';
+    } else {
+      html += '<p style="font-size: 14px; color: var(--ink-700); line-height: 1.6;">' +
+        'Çocuğun postürünü desteklemek için: ergonomik çalışma masası, çanta ağırlığı vücut ağırlığının %10\'unu geçmemeli, günde en az 1 saat aktif oyun. ' +
+        '6 ay içinde tekrar değerlendirmeyi unutma.' +
+      '</p>';
+    }
+    html += '</div>';
+
+    content.innerHTML = html;
+
+    // Buton görünürlüğü
+    document.getElementById('resultPrintBtn').style.display = 'none';
+    document.getElementById('resultWhatsappBtn').style.display = (status === 'red' || status === 'amber') ? 'inline-flex' : 'none';
+
+    // Yaşa uygun rehber butonu
+    var guideBtn = document.getElementById('resultGuideBtn');
+    var guideBtnText = document.getElementById('resultGuideBtnText');
+    var guideMap = {
+      early: { url: '/cocuk-rehber-3-6.html', label: '3–6 Yaş Rehberini Oku' },
+      school: { url: '/cocuk-rehber-7-12.html', label: '7–12 Yaş Rehberini Oku' },
+      adolescent: { url: '/cocuk-rehber-13-18.html', label: '13–18 Yaş Rehberini Oku' }
+    };
+    var guide = guideMap[state.age];
+    if (guide && guideBtn) {
+      guideBtn.href = guide.url;
+      guideBtnText.textContent = guide.label;
+      guideBtn.style.display = 'inline-flex';
+    }
+
+    document.getElementById('resultBackLink').onclick = function() { showScreen('screenParent'); };
+  }
+
+  // ============== RESULT — CLINIC ==============
+  function renderClinicResult() {
+    var ageLabels = { early: '3–6 yaş', school: '7–12 yaş', adolescent: '13–18 yaş' };
+    var content = document.getElementById('resultContent');
+    var d = state.clinicData;
+
+    // Önceki muayene var mı? (kaydetmeden önce hesapla — yoksa bu visit history'ye eklenir)
+    var atrDelta = computeAtrDelta();
+    var hadPreviousVisit = state.activeCaseHistory && state.activeCaseHistory.length > 0;
+    var previousVisits = hadPreviousVisit ? state.activeCaseHistory.slice() : [];
+
+    // Şimdi yeni muayeneyi kaydet
+    persistVisit();
+
+    // Karar — clinic için: tone'lara göre özet
+    var dangerCount = 0, warnCount = 0, okCount = 0;
+    var fields = ['shoulderLevel', 'scapulaLevel', 'pelvisLevel', 'adamsResult',
+      'cervicalCurve', 'thoracicCurve', 'lumbarCurve', 'kneeAlignment', 'footPosture'];
+    for (var f = 0; f < fields.length; f++) {
+      var fd = d[fields[f]];
+      if (!fd) continue;
+      if (fd.tone === 'danger') dangerCount++;
+      else if (fd.tone === 'warn') warnCount++;
+      else if (fd.tone === 'ok') okCount++;
+    }
+    if (d.atr) {
+      if (d.atr.tone === 'danger') dangerCount++;
+      else if (d.atr.tone === 'warn') warnCount++;
+      else okCount++;
+    }
+
+    var status, title;
+    if (dangerCount > 0 || (d.atr && d.atr.value >= 7)) {
+      status = 'red';
+      title = 'İleri tetkik önerilir';
+    } else if (warnCount > 1 || (d.atr && d.atr.value >= 5)) {
+      status = 'amber';
+      title = 'Takip önerilir';
+    } else if (okCount > 0) {
+      status = 'green';
+      title = 'Bulgular yaşa uygun sınırlarda';
+    } else {
+      status = 'amber';
+      title = 'Eksik veri';
+    }
+
+    var iconSvg = {
+      red: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>',
+      amber: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>',
+      green: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
+    };
+
+    var html = '<div class="result-card ' + status + '">' +
+      '<div class="result-icon">' + iconSvg[status] + '</div>' +
+      '<h2>' + title + '</h2>' +
+      '<p>' + buildClinicSummaryLine(status, dangerCount, warnCount, d) + '</p>' +
+    '</div>';
+
+    // Karşılaştırma — önceki muayene varsa
+    if (hadPreviousVisit && atrDelta) {
+      var deltaText, deltaClass, arrowIcon;
+      if (atrDelta.direction === 'improved') {
+        deltaText = 'İyileşme: ATR ' + atrDelta.prev + '° → ' + atrDelta.curr + '° (' + atrDelta.delta + '°)';
+        deltaClass = 'delta-improved';
+        arrowIcon = '<svg class="delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 17 17 7"/><polyline points="7 7 17 7 17 17"/></svg>';
+      } else if (atrDelta.direction === 'worse') {
+        deltaText = 'Kötüleşme: ATR ' + atrDelta.prev + '° → ' + atrDelta.curr + '° (+' + atrDelta.delta + '°)';
+        deltaClass = 'delta-worse';
+        arrowIcon = '<svg class="delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 17 7 7"/><polyline points="17 7 17 17 7 17"/></svg>';
+      } else {
+        deltaText = 'Stabil: ATR ' + atrDelta.curr + '° (değişiklik yok)';
+        deltaClass = 'delta-same';
+        arrowIcon = '<svg class="delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+      }
+      html += '<div class="result-findings">';
+      html += '<h4>Önceki muayeneye göre</h4>';
+      html += '<div class="delta-row ' + deltaClass + '">' + arrowIcon + '<span><strong>' + deltaText + '</strong></span></div>';
+      html += '<div class="delta-row" style="color: var(--ink-500); margin-top: 4px;"><span style="width: 18px; flex-shrink: 0;"></span><span>Önceki muayene: ' + formatDate(atrDelta.prevDate) + '</span></div>';
+      html += '</div>';
+    }
+
+    // Tüm muayene geçmişi — 2+ muayene varsa
+    if (previousVisits.length > 0) {
+      html += '<div class="visit-history">';
+      html += '<h4>Muayene geçmişi (' + (previousVisits.length + 1) + ' muayene)</h4>';
+      // Tüm geçmiş + bu muayene
+      var allVisits = previousVisits.slice();
+      // Bu muayene en sonda görünmeli (zaten persistVisit ile eklenmiş ama biz lokalde göstermek istiyoruz)
+      allVisits.push({ date: Date.now(), age: state.age, gender: state.gender, clinicData: d });
+      // Yeniden sırala (eskiden yeniye)
+      allVisits.sort(function(a, b) { return a.date - b.date; });
+      for (var v = 0; v < allVisits.length; v++) {
+        var vd = allVisits[v];
+        var vStatus = getStatusFromVisit(vd);
+        var atrText = (vd.clinicData && vd.clinicData.atr) ? 'ATR ' + vd.clinicData.atr.value + '°' : 'ATR yok';
+        var summary = atrText + ' · ' + getStatusLabel(vStatus);
+        var isCurrent = v === allVisits.length - 1;
+        html += '<div class="visit-row">' +
+          '<span class="visit-status-dot ' + vStatus + '"></span>' +
+          '<span class="visit-date">' + formatDate(vd.date) + (isCurrent ? ' <small style="color: var(--blue-700); font-weight: 700;">(bugün)</small>' : '') + '</span>' +
+          '<span class="visit-summary">' + summary + '</span>' +
+        '</div>';
+      }
+      html += '</div>';
+    }
+
+    // Hasta özeti
+    html += '<div class="result-findings">';
+    html += '<h4>Hasta bilgisi</h4>';
+    if (d.patientName) {
+      html += '<div class="result-finding"><span class="result-finding-dot green"></span><div class="result-finding-text"><strong>Hasta</strong>' + escapeHtml(d.patientName) + '</div></div>';
+    }
+    html += '<div class="result-finding"><span class="result-finding-dot green"></span><div class="result-finding-text"><strong>Yaş / cinsiyet</strong>' + ageLabels[state.age] + ' · ' + (state.gender === 'f' ? 'Kız' : 'Erkek') + '</div></div>';
+    if (d.complaint) {
+      html += '<div class="result-finding"><span class="result-finding-dot green"></span><div class="result-finding-text"><strong>Şikayet</strong>' + escapeHtml(d.complaint) + '</div></div>';
+    }
+    if (state.redFlags && state.redFlags.length > 0) {
+      html += '<div class="result-finding"><span class="result-finding-dot red"></span><div class="result-finding-text"><strong>Kırmızı bayraklar</strong>' + state.redFlags.length + ' bulgu işaretlendi</div></div>';
+    }
+    html += '</div>';
+
+    // Muayene bulguları
+    html += '<div class="result-findings">';
+    html += '<h4>Muayene bulguları</h4>';
+
+    var labels = {
+      shoulderLevel: 'Omuz seviyesi',
+      scapulaLevel: 'Skapula seviyesi',
+      pelvisLevel: 'Pelvis seviyesi',
+      adamsResult: 'Adams testi',
+      cervicalCurve: 'Servikal lordoz',
+      thoracicCurve: 'Torakal kifoz',
+      lumbarCurve: 'Lumbal lordoz',
+      kneeAlignment: 'Diz dizilimi',
+      footPosture: 'Ayak postürü',
+      tannerStage: 'Tanner evresi',
+      risserSign: 'Risser işareti'
+    };
+    var values = {
+      symmetric: 'Simetrik', rightHigh: 'Sağ yüksek', leftHigh: 'Sol yüksek',
+      winged: 'Kanatlanma', asymmetric: 'Asimetrik',
+      negative: 'Negatif', suspicious: 'Şüpheli', positive: 'Pozitif',
+      normal: 'Normal', forwardHead: 'Baş öne kayık', straight: 'Düzleşmiş',
+      increased: 'Artmış', flattened: 'Azalmış',
+      neutral: 'Nötr', valgum: 'Genu valgum (X bacak)', varum: 'Genu varum (O bacak)',
+      pronated: 'Pronasyon', supinated: 'Supinasyon', pesPlanus: 'Pes planus',
+      t1: 'T1 — Prepubertal', t2: 'T2 — Başlangıç', t3: 'T3 — Hızlı büyüme',
+      t4: 'T4 — Yavaşlama', t5: 'T5 — Olgun',
+      r0: 'Risser 0', r1: 'Risser 1', r2: 'Risser 2',
+      r3: 'Risser 3', r4: 'Risser 4', r5: 'Risser 5'
+    };
+
+    for (var fk in labels) {
+      if (!d[fk]) continue;
+      html += '<div class="result-finding"><span class="result-finding-dot ' + (d[fk].tone || 'green') + '"></span><div class="result-finding-text"><strong>' + labels[fk] + '</strong>' + (values[d[fk].value] || d[fk].value) + '</div></div>';
+    }
+    if (d.atr && d.atr.value > 0) {
+      html += '<div class="result-finding"><span class="result-finding-dot ' + d.atr.tone + '"></span><div class="result-finding-text"><strong>ATR (Skoliometre)</strong>' + d.atr.value + '°' + (d.atr.value >= 7 ? ' — X-ray önerilir' : (d.atr.value >= 5 ? ' — Şüpheli, takip' : '')) + '</div></div>';
+    }
+    html += '</div>';
+
+    // Tanner + skolyoz risk analizi
+    var tannerRisk = computeTannerRisk(d);
+    if (tannerRisk) {
+      html += '<div class="result-findings" style="border-left: 4px solid ' + tannerRisk.color + ';">';
+      html += '<h4>Skolyoz progresyon riski</h4>';
+      html += '<div style="font-size: 14px; color: var(--ink-700); line-height: 1.6;">';
+      html += '<strong style="color: ' + tannerRisk.color + '; display: block; margin-bottom: 6px;">' + tannerRisk.level + '</strong>';
+      html += tannerRisk.note;
+      html += '</div>';
+      html += '</div>';
+    }
+
+    // Klinisyen notu
+    if (d.note) {
+      html += '<div class="result-findings">';
+      html += '<h4>Klinisyen notu</h4>';
+      html += '<p style="font-size: 14px; color: var(--ink-700); line-height: 1.6; white-space: pre-wrap;">' + escapeHtml(d.note) + '</p>';
+      html += '</div>';
+    }
+
+    // Takip hatırlatması — sadece klinisyen modu
+    var defaultMonths = status === 'red' ? 1 : (status === 'amber' ? 3 : 12);
+    var statusLabel = status === 'red' ? 'kırmızı' : (status === 'amber' ? 'sarı' : 'yeşil');
+    var defaultLabel = defaultMonths === 1 ? '1 ay' : (defaultMonths < 12 ? defaultMonths + ' ay' : '12 ay');
+
+    html += '<div class="followup-card" id="followupCard">';
+    html += '<h4>';
+    html += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+    html += 'Sonraki kontrol tarihi</h4>';
+    html += '<p class="followup-suggestion">Bulgular <strong>' + statusLabel + '</strong> kategoride. Önerilen kontrol aralığı: <strong>' + defaultLabel + ' sonrası</strong>.</p>';
+    html += '<div class="followup-options" id="followupOptions">';
+    html += '<button type="button" class="followup-option" data-months="1">1 ay</button>';
+    html += '<button type="button" class="followup-option" data-months="3">3 ay</button>';
+    html += '<button type="button" class="followup-option" data-months="6">6 ay</button>';
+    html += '<button type="button" class="followup-option" data-months="12">12 ay</button>';
+    html += '</div>';
+    html += '<div class="followup-date-display">';
+    html += '<span class="followup-date-text">Kontrol tarihi: <strong id="followupDateText">—</strong></span>';
+    html += '<input type="date" class="followup-date-input" id="followupDateInput" />';
+    html += '<button type="button" class="followup-ics-btn" id="followupIcsBtn" disabled>';
+    html += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+    html += 'Takvime ekle (.ics)</button>';
+    html += '</div>';
+    html += '</div>';
+
+    content.innerHTML = html;
+
+    // Followup state'i ve handler'ları kur
+    setupFollowupHandlers(defaultMonths);
+
+    // Print bilgisi - tarih
+    var nowDate = new Date().toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('printDate').textContent = nowDate;
+
+    // Print hasta tablosu doldur
+    var dobStr = '—';
+    if (state.dob) {
+      var monthsTr = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+      dobStr = state.dob.day + ' ' + monthsTr[state.dob.month - 1] + ' ' + state.dob.year;
+    }
+    var ageStr = '—';
+    if (state.dob && (state.dob.ageYears != null)) {
+      ageStr = state.dob.ageYears + ' yaş' + (state.dob.ageMonths > 0 ? ' ' + state.dob.ageMonths + ' ay' : '');
+    } else if (state.age) {
+      ageStr = ageLabels[state.age];
+    }
+    var genderStr = state.gender === 'f' ? 'Kız' : (state.gender === 'm' ? 'Erkek' : '—');
+    var patientNameStr = d.patientName || '—';
+    var complaintStr = d.complaint ? escapeHtml(d.complaint) : '—';
+
+    var pTable = document.getElementById('printPatientTable');
+    if (pTable) {
+      pTable.innerHTML =
+        '<div class="print-patient-row">' +
+          '<div class="print-patient-cell label">Hasta adı</div>' +
+          '<div class="print-patient-cell value">' + escapeHtml(patientNameStr) + '</div>' +
+          '<div class="print-patient-cell label">Doğum tarihi</div>' +
+          '<div class="print-patient-cell value">' + escapeHtml(dobStr) + '</div>' +
+        '</div>' +
+        '<div class="print-patient-row">' +
+          '<div class="print-patient-cell label">Yaş</div>' +
+          '<div class="print-patient-cell value">' + escapeHtml(ageStr) + '</div>' +
+          '<div class="print-patient-cell label">Cinsiyet</div>' +
+          '<div class="print-patient-cell value">' + escapeHtml(genderStr) + '</div>' +
+        '</div>' +
+        '<div class="print-patient-row" style="grid-template-columns: 130px 1fr;">' +
+          '<div class="print-patient-cell label">Geliş şikayeti</div>' +
+          '<div class="print-patient-cell value">' + complaintStr + '</div>' +
+        '</div>';
+    }
+
+    // Buton görünürlüğü
+    document.getElementById('resultPrintBtn').style.display = 'inline-flex';
+    document.getElementById('resultWhatsappBtn').style.display = 'none';
+    document.getElementById('resultGuideBtn').style.display = 'none';
+    document.getElementById('resultBackLink').onclick = function() { showScreen('screenClinic'); };
+  }
+
+  function buildClinicSummaryLine(status, danger, warn, d) {
+    if (status === 'red') {
+      var parts = [];
+      if (d.atr && d.atr.value >= 7) parts.push('ATR ' + d.atr.value + '°');
+      if (d.adamsResult && d.adamsResult.value === 'positive') parts.push('Adams pozitif');
+      if (parts.length === 0) parts.push(danger + ' belirgin bulgu');
+      return parts.join(', ') + '. X-ray ve uzman değerlendirmesi öncelikli.';
+    } else if (status === 'amber') {
+      return warn + ' minör bulgu mevcut. 3–6 ay takip ve gerektiğinde yeniden değerlendirme.';
+    } else {
+      return 'Yaş grubuna göre majör patolojik bulgu yok. Rutin gelişim takibi yeterli.';
+    }
+  }
+
+  // ============== PRINT ==============
+  document.getElementById('resultPrintBtn').addEventListener('click', function() {
+    window.print();
+  });
+
+  // ============== RESTART ==============
+  document.getElementById('resultRestartBtn').addEventListener('click', function() {
+    // State'i sıfırla
+    state = { mode: null, age: null, gender: null, dob: null, redFlags: [], clinicData: {}, activeCaseId: null, activeCaseHistory: [] };
+    photoData = { front: null, back: null, side: null };
+    // UI'yi temizle
+    var pills = document.querySelectorAll('.radio-pill.selected');
+    for (var p = 0; p < pills.length; p++) pills[p].classList.remove('selected', 'ok', 'warn', 'danger');
+    // DOB sıfırla
+    if (dobDay) dobDay.value = '';
+    if (dobMonth) dobMonth.value = '';
+    if (dobYear) dobYear.value = '';
+    if (ageResult) { ageResult.style.display = 'none'; ageResult.className = 'age-result'; }
+    var genders = document.querySelectorAll('.gender-btn.selected');
+    for (var g = 0; g < genders.length; g++) genders[g].classList.remove('selected');
+    var inputs = document.querySelectorAll('.text-input');
+    for (var ti = 0; ti < inputs.length; ti++) inputs[ti].value = '';
+    if (atrRange) { atrRange.value = 0; atrValue.textContent = '0°'; atrValue.classList.remove('ok','warn','danger'); }
+    var slots = document.querySelectorAll('.photo-slot.has-image');
+    for (var sl = 0; sl < slots.length; sl++) {
+      slots[sl].classList.remove('has-image');
+      var ct = slots[sl].querySelector('.photo-slot-content');
+      if (ct) ct.style.display = '';
+      var im = slots[sl].querySelector('img');
+      if (im) { im.src = ''; im.style.display = 'none'; }
+    }
+    document.getElementById('ageNextBtn').disabled = true;
+    showScreen('screenMode');
+  });
+
+  // ============== UTIL ==============
+  // ============== 3.3 — TAKİP HATIRLATMASI ==============
+  state.followupDate = null;
+
+  function setupFollowupHandlers(defaultMonths) {
+    var optionsEl = document.getElementById('followupOptions');
+    var dateInput = document.getElementById('followupDateInput');
+    var dateText = document.getElementById('followupDateText');
+    var icsBtn = document.getElementById('followupIcsBtn');
+    if (!optionsEl || !dateInput || !icsBtn) return;
+
+    function applyDate(date) {
+      state.followupDate = date.getTime();
+      var iso = date.getFullYear() + '-' +
+        String(date.getMonth() + 1).padStart(2, '0') + '-' +
+        String(date.getDate()).padStart(2, '0');
+      dateInput.value = iso;
+      dateText.textContent = date.toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' });
+      icsBtn.disabled = false;
+      // Print footer'daki "Sonraki kontrol" satırına yaz
+      updatePrintFollowup(date);
+      // Ayrıca persistVisit zaten kaydetmişti — onu güncellemek için
+      updateActiveCaseFollowup(date.getTime());
+    }
+
+    function pickMonthsFromNow(months) {
+      var d = new Date();
+      d.setMonth(d.getMonth() + months);
+      return d;
+    }
+
+    // Default tarihi otomatik seç
+    var defaultDate = pickMonthsFromNow(defaultMonths);
+    applyDate(defaultDate);
+    // Default option'ı işaretle
+    var defaultOption = optionsEl.querySelector('[data-months="' + defaultMonths + '"]');
+    if (defaultOption) defaultOption.classList.add('selected');
+
+    // Quick-pick butonları
+    var opts = optionsEl.querySelectorAll('.followup-option');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].addEventListener('click', function() {
+        for (var j = 0; j < opts.length; j++) opts[j].classList.remove('selected');
+        this.classList.add('selected');
+        var months = parseInt(this.dataset.months, 10);
+        applyDate(pickMonthsFromNow(months));
+      });
+    }
+
+    // Manuel tarih değiştirme
+    dateInput.addEventListener('change', function() {
+      if (!this.value) return;
+      var parts = this.value.split('-');
+      var d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+      // Quick option'ları temizle
+      for (var k = 0; k < opts.length; k++) opts[k].classList.remove('selected');
+      applyDate(d);
+    });
+
+    // ICS indirme
+    icsBtn.addEventListener('click', function() {
+      if (!state.followupDate) return;
+      downloadIcs(new Date(state.followupDate));
+    });
+  }
+
+  function updatePrintFollowup(date) {
+    var followupLine = document.querySelector('.print-followup');
+    if (followupLine) {
+      var dateStr = date.toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' });
+      followupLine.innerHTML =
+        '<strong>Sonraki kontrol:</strong>' +
+        '<span style="color: var(--ink-900); font-weight: 600;">' + dateStr + '</span>';
+    }
+  }
+
+  function updateActiveCaseFollowup(timestamp) {
+    if (!state.activeCaseId) return;
+    var cases = loadCases();
+    for (var i = 0; i < cases.length; i++) {
+      if (cases[i].id === state.activeCaseId) {
+        var visits = cases[i].visits || [];
+        if (visits.length > 0) {
+          // En son muayeneye followup tarihini ekle
+          visits[visits.length - 1].followupDate = timestamp;
+          saveCases(cases);
+        }
+        break;
+      }
+    }
+  }
+
+  function downloadIcs(date) {
+    var d = state.clinicData;
+    var patientName = d.patientName || 'Hasta';
+    var summary = 'Pediatrik postür kontrolü — ' + patientName;
+    var description = 'Çocuğun pediatrik postür değerlendirmesi için kontrol randevusu.\\n' +
+      'Önceki muayene: ' + new Date().toLocaleDateString('tr-TR') + '\\n' +
+      'Hasta: ' + patientName + '\\n' +
+      'Fzt. Umut Yalçın';
+
+    // ICS UTC formatı: YYYYMMDDTHHMMSSZ
+    function toIcsDate(dt) {
+      return dt.getFullYear() +
+        String(dt.getMonth() + 1).padStart(2, '0') +
+        String(dt.getDate()).padStart(2, '0');
+    }
+    function toIcsDateTime(dt) {
+      return toIcsDate(dt) + 'T' +
+        String(dt.getHours()).padStart(2, '0') +
+        String(dt.getMinutes()).padStart(2, '0') + '00';
+    }
+
+    var dtStart = toIcsDate(date);
+    // 1 gün ekleyerek dtEnd
+    var endDate = new Date(date);
+    endDate.setDate(endDate.getDate() + 1);
+    var dtEnd = toIcsDate(endDate);
+    var now = new Date();
+    var dtStamp = toIcsDateTime(now);
+    var uid = 'rehabist-' + now.getTime() + '@rehabist';
+
+    var ics = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Rehabist//Pediatrik Postur//TR',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'BEGIN:VEVENT',
+      'UID:' + uid,
+      'DTSTAMP:' + dtStamp,
+      'DTSTART;VALUE=DATE:' + dtStart,
+      'DTEND;VALUE=DATE:' + dtEnd,
+      'SUMMARY:' + summary,
+      'DESCRIPTION:' + description,
+      'CATEGORIES:Sağlık,Pediatri,Fizyoterapi',
+      'BEGIN:VALARM',
+      'TRIGGER:-P1D',
+      'ACTION:DISPLAY',
+      'DESCRIPTION:Pediatrik postür kontrol randevusu yarın',
+      'END:VALARM',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    var safeName = (patientName || 'hasta').replace(/[^a-zA-Z0-9]/g, '_');
+    a.download = 'kontrol_' + safeName + '_' + toIcsDate(date) + '.ics';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function() { URL.revokeObjectURL(url); }, 100);
+  }
+
+  // Tanner + Cobb/ATR risk analizi
+  function computeTannerRisk(d) {
+    if (!d.tannerStage && !d.risserSign) return null;
+    // Skolyoz bulgusu var mı?
+    var hasScoliosisFinding =
+      (d.adamsResult && (d.adamsResult.value === 'positive' || d.adamsResult.value === 'suspicious')) ||
+      (d.atr && d.atr.value >= 5);
+    if (!hasScoliosisFinding) return null;
+
+    var tanner = d.tannerStage ? d.tannerStage.value : null;
+    var risser = d.risserSign ? d.risserSign.value : null;
+
+    // T1-T3 + Risser 0-2 = yüksek risk
+    var highRiskTanner = tanner === 't2' || tanner === 't3';
+    var matureTanner = tanner === 't5';
+    var highRiskRisser = risser === 'r0' || risser === 'r1' || risser === 'r2';
+    var matureRisser = risser === 'r4' || risser === 'r5';
+
+    if (highRiskTanner || highRiskRisser) {
+      return {
+        level: 'YÜKSEK RİSK',
+        color: 'var(--red-700)',
+        note: 'Hasta hızlı büyüme döneminde ve skolyoz bulgusu mevcut. Eğri progresyonu için risk yüksek. <strong>3–4 ayda bir Cobb açısı takibi</strong> ve gerektiğinde korse değerlendirmesi (Cobb 25–40°). 10°+ skolyozda <strong>özel egzersiz programı (Schroth/SEAS)</strong> önerilir.'
+      };
+    }
+    if (matureTanner || matureRisser) {
+      return {
+        level: 'DÜŞÜK RİSK',
+        color: 'var(--green-600)',
+        note: 'Kemik olgunlaşması büyük ölçüde tamamlanmış. Eğri ilerleme riski azalır. <strong>Yıllık takip</strong> yeterli olabilir. Mevcut eğri yetişkin yaşta da sabit kalma eğilimindedir.'
+      };
+    }
+    return {
+      level: 'ORTA RİSK',
+      color: '#a16207',
+      note: 'Olgunlaşma orta düzeyde, skolyoz bulgusu mevcut. <strong>6 ayda bir takip</strong> ve klinik gözlem önerilir. Cobb açısı 20°+ ise daha sık kontrol gerekebilir.'
+    };
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s).replace(/[&<>"']/g, function(c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  // ============== BACK LINKS ==============
+  var backLinks = document.querySelectorAll('[data-back]');
+  for (var i = 0; i < backLinks.length; i++) {
+    backLinks[i].addEventListener('click', function() {
+      showScreen(this.dataset.back);
+    });
+  }
+
+  // ============== 3.1 — HASTA DOSYALAMA ==============
+  var STORAGE_KEY = 'rehabist_pediatric_cases';
+  state.activeCaseId = null;  // Yeni vakaysa null, eski vakaysa ID
+  state.activeCaseHistory = []; // Eski vakaysa o vakanın geçmiş muayeneleri
+
+  function loadCases() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return [];
+      var data = JSON.parse(raw);
+      return Array.isArray(data) ? data : [];
+    } catch(e) { return []; }
+  }
+
+  function saveCases(cases) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cases));
+      return true;
+    } catch(e) { return false; }
+  }
+
+  function generateCaseId() {
+    return 'case_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+  }
+
+  function getInitials(name) {
+    if (!name) return '?';
+    var parts = name.trim().split(/\s+/);
+    if (parts.length >= 2) {
+      return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+    }
+    return parts[0].charAt(0).toUpperCase();
+  }
+
+  function getStatusFromVisit(v) {
+    if (!v || !v.clinicData) return 'green';
+    var d = v.clinicData;
+    var dangerCount = 0, warnCount = 0;
+    var fields = ['shoulderLevel', 'scapulaLevel', 'pelvisLevel', 'adamsResult',
+      'cervicalCurve', 'thoracicCurve', 'lumbarCurve', 'kneeAlignment', 'footPosture'];
+    for (var f = 0; f < fields.length; f++) {
+      var fd = d[fields[f]];
+      if (!fd) continue;
+      if (fd.tone === 'danger') dangerCount++;
+      else if (fd.tone === 'warn') warnCount++;
+    }
+    if (d.atr) {
+      if (d.atr.tone === 'danger') dangerCount++;
+      else if (d.atr.tone === 'warn') warnCount++;
+    }
+    if (dangerCount > 0 || (d.atr && d.atr.value >= 7)) return 'red';
+    if (warnCount > 1 || (d.atr && d.atr.value >= 5)) return 'amber';
+    return 'green';
+  }
+
+  function getStatusLabel(status) {
+    if (status === 'red') return 'İleri tetkik';
+    if (status === 'amber') return 'Takip';
+    return 'Normal';
+  }
+
+  function formatDate(timestamp) {
+    var d = new Date(timestamp);
+    return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  function renderCaseList() {
+    var cases = loadCases();
+    var listEl = document.getElementById('caseList');
+    var countEl = document.getElementById('casesCount');
+    countEl.textContent = cases.length + ' hasta';
+
+    if (cases.length === 0) {
+      listEl.innerHTML = '<div class="empty-state">Henüz kayıtlı hasta yok. Yukarıdan yeni değerlendirme başlatabilirsin — bittiğinde otomatik kaydedilecek.</div>';
+      return;
+    }
+
+    // Sıralama: en son muayene en üstte
+    cases.sort(function(a, b) {
+      var aLast = a.visits && a.visits.length ? a.visits[a.visits.length - 1].date : 0;
+      var bLast = b.visits && b.visits.length ? b.visits[b.visits.length - 1].date : 0;
+      return bLast - aLast;
+    });
+
+    var html = '';
+    for (var i = 0; i < cases.length; i++) {
+      var c = cases[i];
+      var visits = c.visits || [];
+      var lastVisit = visits[visits.length - 1];
+      var lastStatus = lastVisit ? getStatusFromVisit(lastVisit) : 'green';
+      var lastDate = lastVisit ? formatDate(lastVisit.date) : '—';
+      var ageLabel = lastVisit ? ({early: '3–6', school: '7–12', adolescent: '13–18'})[lastVisit.age] : '';
+      var name = c.patientName || 'İsimsiz hasta';
+      var initials = getInitials(name);
+
+      // Followup hesabı: 7 gün içinde mi (due), 30 gün içinde mi (yaklaşıyor)
+      var followupBadge = '';
+      if (lastVisit && lastVisit.followupDate) {
+        var nowMs = Date.now();
+        var diffDays = Math.round((lastVisit.followupDate - nowMs) / (1000 * 60 * 60 * 24));
+        if (diffDays < 0) {
+          followupBadge = '<span class="case-card-badge followup-due">Kontrol gecikti · ' + Math.abs(diffDays) + ' gün</span>';
+        } else if (diffDays <= 7) {
+          followupBadge = '<span class="case-card-badge followup-due">Kontrol: ' + (diffDays === 0 ? 'bugün' : diffDays + ' gün') + '</span>';
+        } else if (diffDays <= 30) {
+          followupBadge = '<span class="case-card-badge followup">Kontrol: ' + diffDays + ' gün</span>';
+        }
+      }
+
+      html += '<button type="button" class="case-card" data-case-id="' + c.id + '">' +
+        '<span class="case-card-avatar">' + escapeHtml(initials) + '</span>' +
+        '<span class="case-card-body">' +
+          '<div class="case-card-name">' + escapeHtml(name) + '</div>' +
+          '<div class="case-card-meta">' +
+            '<span>' + visits.length + ' muayene</span>' +
+            '<span>·</span>' +
+            '<span>Son: ' + lastDate + '</span>' +
+            (ageLabel ? '<span>·</span><span>' + ageLabel + ' yaş</span>' : '') +
+            '<span class="case-card-badge ' + lastStatus + '">' + getStatusLabel(lastStatus) + '</span>' +
+            followupBadge +
+          '</div>' +
+        '</span>' +
+        '<span class="case-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>' +
+        '<span class="case-delete-btn" data-delete-id="' + c.id + '" title="Hastayı sil">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>' +
+        '</span>' +
+      '</button>';
+    }
+    listEl.innerHTML = html;
+
+    // Event binding
+    var cards = listEl.querySelectorAll('.case-card');
+    for (var j = 0; j < cards.length; j++) {
+      cards[j].addEventListener('click', function(e) {
+        // Sil butonuna mı tıklandı?
+        var delBtn = e.target.closest('[data-delete-id]');
+        if (delBtn) {
+          e.stopPropagation();
+          handleDeleteCase(delBtn.dataset.deleteId);
+          return;
+        }
+        var caseId = this.dataset.caseId;
+        loadCaseForEditing(caseId);
+      });
+    }
+  }
+
+  function handleDeleteCase(caseId) {
+    if (!confirm('Bu hastayı ve tüm muayenelerini silmek istediğinden emin misin? Bu geri alınamaz.')) return;
+    var cases = loadCases();
+    cases = cases.filter(function(c) { return c.id !== caseId; });
+    saveCases(cases);
+    renderCaseList();
+  }
+
+  function loadCaseForEditing(caseId) {
+    var cases = loadCases();
+    var c = null;
+    for (var i = 0; i < cases.length; i++) {
+      if (cases[i].id === caseId) { c = cases[i]; break; }
+    }
+    if (!c) return;
+
+    // Son muayeneyi state'e yükle (yeni muayene için baseline olarak)
+    var visits = c.visits || [];
+    var lastVisit = visits[visits.length - 1];
+
+    state.activeCaseId = caseId;
+    state.activeCaseHistory = visits.slice(); // tüm geçmiş
+
+    // Form state'ini sıfırla (yeni muayene için boş başlasın)
+    state.clinicData = {};
+    state.redFlags = [];
+
+    // UI'yi sıfırla
+    var pills = document.querySelectorAll('.radio-pill.selected');
+    for (var p = 0; p < pills.length; p++) pills[p].classList.remove('selected', 'ok', 'warn', 'danger');
+    var inputs = document.querySelectorAll('#screenClinic .text-input');
+    for (var ti = 0; ti < inputs.length; ti++) inputs[ti].value = '';
+    var atrR = document.getElementById('atrRange');
+    var atrV = document.getElementById('atrValue');
+    if (atrR) atrR.value = 0;
+    if (atrV) { atrV.textContent = '0°'; atrV.classList.remove('ok','warn','danger'); }
+
+    if (lastVisit) {
+      // Yaş, cinsiyet ve DOB otomatik dolar
+      state.age = lastVisit.age;
+      state.gender = lastVisit.gender;
+      state.dob = lastVisit.dob || null;
+      // Hasta adı otomatik dolar
+      var nameEl = document.getElementById('clinicPatientName');
+      if (nameEl) nameEl.value = c.patientName || '';
+    }
+
+    // Direkt klinik checklist'e git
+    showScreen('screenClinic');
+  }
+
+  function startNewCase() {
+    state.activeCaseId = null;
+    state.activeCaseHistory = [];
+    state.age = null;
+    state.gender = null;
+    state.redFlags = [];
+    state.clinicData = {};
+    showScreen('screenAge');
+  }
+
+  // Yeni hasta butonu
+  var newCaseBtn = document.getElementById('newCaseBtn');
+  if (newCaseBtn) newCaseBtn.addEventListener('click', startNewCase);
+
+  // Vaka kaydetme — clinic raporu oluşturulduğunda otomatik çağrılacak
+  function persistVisit() {
+    var d = state.clinicData;
+    var visit = {
+      date: Date.now(),
+      age: state.age,
+      gender: state.gender,
+      dob: state.dob || null,
+      redFlags: state.redFlags.slice(),
+      clinicData: JSON.parse(JSON.stringify(d))  // deep clone
+    };
+
+    var cases = loadCases();
+    var c = null;
+    if (state.activeCaseId) {
+      // Mevcut vakaya ekle
+      for (var i = 0; i < cases.length; i++) {
+        if (cases[i].id === state.activeCaseId) { c = cases[i]; break; }
+      }
+    }
+    if (!c) {
+      // Yeni vaka oluştur
+      c = {
+        id: generateCaseId(),
+        patientName: d.patientName || 'İsimsiz hasta',
+        visits: []
+      };
+      cases.push(c);
+      state.activeCaseId = c.id;
+    } else {
+      // Hasta adı güncellenmiş olabilir
+      if (d.patientName) c.patientName = d.patientName;
+    }
+    c.visits.push(visit);
+    saveCases(cases);
+    state.activeCaseHistory = c.visits.slice();
+  }
+
+  // ATR delta hesabı — son muayene ile şimdiki arasında
+  function computeAtrDelta() {
+    if (!state.activeCaseHistory || state.activeCaseHistory.length === 0) return null;
+    var prev = state.activeCaseHistory[state.activeCaseHistory.length - 1]; // bir önceki
+    if (!prev || !prev.clinicData || !prev.clinicData.atr) return null;
+    if (!state.clinicData.atr) return null;
+    var prevVal = prev.clinicData.atr.value;
+    var currVal = state.clinicData.atr.value;
+    var delta = currVal - prevVal;
+    return {
+      prev: prevVal,
+      curr: currVal,
+      delta: delta,
+      direction: delta < 0 ? 'improved' : (delta > 0 ? 'worse' : 'same'),
+      prevDate: prev.date
+    };
+  }
+
+  // ============== INIT ==============
+  // Hiç bir şey otomatik çalışmıyor, sayfa zaten screenMode active
+})();
+</script>
+
+<script src="/shared-nav.js" defer></script>
+
+</body>
+</html>
