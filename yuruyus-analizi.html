@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -10,9 +9,267 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/shared-theme.css">
 
 <style>
+/* SHARED-THEME INLINE */
+/* ============================================================
+   REHABIST — SHARED THEME
+   Bu dosya tüm sayfaların ortak temelini sağlar.
+   Tek bir yerden değiştirildiğinde tüm sayfalar güncellenir.
+   ============================================================ */
+
+:root {
+  --white: #ffffff;
+  --off-white: #fafbfc;
+  --surface: #f5f7fa;
+  --border: #e4e8ed;
+  --border-strong: #d0d6dd;
+  --ink-900: #0f172a;
+  --ink-800: #1e293b;
+  --ink-700: #334155;
+  --ink-500: #475569;
+  --ink-400: #64748b;
+  --ink-300: #94a3b8;
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-900: #1e3a8a;
+  --green-50: #ecfdf5;
+  --green-500: #10b981;
+  --green-600: #059669;
+  --amber-50: #fffbeb;
+  --amber-500: #f59e0b;
+  --red-50: #fef2f2;
+  --red-500: #ef4444;
+  --red-700: #b91c1c;
+
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --container-max: 1200px;
+  --container-px: 24px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
+}
+
+/* NAV */
+.rb-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s;
+}
+.rb-nav.scrolled {
+  border-bottom-color: var(--border);
+  background: rgba(255, 255, 255, 0.95);
+}
+.rb-nav-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rb-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+}
+.rb-logo-mark {
+  width: 30px;
+  height: 30px;
+  background: var(--ink-900);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+}
+.rb-logo-mark svg { width: 16px; height: 16px; }
+
+.rb-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.rb-nav-link {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-500);
+  transition: color 0.15s;
+}
+.rb-nav-link:hover { color: var(--ink-900); }
+.rb-nav-cta {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--ink-900);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+.rb-nav-cta:hover {
+  background: var(--blue-700);
+  transform: translateY(-1px);
+}
+.rb-menu-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink-900);
+  align-items: center;
+  justify-content: center;
+}
+.rb-menu-btn svg { width: 20px; height: 20px; }
+
+@media (max-width: 768px) {
+  .rb-nav-links { display: none; }
+  .rb-menu-btn { display: flex; }
+}
+
+/* MOBILE MENU */
+.rb-mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--white);
+  z-index: 150;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  padding: 80px 24px 40px;
+  visibility: hidden;
+}
+.rb-mobile-menu.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+.rb-mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  color: var(--ink-900);
+}
+.rb-mobile-close svg { width: 20px; height: 20px; }
+.rb-mobile-section-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+  margin: 24px 0 12px;
+}
+.rb-mobile-link {
+  display: flex;
+  align-items: center;
+  padding: 14px 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink-900);
+  border-bottom: 1px solid var(--border);
+}
+.rb-mobile-link.tool-link {
+  gap: 14px;
+  padding: 16px;
+  margin-bottom: 8px;
+  background: var(--surface);
+  border-radius: 12px;
+  border: none;
+}
+.rb-mobile-link-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--white);
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  color: var(--blue-600);
+  flex-shrink: 0;
+}
+.rb-mobile-link-icon svg { width: 18px; height: 18px; }
+.rb-mobile-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  width: 100%;
+  padding: 14px 22px;
+  background: #25D366;
+  color: var(--white);
+  border-radius: 12px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+}
+.rb-mobile-cta svg { width: 16px; height: 16px; }
+
+/* FOOTER */
+.rb-footer {
+  background: var(--ink-900);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 48px 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+.rb-footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.rb-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.rb-footer-logo-mark {
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+}
+.rb-footer-logo-mark svg { width: 12px; height: 12px; }
+.rb-footer a {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.15s;
+}
+.rb-footer a:hover { color: var(--white); }
+
+/* PAGE STYLES */
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html { scroll-behavior: smooth; }
   body {
@@ -206,6 +463,7 @@
 
   /* VIDEO UPLOAD */
   .video-slot {
+    display: block;
     background: var(--white);
     border: 2px dashed var(--border-strong);
     border-radius: 18px;
@@ -216,6 +474,7 @@
     transition: all 0.2s;
     position: relative;
     overflow: hidden;
+    width: 100%;
   }
   .video-slot:hover {
     border-color: var(--blue-600);
@@ -249,9 +508,12 @@
     margin: 0 auto;
   }
   .video-slot input[type="file"] {
-    position: absolute; inset: 0;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
     opacity: 0;
     cursor: pointer;
+    z-index: 1;
   }
   .video-slot.has-video input[type="file"] { display: none; }
   .video-preview {
@@ -404,6 +666,215 @@
   .mode-indicator.parent .mode-indicator-dot { background: var(--blue-600); }
   .mode-indicator.clinic .mode-indicator-dot { background: #6d28d9; }
 
+  /* ANALYSIS LOADING */
+  .analysis-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 36px 28px;
+    text-align: center;
+    margin: 16px 0;
+  }
+  .analysis-spinner {
+    width: 56px; height: 56px;
+    border: 4px solid var(--border);
+    border-top-color: #6d28d9;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .analysis-status {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink-900);
+    margin-bottom: 8px;
+  }
+  .analysis-detail {
+    font-size: 13.5px;
+    color: var(--ink-500);
+    margin-bottom: 16px;
+  }
+  .analysis-progress-track {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    height: 6px;
+    background: var(--surface);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .analysis-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6d28d9, #2563eb);
+    border-radius: 3px;
+    transition: width 0.3s;
+    width: 0%;
+  }
+
+  /* RESULT */
+  .result-summary {
+    background: linear-gradient(135deg, var(--white), #f8fafc);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .result-summary.green { border-color: #86efac; background: linear-gradient(135deg, var(--green-50), var(--white)); }
+  .result-summary.amber { border-color: #fcd34d; background: linear-gradient(135deg, var(--amber-50), var(--white)); }
+  .result-summary.red { border-color: #fca5a5; background: linear-gradient(135deg, var(--red-50), var(--white)); }
+  .result-icon-big {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    margin: 0 auto 14px;
+    display: grid; place-items: center;
+  }
+  .result-summary.green .result-icon-big { background: var(--green-50); color: var(--green-600); }
+  .result-summary.amber .result-icon-big { background: var(--amber-50); color: #a16207; }
+  .result-summary.red .result-icon-big { background: var(--red-50); color: var(--red-700); }
+  .result-icon-big svg { width: 32px; height: 32px; }
+  .result-summary h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink-900);
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .result-summary p {
+    font-size: 14.5px;
+    color: var(--ink-500);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* METRICS */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  @media (max-width: 600px) { .metric-grid { grid-template-columns: 1fr; } }
+  .metric-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .metric-card-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-500);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .metric-card-value {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ink-900);
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .metric-card-uncertainty {
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 13px;
+    color: var(--ink-400);
+    font-weight: 500;
+    margin-left: 4px;
+  }
+  .metric-card-note {
+    font-size: 12.5px;
+    color: var(--ink-500);
+    margin-top: 8px;
+    line-height: 1.45;
+  }
+  .metric-card.warn { border-color: #fcd34d; background: linear-gradient(180deg, var(--amber-50), var(--white)); }
+  .metric-card.warn .metric-card-note { color: #92400e; }
+  .metric-card.danger { border-color: #fca5a5; background: linear-gradient(180deg, var(--red-50), var(--white)); }
+  .metric-card.danger .metric-card-note { color: var(--red-700); }
+
+  /* AI TAG */
+  .ai-tag-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .ai-tag-pill {
+    font-size: 11px;
+    background: #ede9fe;
+    color: #6d28d9;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  /* FAILED BLOCK */
+  .analysis-failed {
+    background: linear-gradient(135deg, var(--amber-50), #fef3c7);
+    border: 1px solid #fde68a;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin: 16px 0;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .analysis-failed-icon {
+    width: 36px; height: 36px;
+    background: var(--amber-50);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: #a16207;
+    flex-shrink: 0;
+  }
+  .analysis-failed-icon svg { width: 18px; height: 18px; }
+  .analysis-failed-content h4 {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--ink-900);
+    margin-bottom: 6px;
+  }
+  .analysis-failed-content p {
+    font-size: 13.5px;
+    color: var(--ink-700);
+    line-height: 1.55;
+  }
+
+  /* INSTRUCTIONS CHECKLIST */
+  .check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .check-list li {
+    padding: 10px 0 10px 28px;
+    position: relative;
+    font-size: 14px;
+    color: var(--ink-700);
+    line-height: 1.55;
+    border-bottom: 1px dashed var(--border);
+  }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 16px;
+    height: 16px;
+    background: var(--green-50);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-size: 11px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .check-list strong { color: var(--ink-900); font-weight: 600; }
+
   /* COMING SOON */
   .coming-soon {
     text-align: center;
@@ -430,7 +901,6 @@
     max-width: 420px; margin: 0 auto;
   }
 </style>
-
 </head>
 <body>
 
@@ -439,48 +909,43 @@
 <main>
 
 <!-- ============= SCREEN 1: MODE SELECT ============= -->
-
 <section class="screen active" id="screenMode">
   <div class="container">
     <span class="kicker"><span class="kicker-dot"></span> AI YÜRÜYÜŞ ANALİZİ</span>
     <h1>Yürüyüşten <span class="accent">çok şey</span> öğrenilir.</h1>
     <p class="lead">Düz çizgi yürüme videosundan adım uzunluğu, kadans, sol-sağ asimetri ve postür dinamiği ölçülür. Hem evde veliler için tarama, hem klinikte hızlı muayene aracı.</p>
 
-```
-<div class="mode-grid">
-  <button type="button" class="mode-card parent" data-mode="parent">
-    <div class="mode-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    <div class="mode-card-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-12a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+    <div class="mode-grid">
+      <button type="button" class="mode-card parent" data-mode="parent">
+        <div class="mode-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="mode-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-12a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3>Evde / Veli olarak</h3>
+        <p>Kendi veya çocuğunun yürüme videosunu çek, AI'dan tarama al. Sonuca göre fizyoterapist görmen gerekip gerekmediğini öğren.</p>
+        <span class="mode-card-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Tarama Aracı</span>
+      </button>
+      <button type="button" class="mode-card clinic" data-mode="clinic">
+        <div class="mode-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="mode-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.29 1.5 4.04 3 5.5l7 7z"/><path d="M2 8.5h6L9 6l3 6 3-6 1 2.5h6"/></svg>
+        </div>
+        <h3>Klinisyen modu</h3>
+        <p>Hızlı klinik gait değerlendirmesi: video + manuel gözlem notları, otomatik metrikler, hasta dosyasına kayıt ve PDF rapor.</p>
+        <span class="mode-card-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Klinik Araç</span>
+      </button>
     </div>
-    <h3>Evde / Veli olarak</h3>
-    <p>Kendi veya çocuğunun yürüme videosunu çek, AI'dan tarama al. Sonuca göre fizyoterapist görmen gerekip gerekmediğini öğren.</p>
-    <span class="mode-card-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Tarama Aracı</span>
-  </button>
-  <button type="button" class="mode-card clinic" data-mode="clinic">
-    <div class="mode-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    <div class="mode-card-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.29 1.5 4.04 3 5.5l7 7z"/><path d="M2 8.5h6L9 6l3 6 3-6 1 2.5h6"/></svg>
+
+    <div class="disclaimer" style="margin-top: 32px;">
+      <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      <div class="disclaimer-content">
+        <strong>Önemli:</strong> Bu sistem teşhis koymaz. Veriler tarama amaçlıdır ve bir fizyoterapist veya hekim değerlendirmesinin yerini tutmaz.
+      </div>
     </div>
-    <h3>Klinisyen modu</h3>
-    <p>Hızlı klinik gait değerlendirmesi: video + manuel gözlem notları, otomatik metrikler, hasta dosyasına kayıt ve PDF rapor.</p>
-    <span class="mode-card-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Klinik Araç</span>
-  </button>
-</div>
-
-<div class="disclaimer" style="margin-top: 32px;">
-  <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-  <div class="disclaimer-content">
-    <strong>Önemli:</strong> Bu sistem teşhis koymaz. Veriler tarama amaçlıdır ve bir fizyoterapist veya hekim değerlendirmesinin yerini tutmaz.
-  </div>
-</div>
-```
-
   </div>
 </section>
 
 <!-- ============= SCREEN 2: INSTRUCTIONS ============= -->
-
 <section class="screen" id="screenInstructions">
   <div class="container">
     <a class="back-link" data-back="screenMode">
@@ -488,127 +953,108 @@
       Geri
     </a>
 
-```
-<div class="progress-track">
-  <div class="progress-step active"></div>
-  <div class="progress-step"></div>
-  <div class="progress-step"></div>
-</div>
+    <div class="progress-track">
+      <div class="progress-step active"></div>
+      <div class="progress-step"></div>
+      <div class="progress-step"></div>
+    </div>
 
-<div class="mode-indicator parent" id="modeIndicator">
-  <span class="mode-indicator-dot"></span>
-  <span id="modeIndicatorLabel">Veli / Ev modu</span>
-</div>
+    <div class="mode-indicator parent" id="modeIndicator">
+      <span class="mode-indicator-dot"></span>
+      <span id="modeIndicatorLabel">Veli / Ev modu</span>
+    </div>
 
-<h2>Doğru video <span class="accent">nasıl çekilir?</span></h2>
-<p class="lead">Sistemin doğru çalışması için video kalitesi kritik. Aşağıdaki kuralları okuduktan sonra videoyu çek, sonra yükle.</p>
+    <h2>Doğru video <span class="accent">nasıl çekilir?</span></h2>
+    <p class="lead">Sistemin doğru çalışması için video kalitesi kritik. Aşağıdaki kuralları okuduktan sonra videoyu çek, sonra yükle.</p>
 
-<div class="instruction-grid">
-  <div class="instruction-card">
-    <div class="instruction-step">1</div>
-    <h4>Telefonu sabit tut</h4>
-    <p>Telefonu yere koy, raf üstüne yasla veya birinden tutmasını iste. <strong>Sallanmasın.</strong></p>
-  </div>
-  <div class="instruction-card">
-    <div class="instruction-step">2</div>
-    <h4>Yandan çekim</h4>
-    <p>Kamera yan profilini görsün. Kişi telefonun önünden yan yan geçmeli, kameraya doğru değil.</p>
-  </div>
-  <div class="instruction-card">
-    <div class="instruction-step">3</div>
-    <h4>5–10 metre yürüme</h4>
-    <p>Kişi düz çizgide doğal hızla 5–10 metre yürüsün. Tüm vücut kareye girsin.</p>
-  </div>
-</div>
+    <div class="instruction-grid">
+      <div class="instruction-card">
+        <div class="instruction-step">1</div>
+        <h4>Telefonu sabit tut</h4>
+        <p>Telefonu yere koy, raf üstüne yasla veya birinden tutmasını iste. <strong>Sallanmasın.</strong></p>
+      </div>
+      <div class="instruction-card">
+        <div class="instruction-step">2</div>
+        <h4>Yandan çekim</h4>
+        <p>Kamera yan profilini görsün. Kişi telefonun önünden yan yan geçmeli, kameraya doğru değil.</p>
+      </div>
+      <div class="instruction-card">
+        <div class="instruction-step">3</div>
+        <h4>5–10 metre yürüme</h4>
+        <p>Kişi düz çizgide doğal hızla 5–10 metre yürüsün. Tüm vücut kareye girsin.</p>
+      </div>
+    </div>
 
-<div class="setup-diagram">
-  <h4>Çekim düzeni</h4>
-  <svg class="setup-svg" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
-    <!-- Zemin çizgisi -->
-    <line x1="20" y1="160" x2="460" y2="160" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4"/>
+    <div class="setup-diagram">
+      <h4>Çekim düzeni</h4>
+      <svg class="setup-svg" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Zemin çizgisi -->
+        <line x1="20" y1="160" x2="460" y2="160" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4"/>
 
-    <!-- Telefon -->
-    <rect x="225" y="120" width="30" height="50" rx="4" fill="#0f172a"/>
-    <rect x="228" y="124" width="24" height="38" rx="2" fill="#2563eb"/>
-    <text x="240" y="195" text-anchor="middle" fill="#475569" font-size="11" font-family="DM Sans">Telefon (yere veya tripod)</text>
+        <!-- Telefon -->
+        <rect x="225" y="120" width="30" height="50" rx="4" fill="#0f172a"/>
+        <rect x="228" y="124" width="24" height="38" rx="2" fill="#2563eb"/>
+        <text x="240" y="195" text-anchor="middle" fill="#475569" font-size="11" font-family="DM Sans">Telefon (yere veya tripod)</text>
 
-    <!-- Yürüyen figür - başlangıç -->
-    <g transform="translate(60, 90)">
-      <circle cx="0" cy="0" r="10" fill="#94a3b8"/>
-      <line x1="0" y1="10" x2="0" y2="50" stroke="#94a3b8" stroke-width="3"/>
-      <line x1="0" y1="20" x2="-12" y2="40" stroke="#94a3b8" stroke-width="3"/>
-      <line x1="0" y1="20" x2="12" y2="35" stroke="#94a3b8" stroke-width="3"/>
-      <line x1="0" y1="50" x2="-8" y2="70" stroke="#94a3b8" stroke-width="3"/>
-      <line x1="0" y1="50" x2="8" y2="70" stroke="#94a3b8" stroke-width="3"/>
-    </g>
+        <!-- Yürüyen figür - başlangıç -->
+        <g transform="translate(60, 90)">
+          <circle cx="0" cy="0" r="10" fill="#94a3b8"/>
+          <line x1="0" y1="10" x2="0" y2="50" stroke="#94a3b8" stroke-width="3"/>
+          <line x1="0" y1="20" x2="-12" y2="40" stroke="#94a3b8" stroke-width="3"/>
+          <line x1="0" y1="20" x2="12" y2="35" stroke="#94a3b8" stroke-width="3"/>
+          <line x1="0" y1="50" x2="-8" y2="70" stroke="#94a3b8" stroke-width="3"/>
+          <line x1="0" y1="50" x2="8" y2="70" stroke="#94a3b8" stroke-width="3"/>
+        </g>
 
-    <!-- Yürüyen figür - bitiş -->
-    <g transform="translate(420, 90)">
-      <circle cx="0" cy="0" r="10" fill="#0f172a"/>
-      <line x1="0" y1="10" x2="0" y2="50" stroke="#0f172a" stroke-width="3"/>
-      <line x1="0" y1="20" x2="-12" y2="40" stroke="#0f172a" stroke-width="3"/>
-      <line x1="0" y1="20" x2="12" y2="35" stroke="#0f172a" stroke-width="3"/>
-      <line x1="0" y1="50" x2="-12" y2="68" stroke="#0f172a" stroke-width="3"/>
-      <line x1="0" y1="50" x2="6" y2="72" stroke="#0f172a" stroke-width="3"/>
-    </g>
+        <!-- Yürüyen figür - bitiş -->
+        <g transform="translate(420, 90)">
+          <circle cx="0" cy="0" r="10" fill="#0f172a"/>
+          <line x1="0" y1="10" x2="0" y2="50" stroke="#0f172a" stroke-width="3"/>
+          <line x1="0" y1="20" x2="-12" y2="40" stroke="#0f172a" stroke-width="3"/>
+          <line x1="0" y1="20" x2="12" y2="35" stroke="#0f172a" stroke-width="3"/>
+          <line x1="0" y1="50" x2="-12" y2="68" stroke="#0f172a" stroke-width="3"/>
+          <line x1="0" y1="50" x2="6" y2="72" stroke="#0f172a" stroke-width="3"/>
+        </g>
 
-    <!-- Ok -->
-    <line x1="80" y1="40" x2="400" y2="40" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4"/>
-    <polygon points="400,40 392,36 392,44" fill="#2563eb"/>
-    <text x="240" y="32" text-anchor="middle" fill="#2563eb" font-size="12" font-family="DM Sans" font-weight="600">5–10 metre yürüme</text>
+        <!-- Ok -->
+        <line x1="80" y1="40" x2="400" y2="40" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4"/>
+        <polygon points="400,40 392,36 392,44" fill="#2563eb"/>
+        <text x="240" y="32" text-anchor="middle" fill="#2563eb" font-size="12" font-family="DM Sans" font-weight="600">5–10 metre yürüme</text>
 
-    <!-- Başlangıç ve bitiş etiketleri -->
-    <text x="60" y="180" text-anchor="middle" fill="#64748b" font-size="10" font-family="DM Sans">Başlangıç</text>
-    <text x="420" y="180" text-anchor="middle" fill="#64748b" font-size="10" font-family="DM Sans">Bitiş</text>
-  </svg>
-</div>
+        <!-- Başlangıç ve bitiş etiketleri -->
+        <text x="60" y="180" text-anchor="middle" fill="#64748b" font-size="10" font-family="DM Sans">Başlangıç</text>
+        <text x="420" y="180" text-anchor="middle" fill="#64748b" font-size="10" font-family="DM Sans">Bitiş</text>
+      </svg>
+    </div>
 
-<div class="setup-diagram">
-  <h4>Doğru video için</h4>
-  <ul style="list-style: none; padding: 0;">
-    <li style="padding: 8px 0 8px 26px; position: relative; font-size: 14px; color: var(--ink-700); line-height: 1.55; border-bottom: 1px dashed var(--border);">
-      <span style="position: absolute; left: 0; top: 12px; width: 14px; height: 14px; background: var(--green-50); border-radius: 50%; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E&quot;); background-size: 10px; background-position: center; background-repeat: no-repeat;"></span>
-      <strong>Süre:</strong> 5–15 saniye arası video. Daha uzun olursa kırp.
-    </li>
-    <li style="padding: 8px 0 8px 26px; position: relative; font-size: 14px; color: var(--ink-700); line-height: 1.55; border-bottom: 1px dashed var(--border);">
-      <span style="position: absolute; left: 0; top: 12px; width: 14px; height: 14px; background: var(--green-50); border-radius: 50%; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E&quot;); background-size: 10px; background-position: center; background-repeat: no-repeat;"></span>
-      <strong>Kıyafet:</strong> Streç veya dar kıyafet — bol giysi vücut hatlarını gizler. Çıplak ayak ideal.
-    </li>
-    <li style="padding: 8px 0 8px 26px; position: relative; font-size: 14px; color: var(--ink-700); line-height: 1.55; border-bottom: 1px dashed var(--border);">
-      <span style="position: absolute; left: 0; top: 12px; width: 14px; height: 14px; background: var(--green-50); border-radius: 50%; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E&quot;); background-size: 10px; background-position: center; background-repeat: no-repeat;"></span>
-      <strong>Aydınlatma:</strong> Yandan değil, önden veya tepeden ışık. Gölge yanıltır.
-    </li>
-    <li style="padding: 8px 0 8px 26px; position: relative; font-size: 14px; color: var(--ink-700); line-height: 1.55; border-bottom: 1px dashed var(--border);">
-      <span style="position: absolute; left: 0; top: 12px; width: 14px; height: 14px; background: var(--green-50); border-radius: 50%; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E&quot;); background-size: 10px; background-position: center; background-repeat: no-repeat;"></span>
-      <strong>Arka plan:</strong> Düz duvar, sade renk ideal. Karmaşık arka plan AI'yı yanıltır.
-    </li>
-    <li style="padding: 8px 0 8px 26px; position: relative; font-size: 14px; color: var(--ink-700); line-height: 1.55;">
-      <span style="position: absolute; left: 0; top: 12px; width: 14px; height: 14px; background: var(--green-50); border-radius: 50%; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E&quot;); background-size: 10px; background-position: center; background-repeat: no-repeat;"></span>
-      <strong>Hız:</strong> Doğal yürüme hızı. Yavaş veya hızlı değil — günlük tempoda.
-    </li>
-  </ul>
-</div>
+    <div class="setup-diagram">
+      <h4>Doğru video için</h4>
+      <ul class="check-list">
+        <li><strong>Süre:</strong> 5–15 saniye arası video. Daha uzun olursa kırp.</li>
+        <li><strong>Kıyafet:</strong> Streç veya dar kıyafet — bol giysi vücut hatlarını gizler. Çıplak ayak ideal.</li>
+        <li><strong>Aydınlatma:</strong> Yandan değil, önden veya tepeden ışık. Gölge yanıltır.</li>
+        <li><strong>Arka plan:</strong> Düz duvar, sade renk ideal. Karmaşık arka plan AI'yı yanıltır.</li>
+        <li><strong>Hız:</strong> Doğal yürüme hızı. Yavaş veya hızlı değil — günlük tempoda.</li>
+      </ul>
+    </div>
 
-<div class="disclaimer">
-  <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-  <div class="disclaimer-content">
-    <strong>Gizlilik:</strong> Video cihazından <strong>hiçbir sunucuya gönderilmez</strong>. Tüm analiz tarayıcında yapılır, sayfa kapatıldığında veriler silinir.
-  </div>
-</div>
+    <div class="disclaimer">
+      <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      <div class="disclaimer-content">
+        <strong>Gizlilik:</strong> Video cihazından <strong>hiçbir sunucuya gönderilmez</strong>. Tüm analiz tarayıcında yapılır, sayfa kapatıldığında veriler silinir.
+      </div>
+    </div>
 
-<div class="button-row">
-  <button type="button" class="btn btn-primary" id="instructionsNextBtn">
-    Anladım, Devam Et
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </button>
-</div>
-```
-
+    <div class="button-row">
+      <button type="button" class="btn btn-primary" id="instructionsNextBtn">
+        Anladım, Devam Et
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
   </div>
 </section>
 
 <!-- ============= SCREEN 3: VIDEO UPLOAD ============= -->
-
 <section class="screen" id="screenUpload">
   <div class="container">
     <a class="back-link" data-back="screenInstructions">
@@ -616,84 +1062,120 @@
       Geri
     </a>
 
-```
-<div class="progress-track">
-  <div class="progress-step done"></div>
-  <div class="progress-step active"></div>
-  <div class="progress-step"></div>
-</div>
-
-<div class="mode-indicator parent" id="modeIndicator2">
-  <span class="mode-indicator-dot"></span>
-  <span id="modeIndicatorLabel2">Veli / Ev modu</span>
-</div>
-
-<h2>Video <span class="accent">yükle.</span></h2>
-<p class="lead">Yandan, tüm vücudun göründüğü, 5–15 saniyelik yürüme videonu seç.</p>
-
-<label class="video-slot" id="videoSlot">
-  <div class="video-slot-content" id="videoSlotEmpty">
-    <div class="video-slot-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+    <div class="progress-track">
+      <div class="progress-step done"></div>
+      <div class="progress-step active"></div>
+      <div class="progress-step"></div>
     </div>
-    <div class="video-slot-label">Video yüklemek için dokun</div>
-    <div class="video-slot-hint">Telefonun galerisinden yürüme videonu seç. Sayfa videoyu yerelde işler, sunucuya göndermez.</div>
-  </div>
-  <video id="videoPreview" class="video-preview" controls playsinline style="display:none;"></video>
-  <div class="video-meta-bar" id="videoMetaBar" style="display:none;">
-    <span class="video-meta-text" id="videoMetaText"></span>
-    <button type="button" class="video-remove-btn" id="videoRemoveBtn">Değiştir</button>
-  </div>
-  <input type="file" accept="video/*" id="videoInput">
-</label>
 
-<div class="button-row">
-  <button type="button" class="btn btn-primary" id="uploadNextBtn" disabled>
-    Analiz Et
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </button>
-</div>
-```
+    <div class="mode-indicator parent" id="modeIndicator2">
+      <span class="mode-indicator-dot"></span>
+      <span id="modeIndicatorLabel2">Veli / Ev modu</span>
+    </div>
 
+    <h2>Video <span class="accent">yükle.</span></h2>
+    <p class="lead">Yandan, tüm vücudun göründüğü, 5–15 saniyelik yürüme videonu seç.</p>
+
+    <label class="video-slot" id="videoSlot">
+      <div class="video-slot-content" id="videoSlotEmpty">
+        <div class="video-slot-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div class="video-slot-label">Video yüklemek için dokun</div>
+        <div class="video-slot-hint">Telefonun galerisinden yürüme videonu seç. Sayfa videoyu yerelde işler, sunucuya göndermez.</div>
+      </div>
+      <video id="videoPreview" class="video-preview" controls playsinline style="display:none;"></video>
+      <div class="video-meta-bar" id="videoMetaBar" style="display:none;">
+        <span class="video-meta-text" id="videoMetaText"></span>
+        <button type="button" class="video-remove-btn" id="videoRemoveBtn">Değiştir</button>
+      </div>
+      <input type="file" accept="video/*" id="videoInput">
+    </label>
+
+    <div class="button-row">
+      <button type="button" class="btn btn-primary" id="uploadNextBtn" disabled>
+        Analiz Et
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
   </div>
 </section>
 
-<!-- ============= SCREEN 4: COMING SOON (placeholder) ============= -->
+<!-- ============= SCREEN 4: ANALYZING ============= -->
+<section class="screen" id="screenAnalyzing">
+  <div class="container">
+    <div class="progress-track">
+      <div class="progress-step done"></div>
+      <div class="progress-step done"></div>
+      <div class="progress-step active"></div>
+    </div>
 
+    <h2>Analiz <span class="accent">ediliyor.</span></h2>
+    <p class="lead">Video frame frame inceleniyor. Bu işlem 5–20 saniye sürebilir, video uzunluğuna ve cihazına bağlı.</p>
+
+    <div class="analysis-card">
+      <div class="analysis-spinner"></div>
+      <div class="analysis-status" id="analysisStatus">Sistem yükleniyor...</div>
+      <div class="analysis-detail" id="analysisDetail">MediaPipe AI motoru hazırlanıyor</div>
+      <div class="analysis-progress-track">
+        <div class="analysis-progress-fill" id="analysisProgress"></div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      <div class="disclaimer-content">
+        <strong>Sayfayı kapatma.</strong> Analiz tarayıcında yapılıyor — kapatırsan baştan yapman gerekir. İnternet bağlantısı sadece ilk yüklemede gerekli.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SCREEN 5: RESULTS ============= -->
+<section class="screen" id="screenResults">
+  <div class="container">
+    <a class="back-link" id="resultsBackLink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Yeni analiz
+    </a>
+
+    <div class="ai-tag-row">
+      <span class="ai-tag-pill">AI TAHMİN</span>
+    </div>
+
+    <div id="resultsContent"></div>
+
+    <div class="disclaimer" style="margin-top: 24px;">
+      <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      <div class="disclaimer-content">
+        <strong>Önemli:</strong> Bu sonuçlar fotoğraf üzerinden yapılan kaba bir tahmindir, klinik teşhis değildir. Yürüyüş analizinde pose, kıyafet, kamera açısı ve ışık doğruluğu etkiler. <strong>Endişeniz varsa mutlaka bir fizyoterapist görünüz.</strong>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button type="button" class="btn btn-secondary" id="resultsRestartBtn">Yeni Analiz</button>
+      <a href="https://wa.me/905345840913?text=Merhaba%2C%20y%C3%BCr%C3%BCy%C3%BC%C5%9F%20de%C4%9Ferlendirmesi%20i%C3%A7in%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+        Yüz Yüze Randevu
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SCREEN: continue placeholder (deprecated) ============= -->
 <section class="screen" id="screenContinue">
   <div class="container">
     <a class="back-link" data-back="screenUpload">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Geri
     </a>
-
-```
-<div class="progress-track">
-  <div class="progress-step done"></div>
-  <div class="progress-step done"></div>
-  <div class="progress-step active"></div>
-</div>
-
-<h2>İskelet hazır <span class="accent">— sırada analiz.</span></h2>
-<p class="lead">Mod seçimi, talimat ekranı ve video yükleme akışı çalışıyor. Sıradaki adımda MediaPipe video analizi devreye girecek.</p>
-
-<div class="coming-soon">
-  <div class="coming-soon-icon">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-  </div>
-  <h3>Bu adım yapım aşamasında</h3>
-  <p>Sistem aşama aşama geliştiriliyor. <strong>Adım 1 (iskelet ve video yükleme)</strong> tamam. Sıradaki: video analizi.</p>
-</div>
-
-<div class="button-row" style="margin-top: 24px;">
-  <a href="/" class="btn btn-secondary">Ana Sayfaya Dön</a>
-  <a href="https://wa.me/905345840913?text=Merhaba%2C%20y%C3%BCr%C3%BCy%C3%BC%C5%9F%20de%C4%9Ferlendirmesi%20i%C3%A7in%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-    Yüz Yüze Randevu
-  </a>
-</div>
-```
-
+    <div class="coming-soon">
+      <div class="coming-soon-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Geçici ekran</h3>
+      <p>Bu ekran kullanılmıyor.</p>
+    </div>
   </div>
 </section>
 
@@ -827,8 +1309,460 @@
   }
 
   uploadNextBtn.addEventListener('click', function() {
-    showScreen('screenContinue');
+    showScreen('screenAnalyzing');
+    runAnalysis();
   });
+
+  // ============== ANALYSIS ==============
+  var mediaPipeLoaded = false;
+  var poseInstance = null;
+  var analysisState = {
+    frames: [],
+    metrics: null
+  };
+
+  function setStatus(text, detail, progressPct) {
+    var s = document.getElementById('analysisStatus');
+    var d = document.getElementById('analysisDetail');
+    var p = document.getElementById('analysisProgress');
+    if (s && text) s.textContent = text;
+    if (d && detail !== undefined) d.textContent = detail;
+    if (p && progressPct !== undefined) p.style.width = progressPct + '%';
+  }
+
+  function runAnalysis() {
+    analysisState = { frames: [], metrics: null };
+    setStatus('Sistem yükleniyor...', 'MediaPipe AI motoru hazırlanıyor', 5);
+
+    loadMediaPipe(function(err) {
+      if (err) {
+        showAnalysisError('AI sistemi yüklenemedi. İnternet bağlantını kontrol edip tekrar dene.');
+        return;
+      }
+      setStatus('Video hazırlanıyor...', 'Frame\'ler ayıklanıyor', 15);
+      extractAndAnalyzeFrames();
+    });
+  }
+
+  function loadMediaPipe(callback) {
+    if (mediaPipeLoaded && window.Pose) {
+      callback(null);
+      return;
+    }
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5/pose.js';
+    script.crossOrigin = 'anonymous';
+    script.onload = function() {
+      mediaPipeLoaded = true;
+      callback(null);
+    };
+    script.onerror = function() {
+      callback(new Error('MediaPipe yüklenemedi'));
+    };
+    document.head.appendChild(script);
+  }
+
+  function extractAndAnalyzeFrames() {
+    if (!state.videoFile || !state.videoUrl) {
+      showAnalysisError('Video bulunamadı, baştan başlayalım.');
+      return;
+    }
+
+    // Hidden video element ile frame ayıkla
+    var hiddenVideo = document.createElement('video');
+    hiddenVideo.src = state.videoUrl;
+    hiddenVideo.muted = true;
+    hiddenVideo.playsInline = true;
+    hiddenVideo.crossOrigin = 'anonymous';
+
+    hiddenVideo.addEventListener('loadedmetadata', function() {
+      var duration = hiddenVideo.duration;
+      var fps = 10; // saniyede 10 frame yeterli
+      var maxFrames = Math.min(150, Math.floor(duration * fps));
+      var interval = duration / maxFrames;
+
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+      canvas.width = Math.min(640, hiddenVideo.videoWidth);
+      canvas.height = Math.floor(canvas.width * (hiddenVideo.videoHeight / hiddenVideo.videoWidth));
+
+      // Pose instance hazırla
+      try {
+        if (!poseInstance) {
+          poseInstance = new window.Pose({
+            locateFile: function(file) {
+              return 'https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5/' + file;
+            }
+          });
+          poseInstance.setOptions({
+            modelComplexity: 1,
+            smoothLandmarks: true,
+            enableSegmentation: false,
+            minDetectionConfidence: 0.5,
+            minTrackingConfidence: 0.5
+          });
+        }
+      } catch(e) {
+        showAnalysisError('Pose detector başlatılamadı.');
+        return;
+      }
+
+      var currentFrame = 0;
+      var pendingResolve = null;
+
+      poseInstance.onResults(function(results) {
+        if (results.poseLandmarks) {
+          analysisState.frames.push({
+            time: currentFrame * interval,
+            landmarks: results.poseLandmarks
+          });
+        }
+        if (pendingResolve) { pendingResolve(); pendingResolve = null; }
+      });
+
+      function processFrame(frameIdx) {
+        return new Promise(function(resolve) {
+          var time = frameIdx * interval;
+          if (time >= duration) { resolve('done'); return; }
+
+          hiddenVideo.currentTime = time;
+          hiddenVideo.addEventListener('seeked', function onSeeked() {
+            hiddenVideo.removeEventListener('seeked', onSeeked);
+            try {
+              ctx.drawImage(hiddenVideo, 0, 0, canvas.width, canvas.height);
+              currentFrame = frameIdx;
+              pendingResolve = resolve;
+              poseInstance.send({ image: canvas }).catch(function() {
+                pendingResolve = null;
+                resolve();
+              });
+              // Timeout güvencesi
+              setTimeout(function() {
+                if (pendingResolve === resolve) {
+                  pendingResolve = null;
+                  resolve();
+                }
+              }, 2000);
+            } catch(e) {
+              resolve();
+            }
+          });
+        });
+      }
+
+      // Sıralı frame işleme
+      var frameIdx = 0;
+      function nextFrame() {
+        if (frameIdx >= maxFrames) {
+          finishAnalysis();
+          return;
+        }
+        var pct = 15 + Math.round((frameIdx / maxFrames) * 70);
+        setStatus('Hareketler analiz ediliyor...', 'Frame ' + (frameIdx + 1) + ' / ' + maxFrames, pct);
+        processFrame(frameIdx).then(function(res) {
+          frameIdx++;
+          if (res === 'done') { finishAnalysis(); return; }
+          setTimeout(nextFrame, 30); // hafif gecikme — UI bloklanmasın
+        });
+      }
+
+      nextFrame();
+    });
+
+    hiddenVideo.addEventListener('error', function() {
+      showAnalysisError('Video açılamadı. Format desteklenmiyor olabilir.');
+    });
+
+    hiddenVideo.load();
+  }
+
+  function finishAnalysis() {
+    setStatus('Sonuçlar hesaplanıyor...', 'Metrikler çıkarılıyor', 90);
+    setTimeout(function() {
+      try {
+        var metrics = computeMetrics(analysisState.frames, state.videoDuration);
+        analysisState.metrics = metrics;
+        setStatus('Tamamlandı', '', 100);
+        setTimeout(function() {
+          renderResults(metrics);
+          showScreen('screenResults');
+        }, 400);
+      } catch(e) {
+        showAnalysisError('Metrikler hesaplanırken hata oluştu: ' + e.message);
+      }
+    }, 200);
+  }
+
+  function showAnalysisError(message) {
+    var content = document.getElementById('resultsContent');
+    content.innerHTML =
+      '<div class="analysis-failed">' +
+        '<div class="analysis-failed-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg></div>' +
+        '<div class="analysis-failed-content">' +
+          '<h4>Analiz tamamlanamadı</h4>' +
+          '<p>' + escapeHtml(message) + '</p>' +
+        '</div>' +
+      '</div>';
+    showScreen('screenResults');
+  }
+
+  // ============== METRIC COMPUTATION ==============
+  function computeMetrics(frames, totalDuration) {
+    if (!frames || frames.length < 5) {
+      return { error: 'Yeterli frame verisi yok. Video çok kısa veya pose tespit edilemedi.', frameCount: frames.length };
+    }
+
+    // MediaPipe landmark indeksleri:
+    // 11/12: omuzlar, 23/24: kalçalar, 27/28: ayak bilekleri, 31/32: ayak
+    // 7/8: kulaklar
+
+    var leftAnkleY = [];   // sol ayak bileği y (yere değme tespiti için)
+    var rightAnkleY = [];  // sağ ayak bileği y
+    var times = [];
+    var hipDiffs = [];     // sol-sağ kalça y farkı (Trendelenburg)
+    var headOffsets = []; // baş öne kayma açısı
+
+    var validFrames = 0;
+    for (var i = 0; i < frames.length; i++) {
+      var lm = frames[i].landmarks;
+      var lAnk = lm[27], rAnk = lm[28];
+      var lHip = lm[23], rHip = lm[24];
+      var lShoulder = lm[11], rShoulder = lm[12];
+      var lEar = lm[7], rEar = lm[8];
+
+      if (!lAnk || !rAnk || !lHip || !rHip) continue;
+      if ((lAnk.visibility || 0) < 0.5 || (rAnk.visibility || 0) < 0.5) continue;
+
+      validFrames++;
+      times.push(frames[i].time);
+      leftAnkleY.push(lAnk.y);
+      rightAnkleY.push(rAnk.y);
+
+      // Hip difference
+      hipDiffs.push(Math.abs(lHip.y - rHip.y));
+
+      // Head forward offset (yan görüntü öncelikli — en visible kulak-omuz)
+      if (lShoulder && rShoulder && lEar && rEar) {
+        var leftPair = Math.min(lEar.visibility || 0, lShoulder.visibility || 0);
+        var rightPair = Math.min(rEar.visibility || 0, rShoulder.visibility || 0);
+        var ear, shoulder;
+        if (leftPair > rightPair) { ear = lEar; shoulder = lShoulder; }
+        else { ear = rEar; shoulder = rShoulder; }
+        if ((ear.visibility || 0) > 0.5 && (shoulder.visibility || 0) > 0.5) {
+          var dx = Math.abs(ear.x - shoulder.x);
+          var dy = Math.abs(shoulder.y - ear.y);
+          if (dy > 0.01) {
+            var angle = Math.atan2(dx, dy) * 180 / Math.PI;
+            headOffsets.push(angle);
+          }
+        }
+      }
+    }
+
+    if (validFrames < 5) {
+      return { error: 'Yeterli net frame yok. Pose tespit edilemiyor — daha iyi aydınlatma ve net çekim ile tekrar deneyin.', frameCount: validFrames };
+    }
+
+    // Adım tespiti: ayak bileği y-koordinatının lokal minimumları
+    // (yere değdiğinde y büyük, kalktığında küçük — koord normalize 0-1)
+    // Heel strike = y'nin lokal MAXIMUM olduğu nokta (alttayken)
+    var leftSteps = countLocalMaxima(leftAnkleY, 3, 0.02);
+    var rightSteps = countLocalMaxima(rightAnkleY, 3, 0.02);
+    var totalSteps = leftSteps + rightSteps;
+
+    // Kadans (adım/dakika)
+    var cadence = totalDuration > 0 ? Math.round((totalSteps / totalDuration) * 60) : 0;
+
+    // Sol-sağ asimetri (adım sayısı farkı yüzde)
+    var stepAsymmetry = 0;
+    if (leftSteps + rightSteps > 0) {
+      stepAsymmetry = Math.round((Math.abs(leftSteps - rightSteps) / Math.max(leftSteps, rightSteps)) * 100);
+    }
+
+    // Pelvis salınımı (Trendelenburg göstergesi)
+    var hipMean = mean(hipDiffs);
+    var hipStdev = stdev(hipDiffs);
+    var pelvisInstability = Math.round(hipStdev * 1000); // 0-1 arası → ölçeklendir
+
+    // Baş öne kayma ortalaması
+    var headMean = headOffsets.length > 0 ? mean(headOffsets).toFixed(1) : null;
+
+    return {
+      frameCount: validFrames,
+      duration: totalDuration.toFixed(1),
+      totalSteps: totalSteps,
+      leftSteps: leftSteps,
+      rightSteps: rightSteps,
+      cadence: cadence,
+      stepAsymmetry: stepAsymmetry,
+      pelvisInstability: pelvisInstability,
+      hipMean: hipMean.toFixed(3),
+      headMean: headMean
+    };
+  }
+
+  function countLocalMaxima(arr, windowSize, minDelta) {
+    var count = 0;
+    for (var i = windowSize; i < arr.length - windowSize; i++) {
+      var isMax = true;
+      for (var j = 1; j <= windowSize; j++) {
+        if (arr[i] <= arr[i - j] || arr[i] <= arr[i + j]) {
+          isMax = false; break;
+        }
+      }
+      if (isMax) {
+        // Min delta kontrolü (gürültü filtreleme)
+        var localMin = Math.min(arr[i - windowSize], arr[i + windowSize]);
+        if (arr[i] - localMin >= minDelta) count++;
+      }
+    }
+    return count;
+  }
+
+  function mean(arr) {
+    if (!arr.length) return 0;
+    var s = 0;
+    for (var i = 0; i < arr.length; i++) s += arr[i];
+    return s / arr.length;
+  }
+
+  function stdev(arr) {
+    if (arr.length < 2) return 0;
+    var m = mean(arr);
+    var sq = 0;
+    for (var i = 0; i < arr.length; i++) sq += (arr[i] - m) * (arr[i] - m);
+    return Math.sqrt(sq / arr.length);
+  }
+
+  // ============== RESULT RENDER ==============
+  function renderResults(m) {
+    var content = document.getElementById('resultsContent');
+    if (m.error) {
+      content.innerHTML =
+        '<div class="analysis-failed">' +
+          '<div class="analysis-failed-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>' +
+          '<div class="analysis-failed-content">' +
+            '<h4>Analiz tamamlanamadı</h4>' +
+            '<p>' + escapeHtml(m.error) + '</p>' +
+            '<p style="margin-top:8px;">Daha iyi sonuç için: yandan çekim, düz duvar arka plan, dar kıyafet, iyi aydınlatma.</p>' +
+          '</div>' +
+        '</div>';
+      return;
+    }
+
+    // Özet status hesapla
+    var status = 'green';
+    var statusReasons = [];
+    if (m.stepAsymmetry > 30) { status = 'red'; statusReasons.push('belirgin asimetri'); }
+    else if (m.stepAsymmetry > 15) { status = 'amber'; statusReasons.push('hafif asimetri'); }
+    if (m.pelvisInstability > 50) {
+      if (status === 'green') status = 'amber';
+      statusReasons.push('pelvis salınımı');
+    }
+    if (m.headMean && parseFloat(m.headMean) > 20) {
+      if (status === 'green') status = 'amber';
+      statusReasons.push('belirgin baş öne kayması');
+    }
+
+    var summaryTitle, summaryDesc, iconSvg;
+    if (status === 'green') {
+      summaryTitle = 'Yürüyüş normal aralıkta';
+      summaryDesc = 'AI tarafından belirgin asimetri veya postür anomalisi tespit edilmedi. Yine de düzenli aktivite ve postür çalışmasına devam etmen önerilir.';
+      iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    } else if (status === 'amber') {
+      summaryTitle = 'Hafif bulgular tespit edildi';
+      summaryDesc = 'AI ' + statusReasons.join(', ') + ' işareti algıladı. Klinik teşhis değil — bir fizyoterapist görüşülmesi önerilir.';
+      iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>';
+    } else {
+      summaryTitle = 'Belirgin bulgular tespit edildi';
+      summaryDesc = 'AI ' + statusReasons.join(', ') + ' algıladı. Bu klinik teşhis değildir — kısa sürede bir fizyoterapist veya hekim görmen önerilir.';
+      iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>';
+    }
+
+    var html = '';
+    html += '<div class="result-summary ' + status + '">';
+    html += '<div class="result-icon-big">' + iconSvg + '</div>';
+    html += '<h3>' + summaryTitle + '</h3>';
+    html += '<p>' + summaryDesc + '</p>';
+    html += '</div>';
+
+    // Metrik kartları
+    html += '<div class="metric-grid">';
+
+    // Kadans
+    var cadenceTone = (m.cadence < 80 || m.cadence > 140) ? 'warn' : '';
+    html += '<div class="metric-card ' + cadenceTone + '">';
+    html += '<div class="metric-card-label">Kadans</div>';
+    html += '<div class="metric-card-value">~' + m.cadence + '<span class="metric-card-uncertainty">adım/dk · ± 10</span></div>';
+    html += '<div class="metric-card-note">Yetişkin normali: 100–130 adım/dk. ' + (m.cadence < 80 ? 'Çok yavaş — neden araştırılmalı.' : (m.cadence > 140 ? 'Çok hızlı — telaşlı yürüyüş.' : 'Normal aralıkta.')) + '</div>';
+    html += '</div>';
+
+    // Toplam adım
+    html += '<div class="metric-card">';
+    html += '<div class="metric-card-label">Toplam adım</div>';
+    html += '<div class="metric-card-value">~' + m.totalSteps + '<span class="metric-card-uncertainty">' + m.duration + ' sn içinde</span></div>';
+    html += '<div class="metric-card-note">Sol: ' + m.leftSteps + ' · Sağ: ' + m.rightSteps + '</div>';
+    html += '</div>';
+
+    // Asimetri
+    var asymTone = m.stepAsymmetry > 30 ? 'danger' : (m.stepAsymmetry > 15 ? 'warn' : '');
+    var asymNote;
+    if (m.stepAsymmetry > 30) asymNote = 'Belirgin asimetri — fizyoterapist görüşülmeli.';
+    else if (m.stepAsymmetry > 15) asymNote = 'Hafif asimetri — gözlem önerilir.';
+    else asymNote = 'Sol-sağ dengeli.';
+    html += '<div class="metric-card ' + asymTone + '">';
+    html += '<div class="metric-card-label">Sol-sağ asimetri</div>';
+    html += '<div class="metric-card-value">~%' + m.stepAsymmetry + '<span class="metric-card-uncertainty">± 10%</span></div>';
+    html += '<div class="metric-card-note">' + asymNote + '</div>';
+    html += '</div>';
+
+    // Pelvis salınımı
+    var pelvisTone = m.pelvisInstability > 80 ? 'danger' : (m.pelvisInstability > 50 ? 'warn' : '');
+    var pelvisNote;
+    if (m.pelvisInstability > 80) pelvisNote = 'Belirgin pelvis salınımı — Trendelenburg şüphesi. Gluteal kuvvet değerlendirilmeli.';
+    else if (m.pelvisInstability > 50) pelvisNote = 'Hafif pelvis salınımı.';
+    else pelvisNote = 'Pelvis stabil.';
+    html += '<div class="metric-card ' + pelvisTone + '">';
+    html += '<div class="metric-card-label">Pelvis salınımı</div>';
+    html += '<div class="metric-card-value">~' + m.pelvisInstability + '<span class="metric-card-uncertainty">birim · ± 15</span></div>';
+    html += '<div class="metric-card-note">' + pelvisNote + '</div>';
+    html += '</div>';
+
+    // Baş öne kayma (varsa)
+    if (m.headMean !== null) {
+      var headTone = parseFloat(m.headMean) > 20 ? 'warn' : '';
+      var headNote;
+      var headVal = parseFloat(m.headMean);
+      if (headVal > 20) headNote = 'Belirgin baş öne kayması — postür çalışması önerilir.';
+      else if (headVal > 10) headNote = 'Hafif baş öne kayması.';
+      else headNote = 'Baş omuz hizasında.';
+      html += '<div class="metric-card ' + headTone + '">';
+      html += '<div class="metric-card-label">Baş öne kayma</div>';
+      html += '<div class="metric-card-value">~' + m.headMean + '°<span class="metric-card-uncertainty">± 3°</span></div>';
+      html += '<div class="metric-card-note">' + headNote + '</div>';
+      html += '</div>';
+    }
+
+    html += '</div>'; // metric-grid kapanış
+
+    // Frame info
+    html += '<div style="font-size: 12px; color: var(--ink-400); text-align: center; margin-top: 12px;">';
+    html += m.frameCount + ' frame analiz edildi · MediaPipe Pose v0.5';
+    html += '</div>';
+
+    content.innerHTML = html;
+  }
+
+  // ============== RESTART ==============
+  document.getElementById('resultsRestartBtn').addEventListener('click', restartFlow);
+  document.getElementById('resultsBackLink').addEventListener('click', restartFlow);
+
+  function restartFlow() {
+    state.mode = null;
+    clearVideo();
+    analysisState = { frames: [], metrics: null };
+    showScreen('screenMode');
+  }
 
   // ============== BACK LINKS ==============
   var backLinks = document.querySelectorAll('[data-back]');
@@ -849,7 +1783,7 @@
 })();
 </script>
 
-<script src="/shared-nav.js" defer></script>
+<script src="shared-nav.js" defer></script>
 
 </body>
 </html>
