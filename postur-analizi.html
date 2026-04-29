@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Postür Analizi — AI ile fotoğrafından postür değerlendirmesi | Rehabist</title>
+<meta name="description" content="Ön ve yan fotoğrafını yükle, AI postürünü analiz etsin. İdeal/mevcut/gelecek avatarınla kendini gör. Fotoğrafların cihazından çıkmaz.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --white: #ffffff; --off-white: #fafbfc; --surface: #f5f7fa;
+    --border: #e4e8ed; --border-strong: #d0d6dd;
+    --ink-900: #0f172a; --ink-700: #1e293b; --ink-500: #475569;
+    --ink-400: #64748b; --ink-300: #94a3b8;
+    --blue-50: #eff6ff; --blue-100: #dbeafe; --blue-500: #3b82f6;
+    --blue-600: #2563eb; --blue-700: #1d4ed8; --blue-900: #1e3a8a;
+    --green-500: #10b981; --amber-500: #f59e0b; --red-500: #ef4444;
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { font-family: var(--sans); color: var(--ink-700); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  .nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; letter-spacing: -0.02em; color: var(--ink-900); }
+  .logo-mark { width: 28px; height: 28px; background: var(--blue-600); border-radius: 7px; display: grid; place-items: center; color: var(--white); }
+  .logo-mark svg { width: 15px; height: 15px; }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; background: var(--surface); border-radius: 6px; font-size: 12.5px; font-weight: 500; color: var(--ink-700); }
+  .back-btn svg { width: 13px; height: 13px; }
+
+  .screen { display: none; min-height: calc(100vh - 60px); padding: 24px 20px; animation: fadeIn 0.4s ease; }
+  .screen.active { display: flex; flex-direction: column; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .screen-inner { max-width: 560px; width: 100%; margin: 0 auto; flex: 1; display: flex; flex-direction: column; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 100px; font-size: 15px; font-weight: 600; transition: all .2s; border: 1px solid transparent; white-space: nowrap; }
+  .btn-lg { padding: 16px 32px; font-size: 16px; }
+  .btn-primary { background: var(--ink-900); color: var(--white); }
+  .btn-primary:hover { background: var(--blue-900); transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+  .btn-back-light { background: var(--surface); color: var(--ink-700); padding: 14px 16px; }
+  .btn-back-light:hover { background: var(--border); }
+  .btn svg { width: 17px; height: 17px; }
+
+  #screenIntro .screen-inner { justify-content: center; text-align: center; padding: 20px 0; }
+  .intro-kicker { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: linear-gradient(135deg, var(--blue-600), var(--blue-900)); color: var(--white); border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; margin-bottom: 22px; }
+  .user-avatar-greet { display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: var(--white); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 4px 12px rgba(15,23,42,0.06); margin-bottom: 24px; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .user-avatar-greet img { width: 48px; height: 48px; border-radius: 50%; background: var(--surface); flex-shrink: 0; }
+  .user-avatar-greet-text { flex: 1; display: flex; flex-direction: column; line-height: 1.3; text-align: left; }
+  .user-avatar-greet-text strong { font-size: 14px; font-weight: 700; color: var(--ink-900); }
+  .user-avatar-greet-text span { font-size: 12.5px; color: var(--ink-500); }
+  .user-avatar-edit { font-size: 12.5px; font-weight: 600; color: var(--blue-700); white-space: nowrap; padding: 6px 10px; border-radius: 8px; transition: background 0.15s; }
+  .user-avatar-edit:hover { background: var(--blue-50); }
+  .intro-kicker-dot { width: 6px; height: 6px; background: #86efac; border-radius: 50%; animation: pulseDot 1.8s infinite; }
+  @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
+
+  .intro-hero { width: 240px; height: 200px; margin: 0 auto 28px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; padding: 0 4px; }
+  .intro-hero-avatar { animation: heroBob 3s ease-in-out infinite; }
+  .intro-hero-avatar:nth-child(2) { animation-delay: 0.3s; }
+  .intro-hero-avatar:nth-child(3) { animation-delay: 0.6s; }
+  .intro-hero-avatar svg { width: 100%; height: 100%; }
+  @keyframes heroBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+  #screenIntro h1 { font-size: clamp(30px, 7vw, 42px); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; color: var(--ink-900); margin-bottom: 14px; }
+  #screenIntro h1 .accent { font-family: var(--serif); font-weight: 500; font-style: italic; color: var(--blue-700); }
+  .intro-desc { font-size: 16px; color: var(--ink-500); max-width: 420px; margin: 0 auto 28px; line-height: 1.55; }
+  .intro-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .intro-feature { background: var(--off-white); border: 1px solid var(--border); border-radius: 14px; padding: 14px 8px; text-align: center; }
+  .intro-feature-icon { width: 32px; height: 32px; background: var(--blue-50); color: var(--blue-700); border-radius: 8px; display: grid; place-items: center; margin: 0 auto 8px; }
+  .intro-feature-icon svg { width: 16px; height: 16px; }
+  .intro-feature-title { font-size: 11px; font-weight: 600; color: var(--ink-900); margin-bottom: 2px; }
+  .intro-feature-desc { font-size: 10.5px; color: var(--ink-500); line-height: 1.3; }
+
+  .privacy-note { background: #d1fae5; color: #065f46; border-radius: 12px; padding: 12px 16px; font-size: 12.5px; margin-bottom: 20px; max-width: 420px; margin-left: auto; margin-right: auto; display: flex; align-items: center; gap: 10px; text-align: left; }
+  .privacy-note svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .intro-actions { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  .intro-disclaimer { margin-top: 16px; font-size: 11.5px; color: var(--ink-400); max-width: 360px; margin-left: auto; margin-right: auto; }
+
+  #screenInfo .screen-inner { justify-content: center; }
+  .info-title { font-size: 26px; font-weight: 600; color: var(--ink-900); letter-spacing: -0.025em; margin-bottom: 8px; text-align: center; }
+  .info-sub { color: var(--ink-500); margin-bottom: 32px; font-size: 14.5px; text-align: center; }
+  .info-group { margin-bottom: 24px; }
+  .info-label { font-size: 12px; font-weight: 600; color: var(--ink-500); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; display: block; }
+  .info-choices { display: grid; gap: 8px; }
+  .info-choices.two-col { grid-template-columns: 1fr 1fr; }
+  .info-choices.four-col { grid-template-columns: 1fr 1fr; }
+  .info-choice { padding: 14px 16px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 14px; font-weight: 500; color: var(--ink-900); background: var(--white); text-align: center; transition: all .15s; }
+  .info-choice:hover { border-color: var(--ink-300); }
+  .info-choice.active { background: var(--ink-900); color: var(--white); border-color: var(--ink-900); }
+
+  #screenUpload .screen-inner { max-width: 640px; }
+  .upload-header { text-align: center; margin-bottom: 24px; }
+  .upload-header h2 { font-size: 24px; font-weight: 600; color: var(--ink-900); letter-spacing: -0.02em; margin-bottom: 6px; }
+  .upload-header p { font-size: 14px; color: var(--ink-500); }
+  .upload-tips { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 14px; padding: 16px; margin-bottom: 24px; display: flex; gap: 12px; }
+  .upload-tips-icon { width: 28px; height: 28px; background: var(--blue-600); color: var(--white); border-radius: 8px; display: grid; place-items: center; flex-shrink: 0; }
+  .upload-tips-icon svg { width: 15px; height: 15px; }
+  .upload-tips-content h4 { font-size: 13px; font-weight: 600; color: var(--ink-900); margin-bottom: 6px; }
+  .upload-tips-content ul { margin: 0; padding-left: 16px; font-size: 12.5px; color: var(--ink-700); line-height: 1.6; }
+  .upload-tips-content li { margin-bottom: 2px; }
+  .upload-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .upload-card { border: 2px dashed var(--border-strong); border-radius: 16px; padding: 20px 14px; text-align: center; background: var(--white); transition: all .2s; cursor: pointer; position: relative; overflow: hidden; display: block; }
+  .upload-card:hover { border-color: var(--blue-500); background: var(--blue-50); }
+  .upload-card.has-photo { border-style: solid; border-color: var(--green-500); padding: 0; }
+  .upload-silhouette { width: 60px; height: 100px; margin: 0 auto 12px; opacity: 0.3; }
+  .upload-card-title { font-size: 13.5px; font-weight: 600; color: var(--ink-900); margin-bottom: 4px; }
+  .upload-card-desc { font-size: 11.5px; color: var(--ink-500); margin-bottom: 10px; line-height: 1.3; }
+  .upload-card-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--ink-900); color: var(--white); border-radius: 100px; font-size: 12px; font-weight: 500; }
+  .upload-card-btn svg { width: 12px; height: 12px; }
+  .upload-card-preview { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; border-radius: 14px; }
+  .upload-card-check { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; background: var(--green-500); color: var(--white); border-radius: 50%; display: grid; place-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+  .upload-card-check svg { width: 14px; height: 14px; }
+  .upload-card-remove { position: absolute; top: 8px; left: 8px; width: 28px; height: 28px; background: rgba(0,0,0,0.6); color: var(--white); border-radius: 50%; display: grid; place-items: center; border: none; cursor: pointer; z-index: 2; }
+  .upload-card-remove svg { width: 14px; height: 14px; }
+  .upload-input { display: none; }
+  .upload-actions { display: flex; gap: 10px; }
+  .upload-actions .btn:first-child { flex: 0 0 auto; }
+  .upload-actions .btn:last-child { flex: 1; }
+
+  .error-box { background: #fee2e2; border: 1px solid #fecaca; color: #991b1b; border-radius: 14px; padding: 14px; margin-bottom: 18px; font-size: 13px; display: flex; align-items: flex-start; gap: 10px; }
+  .error-box svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+  .error-box strong { display: block; margin-bottom: 2px; }
+
+  #screenAnalysis .screen-inner { justify-content: center; text-align: center; }
+  .analysis-visual { width: 220px; height: 220px; margin: 0 auto 30px; position: relative; }
+  .analysis-ring { width: 100%; height: 100%; position: absolute; inset: 0; }
+  .analysis-ring circle { fill: none; stroke-width: 3; }
+  .analysis-ring .bg { stroke: var(--surface); }
+  .analysis-ring .fg { stroke: url(#analysisGrad); stroke-linecap: round; stroke-dasharray: 628; stroke-dashoffset: 628; transform: rotate(-90deg); transform-origin: center; transition: stroke-dashoffset 0.3s; }
+  .analysis-scan { position: absolute; left: 50%; top: 10%; bottom: 10%; width: 3px; background: linear-gradient(to bottom, transparent, #3b82f6, transparent); transform: translateX(-50%); filter: blur(1px); animation: scanLine 2s ease-in-out infinite; }
+  @keyframes scanLine { 0%, 100% { opacity: 0; transform: translate(-50%, -30%); } 50% { opacity: 1; transform: translate(-50%, 30%); } }
+  .analysis-figure { position: absolute; inset: 20%; display: grid; place-items: center; }
+  .analysis-figure svg { width: 70%; height: auto; }
+  .analysis-title { font-size: 22px; font-weight: 600; color: var(--ink-900); margin-bottom: 8px; letter-spacing: -0.02em; }
+  .analysis-msg { font-size: 14px; color: var(--ink-500); min-height: 20px; transition: opacity 0.3s; }
+  .analysis-pct { font-family: var(--serif); font-style: italic; font-size: 36px; font-weight: 500; color: var(--blue-700); margin-top: 14px; }
+
+  #screenResult { padding: 20px 16px 40px; }
+  #screenResult .screen-inner { max-width: 680px; }
+  .result-header { text-align: center; padding: 14px 10px 20px; }
+  .result-kicker { font-size: 11px; color: var(--ink-500); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+  .result-headline { font-size: clamp(26px, 5vw, 32px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; color: var(--ink-900); }
+  .result-headline .accent { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--blue-700); }
+
+  .score-card { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); border-radius: 24px; padding: 32px 24px; color: var(--white); text-align: center; margin-bottom: 20px; position: relative; overflow: hidden; }
+  .score-card::before { content: ''; position: absolute; top: -40%; right: -30%; width: 80%; height: 160%; background: radial-gradient(circle, rgba(147, 197, 253, 0.25), transparent 60%); pointer-events: none; }
+  .score-label { font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); font-weight: 600; margin-bottom: 12px; position: relative; }
+  .score-value { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 130px; line-height: 1; letter-spacing: -0.04em; position: relative; margin-bottom: 6px; }
+  .score-max { font-size: 22px; color: rgba(255,255,255,0.5); }
+  .score-verdict { position: relative; font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.9); line-height: 1.4; max-width: 360px; margin: 10px auto 0; }
+
+  .avatars-section { background: var(--white); border: 1px solid var(--border); border-radius: 24px; padding: 22px 16px; margin-bottom: 20px; }
+  .avatars-title { text-align: center; margin-bottom: 4px; font-size: 17px; font-weight: 600; color: var(--ink-900); letter-spacing: -0.01em; }
+  .avatars-subtitle { text-align: center; font-size: 12.5px; color: var(--ink-500); margin-bottom: 20px; }
+  .avatars-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .avatar-col { display: flex; flex-direction: column; align-items: center; }
+  .avatar-frame { width: 100%; aspect-ratio: 3/5; border-radius: 14px; overflow: hidden; position: relative; padding: 14px 4px 4px; margin-bottom: 10px; }
+  .avatar-ideal { background: linear-gradient(180deg, #ecfdf5 0%, #d1fae5 100%); border: 1px solid #86efac; }
+  .avatar-current { background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; }
+  .avatar-future { background: linear-gradient(180deg, #fff1f2 0%, #fecdd3 100%); border: 1px solid #fda4af; opacity: 0.92; filter: saturate(0.88); }
+  .avatar-svg-wrap { width: 100%; height: 100%; display: grid; place-items: center; }
+  .avatar-svg-wrap svg { width: 100%; height: 100%; }
+  .avatar-badge { position: absolute; top: 6px; left: 50%; transform: translateX(-50%); font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 100px; background: var(--white); box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 2; }
+  .avatar-ideal .avatar-badge { color: #065f46; }
+  .avatar-current .avatar-badge { color: #1d4ed8; }
+  .avatar-future .avatar-badge { color: #9f1239; }
+  .avatar-label { font-size: 11.5px; font-weight: 600; color: var(--ink-900); text-align: center; margin-bottom: 2px; }
+  .avatar-sub { font-size: 10.5px; color: var(--ink-500); text-align: center; line-height: 1.3; }
+
+  .findings { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 22px; margin-bottom: 20px; }
+  .findings-title { font-size: 13px; font-weight: 600; color: var(--ink-500); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; }
+  .finding-row { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); }
+  .finding-row:last-child { border-bottom: none; }
+  .finding-icon { width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; flex-shrink: 0; }
+  .finding-icon svg { width: 16px; height: 16px; }
+  .finding-good { background: #d1fae5; color: #065f46; }
+  .finding-mild { background: #fef3c7; color: #92400e; }
+  .finding-bad { background: #fee2e2; color: #991b1b; }
+  .finding-name { flex: 1; font-size: 14px; font-weight: 500; color: var(--ink-900); }
+  .finding-value { font-size: 11.5px; font-weight: 600; padding: 3px 9px; border-radius: 100px; }
+  .finding-value.good { background: #d1fae5; color: #065f46; }
+  .finding-value.mild { background: #fef3c7; color: #92400e; }
+  .finding-value.bad { background: #fee2e2; color: #991b1b; }
+
+  .exercises { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 22px; margin-bottom: 20px; }
+  .exercises h3 { font-size: 16px; font-weight: 600; color: var(--ink-900); margin-bottom: 14px; }
+  .exercise-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .exercise-item:last-child { border-bottom: none; }
+  .exercise-num { width: 28px; height: 28px; border-radius: 8px; background: var(--blue-600); color: var(--white); display: grid; place-items: center; font-size: 12.5px; font-weight: 700; flex-shrink: 0; }
+  .exercise-content { flex: 1; }
+  .exercise-name { font-size: 14.5px; font-weight: 600; color: var(--ink-900); margin-bottom: 3px; }
+  .exercise-desc { font-size: 13px; color: var(--ink-500); line-height: 1.5; }
+
+  .share-block { background: linear-gradient(135deg, #f0f4ff, #fafbfc); border: 1px solid var(--blue-100); border-radius: 20px; padding: 22px; margin-bottom: 20px; }
+  .share-block h3 { font-size: 15px; font-weight: 600; color: var(--ink-900); margin-bottom: 4px; }
+  .share-block p { font-size: 13px; color: var(--ink-500); margin-bottom: 16px; }
+  .share-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .share-btn { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 14px; border-radius: 10px; background: var(--white); border: 1px solid var(--border-strong); font-size: 13px; font-weight: 500; color: var(--ink-900); transition: all .15s; }
+  .share-btn:hover { border-color: var(--blue-500); }
+  .share-btn svg { width: 15px; height: 15px; }
+  .share-btn.download { grid-column: 1 / -1; background: var(--ink-900); color: var(--white); border-color: var(--ink-900); }
+  .share-preview { display: none; margin-top: 14px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--white); }
+  .share-preview.visible { display: block; }
+  .share-preview img { width: 100%; display: block; }
+  .share-preview-help { padding: 10px 14px; font-size: 12px; color: var(--ink-500); text-align: center; background: var(--off-white); border-top: 1px solid var(--border); }
+
+  .result-actions { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 22px; }
+  .result-actions h3 { font-size: 15px; font-weight: 600; color: var(--ink-900); margin-bottom: 14px; }
+  .action-link { display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 12px; text-decoration: none; color: inherit; transition: background .15s; }
+  .action-link:hover { background: var(--off-white); }
+  .action-link-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--blue-50); color: var(--blue-700); display: grid; place-items: center; flex-shrink: 0; }
+  .action-link-icon svg { width: 17px; height: 17px; }
+  .action-link-text { flex: 1; }
+  .action-link-title { font-size: 14px; font-weight: 600; color: var(--ink-900); margin-bottom: 2px; }
+  .action-link-desc { font-size: 12px; color: var(--ink-500); }
+  .action-link-arrow svg { width: 15px; height: 15px; color: var(--ink-300); }
+
+  .result-reset { text-align: center; margin-top: 20px; }
+  .reset-btn { font-size: 13px; color: var(--ink-500); text-decoration: underline; font-weight: 500; }
+
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120px); background: var(--ink-900); color: var(--white); padding: 12px 20px; border-radius: 100px; font-size: 13.5px; font-weight: 500; z-index: 200; transition: transform .35s cubic-bezier(0.22, 1, 0.36, 1); box-shadow: 0 10px 30px -5px rgba(0,0,0,0.3); max-width: 300px; text-align: center; }
+  .toast.visible { transform: translateX(-50%) translateY(0); }
+
+  #shareCanvas { display: none; }
+
+  @media (max-width: 480px) {
+    .avatars-grid { gap: 6px; }
+    .avatar-badge { font-size: 8.5px; padding: 2px 6px; }
+    .avatar-label { font-size: 10.5px; }
+    .avatar-sub { font-size: 9.5px; }
+    .upload-silhouette { width: 50px; height: 80px; }
+  }
+</style>
+<script>
+// Avatar entegrasyonu: kullanıcının kayıtlı avatarı varsa selamla.
+// Zorunlu yönlendirme YOK — sayfa her durumda açılır.
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared-theme.css">
+</head>
+<body>
+
+<div id="rb-nav-mount"></div>
+
+<!-- INTRO -->
+<section class="screen active" id="screenIntro">
+  <div class="screen-inner">
+    <div class="user-avatar-greet" id="userAvatarGreet" style="display:none">
+      <img id="userAvatarImg" alt="Avatarın" />
+      <div class="user-avatar-greet-text">
+        <strong>Hazırsın.</strong>
+        <span>Avatarın kayıtlı, analize başlayalım.</span>
+      </div>
+      <a href="/avatar-kurucu.html?next=postur-analizi.html" class="user-avatar-edit">Düzenle</a>
+    </div>
+    <span class="intro-kicker"><span class="intro-kicker-dot"></span> AI POSTÜR ANALİZİ</span>
+    <div class="intro-hero" id="heroAvatars"></div>
+    <h1><span class="accent">Postürünü</span> AI ile analiz et.</h1>
+    <p class="intro-desc">Ön ve yan fotoğrafını yükle. Yapay zeka postürünü çözümlesin, 3 avatarla geleceğini görsün.</p>
+
+    <div class="intro-features">
+      <div class="intro-feature">
+        <div class="intro-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="intro-feature-title">AI Analiz</div>
+        <div class="intro-feature-desc">33 nokta tespit</div>
+      </div>
+      <div class="intro-feature">
+        <div class="intro-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg></div>
+        <div class="intro-feature-title">3 Avatar</div>
+        <div class="intro-feature-desc">İdeal · Mevcut · Gelecek</div>
+      </div>
+      <div class="intro-feature">
+        <div class="intro-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <div class="intro-feature-title">Egzersiz</div>
+        <div class="intro-feature-desc">Kişisel plan</div>
+      </div>
+    </div>
+
+    <div class="privacy-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div><strong>Fotoğrafların cihazından çıkmaz.</strong> Tüm analiz tarayıcıda yapılır, sunucuya gönderilmez.</div>
+    </div>
+
+    <div class="intro-actions">
+      <button type="button" class="btn btn-primary btn-lg" onclick="goToInfo()">
+        Analize Başla
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <p class="intro-disclaimer">Bu analiz bilgilendirme amaçlıdır, tıbbi tanı yerine geçmez.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="screen" id="screenInfo">
+  <div class="screen-inner">
+    <h2 class="info-title">Seni biraz tanıyalım</h2>
+    <p class="info-sub">Avatarını ve öneri planını kişiselleştirmek için.</p>
+
+    <div class="info-group">
+      <span class="info-label">Cinsiyet</span>
+      <div class="info-choices two-col">
+        <button type="button" class="info-choice" data-gender="f" onclick="selectGender(this, 'f')">Kadın</button>
+        <button type="button" class="info-choice" data-gender="m" onclick="selectGender(this, 'm')">Erkek</button>
+      </div>
+    </div>
+
+    <div class="info-group">
+      <span class="info-label">Yaş Grubu</span>
+      <div class="info-choices four-col">
+        <button type="button" class="info-choice" data-age="young" onclick="selectAge(this, 'young')">18-30</button>
+        <button type="button" class="info-choice" data-age="mid" onclick="selectAge(this, 'mid')">30-45</button>
+        <button type="button" class="info-choice" data-age="senior" onclick="selectAge(this, 'senior')">45-60</button>
+        <button type="button" class="info-choice" data-age="elder" onclick="selectAge(this, 'elder')">60+</button>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:10px; margin-top: 20px;">
+      <button type="button" class="btn btn-back-light" onclick="goToIntro()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <button type="button" class="btn btn-primary" onclick="goToUpload()" id="infoNextBtn" style="flex:1;" disabled>
+        Fotoğraf Yükle
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- UPLOAD -->
+<section class="screen" id="screenUpload">
+  <div class="screen-inner">
+    <div class="upload-header">
+      <h2>Fotoğraflarını yükle</h2>
+      <p>İki fotoğrafı da yükledikten sonra analiz başlar.</p>
+    </div>
+
+    <div class="upload-tips">
+      <span class="upload-tips-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></span>
+      <div class="upload-tips-content">
+        <h4>En iyi sonuç için:</h4>
+        <ul>
+          <li>Dar/sıkı kıyafet giy</li>
+          <li>Düz duvara karşı, tam boy görün</li>
+          <li>2 metre mesafeden çekilmiş olsun</li>
+          <li>Rahat dur, kasma</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="upload-grid">
+      <label class="upload-card" id="uploadFront" for="fileFront">
+        <svg class="upload-silhouette" viewBox="0 0 60 100"><circle cx="30" cy="14" r="8" fill="#94a3b8"/><path d="M22 22 L22 26 L14 40 L14 62 L18 62 L20 44 L22 44 L22 88 L26 88 L28 62 L32 62 L34 88 L38 88 L38 44 L40 44 L42 62 L46 62 L46 40 L38 26 L38 22 Z" fill="#94a3b8"/></svg>
+        <div class="upload-card-title">Ön Fotoğraf</div>
+        <div class="upload-card-desc">Yüzün kameraya dönük,<br>kollar yanda</div>
+        <span class="upload-card-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Yükle</span>
+        <input type="file" accept="image/*" class="upload-input" id="fileFront" onchange="handleFileUpload(event, 'front')">
+      </label>
+
+      <label class="upload-card" id="uploadSide" for="fileSide">
+        <svg class="upload-silhouette" viewBox="0 0 60 100"><circle cx="28" cy="14" r="8" fill="#94a3b8"/><path d="M22 22 L22 26 L17 42 L17 66 L22 66 L22 90 L28 90 L30 66 L34 66 L36 90 L40 90 L40 66 L39 42 L36 26 L36 22 Z" fill="#94a3b8"/></svg>
+        <div class="upload-card-title">Yan Fotoğraf</div>
+        <div class="upload-card-desc">Sağ tarafın kameraya<br>dönük, düz dur</div>
+        <span class="upload-card-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Yükle</span>
+        <input type="file" accept="image/*" class="upload-input" id="fileSide" onchange="handleFileUpload(event, 'side')">
+      </label>
+    </div>
+
+    <div id="uploadError"></div>
+
+    <div class="upload-actions">
+      <button type="button" class="btn btn-back-light" onclick="goToInfo()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <button type="button" class="btn btn-primary" onclick="startAnalysis()" id="analyzeBtn" disabled>
+        Analizi Başlat
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYSIS -->
+<section class="screen" id="screenAnalysis">
+  <div class="screen-inner">
+    <div class="analysis-visual">
+      <svg class="analysis-ring" viewBox="0 0 220 220">
+        <defs><linearGradient id="analysisGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#1e3a8a"/></linearGradient></defs>
+        <circle class="bg" cx="110" cy="110" r="100"/>
+        <circle class="fg" id="analysisFg" cx="110" cy="110" r="100"/>
+      </svg>
+      <div class="analysis-scan"></div>
+      <div class="analysis-figure">
+        <svg viewBox="0 0 60 100"><circle cx="30" cy="14" r="8" fill="#1e3a8a" opacity="0.8"/><path d="M22 22 L22 26 L14 40 L14 62 L18 62 L20 44 L22 44 L22 88 L26 88 L28 62 L32 62 L34 88 L38 88 L38 44 L40 44 L42 62 L46 62 L46 40 L38 26 L38 22 Z" fill="#1e3a8a" opacity="0.8"/></svg>
+      </div>
+    </div>
+    <div class="analysis-title">Postürün analiz ediliyor</div>
+    <div class="analysis-msg" id="analysisMsg">AI modeli yükleniyor...</div>
+    <div class="analysis-pct" id="analysisPct">0%</div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section class="screen" id="screenResult">
+  <div class="screen-inner">
+    <div class="result-header">
+      <p class="result-kicker">POSTÜR ANALİZİ TAMAMLANDI</p>
+      <h1 class="result-headline" id="resultHeadline">Postür skoru: <span class="accent">72</span></h1>
+    </div>
+
+    <div class="score-card">
+      <div class="score-label">POSTÜR SKORU</div>
+      <div class="score-value"><span id="scoreNum">72</span><span class="score-max">/100</span></div>
+      <div class="score-verdict" id="scoreVerdict">Postürün iyi durumda.</div>
+    </div>
+
+    <div class="avatars-section">
+      <h3 class="avatars-title">Kendini 3 versiyonda gör</h3>
+      <p class="avatars-subtitle">İdeal postür · Şu anki postürün · Değişmezse 5 yıl sonra</p>
+      <div class="avatars-grid">
+        <div class="avatar-col">
+          <div class="avatar-frame avatar-ideal">
+            <span class="avatar-badge">İDEAL</span>
+            <div class="avatar-svg-wrap" id="avatarIdeal"></div>
+          </div>
+          <div class="avatar-label">İdeal Sen</div>
+          <div class="avatar-sub">Hedef postür</div>
+        </div>
+        <div class="avatar-col">
+          <div class="avatar-frame avatar-current">
+            <span class="avatar-badge">MEVCUT</span>
+            <div class="avatar-svg-wrap" id="avatarCurrent"></div>
+          </div>
+          <div class="avatar-label">Şu anki Sen</div>
+          <div class="avatar-sub">Bugünkü postürün</div>
+        </div>
+        <div class="avatar-col">
+          <div class="avatar-frame avatar-future">
+            <span class="avatar-badge">5 YIL SONRA</span>
+            <div class="avatar-svg-wrap" id="avatarFuture"></div>
+          </div>
+          <div class="avatar-label">Değişim olmazsa</div>
+          <div class="avatar-sub">Olası gelecek</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="findings">
+      <div class="findings-title">Tespit Edilen Bulgular</div>
+      <div id="findingsList"></div>
+    </div>
+
+    <div class="exercises">
+      <h3>Sana özel egzersiz önerileri</h3>
+      <div id="exercisesList"></div>
+    </div>
+
+    <div class="share-block">
+      <h3>Üç avatarı Instagram'da paylaş 📊</h3>
+      <p>Sonuç kartını indir, hikaye olarak yükle.</p>
+      <div class="share-buttons">
+        <button type="button" class="share-btn download" onclick="downloadShareCard()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Paylaşım kartını indir
+        </button>
+        <button type="button" class="share-btn" onclick="shareWhatsApp()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+          WhatsApp
+        </button>
+        <button type="button" class="share-btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1.5 1.5M14 11a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1.5-1.5"/></svg>
+          Link kopyala
+        </button>
+      </div>
+      <div class="share-preview" id="sharePreview">
+        <img id="sharePreviewImg" alt="Paylaşım görseli">
+        <div class="share-preview-help">Görsele basılı tut → "Fotoğraflara Kaydet"</div>
+      </div>
+    </div>
+
+    <div class="result-actions">
+      <h3>Devam et</h3>
+      <a href="/vucut-yasi.html" class="action-link">
+        <div class="action-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="action-link-text">
+          <div class="action-link-title">Vücut Yaşı Testi</div>
+          <div class="action-link-desc">Vücudunun gerçek yaşını öğren</div>
+        </div>
+        <span class="action-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="/check-up.html" class="action-link">
+        <div class="action-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="action-link-text">
+          <div class="action-link-title">Check-up</div>
+          <div class="action-link-desc">60 saniyede tüm vücut taraması</div>
+        </div>
+        <span class="action-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="https://wa.me/905345840913?text=Merhaba%2C%20post%C3%BCr%20analizi%20sonucumu%20konu%C5%9Fmak%20istiyorum." target="_blank" rel="noopener" class="action-link">
+        <div class="action-link-icon" style="background:#d1fae5; color:#065f46;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg></div>
+        <div class="action-link-text">
+          <div class="action-link-title">Sonucumu danış</div>
+          <div class="action-link-desc">Fzt. Umut'a WhatsApp'tan yaz</div>
+        </div>
+        <span class="action-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+      </a>
+    </div>
+
+    <div class="result-reset">
+      <button type="button" class="reset-btn" onclick="resetAnalysis()">Yeniden analiz yap</button>
+    </div>
+  </div>
+</section>
+
+<canvas id="shareCanvas" width="1080" height="1920"></canvas>
+<div class="toast" id="toast">İşlem tamamlandı</div>
+
+<!-- JS PLACEHOLDERS (eklenecek) -->
+<script>
+// ============== AVATAR SYSTEM ==============
+// Postür verisinden karikatür avatar üretir (Notion/Linear flat style)
+window.AvatarSystem = (function() {
+  var COLORS = {
+    ideal: {
+      skin: '#fde68a', hair: '#1e293b',
+      shirt: '#10b981', pants: '#1e3a8a',
+      outline: '#0f172a', face: '#1e293b',
+      mood: 'happy'
+    },
+    current: {
+      skin: '#fde68a', hair: '#1e293b',
+      shirt: '#3b82f6', pants: '#475569',
+      outline: '#0f172a', face: '#1e293b',
+      mood: 'neutral'
+    },
+    future: {
+      skin: '#d6d3d1', hair: '#44403c',
+      shirt: '#78716c', pants: '#3f3f46',
+      outline: '#1c1917', face: '#292524',
+      mood: 'concerned'
+    }
+  };
+
+  function generate(gender, ageGroup, posture, variant) {
+    var p = posture || { forwardHead: 0, roundedShoulder: 0, thoracicKyphosis: 0, lumbarLordosis: 0, shoulderAsymmetry: 0, hipAsymmetry: 0, headTilt: 0 };
+    var c = COLORS[variant];
+
+    var mult;
+    if (variant === 'ideal') mult = 0;
+    else if (variant === 'current') mult = 1;
+    else mult = 1.8;
+
+    var forwardHead = p.forwardHead * mult;
+    var roundedShoulder = p.roundedShoulder * mult;
+    var thoracicKyphosis = p.thoracicKyphosis * mult;
+    var shoulderAsymmetry = p.shoulderAsymmetry * mult;
+    var headTilt = p.headTilt * mult;
+
+    var headOffX = forwardHead * 0.8;
+    var shoulderHunch = roundedShoulder * 0.5;
+    var kyphosisOffset = thoracicKyphosis * 0.6;
+    var lShoulderY = -shoulderAsymmetry * 0.3;
+    var rShoulderY = shoulderAsymmetry * 0.3;
+
+    var belly = 0;
+    if (ageGroup === 'mid') belly = 2;
+    else if (ageGroup === 'senior') belly = 5;
+    else if (ageGroup === 'elder') belly = 4;
+    if (variant === 'future') belly += 6;
+
+    var isFem = gender === 'f';
+
+    var s = '<svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">';
+
+    // Zemin gölgesi
+    s += '<ellipse cx="100" cy="325" rx="36" ry="4" fill="rgba(0,0,0,0.1)"/>';
+
+    // BACAKLAR
+    var lLegX = 84, rLegX = 116, legTop = 200, legBot = 310;
+    s += '<path d="M' + (lLegX - 10) + ' ' + legTop + ' Q' + (lLegX - 12) + ' ' + (legTop + 50) + ' ' + (lLegX - 8) + ' ' + legBot + ' L' + (lLegX + 8) + ' ' + legBot + ' Q' + (lLegX + 6) + ' ' + (legTop + 50) + ' ' + (lLegX + 8) + ' ' + legTop + ' Z" fill="' + c.pants + '" stroke="' + c.outline + '" stroke-width="1.8" stroke-linejoin="round"/>';
+    s += '<path d="M' + (rLegX - 8) + ' ' + legTop + ' Q' + (rLegX - 6) + ' ' + (legTop + 50) + ' ' + (rLegX - 8) + ' ' + legBot + ' L' + (rLegX + 8) + ' ' + legBot + ' Q' + (rLegX + 12) + ' ' + (legTop + 50) + ' ' + (rLegX + 10) + ' ' + legTop + ' Z" fill="' + c.pants + '" stroke="' + c.outline + '" stroke-width="1.8" stroke-linejoin="round"/>';
+    s += '<ellipse cx="' + lLegX + '" cy="316" rx="12" ry="5" fill="' + c.outline + '"/>';
+    s += '<ellipse cx="' + rLegX + '" cy="316" rx="12" ry="5" fill="' + c.outline + '"/>';
+
+    // GÖVDE
+    var tTop = 85, tBot = 200;
+    var sLY = tTop + lShoulderY, sRY = tTop + rShoulderY;
+    var sW = isFem ? 32 : 38, hW = isFem ? 30 : 28;
+    var tL = 100 - sW + shoulderHunch, tR = 100 + sW - shoulderHunch;
+    var hL = 100 - hW, hR = 100 + hW;
+    var kyMid = tTop + 15 + kyphosisOffset;
+
+    s += '<path d="M' + tL + ' ' + sLY + ' Q100 ' + kyMid + ' ' + tR + ' ' + sRY +
+      ' L' + (hR + belly * 0.3) + ' ' + (tBot - 20) +
+      ' Q' + (100 + belly) + ' ' + (tBot - 5 + belly * 0.4) + ' ' + (hR - 2) + ' ' + tBot +
+      ' L' + (hL + 2) + ' ' + tBot +
+      ' Q' + (100 - belly * 0.3) + ' ' + (tBot - 5 + belly * 0.4) + ' ' + (hL - belly * 0.3) + ' ' + (tBot - 20) +
+      ' Z" fill="' + c.shirt + '" stroke="' + c.outline + '" stroke-width="2" stroke-linejoin="round"/>';
+
+    // Yaka
+    var collarY = (sLY + sRY) / 2 + 2;
+    s += '<path d="M92 ' + collarY + ' Q100 ' + (collarY + 8) + ' 108 ' + collarY + '" fill="none" stroke="' + c.outline + '" stroke-width="1.8" stroke-linecap="round"/>';
+
+    // KOLLAR
+    var lArmTop = tL + 2, lArmTopY = sLY + 3;
+    var lArmBot = hL + 10, lArmBotY = tBot - 5;
+    var armForward = roundedShoulder * 0.3;
+
+    s += '<path d="M' + lArmTop + ' ' + lArmTopY + ' Q' + (lArmTop - 8 - armForward * 0.5) + ' ' + (lArmTopY + 40) + ' ' + (lArmBot - 4) + ' ' + lArmBotY + ' L' + (lArmBot + 4) + ' ' + lArmBotY + ' Q' + (lArmTop + 4 - armForward * 0.3) + ' ' + (lArmTopY + 40) + ' ' + (lArmTop + 8) + ' ' + lArmTopY + ' Z" fill="' + c.shirt + '" stroke="' + c.outline + '" stroke-width="1.8" stroke-linejoin="round"/>';
+
+    var rArmTop = tR - 2, rArmTopY = sRY + 3;
+    var rArmBot = hR - 10, rArmBotY = tBot - 5;
+
+    s += '<path d="M' + rArmTop + ' ' + rArmTopY + ' Q' + (rArmTop + 8 + armForward * 0.5) + ' ' + (rArmTopY + 40) + ' ' + (rArmBot + 4) + ' ' + rArmBotY + ' L' + (rArmBot - 4) + ' ' + rArmBotY + ' Q' + (rArmTop - 4 + armForward * 0.3) + ' ' + (rArmTopY + 40) + ' ' + (rArmTop - 8) + ' ' + rArmTopY + ' Z" fill="' + c.shirt + '" stroke="' + c.outline + '" stroke-width="1.8" stroke-linejoin="round"/>';
+
+    // Eller
+    s += '<circle cx="' + lArmBot + '" cy="' + (lArmBotY + 6) + '" r="5" fill="' + c.skin + '" stroke="' + c.outline + '" stroke-width="1.5"/>';
+    s += '<circle cx="' + rArmBot + '" cy="' + (rArmBotY + 6) + '" r="5" fill="' + c.skin + '" stroke="' + c.outline + '" stroke-width="1.5"/>';
+
+    // BOYUN
+    var neckX = 100 + headOffX * 0.4;
+    var neckTopY = 68;
+    s += '<path d="M' + (neckX - 7) + ' ' + neckTopY + ' L' + (neckX + 7) + ' ' + neckTopY + ' L' + (100 + 7) + ' ' + (sLY + 2) + ' L' + (100 - 7) + ' ' + (sLY + 2) + ' Z" fill="' + c.skin + '" stroke="' + c.outline + '" stroke-width="1.8" stroke-linejoin="round"/>';
+
+    // BAŞ
+    var hX = 100 + headOffX, hY = 44, hR = 22;
+    s += '<g transform="rotate(' + headTilt + ' ' + hX + ' ' + hY + ')">';
+    s += '<circle cx="' + hX + '" cy="' + hY + '" r="' + hR + '" fill="' + c.skin + '" stroke="' + c.outline + '" stroke-width="2"/>';
+
+    // Saç
+    if (isFem) {
+      s += '<path d="M' + (hX - 22) + ' ' + (hY - 8) +
+        ' Q' + (hX - 26) + ' ' + (hY - 24) + ' ' + (hX - 16) + ' ' + (hY - 22) +
+        ' Q' + (hX - 8) + ' ' + (hY - 26) + ' ' + hX + ' ' + (hY - 24) +
+        ' Q' + (hX + 8) + ' ' + (hY - 26) + ' ' + (hX + 16) + ' ' + (hY - 22) +
+        ' Q' + (hX + 26) + ' ' + (hY - 24) + ' ' + (hX + 22) + ' ' + (hY - 8) +
+        ' L' + (hX + 24) + ' ' + (hY + 16) +
+        ' L' + (hX + 18) + ' ' + (hY + 10) +
+        ' L' + (hX + 18) + ' ' + (hY - 6) +
+        ' Q' + (hX + 18) + ' ' + (hY - 18) + ' ' + hX + ' ' + (hY - 18) +
+        ' Q' + (hX - 18) + ' ' + (hY - 18) + ' ' + (hX - 18) + ' ' + (hY - 6) +
+        ' L' + (hX - 18) + ' ' + (hY + 10) +
+        ' L' + (hX - 24) + ' ' + (hY + 16) + ' Z" fill="' + c.hair + '" stroke="' + c.outline + '" stroke-width="1.5" stroke-linejoin="round"/>';
+    } else {
+      s += '<path d="M' + (hX - 20) + ' ' + (hY - 6) +
+        ' Q' + (hX - 22) + ' ' + (hY - 22) + ' ' + hX + ' ' + (hY - 24) +
+        ' Q' + (hX + 22) + ' ' + (hY - 22) + ' ' + (hX + 20) + ' ' + (hY - 6) +
+        ' Q' + (hX + 16) + ' ' + (hY - 14) + ' ' + hX + ' ' + (hY - 15) +
+        ' Q' + (hX - 16) + ' ' + (hY - 14) + ' ' + (hX - 20) + ' ' + (hY - 6) + ' Z" fill="' + c.hair + '" stroke="' + c.outline + '" stroke-width="1.5" stroke-linejoin="round"/>';
+    }
+
+    // Yüz (göz/ağız ifadesi)
+    var eyeY = hY - 2;
+    if (c.mood === 'happy') {
+      s += '<path d="M' + (hX - 8) + ' ' + eyeY + ' Q' + (hX - 5) + ' ' + (eyeY + 3) + ' ' + (hX - 2) + ' ' + eyeY + '" fill="none" stroke="' + c.face + '" stroke-width="2" stroke-linecap="round"/>';
+      s += '<path d="M' + (hX + 2) + ' ' + eyeY + ' Q' + (hX + 5) + ' ' + (eyeY + 3) + ' ' + (hX + 8) + ' ' + eyeY + '" fill="none" stroke="' + c.face + '" stroke-width="2" stroke-linecap="round"/>';
+      s += '<path d="M' + (hX - 6) + ' ' + (hY + 8) + ' Q' + hX + ' ' + (hY + 14) + ' ' + (hX + 6) + ' ' + (hY + 8) + '" fill="none" stroke="' + c.face + '" stroke-width="2" stroke-linecap="round"/>';
+    } else if (c.mood === 'concerned') {
+      s += '<circle cx="' + (hX - 5) + '" cy="' + eyeY + '" r="1.5" fill="' + c.face + '"/>';
+      s += '<circle cx="' + (hX + 5) + '" cy="' + eyeY + '" r="1.5" fill="' + c.face + '"/>';
+      s += '<path d="M' + (hX - 8) + ' ' + (eyeY - 5) + ' L' + (hX - 2) + ' ' + (eyeY - 7) + '" stroke="' + c.face + '" stroke-width="1.5" stroke-linecap="round"/>';
+      s += '<path d="M' + (hX + 2) + ' ' + (eyeY - 7) + ' L' + (hX + 8) + ' ' + (eyeY - 5) + '" stroke="' + c.face + '" stroke-width="1.5" stroke-linecap="round"/>';
+      s += '<path d="M' + (hX - 5) + ' ' + (hY + 12) + ' Q' + hX + ' ' + (hY + 8) + ' ' + (hX + 5) + ' ' + (hY + 12) + '" fill="none" stroke="' + c.face + '" stroke-width="2" stroke-linecap="round"/>';
+    } else {
+      s += '<circle cx="' + (hX - 5) + '" cy="' + eyeY + '" r="1.8" fill="' + c.face + '"/>';
+      s += '<circle cx="' + (hX + 5) + '" cy="' + eyeY + '" r="1.8" fill="' + c.face + '"/>';
+      s += '<line x1="' + (hX - 4) + '" y1="' + (hY + 10) + '" x2="' + (hX + 4) + '" y2="' + (hY + 10) + '" stroke="' + c.face + '" stroke-width="2" stroke-linecap="round"/>';
+    }
+
+    s += '</g></svg>';
+    return s;
+  }
+
+  return { generate: generate };
+})();
+</script>
+<script>
+// ============== POSTURE ANALYSIS ==============
+// MediaPipe Pose landmark index:
+// 0: nose, 7/8: kulaklar, 11/12: omuzlar, 23/24: kalçalar, 25/26: dizler, 27/28: ayak bilekleri
+window.PostureAnalysis = (function() {
+
+  function angleAt(a, b, c) {
+    var ab = { x: a.x - b.x, y: a.y - b.y };
+    var cb = { x: c.x - b.x, y: c.y - b.y };
+    var dot = ab.x * cb.x + ab.y * cb.y;
+    var magAB = Math.sqrt(ab.x * ab.x + ab.y * ab.y);
+    var magCB = Math.sqrt(cb.x * cb.x + cb.y * cb.y);
+    var cos = dot / (magAB * magCB + 0.0001);
+    cos = Math.max(-1, Math.min(1, cos));
+    return Math.acos(cos) * 180 / Math.PI;
+  }
+
+  function analyze(frontLM, sideLM) {
+    var r = {
+      forwardHead: 0, roundedShoulder: 0,
+      thoracicKyphosis: 0, lumbarLordosis: 0,
+      shoulderAsymmetry: 0, hipAsymmetry: 0, headTilt: 0,
+      confidence: 0
+    };
+
+    // Ön görünüm (asimetriler)
+    if (frontLM && frontLM.length >= 33) {
+      var lSh = frontLM[11], rSh = frontLM[12];
+      var lHip = frontLM[23], rHip = frontLM[24];
+      var lEar = frontLM[7], rEar = frontLM[8];
+
+      r.shoulderAsymmetry = (lSh.y - rSh.y) * 60;
+      r.hipAsymmetry = (lHip.y - rHip.y) * 60;
+
+      var earYDiff = lEar.y - rEar.y;
+      var earXDiff = Math.abs(lEar.x - rEar.x) + 0.001;
+      r.headTilt = Math.atan2(earYDiff, earXDiff) * 180 / Math.PI;
+
+      r.confidence += 0.5;
+    }
+
+    // Yan görünüm (sagital)
+    if (sideLM && sideLM.length >= 33) {
+      var ear = sideLM[7].visibility > 0.5 ? sideLM[7] : sideLM[8];
+      var sh = sideLM[11].visibility > 0.5 ? sideLM[11] : sideLM[12];
+      var hip = sideLM[23].visibility > 0.5 ? sideLM[23] : sideLM[24];
+      var knee = sideLM[25].visibility > 0.5 ? sideLM[25] : sideLM[26];
+      var ankle = sideLM[27].visibility > 0.5 ? sideLM[27] : sideLM[28];
+
+      // İleri baş: kulak X farkı omuzdan
+      r.forwardHead = Math.abs(ear.x - sh.x) * 180;
+
+      // Yuvarlak omuz: omuz X farkı kalçadan
+      r.roundedShoulder = Math.abs(sh.x - hip.x) * 120;
+
+      // Kifoz yaklaşımı
+      r.thoracicKyphosis = Math.abs(ear.x - hip.x) * 80;
+
+      // Lordoz: kalça-diz-ayak bileği açısı
+      var hkaAng = angleAt(hip, knee, ankle);
+      r.lumbarLordosis = Math.max(0, Math.abs(180 - hkaAng) - 5);
+
+      r.confidence += 0.5;
+    }
+
+    // Sınırla
+    r.forwardHead = Math.min(25, Math.max(0, r.forwardHead));
+    r.roundedShoulder = Math.min(20, Math.max(0, r.roundedShoulder));
+    r.thoracicKyphosis = Math.min(20, Math.max(0, r.thoracicKyphosis));
+    r.lumbarLordosis = Math.min(20, Math.max(0, r.lumbarLordosis));
+    r.shoulderAsymmetry = Math.min(10, Math.max(-10, r.shoulderAsymmetry));
+    r.hipAsymmetry = Math.min(10, Math.max(-10, r.hipAsymmetry));
+    r.headTilt = Math.min(15, Math.max(-15, r.headTilt));
+
+    return r;
+  }
+
+  function calcScore(p) {
+    var ded = 0;
+    ded += p.forwardHead * 1.2;
+    ded += p.roundedShoulder * 1.5;
+    ded += p.thoracicKyphosis * 1.2;
+    ded += p.lumbarLordosis * 0.8;
+    ded += Math.abs(p.shoulderAsymmetry) * 1.5;
+    ded += Math.abs(p.hipAsymmetry) * 1.5;
+    ded += Math.abs(p.headTilt) * 1.2;
+
+    return Math.max(35, Math.min(100, Math.round(100 - ded)));
+  }
+
+  return { analyze: analyze, calcScore: calcScore };
+})();
+</script>
+<script type="module">
+  window.MP_READY = false;
+  window.MP_LOADING = false;
+  window.loadMediaPipe = async function() {
+    if (window.MP_READY) return true;
+    if (window.MP_LOADING) {
+      return new Promise(function(res) {
+        var chk = setInterval(function() {
+          if (window.MP_READY) { clearInterval(chk); res(true); }
+        }, 100);
+      });
+    }
+    window.MP_LOADING = true;
+    try {
+      const mod = await import('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.9/vision_bundle.mjs');
+      const vision = await mod.FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.9/wasm');
+      window.MP_LANDMARKER = await mod.PoseLandmarker.createFromOptions(vision, {
+        baseOptions: {
+          modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task',
+          delegate: 'GPU'
+        },
+        runningMode: 'IMAGE',
+        numPoses: 1
+      });
+      window.MP_READY = true;
+      return true;
+    } catch(e) {
+      console.error('MediaPipe load error:', e);
+      window.MP_LOADING = false;
+      return false;
+    }
+  };
+</script>
+<script>
+// ============== MAIN LOGIC ==============
+(function() {
+  'use strict';
+
+  var state = {
+    gender: 'f',
+    ageGroup: null,
+    frontImage: null, sideImage: null,
+    frontLandmarks: null, sideLandmarks: null,
+    posture: null, score: 0
+  };
+
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  // Hero avatars
+  function renderHeroAvatars() {
+    var c = document.getElementById('heroAvatars');
+    if (!c) return;
+    var samp = { forwardHead: 6, roundedShoulder: 4, thoracicKyphosis: 5, lumbarLordosis: 3, shoulderAsymmetry: 2, hipAsymmetry: 1, headTilt: 1 };
+    c.innerHTML =
+      '<div class="intro-hero-avatar">' + window.AvatarSystem.generate('f', 'young', samp, 'ideal') + '</div>' +
+      '<div class="intro-hero-avatar">' + window.AvatarSystem.generate('f', 'young', samp, 'current') + '</div>' +
+      '<div class="intro-hero-avatar">' + window.AvatarSystem.generate('f', 'young', samp, 'future') + '</div>';
+  }
+
+  // Kullanıcının kayıtlı avatarını intro ekranında göster
+  function renderUserAvatarGreet() {
+    try {
+      var saved = localStorage.getItem('rehabist_avatar');
+      if (!saved) return;
+      var data = JSON.parse(saved);
+      if (!data || !data.avatarUrl) return;
+      var greet = document.getElementById('userAvatarGreet');
+      var img = document.getElementById('userAvatarImg');
+      if (greet && img) {
+        img.src = data.avatarUrl;
+        greet.style.display = 'flex';
+      }
+    } catch(e) {}
+  }
+
+  // ===== NAV =====
+  window.goToIntro = function() { showScreen('screenIntro'); };
+  window.goToInfo = function() {
+    showScreen('screenInfo');
+    // default cinsiyet aktif
+    if (!document.querySelector('[data-gender].active')) {
+      var def = document.querySelector('[data-gender="f"]');
+      if (def) def.classList.add('active');
+    }
+    checkInfoComplete();
+  };
+  window.goToUpload = function() {
+    if (!state.gender || !state.ageGroup) return;
+    showScreen('screenUpload');
+    updateAnalyzeBtn();
+    if (window.loadMediaPipe && !window.MP_READY && !window.MP_LOADING) {
+      window.loadMediaPipe();
+    }
+  };
+
+  window.selectGender = function(btn, g) {
+    document.querySelectorAll('[data-gender]').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    state.gender = g;
+    checkInfoComplete();
+  };
+  window.selectAge = function(btn, a) {
+    document.querySelectorAll('[data-age]').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    state.ageGroup = a;
+    checkInfoComplete();
+  };
+
+  function checkInfoComplete() {
+    var btn = document.getElementById('infoNextBtn');
+    if (btn) btn.disabled = !(state.gender && state.ageGroup);
+  }
+
+  // ===== UPLOAD =====
+  window.handleFileUpload = function(event, type) {
+    var file = event.target.files[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      showError('Lütfen bir görsel dosyası yükle (JPG veya PNG).');
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      showError('Dosya çok büyük (maks 10MB).');
+      return;
+    }
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var img = new Image();
+      img.onload = function() {
+        if (type === 'front') state.frontImage = { dataUrl: e.target.result, width: img.width, height: img.height };
+        else state.sideImage = { dataUrl: e.target.result, width: img.width, height: img.height };
+        renderUploadCard(type);
+        updateAnalyzeBtn();
+        clearError();
+      };
+      img.onerror = function() { showError('Görsel yüklenemedi.'); };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
+
+  function renderUploadCard(type) {
+    var card = document.getElementById(type === 'front' ? 'uploadFront' : 'uploadSide');
+    var img = type === 'front' ? state.frontImage : state.sideImage;
+    if (!img) { resetCard(type); return; }
+    card.classList.add('has-photo');
+    card.removeAttribute('for');
+    card.innerHTML =
+      '<img class="upload-card-preview" src="' + img.dataUrl + '" alt="">' +
+      '<button type="button" class="upload-card-remove" onclick="removePhoto(event, \'' + type + '\')">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+      '</button>' +
+      '<div class="upload-card-check">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>' +
+      '</div>';
+  }
+
+  function resetCard(type) {
+    var card = document.getElementById(type === 'front' ? 'uploadFront' : 'uploadSide');
+    var inputId = type === 'front' ? 'fileFront' : 'fileSide';
+    var sil = type === 'front'
+      ? '<svg class="upload-silhouette" viewBox="0 0 60 100"><circle cx="30" cy="14" r="8" fill="#94a3b8"/><path d="M22 22 L22 26 L14 40 L14 62 L18 62 L20 44 L22 44 L22 88 L26 88 L28 62 L32 62 L34 88 L38 88 L38 44 L40 44 L42 62 L46 62 L46 40 L38 26 L38 22 Z" fill="#94a3b8"/></svg>'
+      : '<svg class="upload-silhouette" viewBox="0 0 60 100"><circle cx="28" cy="14" r="8" fill="#94a3b8"/><path d="M22 22 L22 26 L17 42 L17 66 L22 66 L22 90 L28 90 L30 66 L34 66 L36 90 L40 90 L40 66 L39 42 L36 26 L36 22 Z" fill="#94a3b8"/></svg>';
+    var title = type === 'front' ? 'Ön Fotoğraf' : 'Yan Fotoğraf';
+    var desc = type === 'front' ? 'Yüzün kameraya dönük,<br>kollar yanda' : 'Sağ tarafın kameraya<br>dönük, düz dur';
+    card.classList.remove('has-photo');
+    card.setAttribute('for', inputId);
+    card.innerHTML = sil +
+      '<div class="upload-card-title">' + title + '</div>' +
+      '<div class="upload-card-desc">' + desc + '</div>' +
+      '<span class="upload-card-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Yükle</span>' +
+      '<input type="file" accept="image/*" class="upload-input" id="' + inputId + '" onchange="handleFileUpload(event, \'' + type + '\')">';
+  }
+
+  window.removePhoto = function(e, type) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (type === 'front') state.frontImage = null;
+    else state.sideImage = null;
+    resetCard(type);
+    updateAnalyzeBtn();
+  };
+
+  function updateAnalyzeBtn() {
+    var btn = document.getElementById('analyzeBtn');
+    if (btn) btn.disabled = !(state.frontImage && state.sideImage);
+  }
+
+  function showError(msg) {
+    var el = document.getElementById('uploadError');
+    el.innerHTML = '<div class="error-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><div><strong>Hata</strong>' + msg + '</div></div>';
+  }
+  function clearError() { document.getElementById('uploadError').innerHTML = ''; }
+
+  function showToast(text) {
+    var t = document.getElementById('toast');
+    t.textContent = text;
+    t.classList.add('visible');
+    setTimeout(function() { t.classList.remove('visible'); }, 3000);
+  }
+
+  // ===== ANALYSIS =====
+  window.startAnalysis = function() {
+    if (!state.frontImage || !state.sideImage) return;
+    showScreen('screenAnalysis');
+    runAnalysis();
+  };
+
+  function sleep(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
+
+  function detectPose(dataUrl) {
+    return new Promise(function(resolve) {
+      if (!window.MP_LANDMARKER) { resolve(null); return; }
+      var img = new Image();
+      img.onload = function() {
+        try {
+          var res = window.MP_LANDMARKER.detect(img);
+          if (res.landmarks && res.landmarks.length > 0) resolve(res.landmarks[0]);
+          else resolve(null);
+        } catch(err) {
+          console.error('Pose detect err:', err);
+          resolve(null);
+        }
+      };
+      img.onerror = function() { resolve(null); };
+      img.src = dataUrl;
+    });
+  }
+
+  async function runAnalysis() {
+    var msgs = [
+      'AI modeli yükleniyor...',
+      'Ön fotoğraf işleniyor...',
+      'Omuz ve kalça hizası ölçülüyor...',
+      'Yan fotoğraf işleniyor...',
+      'Baş ve boyun açısı hesaplanıyor...',
+      'Omurga eğriliği analiz ediliyor...',
+      'Skor hesaplanıyor...',
+      'Avatarın oluşturuluyor...'
+    ];
+    var msgEl = document.getElementById('analysisMsg');
+    var pctEl = document.getElementById('analysisPct');
+    var fgEl = document.getElementById('analysisFg');
+
+    function setProgress(pct, msg) {
+      pctEl.textContent = Math.round(pct) + '%';
+      fgEl.style.strokeDashoffset = (628 * (1 - pct / 100)) + '';
+      if (msg) {
+        msgEl.style.opacity = '0';
+        setTimeout(function() {
+          msgEl.textContent = msg;
+          msgEl.style.opacity = '1';
+        }, 200);
+      }
+    }
+
+    try {
+      setProgress(5, msgs[0]);
+      var loaded = await window.loadMediaPipe();
+      if (!loaded) { handleError('AI modeli yüklenemedi. İnternet bağlantını kontrol et.'); return; }
+      setProgress(30, msgs[1]);
+
+      var frontLM = await detectPose(state.frontImage.dataUrl);
+      if (!frontLM) { handleError('Ön fotoğrafta vücut tespit edilemedi. Daha net bir fotoğraf dene.'); return; }
+      state.frontLandmarks = frontLM;
+      setProgress(55, msgs[2]);
+      await sleep(400);
+
+      setProgress(65, msgs[3]);
+      var sideLM = await detectPose(state.sideImage.dataUrl);
+      if (!sideLM) { handleError('Yan fotoğrafta vücut tespit edilemedi. Daha net bir fotoğraf dene.'); return; }
+      state.sideLandmarks = sideLM;
+      setProgress(80, msgs[4]);
+      await sleep(400);
+
+      setProgress(88, msgs[5]);
+      await sleep(400);
+
+      state.posture = window.PostureAnalysis.analyze(frontLM, sideLM);
+      state.score = window.PostureAnalysis.calcScore(state.posture);
+      setProgress(94, msgs[6]);
+      await sleep(300);
+
+      setProgress(98, msgs[7]);
+      await sleep(400);
+      setProgress(100, 'Tamamlandı!');
+      await sleep(500);
+
+      showResult();
+    } catch(e) {
+      console.error('Analysis err:', e);
+      handleError('Analiz sırasında bir hata oluştu. Tekrar dene.');
+    }
+  }
+
+  function handleError(msg) {
+    showToast(msg);
+    setTimeout(function() { showScreen('screenUpload'); }, 500);
+  }
+
+  // ===== RESULT =====
+  function showResult() {
+    showScreen('screenResult');
+    var p = state.posture;
+    var score = state.score;
+
+    document.getElementById('resultHeadline').innerHTML = 'Postür skoru: <span class="accent">' + score + '</span>';
+    document.getElementById('scoreNum').textContent = score;
+
+    var verdict;
+    if (score >= 85) verdict = 'Mükemmel postür! Çok az dengesizlik tespit edildi.';
+    else if (score >= 70) verdict = 'İyi durumdasın. Birkaç küçük ayarlama ile mükemmele yaklaşabilirsin.';
+    else if (score >= 55) verdict = 'Orta seviye. Birkaç alan dikkat ve çalışma gerektiriyor.';
+    else verdict = 'Postürün iyileştirmeye açık. Düzenli egzersiz ile belirgin değişim sağlayabilirsin.';
+    document.getElementById('scoreVerdict').textContent = verdict;
+
+    // Avatars
+    document.getElementById('avatarIdeal').innerHTML = window.AvatarSystem.generate(state.gender, state.ageGroup, p, 'ideal');
+    document.getElementById('avatarCurrent').innerHTML = window.AvatarSystem.generate(state.gender, state.ageGroup, p, 'current');
+    document.getElementById('avatarFuture').innerHTML = window.AvatarSystem.generate(state.gender, state.ageGroup, p, 'future');
+
+    renderFindings(p);
+    renderExercises(p);
+    setTimeout(generateShareCard, 400);
+  }
+
+  function renderFindings(p) {
+    var list = [
+      { name: 'İleri baş postürü', val: p.forwardHead, th: [3, 8] },
+      { name: 'Yuvarlak omuz', val: p.roundedShoulder, th: [3, 7] },
+      { name: 'Sırt eğriliği', val: p.thoracicKyphosis, th: [4, 9] },
+      { name: 'Bel eğriliği', val: p.lumbarLordosis, th: [4, 9] },
+      { name: 'Omuz asimetrisi', val: Math.abs(p.shoulderAsymmetry), th: [1.5, 4] },
+      { name: 'Kalça asimetrisi', val: Math.abs(p.hipAsymmetry), th: [1.5, 4] },
+      { name: 'Baş yatıklığı', val: Math.abs(p.headTilt), th: [2, 5] }
+    ];
+    var html = '';
+    list.forEach(function(f) {
+      var lev, lbl, ic;
+      if (f.val < f.th[0]) { lev = 'good'; lbl = 'İYİ'; ic = 'finding-good'; }
+      else if (f.val < f.th[1]) { lev = 'mild'; lbl = 'HAFİF'; ic = 'finding-mild'; }
+      else { lev = 'bad'; lbl = 'BELİRGİN'; ic = 'finding-bad'; }
+      var icon = lev === 'good'
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M4.93 19h14.14c1.54 0 2.5-1.67 1.73-3L13.73 4a2 2 0 00-3.46 0L3.2 16c-.77 1.33.19 3 1.73 3z"/></svg>';
+      html += '<div class="finding-row"><div class="finding-icon ' + ic + '">' + icon + '</div><div class="finding-name">' + f.name + '</div><div class="finding-value ' + lev + '">' + lbl + ' · ' + f.val.toFixed(1) + '°</div></div>';
+    });
+    document.getElementById('findingsList').innerHTML = html;
+  }
+
+  function renderExercises(p) {
+    var all = [];
+    if (p.forwardHead >= 3) all.push({ prio: p.forwardHead, name: 'Çene çekme (Chin tuck)', desc: 'Başı geri doğru çek, kulakları omuzlarla hizaya getir. Günde 3 set × 10 tekrar.' });
+    if (p.roundedShoulder >= 3) all.push({ prio: p.roundedShoulder, name: 'Duvar melek hareketi', desc: 'Sırtın duvara yaslı, kollarını yukarı-aşağı kaydır. 3 × 10.' });
+    if (p.thoracicKyphosis >= 4) all.push({ prio: p.thoracicKyphosis, name: 'Torasik ekstansiyon', desc: 'Köpüğün üzerine yatıp sırtını geri kavistirme. 2 × 15.' });
+    if (p.lumbarLordosis >= 4) all.push({ prio: p.lumbarLordosis, name: 'Plank', desc: 'Karın kaslarını sık, bel düz. Günde 3 × 30 saniye ile başla.' });
+    if (Math.abs(p.shoulderAsymmetry) >= 1.5) all.push({ prio: Math.abs(p.shoulderAsymmetry) * 2, name: 'Tek taraflı kürek', desc: 'Düşük omuz tarafından lastik/ağırlık ile kürek çekme. 3 × 12.' });
+    if (Math.abs(p.hipAsymmetry) >= 1.5) all.push({ prio: Math.abs(p.hipAsymmetry) * 2, name: 'Köprü egzersizi', desc: 'Sırt üstü yat, kalçayı yukarı kaldır. Eşit kuvvetle iki bacak. 3 × 15.' });
+    if (Math.abs(p.headTilt) >= 2) all.push({ prio: Math.abs(p.headTilt) * 2, name: 'Boyun yana germe', desc: 'Başını zıt tarafa doğru yaslı şekilde tut. 3 × 20 saniye her yöne.' });
+    all.push({ prio: 0.5, name: 'Günlük yürüyüş', desc: 'Düz duruş ile günde 20-30 dakika yürüyüş tüm postürü iyileştirir.' });
+    all.sort(function(a, b) { return b.prio - a.prio; });
+    all = all.slice(0, 6);
+    var html = '';
+    all.forEach(function(ex, i) {
+      html += '<div class="exercise-item"><div class="exercise-num">' + (i + 1) + '</div><div class="exercise-content"><div class="exercise-name">' + ex.name + '</div><div class="exercise-desc">' + ex.desc + '</div></div></div>';
+    });
+    document.getElementById('exercisesList').innerHTML = html;
+  }
+
+  // ===== SHARE CARD =====
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+
+  function svgToImage(svgStr) {
+    return new Promise(function(res, rej) {
+      var img = new Image();
+      var blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      img.onload = function() {
+        res({ img: img, url: url });
+      };
+      img.onerror = function() {
+        URL.revokeObjectURL(url);
+        rej(new Error('SVG load failed'));
+      };
+      img.src = url;
+    });
+  }
+
+  async function generateShareCard() {
+    var canvas = document.getElementById('shareCanvas');
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width, H = canvas.height;
+
+    // BG
+    var bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, '#1e3a8a'); bg.addColorStop(1, '#2563eb');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    var rg = ctx.createRadialGradient(W, 0, 0, W, 0, W);
+    rg.addColorStop(0, 'rgba(147,197,253,0.35)');
+    rg.addColorStop(1, 'rgba(147,197,253,0)');
+    ctx.fillStyle = rg;
+    ctx.fillRect(0, 0, W, H);
+
+    // Logo
+    ctx.fillStyle = '#ffffff';
+    roundRect(ctx, 80, 110, 60, 60, 14); ctx.fill();
+    ctx.strokeStyle = '#2563eb';
+    ctx.lineWidth = 6;
+    ctx.beginPath();
+    ctx.moveTo(110, 130); ctx.lineTo(110, 150);
+    ctx.moveTo(100, 140); ctx.lineTo(120, 140);
+    ctx.stroke();
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '700 42px "DM Sans", sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('Rehabist', 160, 155);
+
+    // Badge
+    ctx.fillStyle = 'rgba(255,255,255,0.15)';
+    roundRect(ctx, 80, 220, 260, 50, 25); ctx.fill();
+    ctx.fillStyle = '#bfdbfe';
+    ctx.font = '600 20px "DM Sans", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('POSTÜR ANALİZİ', 210, 252);
+
+    // Title
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '600 64px "DM Sans", sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('Kendimi 3', 80, 370);
+    ctx.fillStyle = '#bfdbfe';
+    ctx.font = 'italic 500 72px "Newsreader", serif';
+    ctx.fillText('versiyonda', 80, 450);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '600 64px "DM Sans", sans-serif';
+    ctx.fillText('gördüm.', 80, 525);
+
+    // 3 Avatar çerçeveleri
+    var avatarY = 620;
+    var avatarW = 280, avatarH = 480;
+    var gap = 30;
+    var totalW = avatarW * 3 + gap * 2;
+    var startX = (W - totalW) / 2;
+
+    var labels = ['İDEAL', 'MEVCUT', '5 YIL SONRA'];
+    var variants = ['ideal', 'current', 'future'];
+    var fc = [
+      { bg1: '#ecfdf5', bg2: '#d1fae5', border: '#86efac', labelBg: '#10b981' },
+      { bg1: '#eff6ff', bg2: '#dbeafe', border: '#93c5fd', labelBg: '#3b82f6' },
+      { bg1: '#fff1f2', bg2: '#fecdd3', border: '#fda4af', labelBg: '#f43f5e' }
+    ];
+
+    // Tüm avatarları paralel yükle
+    var avatarPromises = variants.map(function(v) {
+      var svg = window.AvatarSystem.generate(state.gender, state.ageGroup, state.posture, v);
+      return svgToImage(svg);
+    });
+
+    try {
+      var avatarImgs = await Promise.all(avatarPromises);
+
+      for (var i = 0; i < 3; i++) {
+        var x = startX + i * (avatarW + gap);
+        var y = avatarY;
+
+        // Frame
+        var fg = ctx.createLinearGradient(x, y, x, y + avatarH);
+        fg.addColorStop(0, fc[i].bg1); fg.addColorStop(1, fc[i].bg2);
+        ctx.fillStyle = fg;
+        roundRect(ctx, x, y, avatarW, avatarH, 24); ctx.fill();
+        ctx.strokeStyle = fc[i].border;
+        ctx.lineWidth = 3;
+        roundRect(ctx, x, y, avatarW, avatarH, 24); ctx.stroke();
+
+        // Badge
+        ctx.fillStyle = fc[i].labelBg;
+        roundRect(ctx, x + (avatarW - 160) / 2, y + 20, 160, 36, 18); ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '700 16px "DM Sans", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(labels[i], x + avatarW / 2, y + 43);
+
+        // Avatar
+        ctx.drawImage(avatarImgs[i].img, x + 20, y + 70, avatarW - 40, avatarH - 90);
+        URL.revokeObjectURL(avatarImgs[i].url);
+      }
+    } catch(e) {
+      console.error('Avatar render err:', e);
+    }
+
+    // Score
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '500 28px "DM Sans", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('POSTÜR SKORUM', W / 2, 1200);
+    ctx.font = 'italic 500 120px "Newsreader", serif';
+    ctx.fillText(state.score + '/100', W / 2, 1320);
+
+    // Divider
+    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(200, 1400); ctx.lineTo(W - 200, 1400);
+    ctx.stroke();
+
+    // Verdict
+    var vc;
+    if (state.score >= 85) vc = 'Postürüm mükemmel 🌟';
+    else if (state.score >= 70) vc = 'Postürüm iyi durumda ✨';
+    else if (state.score >= 55) vc = 'Postürümü iyileştireceğim';
+    else vc = 'Postürüm değişmeye hazır 💪';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '600 38px "DM Sans", sans-serif';
+    ctx.fillText(vc, W / 2, 1500);
+
+    // CTA
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    ctx.font = '500 26px "DM Sans", sans-serif';
+    ctx.fillText('Sen de dene:', W / 2, 1780);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '700 30px "DM Sans", sans-serif';
+    ctx.fillText('rehabist.netlify.app/postur-analizi', W / 2, 1830);
+
+    // Preview set
+    try {
+      var dataUrl = canvas.toDataURL('image/png');
+      document.getElementById('sharePreviewImg').src = dataUrl;
+    } catch(e) { console.error(e); }
+  }
+
+  window.downloadShareCard = function() {
+    try {
+      var canvas = document.getElementById('shareCanvas');
+      canvas.toBlob(function(blob) {
+        if (!blob) { showPreview(); return; }
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'postur-' + state.score + '.png';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+        showToast('Görsel indirildi!');
+      }, 'image/png');
+    } catch(e) { showPreview(); }
+  };
+
+  function showPreview() {
+    document.getElementById('sharePreview').classList.add('visible');
+    showToast('Görsele basılı tut → Kaydet');
+  }
+
+  window.shareWhatsApp = function() {
+    var text = 'Postür analizi yaptım, skorum ' + state.score + '/100 📊 Sen de dene: https://rehabist.netlify.app/postur-analizi.html';
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+  };
+
+  window.copyLink = function() {
+    var url = 'https://rehabist.netlify.app/postur-analizi.html';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(function() {
+        showToast('Link kopyalandı!');
+      }).catch(function() { fallbackCopy(url); });
+    } else { fallbackCopy(url); }
+  };
+
+  function fallbackCopy(text) {
+    var input = document.createElement('input');
+    input.value = text;
+    input.style.position = 'fixed';
+    input.style.top = '-100px';
+    document.body.appendChild(input);
+    input.select();
+    try { document.execCommand('copy'); showToast('Link kopyalandı!'); } catch(e) {}
+    document.body.removeChild(input);
+  }
+
+  window.resetAnalysis = function() {
+    state = {
+      gender: 'f', ageGroup: null,
+      frontImage: null, sideImage: null,
+      frontLandmarks: null, sideLandmarks: null,
+      posture: null, score: 0
+    };
+    document.querySelectorAll('.info-choice').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('sharePreview').classList.remove('visible');
+    resetCard('front');
+    resetCard('side');
+    showScreen('screenIntro');
+  };
+
+  // ===== INIT =====
+  renderHeroAvatars();
+  renderUserAvatarGreet();
+
+})();
+</script>
+
+<div id="rb-footer-mount"></div>
+<script src="/shared-nav.js" defer></script>
+</body>
+</html>

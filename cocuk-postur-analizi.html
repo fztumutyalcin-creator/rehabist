@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -1528,7 +1527,6 @@
     max-width: 420px; margin: 0 auto;
   }
 </style>
-
 </head>
 <body>
 
@@ -1537,48 +1535,43 @@
 <main>
 
 <!-- ============= SCREEN 1: MODE SELECT ============= -->
-
 <section class="screen active" id="screenMode">
   <div class="container">
     <span class="kicker"><span class="kicker-dot"></span> PEDİATRİK POSTÜR</span>
     <h1>Çocuğun postürünü <span class="accent">doğru biçimde</span> değerlendir.</h1>
     <p class="lead">Bu araç 3–18 yaş arası çocuklar için tasarlandı. Veliler için yönlendirici tarama, fizyoterapistler için klinik muayene desteği.</p>
 
-```
-<div class="mode-grid">
-  <button type="button" class="mode-card parent" data-mode="parent">
-    <div class="mode-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    <div class="mode-card-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-12a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+    <div class="mode-grid">
+      <button type="button" class="mode-card parent" data-mode="parent">
+        <div class="mode-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="mode-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-12a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3>Veli olarak değerlendiriyorum</h3>
+        <p>Çocuğunun fotoğrafını çek, sistemden ön tarama al. Sonuca göre fizyoterapist görmesi gerekip gerekmediğini öğren.</p>
+        <span class="mode-card-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Tarama Aracı</span>
+      </button>
+      <button type="button" class="mode-card clinic" data-mode="clinic">
+        <div class="mode-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="mode-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.29 1.5 4.04 3 5.5l7 7z"/><path d="M2 8.5h6L9 6l3 6 3-6 1 2.5h6"/></svg>
+        </div>
+        <h3>Klinisyen modu</h3>
+        <p>Hızlı muayene için checklist, kanıta dayalı eşikler, otomatik rapor çıktısı. Pediatrik fizyoterapistler için.</p>
+        <span class="mode-card-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Klinik Araç</span>
+      </button>
     </div>
-    <h3>Veli olarak değerlendiriyorum</h3>
-    <p>Çocuğunun fotoğrafını çek, sistemden ön tarama al. Sonuca göre fizyoterapist görmesi gerekip gerekmediğini öğren.</p>
-    <span class="mode-card-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Tarama Aracı</span>
-  </button>
-  <button type="button" class="mode-card clinic" data-mode="clinic">
-    <div class="mode-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    <div class="mode-card-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.29 1.5 4.04 3 5.5l7 7z"/><path d="M2 8.5h6L9 6l3 6 3-6 1 2.5h6"/></svg>
+
+    <div class="disclaimer" style="margin-top: 32px;">
+      <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      <div class="disclaimer-content">
+        <strong>Önemli:</strong> Bu sistem teşhis koymaz. Veriler tarama amaçlıdır ve bir fizyoterapist veya hekim değerlendirmesinin yerini tutmaz.
+      </div>
     </div>
-    <h3>Klinisyen modu</h3>
-    <p>Hızlı muayene için checklist, kanıta dayalı eşikler, otomatik rapor çıktısı. Pediatrik fizyoterapistler için.</p>
-    <span class="mode-card-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Klinik Araç</span>
-  </button>
-</div>
-
-<div class="disclaimer" style="margin-top: 32px;">
-  <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-  <div class="disclaimer-content">
-    <strong>Önemli:</strong> Bu sistem teşhis koymaz. Veriler tarama amaçlıdır ve bir fizyoterapist veya hekim değerlendirmesinin yerini tutmaz.
-  </div>
-</div>
-```
-
   </div>
 </section>
 
 <!-- ============= SCREEN 2: AGE & GENDER ============= -->
-
 <section class="screen" id="screenAge">
   <div class="container">
     <a class="back-link" data-back="screenMode">
@@ -1586,70 +1579,66 @@
       Geri
     </a>
 
-```
-<div class="progress-track">
-  <div class="progress-step active"></div>
-  <div class="progress-step"></div>
-  <div class="progress-step"></div>
-</div>
+    <div class="progress-track">
+      <div class="progress-step active"></div>
+      <div class="progress-step"></div>
+      <div class="progress-step"></div>
+    </div>
 
-<div class="mode-indicator parent" id="modeIndicator">
-  <span class="mode-indicator-dot"></span>
-  <span id="modeIndicatorLabel">Veli modu</span>
-</div>
+    <div class="mode-indicator parent" id="modeIndicator">
+      <span class="mode-indicator-dot"></span>
+      <span id="modeIndicatorLabel">Veli modu</span>
+    </div>
 
-<h2>Çocuğun bilgileri</h2>
-<p class="form-hint">Doğum tarihinden yaş otomatik hesaplanır. Yaşa göre farklı klinik normlar uygulanır — doğru sonuç için kritik.</p>
+    <h2>Çocuğun bilgileri</h2>
+    <p class="form-hint">Doğum tarihinden yaş otomatik hesaplanır. Yaşa göre farklı klinik normlar uygulanır — doğru sonuç için kritik.</p>
 
-<div class="form-group">
-  <label class="form-label">Doğum tarihi</label>
-  <div class="dob-row">
-    <select class="dob-input" id="dobDay" aria-label="Gün">
-      <option value="">Gün</option>
-    </select>
-    <select class="dob-input" id="dobMonth" aria-label="Ay">
-      <option value="">Ay</option>
-      <option value="1">Ocak</option>
-      <option value="2">Şubat</option>
-      <option value="3">Mart</option>
-      <option value="4">Nisan</option>
-      <option value="5">Mayıs</option>
-      <option value="6">Haziran</option>
-      <option value="7">Temmuz</option>
-      <option value="8">Ağustos</option>
-      <option value="9">Eylül</option>
-      <option value="10">Ekim</option>
-      <option value="11">Kasım</option>
-      <option value="12">Aralık</option>
-    </select>
-    <select class="dob-input" id="dobYear" aria-label="Yıl">
-      <option value="">Yıl</option>
-    </select>
-  </div>
-  <div class="age-result" id="ageResult" style="display:none;"></div>
-</div>
+    <div class="form-group">
+      <label class="form-label">Doğum tarihi</label>
+      <div class="dob-row">
+        <select class="dob-input" id="dobDay" aria-label="Gün">
+          <option value="">Gün</option>
+        </select>
+        <select class="dob-input" id="dobMonth" aria-label="Ay">
+          <option value="">Ay</option>
+          <option value="1">Ocak</option>
+          <option value="2">Şubat</option>
+          <option value="3">Mart</option>
+          <option value="4">Nisan</option>
+          <option value="5">Mayıs</option>
+          <option value="6">Haziran</option>
+          <option value="7">Temmuz</option>
+          <option value="8">Ağustos</option>
+          <option value="9">Eylül</option>
+          <option value="10">Ekim</option>
+          <option value="11">Kasım</option>
+          <option value="12">Aralık</option>
+        </select>
+        <select class="dob-input" id="dobYear" aria-label="Yıl">
+          <option value="">Yıl</option>
+        </select>
+      </div>
+      <div class="age-result" id="ageResult" style="display:none;"></div>
+    </div>
 
-<div class="form-group">
-  <label class="form-label">Cinsiyet</label>
-  <div class="gender-row">
-    <button type="button" class="gender-btn" data-gender="f">Kız</button>
-    <button type="button" class="gender-btn" data-gender="m">Erkek</button>
-  </div>
-</div>
+    <div class="form-group">
+      <label class="form-label">Cinsiyet</label>
+      <div class="gender-row">
+        <button type="button" class="gender-btn" data-gender="f">Kız</button>
+        <button type="button" class="gender-btn" data-gender="m">Erkek</button>
+      </div>
+    </div>
 
-<div class="button-row">
-  <button type="button" class="btn btn-primary" id="ageNextBtn" disabled>
-    Devam Et
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </button>
-</div>
-```
-
+    <div class="button-row">
+      <button type="button" class="btn btn-primary" id="ageNextBtn" disabled>
+        Devam Et
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
   </div>
 </section>
 
 <!-- ============= SCREEN 3: RED FLAGS ============= -->
-
 <section class="screen" id="screenRedFlags">
   <div class="container">
     <a class="back-link" data-back="screenAge">
@@ -1657,55 +1646,50 @@
       Geri
     </a>
 
-```
-<div class="progress-track">
-  <div class="progress-step done"></div>
-  <div class="progress-step active"></div>
-  <div class="progress-step"></div>
-</div>
+    <div class="progress-track">
+      <div class="progress-step done"></div>
+      <div class="progress-step active"></div>
+      <div class="progress-step"></div>
+    </div>
 
-<div class="mode-indicator parent" id="modeIndicator2">
-  <span class="mode-indicator-dot"></span>
-  <span id="modeIndicatorLabel2">Veli modu</span>
-</div>
+    <div class="mode-indicator parent" id="modeIndicator2">
+      <span class="mode-indicator-dot"></span>
+      <span id="modeIndicatorLabel2">Veli modu</span>
+    </div>
 
-<h2>Önce kırmızı bayraklar</h2>
-<p class="form-hint" id="redFlagsIntro">Postür değerlendirmeden önce, çocuğunda aşağıdakilerden biri varsa <strong>doğrudan bir fizyoterapist veya hekime başvurman</strong> gerekir. Lütfen geçerli olanları işaretle.</p>
+    <h2>Önce kırmızı bayraklar</h2>
+    <p class="form-hint" id="redFlagsIntro">Postür değerlendirmeden önce, çocuğunda aşağıdakilerden biri varsa <strong>doğrudan bir fizyoterapist veya hekime başvurman</strong> gerekir. Lütfen geçerli olanları işaretle.</p>
 
-<div class="form-group">
-  <div id="redFlagsList"></div>
-</div>
+    <div class="form-group">
+      <div id="redFlagsList"></div>
+    </div>
 
-<div class="red-flag-alert" id="redFlagAlert">
-  <h3>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
-    Doğrudan değerlendirme gerekli
-  </h3>
-  <p>İşaretlediğin bulgular, ev tarama aracının kapsamı dışında. Çocuğun bir fizyoterapist veya hekim tarafından değerlendirilmesi gerekiyor. Aydın çevresindeyseniz Fzt. Umut Yalçın ile WhatsApp üzerinden iletişime geçebilirsiniz.</p>
-  <div class="button-row" style="margin-top: 16px;">
-    <a href="https://wa.me/905345840913?text=Merhaba%2C%20%C3%A7ocu%C4%9Fum%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-      WhatsApp ile İletişim
-    </a>
-    <a href="/" class="btn btn-secondary">Ana Sayfa</a>
-  </div>
-</div>
+    <div class="red-flag-alert" id="redFlagAlert">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+        Doğrudan değerlendirme gerekli
+      </h3>
+      <p>İşaretlediğin bulgular, ev tarama aracının kapsamı dışında. Çocuğun bir fizyoterapist veya hekim tarafından değerlendirilmesi gerekiyor. Aydın çevresindeyseniz Fzt. Umut Yalçın ile WhatsApp üzerinden iletişime geçebilirsiniz.</p>
+      <div class="button-row" style="margin-top: 16px;">
+        <a href="https://wa.me/905345840913?text=Merhaba%2C%20%C3%A7ocu%C4%9Fum%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+          WhatsApp ile İletişim
+        </a>
+        <a href="/" class="btn btn-secondary">Ana Sayfa</a>
+      </div>
+    </div>
 
-<div class="button-row" id="redFlagsActions">
-  <button type="button" class="btn btn-primary" id="redFlagsNextBtn">
-    Bayrak Yok, Devam Et
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </button>
-</div>
-```
-
+    <div class="button-row" id="redFlagsActions">
+      <button type="button" class="btn btn-primary" id="redFlagsNextBtn">
+        Bayrak Yok, Devam Et
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
   </div>
 </section>
 
 <!-- ============= SCREEN 4: COMING SOON (placeholder) ============= -->
-
 <!-- ============= SCREEN 4A: PARENT — PHOTO UPLOAD ============= -->
-
 <section class="screen" id="screenParent">
   <div class="container">
     <a class="back-link" data-back="screenRedFlags">
@@ -1713,136 +1697,132 @@
       Geri
     </a>
 
-```
-<div class="progress-track">
-  <div class="progress-step done"></div>
-  <div class="progress-step done"></div>
-  <div class="progress-step active"></div>
-</div>
+    <div class="progress-track">
+      <div class="progress-step done"></div>
+      <div class="progress-step done"></div>
+      <div class="progress-step active"></div>
+    </div>
 
-<div class="mode-indicator parent">
-  <span class="mode-indicator-dot"></span>
-  <span>Veli modu</span>
-</div>
+    <div class="mode-indicator parent">
+      <span class="mode-indicator-dot"></span>
+      <span>Veli modu</span>
+    </div>
 
-<h2>Üç açıdan fotoğraf</h2>
-<p class="form-hint">Çocuğun postürünü değerlendirmek için ön, arka ve yan açılardan birer fotoğrafa ihtiyacımız var. Fotoğraflar cihazından çıkmaz — değerlendirme tarayıcında yapılır.</p>
+    <h2>Üç açıdan fotoğraf</h2>
+    <p class="form-hint">Çocuğun postürünü değerlendirmek için ön, arka ve yan açılardan birer fotoğrafa ihtiyacımız var. Fotoğraflar cihazından çıkmaz — değerlendirme tarayıcında yapılır.</p>
 
-<div class="photo-guide">
-  <h4>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-    Doğru fotoğraf için
-  </h4>
-  <ul>
-    <li>Çocuk düz duvar önünde, çıplak ayak, rahat duruşta</li>
-    <li>Üstte sıfırlı kıyafet veya streç tişört (omurga görünür)</li>
-    <li>Tüm vücut görünür olmalı: baştan ayağa</li>
-    <li>Telefonu yere paralel tut, omuz hizasında çek</li>
-    <li>3 metre mesafe ideal, ışık yandan değil önden</li>
-    <li>Adams testi (yan görüntü) için: ayaklar bitişik, dizler düz, kollar serbest sarkık öne eğil</li>
-  </ul>
-</div>
+    <div class="photo-guide">
+      <h4>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        Doğru fotoğraf için
+      </h4>
+      <ul>
+        <li>Çocuk düz duvar önünde, çıplak ayak, rahat duruşta</li>
+        <li>Üstte sıfırlı kıyafet veya streç tişört (omurga görünür)</li>
+        <li>Tüm vücut görünür olmalı: baştan ayağa</li>
+        <li>Telefonu yere paralel tut, omuz hizasında çek</li>
+        <li>3 metre mesafe ideal, ışık yandan değil önden</li>
+        <li>Adams testi (yan görüntü) için: ayaklar bitişik, dizler düz, kollar serbest sarkık öne eğil</li>
+      </ul>
+    </div>
 
-<div class="photo-grid">
-  <label class="photo-slot" data-slot="front">
-    <img id="photoFrontImg" alt="Ön görüntü" style="display:none">
-    <div class="photo-slot-content">
-      <div class="photo-slot-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+    <div class="photo-grid">
+      <label class="photo-slot" data-slot="front">
+        <img id="photoFrontImg" alt="Ön görüntü" style="display:none">
+        <div class="photo-slot-content">
+          <div class="photo-slot-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </div>
+          <div class="photo-slot-label">Ön</div>
+          <div class="photo-slot-hint">Çocuk yüzü kameraya dönük</div>
+        </div>
+        <div class="photo-slot-remove" data-remove="front">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </div>
+        <input type="file" accept="image/*" data-input="front">
+      </label>
+      <label class="photo-slot" data-slot="back">
+        <img id="photoBackImg" alt="Arka görüntü" style="display:none">
+        <div class="photo-slot-content">
+          <div class="photo-slot-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="8" r="3"/></svg>
+          </div>
+          <div class="photo-slot-label">Arka</div>
+          <div class="photo-slot-hint">Çocuk sırtı kameraya dönük</div>
+        </div>
+        <div class="photo-slot-remove" data-remove="back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </div>
+        <input type="file" accept="image/*" data-input="back">
+      </label>
+      <label class="photo-slot" data-slot="side">
+        <img id="photoSideImg" alt="Yan görüntü" style="display:none">
+        <div class="photo-slot-content">
+          <div class="photo-slot-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 014 4v2M12 2a4 4 0 00-4 4v2M8 8s-2 4-2 8c0 2 1 4 2 4M16 8s2 4 2 8c0 2-1 4-2 4"/></svg>
+          </div>
+          <div class="photo-slot-label">Yan + Adams</div>
+          <div class="photo-slot-hint">Profil ve öne eğilmiş hali</div>
+        </div>
+        <div class="photo-slot-remove" data-remove="side">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </div>
+        <input type="file" accept="image/*" data-input="side">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Bu konuda eklemek istediğin başka bir şey var mı? <span style="color: var(--ink-400); font-weight: 400;">(opsiyonel)</span></label>
+      <textarea class="text-input" id="parentNote" placeholder="Örnek: Çocuğum sırt çantası takınca öne eğiliyor, çıkarınca düzeliyor..."></textarea>
+    </div>
+
+    <div class="disclaimer">
+      <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      <div class="disclaimer-content">
+        <strong>Gizlilik:</strong> Fotoğraflar telefonundan veya bilgisayarından <strong>hiçbir sunucuya gönderilmez</strong>. Tüm değerlendirme tarayıcında yapılır, sayfa kapatıldığında veriler silinir.
       </div>
-      <div class="photo-slot-label">Ön</div>
-      <div class="photo-slot-hint">Çocuk yüzü kameraya dönük</div>
     </div>
-    <div class="photo-slot-remove" data-remove="front">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-    </div>
-    <input type="file" accept="image/*" data-input="front">
-  </label>
-  <label class="photo-slot" data-slot="back">
-    <img id="photoBackImg" alt="Arka görüntü" style="display:none">
-    <div class="photo-slot-content">
-      <div class="photo-slot-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="8" r="3"/></svg>
+
+    <!-- AI Otomatik Tarama (opsiyonel) -->
+    <div class="ai-banner">
+      <svg class="ai-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+      <div class="ai-banner-content">
+        <strong>Otomatik tarama opsiyonel.</strong> Sistem fotoğraflardan kabaca asimetri tespit etmeyi deneyebilir. <strong>Bu bir teşhis değil, AI tahminidir</strong> — sonuç ne olursa olsun, belirgin endişen varsa bir fizyoterapist görmen önerilir.
       </div>
-      <div class="photo-slot-label">Arka</div>
-      <div class="photo-slot-hint">Çocuk sırtı kameraya dönük</div>
     </div>
-    <div class="photo-slot-remove" data-remove="back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+
+    <button type="button" class="ai-analyze-btn" id="aiAnalyzeBtn" disabled>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      Otomatik Tarama Yap (opsiyonel)
+    </button>
+
+    <div class="ai-loading" id="aiLoading">
+      <div class="ai-loading-spinner"></div>
+      <div class="ai-loading-text" id="aiLoadingText">Görüntüler analiz ediliyor...</div>
+      <div class="ai-loading-sub">Bu işlem 5-10 saniye sürebilir. Sayfayı kapatma.</div>
     </div>
-    <input type="file" accept="image/*" data-input="back">
-  </label>
-  <label class="photo-slot" data-slot="side">
-    <img id="photoSideImg" alt="Yan görüntü" style="display:none">
-    <div class="photo-slot-content">
-      <div class="photo-slot-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 014 4v2M12 2a4 4 0 00-4 4v2M8 8s-2 4-2 8c0 2 1 4 2 4M16 8s2 4 2 8c0 2-1 4-2 4"/></svg>
+
+    <div class="ai-results" id="aiResults">
+      <h4>
+        AI Tarama Sonucu
+        <span class="ai-tag">TAHMİN</span>
+      </h4>
+      <div id="aiResultsContent"></div>
+      <div class="ai-disclaimer-final">
+        <strong>Önemli:</strong> Bu sonuçlar fotoğraf üzerinden yapılan kaba bir tahmindir, klinik teşhis değildir. Çocuk fotoğrafı analizi pose, kıyafet ve mesafeden etkilenir; doğruluk sınırlıdır. <strong>Belirgin asimetri veya endişe varsa mutlaka bir fizyoterapist görüşülmelidir.</strong>
       </div>
-      <div class="photo-slot-label">Yan + Adams</div>
-      <div class="photo-slot-hint">Profil ve öne eğilmiş hali</div>
     </div>
-    <div class="photo-slot-remove" data-remove="side">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+
+    <div class="button-row">
+      <button type="button" class="btn btn-primary" id="parentAnalyzeBtn" disabled>
+        Tarayıcı Sonucu Hesapla
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
     </div>
-    <input type="file" accept="image/*" data-input="side">
-  </label>
-</div>
-
-<div class="form-group">
-  <label class="form-label">Bu konuda eklemek istediğin başka bir şey var mı? <span style="color: var(--ink-400); font-weight: 400;">(opsiyonel)</span></label>
-  <textarea class="text-input" id="parentNote" placeholder="Örnek: Çocuğum sırt çantası takınca öne eğiliyor, çıkarınca düzeliyor..."></textarea>
-</div>
-
-<div class="disclaimer">
-  <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-  <div class="disclaimer-content">
-    <strong>Gizlilik:</strong> Fotoğraflar telefonundan veya bilgisayarından <strong>hiçbir sunucuya gönderilmez</strong>. Tüm değerlendirme tarayıcında yapılır, sayfa kapatıldığında veriler silinir.
-  </div>
-</div>
-
-<!-- AI Otomatik Tarama (opsiyonel) -->
-<div class="ai-banner">
-  <svg class="ai-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
-  <div class="ai-banner-content">
-    <strong>Otomatik tarama opsiyonel.</strong> Sistem fotoğraflardan kabaca asimetri tespit etmeyi deneyebilir. <strong>Bu bir teşhis değil, AI tahminidir</strong> — sonuç ne olursa olsun, belirgin endişen varsa bir fizyoterapist görmen önerilir.
-  </div>
-</div>
-
-<button type="button" class="ai-analyze-btn" id="aiAnalyzeBtn" disabled>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-  Otomatik Tarama Yap (opsiyonel)
-</button>
-
-<div class="ai-loading" id="aiLoading">
-  <div class="ai-loading-spinner"></div>
-  <div class="ai-loading-text" id="aiLoadingText">Görüntüler analiz ediliyor...</div>
-  <div class="ai-loading-sub">Bu işlem 5-10 saniye sürebilir. Sayfayı kapatma.</div>
-</div>
-
-<div class="ai-results" id="aiResults">
-  <h4>
-    AI Tarama Sonucu
-    <span class="ai-tag">TAHMİN</span>
-  </h4>
-  <div id="aiResultsContent"></div>
-  <div class="ai-disclaimer-final">
-    <strong>Önemli:</strong> Bu sonuçlar fotoğraf üzerinden yapılan kaba bir tahmindir, klinik teşhis değildir. Çocuk fotoğrafı analizi pose, kıyafet ve mesafeden etkilenir; doğruluk sınırlıdır. <strong>Belirgin asimetri veya endişe varsa mutlaka bir fizyoterapist görüşülmelidir.</strong>
-  </div>
-</div>
-
-<div class="button-row">
-  <button type="button" class="btn btn-primary" id="parentAnalyzeBtn" disabled>
-    Tarayıcı Sonucu Hesapla
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </button>
-</div>
-```
-
   </div>
 </section>
 
 <!-- ============= SCREEN 3.5: CLINIC CASES (HASTA LİSTESİ) ============= -->
-
 <section class="screen" id="screenClinicCases">
   <div class="container">
     <a class="back-link" data-back="screenMode">
@@ -1850,45 +1830,41 @@
       Mod seçimine dön
     </a>
 
-```
-<div class="mode-indicator clinic">
-  <span class="mode-indicator-dot"></span>
-  <span>Klinisyen modu</span>
-</div>
+    <div class="mode-indicator clinic">
+      <span class="mode-indicator-dot"></span>
+      <span>Klinisyen modu</span>
+    </div>
 
-<h2>Hasta listesi</h2>
-<p class="form-hint">Yeni bir muayene başlat veya önceki bir hastana ek değerlendirme ekle. <strong>Veriler sadece bu cihazda tutulur</strong>, hiçbir sunucuya gönderilmez.</p>
+    <h2>Hasta listesi</h2>
+    <p class="form-hint">Yeni bir muayene başlat veya önceki bir hastana ek değerlendirme ekle. <strong>Veriler sadece bu cihazda tutulur</strong>, hiçbir sunucuya gönderilmez.</p>
 
-<button type="button" class="new-patient-card" id="newCaseBtn">
-  <span class="new-patient-icon">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-  </span>
-  <span class="new-patient-text">
-    <strong>Yeni hasta değerlendirmesi</strong>
-    <small>Boş forma başla</small>
-  </span>
-</button>
+    <button type="button" class="new-patient-card" id="newCaseBtn">
+      <span class="new-patient-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+      </span>
+      <span class="new-patient-text">
+        <strong>Yeni hasta değerlendirmesi</strong>
+        <small>Boş forma başla</small>
+      </span>
+    </button>
 
-<div class="cases-section-title">
-  <h3>Önceki hastalar</h3>
-  <span class="cases-count" id="casesCount">0 hasta</span>
-</div>
+    <div class="cases-section-title">
+      <h3>Önceki hastalar</h3>
+      <span class="cases-count" id="casesCount">0 hasta</span>
+    </div>
 
-<div class="case-list" id="caseList"></div>
+    <div class="case-list" id="caseList"></div>
 
-<div class="disclaimer" style="margin-top: 16px;">
-  <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-  <div class="disclaimer-content">
-    <strong>KVKK & Gizlilik:</strong> Hasta kayıtları sadece cihazının tarayıcı belleğinde (localStorage) tutulur. Tarayıcı verileri silindiğinde veya farklı cihazda açıldığında veriler erişilemez. Yedek istiyorsan her muayene sonunda raporu PDF olarak yazdır.
-  </div>
-</div>
-```
-
+    <div class="disclaimer" style="margin-top: 16px;">
+      <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="disclaimer-content">
+        <strong>KVKK & Gizlilik:</strong> Hasta kayıtları sadece cihazının tarayıcı belleğinde (localStorage) tutulur. Tarayıcı verileri silindiğinde veya farklı cihazda açıldığında veriler erişilemez. Yedek istiyorsan her muayene sonunda raporu PDF olarak yazdır.
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============= SCREEN 4B: CLINIC — EXAM CHECKLIST ============= -->
-
 <section class="screen" id="screenClinic">
   <div class="container">
     <a class="back-link" data-back="screenRedFlags">
@@ -1896,208 +1872,204 @@
       Geri
     </a>
 
-```
-<div class="progress-track">
-  <div class="progress-step done"></div>
-  <div class="progress-step done"></div>
-  <div class="progress-step active"></div>
-</div>
-
-<div class="mode-indicator clinic">
-  <span class="mode-indicator-dot"></span>
-  <span>Klinisyen modu</span>
-</div>
-
-<h2>Pediatrik postür muayenesi</h2>
-<p class="form-hint">Hasta başında doldur. Tüm alanlar opsiyonel; doldurduğun veriler raporda görünür.</p>
-
-<!-- Hasta bilgisi -->
-<div class="check-section">
-  <div class="check-section-head">
-    <h3>Hasta bilgisi</h3>
-  </div>
-  <p class="section-note">Yaş ve cinsiyet zaten girildi. İsim ve şikayet sadece raporda görünür, hiçbir yerde kayıt edilmez.</p>
-  <div class="form-group">
-    <label class="form-label">Hasta adı / kodu (opsiyonel)</label>
-    <input type="text" class="text-input" id="clinicPatientName" placeholder="Ör: H.Y. veya hasta numarası">
-  </div>
-  <div class="form-group" style="margin-bottom: 0;">
-    <label class="form-label">Geliş şikayeti</label>
-    <textarea class="text-input" id="clinicComplaint" placeholder="Ör: Anne şikayet: çocuğun sırtı eğri duruyor, son 2 aydır fark ettiler..."></textarea>
-  </div>
-</div>
-
-<!-- Postür gözlemi -->
-<div class="check-section">
-  <div class="check-section-head">
-    <h3>1. Postür gözlemi</h3>
-  </div>
-  <p class="section-note">Ön ve arka görüntüde simetri kontrolü.</p>
-  <div class="form-group">
-    <label class="form-label">Omuz seviyesi</label>
-    <div class="radio-pills" data-field="shoulderLevel">
-      <button type="button" class="radio-pill" data-value="symmetric" data-tone="ok">Simetrik</button>
-      <button type="button" class="radio-pill" data-value="rightHigh" data-tone="warn">Sağ yüksek</button>
-      <button type="button" class="radio-pill" data-value="leftHigh" data-tone="warn">Sol yüksek</button>
+    <div class="progress-track">
+      <div class="progress-step done"></div>
+      <div class="progress-step done"></div>
+      <div class="progress-step active"></div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="form-label">Skapula seviyesi</label>
-    <div class="radio-pills" data-field="scapulaLevel">
-      <button type="button" class="radio-pill" data-value="symmetric" data-tone="ok">Simetrik</button>
-      <button type="button" class="radio-pill" data-value="winged" data-tone="warn">Kanatlanma</button>
-      <button type="button" class="radio-pill" data-value="asymmetric" data-tone="warn">Asimetrik</button>
-    </div>
-  </div>
-  <div class="form-group" style="margin-bottom: 0;">
-    <label class="form-label">Pelvis seviyesi</label>
-    <div class="radio-pills" data-field="pelvisLevel">
-      <button type="button" class="radio-pill" data-value="symmetric" data-tone="ok">Simetrik</button>
-      <button type="button" class="radio-pill" data-value="rightHigh" data-tone="warn">Sağ yüksek</button>
-      <button type="button" class="radio-pill" data-value="leftHigh" data-tone="warn">Sol yüksek</button>
-    </div>
-  </div>
-</div>
 
-<!-- Adams testi -->
-<div class="check-section">
-  <div class="check-section-head">
-    <h3>2. Adams forward bend testi</h3>
-    <span class="check-section-tag">Skolyoz tarama</span>
-  </div>
-  <p class="section-note">Çocuk ayaklar bitişik, dizler düz, kollar serbest öne eğilir. Sırt yatay düzleme paraleldir. Skoliometre ile veya görsel inspeksiyon.</p>
-  <div class="form-group">
-    <label class="form-label">Test sonucu</label>
-    <div class="radio-pills" data-field="adamsResult">
-      <button type="button" class="radio-pill" data-value="negative" data-tone="ok">Negatif</button>
-      <button type="button" class="radio-pill" data-value="suspicious" data-tone="warn">Şüpheli</button>
-      <button type="button" class="radio-pill" data-value="positive" data-tone="danger">Pozitif</button>
+    <div class="mode-indicator clinic">
+      <span class="mode-indicator-dot"></span>
+      <span>Klinisyen modu</span>
     </div>
-  </div>
-  <div class="form-group" style="margin-bottom: 0;">
-    <label class="form-label">Skoliometre / ATR (Angle of Trunk Rotation)</label>
-    <p class="section-note" style="margin-bottom: 8px;">≥5° şüpheli, ≥7° X-ray önerilir.</p>
-    <div class="range-row">
-      <input type="range" class="range-input" id="atrRange" min="0" max="20" value="0" step="1">
-      <div class="range-value" id="atrValue">0°</div>
-    </div>
-  </div>
-</div>
 
-<!-- Sagittal -->
-<div class="check-section">
-  <div class="check-section-head">
-    <h3>3. Sagittal plan (yan görünüm)</h3>
-  </div>
-  <p class="section-note">Yaşa göre normal değişir. Okul öncesinde lordoz fizyolojiktir.</p>
-  <div class="form-group">
-    <label class="form-label">Servikal lordoz</label>
-    <div class="radio-pills" data-field="cervicalCurve">
-      <button type="button" class="radio-pill" data-value="normal" data-tone="ok">Normal</button>
-      <button type="button" class="radio-pill" data-value="forwardHead" data-tone="warn">Baş öne</button>
-      <button type="button" class="radio-pill" data-value="straight" data-tone="warn">Düz</button>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="form-label">Torakal kifoz</label>
-    <div class="radio-pills" data-field="thoracicCurve">
-      <button type="button" class="radio-pill" data-value="normal" data-tone="ok">Normal</button>
-      <button type="button" class="radio-pill" data-value="increased" data-tone="warn">Artmış</button>
-      <button type="button" class="radio-pill" data-value="flattened" data-tone="warn">Azalmış</button>
-    </div>
-  </div>
-  <div class="form-group" style="margin-bottom: 0;">
-    <label class="form-label">Lumbal lordoz</label>
-    <div class="radio-pills" data-field="lumbarCurve">
-      <button type="button" class="radio-pill" data-value="normal" data-tone="ok">Normal</button>
-      <button type="button" class="radio-pill" data-value="increased" data-tone="warn">Artmış</button>
-      <button type="button" class="radio-pill" data-value="flattened" data-tone="warn">Azalmış</button>
-    </div>
-  </div>
-</div>
+    <h2>Pediatrik postür muayenesi</h2>
+    <p class="form-hint">Hasta başında doldur. Tüm alanlar opsiyonel; doldurduğun veriler raporda görünür.</p>
 
-<!-- Alt ekstremite -->
-<div class="check-section">
-  <div class="check-section-head">
-    <h3>4. Alt ekstremite dizilimi</h3>
-    <span class="check-section-tag warn">Yaşa duyarlı</span>
-  </div>
-  <p class="section-note">3-6 yaş: hafif genu valgum fizyolojiktir. 7+ yaş: persistent valgum patolojik olabilir.</p>
-  <div class="form-group">
-    <label class="form-label">Diz dizilimi</label>
-    <div class="radio-pills" data-field="kneeAlignment">
-      <button type="button" class="radio-pill" data-value="neutral" data-tone="ok">Nötr</button>
-      <button type="button" class="radio-pill" data-value="valgum" data-tone="warn">Valgum (X)</button>
-      <button type="button" class="radio-pill" data-value="varum" data-tone="warn">Varum (O)</button>
+    <!-- Hasta bilgisi -->
+    <div class="check-section">
+      <div class="check-section-head">
+        <h3>Hasta bilgisi</h3>
+      </div>
+      <p class="section-note">Yaş ve cinsiyet zaten girildi. İsim ve şikayet sadece raporda görünür, hiçbir yerde kayıt edilmez.</p>
+      <div class="form-group">
+        <label class="form-label">Hasta adı / kodu (opsiyonel)</label>
+        <input type="text" class="text-input" id="clinicPatientName" placeholder="Ör: H.Y. veya hasta numarası">
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">Geliş şikayeti</label>
+        <textarea class="text-input" id="clinicComplaint" placeholder="Ör: Anne şikayet: çocuğun sırtı eğri duruyor, son 2 aydır fark ettiler..."></textarea>
+      </div>
     </div>
-  </div>
-  <div class="form-group" style="margin-bottom: 0;">
-    <label class="form-label">Ayak postürü</label>
-    <div class="radio-pills" data-field="footPosture">
-      <button type="button" class="radio-pill" data-value="neutral" data-tone="ok">Nötr</button>
-      <button type="button" class="radio-pill" data-value="pronated" data-tone="warn">Pronasyon</button>
-      <button type="button" class="radio-pill" data-value="supinated" data-tone="warn">Supinasyon</button>
-      <button type="button" class="radio-pill" data-value="pesPlanus" data-tone="warn">Pes planus</button>
+
+    <!-- Postür gözlemi -->
+    <div class="check-section">
+      <div class="check-section-head">
+        <h3>1. Postür gözlemi</h3>
+      </div>
+      <p class="section-note">Ön ve arka görüntüde simetri kontrolü.</p>
+      <div class="form-group">
+        <label class="form-label">Omuz seviyesi</label>
+        <div class="radio-pills" data-field="shoulderLevel">
+          <button type="button" class="radio-pill" data-value="symmetric" data-tone="ok">Simetrik</button>
+          <button type="button" class="radio-pill" data-value="rightHigh" data-tone="warn">Sağ yüksek</button>
+          <button type="button" class="radio-pill" data-value="leftHigh" data-tone="warn">Sol yüksek</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Skapula seviyesi</label>
+        <div class="radio-pills" data-field="scapulaLevel">
+          <button type="button" class="radio-pill" data-value="symmetric" data-tone="ok">Simetrik</button>
+          <button type="button" class="radio-pill" data-value="winged" data-tone="warn">Kanatlanma</button>
+          <button type="button" class="radio-pill" data-value="asymmetric" data-tone="warn">Asimetrik</button>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">Pelvis seviyesi</label>
+        <div class="radio-pills" data-field="pelvisLevel">
+          <button type="button" class="radio-pill" data-value="symmetric" data-tone="ok">Simetrik</button>
+          <button type="button" class="radio-pill" data-value="rightHigh" data-tone="warn">Sağ yüksek</button>
+          <button type="button" class="radio-pill" data-value="leftHigh" data-tone="warn">Sol yüksek</button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Cinsel olgunlaşma (opsiyonel - skolyoz takibi için) -->
-<div class="check-section">
-  <div class="check-section-head">
-    <h3>5. Cinsel olgunlaşma <span style="color: var(--ink-400); font-weight: 500;">(opsiyonel)</span></h3>
-    <span class="check-section-tag">Skolyoz takibi</span>
-  </div>
-  <p class="section-note">Skolyoz progresyon riski Tanner 2–3 + Risser 0–2 döneminde en yüksektir. Olgunlaşma tamamlanınca eğri ilerleme riski azalır. <strong>Sadece skolyoz takibinde gerekli.</strong></p>
-
-  <div class="form-group">
-    <label class="form-label">Tanner evresi</label>
-    <div class="radio-pills" data-field="tannerStage">
-      <button type="button" class="radio-pill" data-value="t1" data-tone="ok">T1 — Prepubertal</button>
-      <button type="button" class="radio-pill" data-value="t2" data-tone="warn">T2 — Başlangıç</button>
-      <button type="button" class="radio-pill" data-value="t3" data-tone="danger">T3 — Hızlı büyüme</button>
-      <button type="button" class="radio-pill" data-value="t4" data-tone="warn">T4 — Yavaşlama</button>
-      <button type="button" class="radio-pill" data-value="t5" data-tone="ok">T5 — Olgun</button>
+    <!-- Adams testi -->
+    <div class="check-section">
+      <div class="check-section-head">
+        <h3>2. Adams forward bend testi</h3>
+        <span class="check-section-tag">Skolyoz tarama</span>
+      </div>
+      <p class="section-note">Çocuk ayaklar bitişik, dizler düz, kollar serbest öne eğilir. Sırt yatay düzleme paraleldir. Skoliometre ile veya görsel inspeksiyon.</p>
+      <div class="form-group">
+        <label class="form-label">Test sonucu</label>
+        <div class="radio-pills" data-field="adamsResult">
+          <button type="button" class="radio-pill" data-value="negative" data-tone="ok">Negatif</button>
+          <button type="button" class="radio-pill" data-value="suspicious" data-tone="warn">Şüpheli</button>
+          <button type="button" class="radio-pill" data-value="positive" data-tone="danger">Pozitif</button>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">Skoliometre / ATR (Angle of Trunk Rotation)</label>
+        <p class="section-note" style="margin-bottom: 8px;">≥5° şüpheli, ≥7° X-ray önerilir.</p>
+        <div class="range-row">
+          <input type="range" class="range-input" id="atrRange" min="0" max="20" value="0" step="1">
+          <div class="range-value" id="atrValue">0°</div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="form-group" style="margin-bottom: 0;">
-    <label class="form-label">Risser işareti (radyolojik — opsiyonel)</label>
-    <p class="section-note" style="margin-bottom: 8px;">İliak kemik epifiz olgunlaşması (0–5). Risser 0–2: yüksek progresyon riski. Risser 4–5: kemik füzyonu tamam.</p>
-    <div class="radio-pills" data-field="risserSign">
-      <button type="button" class="radio-pill" data-value="r0" data-tone="danger">0</button>
-      <button type="button" class="radio-pill" data-value="r1" data-tone="danger">1</button>
-      <button type="button" class="radio-pill" data-value="r2" data-tone="warn">2</button>
-      <button type="button" class="radio-pill" data-value="r3" data-tone="warn">3</button>
-      <button type="button" class="radio-pill" data-value="r4" data-tone="ok">4</button>
-      <button type="button" class="radio-pill" data-value="r5" data-tone="ok">5</button>
+
+    <!-- Sagittal -->
+    <div class="check-section">
+      <div class="check-section-head">
+        <h3>3. Sagittal plan (yan görünüm)</h3>
+      </div>
+      <p class="section-note">Yaşa göre normal değişir. Okul öncesinde lordoz fizyolojiktir.</p>
+      <div class="form-group">
+        <label class="form-label">Servikal lordoz</label>
+        <div class="radio-pills" data-field="cervicalCurve">
+          <button type="button" class="radio-pill" data-value="normal" data-tone="ok">Normal</button>
+          <button type="button" class="radio-pill" data-value="forwardHead" data-tone="warn">Baş öne</button>
+          <button type="button" class="radio-pill" data-value="straight" data-tone="warn">Düz</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Torakal kifoz</label>
+        <div class="radio-pills" data-field="thoracicCurve">
+          <button type="button" class="radio-pill" data-value="normal" data-tone="ok">Normal</button>
+          <button type="button" class="radio-pill" data-value="increased" data-tone="warn">Artmış</button>
+          <button type="button" class="radio-pill" data-value="flattened" data-tone="warn">Azalmış</button>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">Lumbal lordoz</label>
+        <div class="radio-pills" data-field="lumbarCurve">
+          <button type="button" class="radio-pill" data-value="normal" data-tone="ok">Normal</button>
+          <button type="button" class="radio-pill" data-value="increased" data-tone="warn">Artmış</button>
+          <button type="button" class="radio-pill" data-value="flattened" data-tone="warn">Azalmış</button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Klinisyen notu -->
-<div class="check-section">
-  <div class="check-section-head">
-    <h3>6. Klinik not ve plan</h3>
-  </div>
-  <div class="form-group" style="margin-bottom: 0;">
-    <label class="form-label">Klinisyen notu / öneri</label>
-    <textarea class="text-input" id="clinicNote" placeholder="Ek bulgular, öneriler, tedavi planı..." style="min-height: 110px;"></textarea>
-  </div>
-</div>
+    <!-- Alt ekstremite -->
+    <div class="check-section">
+      <div class="check-section-head">
+        <h3>4. Alt ekstremite dizilimi</h3>
+        <span class="check-section-tag warn">Yaşa duyarlı</span>
+      </div>
+      <p class="section-note">3-6 yaş: hafif genu valgum fizyolojiktir. 7+ yaş: persistent valgum patolojik olabilir.</p>
+      <div class="form-group">
+        <label class="form-label">Diz dizilimi</label>
+        <div class="radio-pills" data-field="kneeAlignment">
+          <button type="button" class="radio-pill" data-value="neutral" data-tone="ok">Nötr</button>
+          <button type="button" class="radio-pill" data-value="valgum" data-tone="warn">Valgum (X)</button>
+          <button type="button" class="radio-pill" data-value="varum" data-tone="warn">Varum (O)</button>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">Ayak postürü</label>
+        <div class="radio-pills" data-field="footPosture">
+          <button type="button" class="radio-pill" data-value="neutral" data-tone="ok">Nötr</button>
+          <button type="button" class="radio-pill" data-value="pronated" data-tone="warn">Pronasyon</button>
+          <button type="button" class="radio-pill" data-value="supinated" data-tone="warn">Supinasyon</button>
+          <button type="button" class="radio-pill" data-value="pesPlanus" data-tone="warn">Pes planus</button>
+        </div>
+      </div>
+    </div>
 
-<div class="button-row">
-  <button type="button" class="btn btn-primary" id="clinicAnalyzeBtn">
-    Raporu Oluştur
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-  </button>
-</div>
-```
+    <!-- Cinsel olgunlaşma (opsiyonel - skolyoz takibi için) -->
+    <div class="check-section">
+      <div class="check-section-head">
+        <h3>5. Cinsel olgunlaşma <span style="color: var(--ink-400); font-weight: 500;">(opsiyonel)</span></h3>
+        <span class="check-section-tag">Skolyoz takibi</span>
+      </div>
+      <p class="section-note">Skolyoz progresyon riski Tanner 2–3 + Risser 0–2 döneminde en yüksektir. Olgunlaşma tamamlanınca eğri ilerleme riski azalır. <strong>Sadece skolyoz takibinde gerekli.</strong></p>
 
+      <div class="form-group">
+        <label class="form-label">Tanner evresi</label>
+        <div class="radio-pills" data-field="tannerStage">
+          <button type="button" class="radio-pill" data-value="t1" data-tone="ok">T1 — Prepubertal</button>
+          <button type="button" class="radio-pill" data-value="t2" data-tone="warn">T2 — Başlangıç</button>
+          <button type="button" class="radio-pill" data-value="t3" data-tone="danger">T3 — Hızlı büyüme</button>
+          <button type="button" class="radio-pill" data-value="t4" data-tone="warn">T4 — Yavaşlama</button>
+          <button type="button" class="radio-pill" data-value="t5" data-tone="ok">T5 — Olgun</button>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">Risser işareti (radyolojik — opsiyonel)</label>
+        <p class="section-note" style="margin-bottom: 8px;">İliak kemik epifiz olgunlaşması (0–5). Risser 0–2: yüksek progresyon riski. Risser 4–5: kemik füzyonu tamam.</p>
+        <div class="radio-pills" data-field="risserSign">
+          <button type="button" class="radio-pill" data-value="r0" data-tone="danger">0</button>
+          <button type="button" class="radio-pill" data-value="r1" data-tone="danger">1</button>
+          <button type="button" class="radio-pill" data-value="r2" data-tone="warn">2</button>
+          <button type="button" class="radio-pill" data-value="r3" data-tone="warn">3</button>
+          <button type="button" class="radio-pill" data-value="r4" data-tone="ok">4</button>
+          <button type="button" class="radio-pill" data-value="r5" data-tone="ok">5</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klinisyen notu -->
+    <div class="check-section">
+      <div class="check-section-head">
+        <h3>6. Klinik not ve plan</h3>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label">Klinisyen notu / öneri</label>
+        <textarea class="text-input" id="clinicNote" placeholder="Ek bulgular, öneriler, tedavi planı..." style="min-height: 110px;"></textarea>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button type="button" class="btn btn-primary" id="clinicAnalyzeBtn">
+        Raporu Oluştur
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </button>
+    </div>
   </div>
 </section>
 
 <!-- ============= SCREEN 5: RESULT ============= -->
-
 <section class="screen" id="screenResult">
   <div class="container">
     <a class="back-link" id="resultBackLink">
@@ -2105,77 +2077,74 @@
       Geri
     </a>
 
-```
-<div class="progress-track">
-  <div class="progress-step done"></div>
-  <div class="progress-step done"></div>
-  <div class="progress-step done"></div>
-</div>
-
-<!-- Print only header (sadece yazdırılırken görünür) -->
-<div class="print-header print-only">
-  <div class="print-header-top">
-    <div class="print-logo">
-      <span class="print-logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-      </span>
-      <span class="print-logo-text">
-        <strong>Rehabist</strong>
-        <span>Pediatrik Fizyoterapi</span>
-      </span>
+    <div class="progress-track">
+      <div class="progress-step done"></div>
+      <div class="progress-step done"></div>
+      <div class="progress-step done"></div>
     </div>
-    <div class="print-meta-block">
-      <strong>Fzt. Umut Yalçın</strong><br>
-      <span>Aydın · Efeler · 0534 584 0913</span><br>
-      <span>Rapor tarihi: <strong id="printDate"></strong></span>
+
+    <!-- Print only header (sadece yazdırılırken görünür) -->
+    <div class="print-header print-only">
+      <div class="print-header-top">
+        <div class="print-logo">
+          <span class="print-logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+          </span>
+          <span class="print-logo-text">
+            <strong>Rehabist</strong>
+            <span>Pediatrik Fizyoterapi</span>
+          </span>
+        </div>
+        <div class="print-meta-block">
+          <strong>Fzt. Umut Yalçın</strong><br>
+          <span>Aydın · Efeler · 0534 584 0913</span><br>
+          <span>Rapor tarihi: <strong id="printDate"></strong></span>
+        </div>
+      </div>
+      <div class="print-title">Pediatrik Postür Değerlendirme Raporu</div>
     </div>
-  </div>
-  <div class="print-title">Pediatrik Postür Değerlendirme Raporu</div>
-</div>
 
-<!-- Print only patient table (sadece yazdırılırken görünür) -->
-<div class="print-patient-table print-only" id="printPatientTable"></div>
+    <!-- Print only patient table (sadece yazdırılırken görünür) -->
+    <div class="print-patient-table print-only" id="printPatientTable"></div>
 
-<div id="resultContent"></div>
+    <div id="resultContent"></div>
 
-<!-- Print only footer (sadece yazdırılırken görünür) -->
-<div class="print-footer print-only">
-  <div class="print-followup">
-    <strong>Sonraki kontrol:</strong>
-    <span class="print-followup-line"></span>
-  </div>
-  <div class="print-signatures">
-    <div class="print-signature">
-      <strong>Fzt. Umut Yalçın</strong>
-      <span>Klinisyen imzası</span>
+    <!-- Print only footer (sadece yazdırılırken görünür) -->
+    <div class="print-footer print-only">
+      <div class="print-followup">
+        <strong>Sonraki kontrol:</strong>
+        <span class="print-followup-line"></span>
+      </div>
+      <div class="print-signatures">
+        <div class="print-signature">
+          <strong>Fzt. Umut Yalçın</strong>
+          <span>Klinisyen imzası</span>
+        </div>
+        <div class="print-signature">
+          <strong>Veli</strong>
+          <span>Ad-soyad ve imza</span>
+        </div>
+      </div>
+      <div class="print-disclaimer">
+        <strong>Önemli:</strong> Bu rapor pediatrik fizyoterapi değerlendirme bulgularını içerir; tıbbi tanı koymaz. Belirli bulgularda hekim veya ortopedi uzmanı görüşü gerekebilir. Veriler KVKK kapsamında yalnızca bu cihazın tarayıcı belleğinde tutulur, sunucuya aktarılmaz.
+      </div>
     </div>
-    <div class="print-signature">
-      <strong>Veli</strong>
-      <span>Ad-soyad ve imza</span>
+
+    <div class="button-row" style="margin-top: 24px;">
+      <button type="button" class="btn btn-secondary" id="resultPrintBtn" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Raporu Yazdır / PDF
+      </button>
+      <a href="#" class="btn btn-primary" id="resultGuideBtn" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        <span id="resultGuideBtnText">Yaş Rehberini Oku</span>
+      </a>
+      <a href="https://wa.me/905345840913?text=Merhaba%2C%20%C3%A7ocu%C4%9Fum%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa" id="resultWhatsappBtn" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+        Randevu Al
+      </a>
+      <button type="button" class="btn btn-secondary" id="resultRestartBtn">Yeni Değerlendirme</button>
     </div>
-  </div>
-  <div class="print-disclaimer">
-    <strong>Önemli:</strong> Bu rapor pediatrik fizyoterapi değerlendirme bulgularını içerir; tıbbi tanı koymaz. Belirli bulgularda hekim veya ortopedi uzmanı görüşü gerekebilir. Veriler KVKK kapsamında yalnızca bu cihazın tarayıcı belleğinde tutulur, sunucuya aktarılmaz.
-  </div>
-</div>
-
-<div class="button-row" style="margin-top: 24px;">
-  <button type="button" class="btn btn-secondary" id="resultPrintBtn" style="display:none;">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-    Raporu Yazdır / PDF
-  </button>
-  <a href="#" class="btn btn-primary" id="resultGuideBtn" style="display:none;">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-    <span id="resultGuideBtnText">Yaş Rehberini Oku</span>
-  </a>
-  <a href="https://wa.me/905345840913?text=Merhaba%2C%20%C3%A7ocu%C4%9Fum%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa" id="resultWhatsappBtn" style="display:none;">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-    Randevu Al
-  </a>
-  <button type="button" class="btn btn-secondary" id="resultRestartBtn">Yeni Değerlendirme</button>
-</div>
-```
-
   </div>
 </section>
 

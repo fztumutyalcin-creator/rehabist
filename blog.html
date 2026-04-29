@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -530,50 +529,17 @@
     .nav-inner { height: 60px; }
   }
 </style>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared-theme.css">
 </head>
 <body>
 
 <!-- NAV -->
-
-<nav class="nav">
-  <div class="container nav-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-      </span>
-      Rehabist
-    </a>
-
-```
-<div class="nav-links">
-  <a href="index.html#hakkimda" class="nav-link">Hakkımda</a>
-  <a href="index.html#hizmetler" class="nav-link">Hizmetler</a>
-  <a href="blog.html" class="nav-link active">Blog</a>
-  <a href="index.html#sss" class="nav-link">SSS</a>
-</div>
-
-<div class="nav-cta-wrap">
-  <div class="user-chip" id="userChip">
-    <span class="user-chip-avatar" id="userAvatar">U</span>
-    <span id="userName">Üye</span>
-    <button type="button" onclick="handleLogout()">Çıkış</button>
-  </div>
-  <a href="https://wa.me/905345840913?text=Merhaba%2C%20randevu%20almak%20istiyorum." class="btn btn-primary nav-wa-btn" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-    Randevu Al
-  </a>
-  <button type="button" class="menu-btn" onclick="toggleMobileMenu()" aria-label="Menü">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-  </button>
-</div>
-```
-
-  </div>
-</nav>
+<div id="rb-nav-mount"></div>
 
 <!-- Mobile drawer -->
-
 <div class="mobile-menu-backdrop" id="mobileMenuBackdrop" onclick="toggleMobileMenu()"></div>
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-header">
@@ -590,7 +556,7 @@
   <div class="mobile-menu-links">
     <a href="index.html#hakkimda" class="mobile-menu-link">Hakkımda</a>
     <a href="index.html#hizmetler" class="mobile-menu-link">Hizmetler</a>
-    <a href="blog.html" class="mobile-menu-link">Blog</a>
+    <a href="/blog.html" class="mobile-menu-link">Blog</a>
     <a href="index.html#sss" class="mobile-menu-link">Sık Sorulan Sorular</a>
     <a href="https://wa.me/905345840913?text=Merhaba%2C%20randevu%20almak%20istiyorum." class="btn btn-primary" target="_blank" rel="noopener" style="margin-top:24px; justify-content:center;">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
@@ -600,7 +566,6 @@
 </div>
 
 <!-- HEADER -->
-
 <header class="blog-header">
   <div class="container">
     <span class="section-kicker">BLOG</span>
@@ -614,7 +579,6 @@
 </header>
 
 <!-- CATEGORIES -->
-
 <section class="categories">
   <div class="container">
     <div class="category-list">
@@ -628,161 +592,147 @@
 </section>
 
 <!-- BLOG GRID -->
-
 <section class="blog-section">
   <div class="container">
     <div class="blog-grid" id="blogGrid">
 
-```
-  <!-- Blog 1 (published) -->
-  <a href="bel.html" class="blog-card" data-category="ortopedi">
-    <div class="blog-card-image">
-      <div class="blog-card-tag">Ortopedi</div>
-      <div class="blog-card-lock">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      </div>
-      <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="g1" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#eff6ff"/><stop offset="100%" stop-color="#dbeafe"/></linearGradient></defs>
-        <rect width="400" height="225" fill="url(#g1)"/>
-        <circle cx="340" cy="60" r="90" fill="#bfdbfe" opacity="0.4"/>
-        <circle cx="70" cy="180" r="60" fill="#93c5fd" opacity="0.3"/>
-        <path d="M50 140 Q 150 100, 250 130 T 380 110" stroke="#2563eb" stroke-width="2" fill="none" opacity="0.4"/>
-      </svg>
-    </div>
-    <div class="blog-card-content">
-      <div class="blog-card-meta">
-        <span>8 Nisan 2026</span>
-        <span class="dot"></span>
-        <span>6 dk okuma</span>
-      </div>
-      <h3>Bel Ağrısı İçin Evde Uygulanabilen 5 Temel Egzersiz</h3>
-      <p>Mekanik kaynaklı bel ağrılarında kanıta dayalı, güvenle uygulanabilen egzersizler ve dikkat edilmesi gereken uyarılar.</p>
-      <div class="blog-card-footer">
-        <span class="blog-card-readmore">
-          Yazıyı Oku
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
-      </div>
-    </div>
-  </a>
+      <!-- Blog 1 (published) -->
+      <a href="/bel.html" class="blog-card" data-category="ortopedi">
+        <div class="blog-card-image">
+          <div class="blog-card-tag">Ortopedi</div>
+          <div class="blog-card-lock">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g1" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#eff6ff"/><stop offset="100%" stop-color="#dbeafe"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#g1)"/>
+            <circle cx="340" cy="60" r="90" fill="#bfdbfe" opacity="0.4"/>
+            <circle cx="70" cy="180" r="60" fill="#93c5fd" opacity="0.3"/>
+            <path d="M50 140 Q 150 100, 250 130 T 380 110" stroke="#2563eb" stroke-width="2" fill="none" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta">
+            <span>8 Nisan 2026</span>
+            <span class="dot"></span>
+            <span>6 dk okuma</span>
+          </div>
+          <h3>Bel Ağrısı İçin Evde Uygulanabilen 5 Temel Egzersiz</h3>
+          <p>Mekanik kaynaklı bel ağrılarında kanıta dayalı, güvenle uygulanabilen egzersizler ve dikkat edilmesi gereken uyarılar.</p>
+          <div class="blog-card-footer">
+            <span class="blog-card-readmore">
+              Yazıyı Oku
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
 
-  <!-- Coming soon posts -->
-  <div class="blog-card coming" data-category="noroloji">
-    <div class="blog-card-image">
-      <div class="blog-card-tag">Nöroloji</div>
-      <div class="blog-card-lock">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <!-- Coming soon posts -->
+      <div class="blog-card coming" data-category="noroloji">
+        <div class="blog-card-image">
+          <div class="blog-card-tag">Nöroloji</div>
+          <div class="blog-card-lock">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g2" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f5f7fa"/><stop offset="100%" stop-color="#e4e8ed"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#g2)"/>
+            <circle cx="100" cy="110" r="60" fill="#cbd5e1" opacity="0.4"/>
+            <circle cx="300" cy="120" r="40" fill="#94a3b8" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta"><span>Yakında</span></div>
+          <h3>İnme Sonrası Rehabilitasyonda İlk 90 Gün</h3>
+          <p>Nöroplastisite dönemi olarak bilinen kritik süreçte rehabilitasyonun rolü ve beklenen kazanımlar.</p>
+        </div>
       </div>
-      <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="g2" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f5f7fa"/><stop offset="100%" stop-color="#e4e8ed"/></linearGradient></defs>
-        <rect width="400" height="225" fill="url(#g2)"/>
-        <circle cx="100" cy="110" r="60" fill="#cbd5e1" opacity="0.4"/>
-        <circle cx="300" cy="120" r="40" fill="#94a3b8" opacity="0.3"/>
-      </svg>
-    </div>
-    <div class="blog-card-content">
-      <div class="blog-card-meta"><span>Yakında</span></div>
-      <h3>İnme Sonrası Rehabilitasyonda İlk 90 Gün</h3>
-      <p>Nöroplastisite dönemi olarak bilinen kritik süreçte rehabilitasyonun rolü ve beklenen kazanımlar.</p>
-    </div>
-  </div>
 
-  <div class="blog-card coming" data-category="pediatri">
-    <div class="blog-card-image">
-      <div class="blog-card-tag">Pediatri</div>
-      <div class="blog-card-lock">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <div class="blog-card coming" data-category="pediatri">
+        <div class="blog-card-image">
+          <div class="blog-card-tag">Pediatri</div>
+          <div class="blog-card-lock">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g3" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f5f7fa"/><stop offset="100%" stop-color="#e4e8ed"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#g3)"/>
+            <circle cx="200" cy="112" r="80" fill="#cbd5e1" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta"><span>Yakında</span></div>
+          <h3>Çocuklarda Postür: Aileler İçin 7 Pratik Öneri</h3>
+          <p>Okul çağı çocuklarında sık görülen postür bozuklukları ve evde uygulanabilecek koruyucu önlemler.</p>
+        </div>
       </div>
-      <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="g3" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f5f7fa"/><stop offset="100%" stop-color="#e4e8ed"/></linearGradient></defs>
-        <rect width="400" height="225" fill="url(#g3)"/>
-        <circle cx="200" cy="112" r="80" fill="#cbd5e1" opacity="0.4"/>
-      </svg>
-    </div>
-    <div class="blog-card-content">
-      <div class="blog-card-meta"><span>Yakında</span></div>
-      <h3>Çocuklarda Postür: Aileler İçin 7 Pratik Öneri</h3>
-      <p>Okul çağı çocuklarında sık görülen postür bozuklukları ve evde uygulanabilecek koruyucu önlemler.</p>
-    </div>
-  </div>
 
-  <div class="blog-card coming" data-category="ortopedi">
-    <div class="blog-card-image">
-      <div class="blog-card-tag">Ortopedi</div>
-      <div class="blog-card-lock">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <div class="blog-card coming" data-category="ortopedi">
+        <div class="blog-card-image">
+          <div class="blog-card-tag">Ortopedi</div>
+          <div class="blog-card-lock">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g4" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f5f7fa"/><stop offset="100%" stop-color="#e4e8ed"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#g4)"/>
+            <circle cx="320" cy="80" r="70" fill="#cbd5e1" opacity="0.35"/>
+          </svg>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta"><span>Yakında</span></div>
+          <h3>Boyun Fıtığı: Ne Yapmalı, Ne Yapmamalı?</h3>
+          <p>Servikal disk hernisine dair pratik bilgiler; ağrıyı tetikleyen hareketler ve ev ortamında alınabilecek önlemler.</p>
+        </div>
       </div>
-      <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="g4" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f5f7fa"/><stop offset="100%" stop-color="#e4e8ed"/></linearGradient></defs>
-        <rect width="400" height="225" fill="url(#g4)"/>
-        <circle cx="320" cy="80" r="70" fill="#cbd5e1" opacity="0.35"/>
-      </svg>
-    </div>
-    <div class="blog-card-content">
-      <div class="blog-card-meta"><span>Yakında</span></div>
-      <h3>Boyun Fıtığı: Ne Yapmalı, Ne Yapmamalı?</h3>
-      <p>Servikal disk hernisine dair pratik bilgiler; ağrıyı tetikleyen hareketler ve ev ortamında alınabilecek önlemler.</p>
-    </div>
-  </div>
 
-  <div class="blog-card coming" data-category="genel">
-    <div class="blog-card-image">
-      <div class="blog-card-tag">Genel</div>
-      <div class="blog-card-lock">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <div class="blog-card coming" data-category="genel">
+        <div class="blog-card-image">
+          <div class="blog-card-tag">Genel</div>
+          <div class="blog-card-lock">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g5" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f5f7fa"/><stop offset="100%" stop-color="#e4e8ed"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#g5)"/>
+            <circle cx="150" cy="140" r="50" fill="#cbd5e1" opacity="0.4"/>
+            <circle cx="270" cy="90" r="40" fill="#94a3b8" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta"><span>Yakında</span></div>
+          <h3>Evde Fizyoterapi: Ne Zaman Tercih Edilmeli?</h3>
+          <p>Ev ziyareti ile yapılan rehabilitasyonun avantajları, uygun olduğu durumlar ve sürece dair sık sorulan sorular.</p>
+        </div>
       </div>
-      <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="g5" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f5f7fa"/><stop offset="100%" stop-color="#e4e8ed"/></linearGradient></defs>
-        <rect width="400" height="225" fill="url(#g5)"/>
-        <circle cx="150" cy="140" r="50" fill="#cbd5e1" opacity="0.4"/>
-        <circle cx="270" cy="90" r="40" fill="#94a3b8" opacity="0.3"/>
-      </svg>
-    </div>
-    <div class="blog-card-content">
-      <div class="blog-card-meta"><span>Yakında</span></div>
-      <h3>Evde Fizyoterapi: Ne Zaman Tercih Edilmeli?</h3>
-      <p>Ev ziyareti ile yapılan rehabilitasyonun avantajları, uygun olduğu durumlar ve sürece dair sık sorulan sorular.</p>
-    </div>
-  </div>
 
-  <div class="blog-card coming" data-category="genel">
-    <div class="blog-card-image">
-      <div class="blog-card-tag">Genel</div>
-      <div class="blog-card-lock">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <div class="blog-card coming" data-category="genel">
+        <div class="blog-card-image">
+          <div class="blog-card-tag">Genel</div>
+          <div class="blog-card-lock">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g6" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f5f7fa"/><stop offset="100%" stop-color="#e4e8ed"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#g6)"/>
+            <path d="M50 150 Q 200 50, 350 150" stroke="#94a3b8" stroke-width="2" fill="none" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta"><span>Yakında</span></div>
+          <h3>Ofis Çalışanları İçin 10 Dakikada Postür Rutini</h3>
+          <p>Uzun süre oturanlarda biriken kas gerginliğini çözen ve duruşu düzelten kısa, pratik bir günlük program.</p>
+        </div>
       </div>
-      <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="g6" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f5f7fa"/><stop offset="100%" stop-color="#e4e8ed"/></linearGradient></defs>
-        <rect width="400" height="225" fill="url(#g6)"/>
-        <path d="M50 150 Q 200 50, 350 150" stroke="#94a3b8" stroke-width="2" fill="none" opacity="0.5"/>
-      </svg>
-    </div>
-    <div class="blog-card-content">
-      <div class="blog-card-meta"><span>Yakında</span></div>
-      <h3>Ofis Çalışanları İçin 10 Dakikada Postür Rutini</h3>
-      <p>Uzun süre oturanlarda biriken kas gerginliğini çözen ve duruşu düzelten kısa, pratik bir günlük program.</p>
-    </div>
-  </div>
 
-</div>
-```
-
+    </div>
   </div>
 </section>
 
-<footer>
-  <div class="container footer-inner">
-    <div class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-      </span>
-      Rehabist
-    </div>
-    <p>© 2026 Fzt. Umut Yalçın — Aydın / Efeler</p>
-  </div>
-</footer>
+<div id="rb-footer-mount"></div>
 
-<a class="ai-float" href="asistan.html" aria-label="AI Asistan">
+<a class="ai-float" href="/asistan.html" aria-label="AI Asistan">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6M4 12h16M10 16h4"/><rect x="4" y="8" width="16" height="4" rx="1"/></svg>
   <span>AI Asistan</span>
   <span class="sparkle">YENİ</span>
@@ -794,9 +744,7 @@
 </a>
 
 <!-- Supabase -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
-
 <script>
 (function() {
   'use strict';
@@ -892,5 +840,6 @@
 })();
 </script>
 
+<script src="/shared-nav.js" defer></script>
 </body>
 </html>

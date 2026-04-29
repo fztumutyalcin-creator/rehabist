@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -478,30 +477,16 @@
     .karne-card { padding: 24px; }
   }
 </style>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared-theme.css">
 </head>
 <body>
 
-<nav class="nav">
-  <div class="container nav-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-      </span>
-      Rehabist
-    </a>
-    <div class="nav-actions">
-      <a href="index.html" class="back-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Ana Sayfa
-      </a>
-      <button type="button" class="logout-btn" onclick="handleLogout()" id="logoutBtn" style="display:none;">Çıkış</button>
-    </div>
-  </div>
-</nav>
+<div id="rb-nav-mount"></div>
 
 <!-- GATE (üye değilse) -->
-
 <section id="accessGate">
   <div class="gate-content">
     <div class="gate-icon">
@@ -510,202 +495,196 @@
     <h1>Panel üyelere özeldir</h1>
     <p>Kişisel panelinizi görüntülemek ve ağrı takibi yapabilmek için ücretsiz üye olmanız yeterli.</p>
     <div class="gate-actions">
-      <a href="index.html" class="btn btn-primary">Ana Sayfaya Dön</a>
-      <a href="harita.html" class="btn btn-outline">Ağrı Haritası</a>
+      <a href="/" class="btn btn-primary">Ana Sayfaya Dön</a>
+      <a href="/harita.html" class="btn btn-outline">Ağrı Haritası</a>
     </div>
   </div>
 </section>
 
 <!-- PANEL (üye ise) -->
-
 <main id="panelContent">
   <div class="container">
 
-```
-<div class="page-header">
-  <h1>Merhaba <span class="accent" id="greetingName">!</span></h1>
-  <p>Rehabist panelinize hoş geldiniz. Ağrı takibinizi buradan yönetebilirsiniz.</p>
-</div>
+    <div class="page-header">
+      <h1>Merhaba <span class="accent" id="greetingName">!</span></h1>
+      <p>Rehabist panelinize hoş geldiniz. Ağrı takibinizi buradan yönetebilirsiniz.</p>
+    </div>
 
-<!-- KARNE -->
-<div class="karne-card">
-  <div class="karne-header">
-    <h2>Rehabist Karnesi</h2>
-    <span class="karne-date" id="karneDate"></span>
-  </div>
-  <div class="karne-score">
-    <span class="karne-score-num" id="karneScore">—</span>
-    <span class="karne-score-max">/ 100</span>
-  </div>
-  <p class="karne-label" id="karneLabel">Karneniz ağrı takibinize göre hesaplanıyor...</p>
-  <div class="karne-stats">
-    <div>
-      <div class="karne-stat-label">Kayıt</div>
-      <div class="karne-stat-value" id="statRecords">0</div>
-    </div>
-    <div>
-      <div class="karne-stat-label">Son 7 Gün</div>
-      <div class="karne-stat-value" id="statWeek">0</div>
-    </div>
-    <div>
-      <div class="karne-stat-label">Ort. Şiddet</div>
-      <div class="karne-stat-value" id="statAvg">—</div>
-    </div>
-    <div>
-      <div class="karne-stat-label">Seri</div>
-      <div class="karne-stat-value" id="statStreak">0</div>
-    </div>
-  </div>
-</div>
-
-<div class="content-grid">
-
-  <!-- SOL KOLON -->
-  <div>
-    <!-- Ağrı kaydı formu -->
-    <div class="card">
-      <div class="card-header">
-        <h3>Yeni Ağrı Kaydı</h3>
+    <!-- KARNE -->
+    <div class="karne-card">
+      <div class="karne-header">
+        <h2>Rehabist Karnesi</h2>
+        <span class="karne-date" id="karneDate"></span>
       </div>
-      <div class="msg-banner" id="formMsg"></div>
-      <form class="track-form" id="trackForm">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="region">Bölge</label>
-            <select id="region" required>
-              <option value="">Seçiniz...</option>
-              <option value="boyun">Boyun</option>
-              <option value="omuz">Omuz</option>
-              <option value="sirt">Sırt</option>
-              <option value="bel">Bel</option>
-              <option value="dirsek">Dirsek</option>
-              <option value="elbilegi">El Bileği</option>
-              <option value="kalca">Kalça</option>
-              <option value="uyluk">Uyluk</option>
-              <option value="diz">Diz</option>
-              <option value="baldir">Baldır</option>
-              <option value="ayak">Ayak/Ayak Bileği</option>
-              <option value="gogus">Göğüs</option>
-              <option value="karin">Karın</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="date">Tarih</label>
-            <input type="date" id="date" required>
-          </div>
+      <div class="karne-score">
+        <span class="karne-score-num" id="karneScore">—</span>
+        <span class="karne-score-max">/ 100</span>
+      </div>
+      <p class="karne-label" id="karneLabel">Karneniz ağrı takibinize göre hesaplanıyor...</p>
+      <div class="karne-stats">
+        <div>
+          <div class="karne-stat-label">Kayıt</div>
+          <div class="karne-stat-value" id="statRecords">0</div>
         </div>
-        <div class="form-group">
-          <label>Şiddet <span class="intensity-value" id="intensityValue">5</span></label>
-          <div class="intensity-wrap">
-            <input type="range" id="intensity" class="intensity-slider" min="1" max="10" value="5" oninput="document.getElementById('intensityValue').textContent = this.value">
-            <div class="intensity-display">
-              <span>1 (Hafif)</span>
-              <span>5 (Orta)</span>
-              <span>10 (Şiddetli)</span>
+        <div>
+          <div class="karne-stat-label">Son 7 Gün</div>
+          <div class="karne-stat-value" id="statWeek">0</div>
+        </div>
+        <div>
+          <div class="karne-stat-label">Ort. Şiddet</div>
+          <div class="karne-stat-value" id="statAvg">—</div>
+        </div>
+        <div>
+          <div class="karne-stat-label">Seri</div>
+          <div class="karne-stat-value" id="statStreak">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-grid">
+
+      <!-- SOL KOLON -->
+      <div>
+        <!-- Ağrı kaydı formu -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Yeni Ağrı Kaydı</h3>
+          </div>
+          <div class="msg-banner" id="formMsg"></div>
+          <form class="track-form" id="trackForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="region">Bölge</label>
+                <select id="region" required>
+                  <option value="">Seçiniz...</option>
+                  <option value="boyun">Boyun</option>
+                  <option value="omuz">Omuz</option>
+                  <option value="sirt">Sırt</option>
+                  <option value="bel">Bel</option>
+                  <option value="dirsek">Dirsek</option>
+                  <option value="elbilegi">El Bileği</option>
+                  <option value="kalca">Kalça</option>
+                  <option value="uyluk">Uyluk</option>
+                  <option value="diz">Diz</option>
+                  <option value="baldir">Baldır</option>
+                  <option value="ayak">Ayak/Ayak Bileği</option>
+                  <option value="gogus">Göğüs</option>
+                  <option value="karin">Karın</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="date">Tarih</label>
+                <input type="date" id="date" required>
+              </div>
             </div>
+            <div class="form-group">
+              <label>Şiddet <span class="intensity-value" id="intensityValue">5</span></label>
+              <div class="intensity-wrap">
+                <input type="range" id="intensity" class="intensity-slider" min="1" max="10" value="5" oninput="document.getElementById('intensityValue').textContent = this.value">
+                <div class="intensity-display">
+                  <span>1 (Hafif)</span>
+                  <span>5 (Orta)</span>
+                  <span>10 (Şiddetli)</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="note">Not (İsteğe bağlı)</label>
+              <textarea id="note" rows="2" placeholder="Örn: Sabah uyandığımda başladı, hareket ettikçe arttı..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="justify-content:center;" id="submitBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Kaydet
+            </button>
+          </form>
+        </div>
+
+        <!-- Grafik -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Son 30 Gün</h3>
+          </div>
+          <div class="chart-wrap" id="chartWrap">
+            <div class="chart-empty">Henüz yeterli veri yok. İlk kaydınızı yaparak başlayın.</div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="note">Not (İsteğe bağlı)</label>
-          <textarea id="note" rows="2" placeholder="Örn: Sabah uyandığımda başladı, hareket ettikçe arttı..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" style="justify-content:center;" id="submitBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-          Kaydet
-        </button>
-      </form>
-    </div>
 
-    <!-- Grafik -->
-    <div class="card">
-      <div class="card-header">
-        <h3>Son 30 Gün</h3>
+        <!-- Kayıtlar -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Kayıtlarım</h3>
+          </div>
+          <ul class="log-list" id="logList">
+            <li class="log-empty">Henüz kayıt eklemediniz.</li>
+          </ul>
+        </div>
       </div>
-      <div class="chart-wrap" id="chartWrap">
-        <div class="chart-empty">Henüz yeterli veri yok. İlk kaydınızı yaparak başlayın.</div>
+
+      <!-- SAĞ KOLON -->
+      <div>
+        <div class="side-card">
+          <h3>Hızlı Erişim</h3>
+          <a href="/harita.html" class="quick-link">
+            <div class="quick-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <div class="quick-link-text">
+              Ağrı Haritası
+              <small>Ağrılı bölgeyi seç</small>
+            </div>
+            <span class="quick-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+          </a>
+          <a href="/blog.html" class="quick-link">
+            <div class="quick-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            </div>
+            <div class="quick-link-text">
+              Blog Yazıları
+              <small>Tüm içerikleri oku</small>
+            </div>
+            <span class="quick-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+          </a>
+          <a href="https://wa.me/905345840913?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" class="quick-link">
+            <div class="quick-link-icon" style="background:#d1fae5; color:#065f46;">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+            </div>
+            <div class="quick-link-text">
+              Randevu Al
+              <small>WhatsApp üzerinden</small>
+            </div>
+            <span class="quick-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+          </a>
+        </div>
+
+        <div class="side-card">
+          <h3>Rozetler</h3>
+          <div class="badges" id="badges">
+            <span class="badge" id="badge1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+              İlk Kayıt
+            </span>
+            <span class="badge" id="badge7">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+              7 Günlük Seri
+            </span>
+            <span class="badge" id="badge30">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              30 Kayıt
+            </span>
+            <span class="badge" id="badgeImprove">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              İyileşme
+            </span>
+          </div>
+        </div>
       </div>
+
     </div>
-
-    <!-- Kayıtlar -->
-    <div class="card">
-      <div class="card-header">
-        <h3>Kayıtlarım</h3>
-      </div>
-      <ul class="log-list" id="logList">
-        <li class="log-empty">Henüz kayıt eklemediniz.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- SAĞ KOLON -->
-  <div>
-    <div class="side-card">
-      <h3>Hızlı Erişim</h3>
-      <a href="harita.html" class="quick-link">
-        <div class="quick-link-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-        </div>
-        <div class="quick-link-text">
-          Ağrı Haritası
-          <small>Ağrılı bölgeyi seç</small>
-        </div>
-        <span class="quick-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
-      </a>
-      <a href="blog.html" class="quick-link">
-        <div class="quick-link-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-        </div>
-        <div class="quick-link-text">
-          Blog Yazıları
-          <small>Tüm içerikleri oku</small>
-        </div>
-        <span class="quick-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
-      </a>
-      <a href="https://wa.me/905345840913?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" class="quick-link">
-        <div class="quick-link-icon" style="background:#d1fae5; color:#065f46;">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-        </div>
-        <div class="quick-link-text">
-          Randevu Al
-          <small>WhatsApp üzerinden</small>
-        </div>
-        <span class="quick-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
-      </a>
-    </div>
-
-    <div class="side-card">
-      <h3>Rozetler</h3>
-      <div class="badges" id="badges">
-        <span class="badge" id="badge1">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
-          İlk Kayıt
-        </span>
-        <span class="badge" id="badge7">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
-          7 Günlük Seri
-        </span>
-        <span class="badge" id="badge30">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          30 Kayıt
-        </span>
-        <span class="badge" id="badgeImprove">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-          İyileşme
-        </span>
-      </div>
-    </div>
-  </div>
-
-</div>
-```
-
   </div>
 </main>
 
 <!-- Supabase -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
-
 <script>
 (function() {
   'use strict';
@@ -1139,5 +1118,7 @@
 })();
 </script>
 
+<div id="rb-footer-mount"></div>
+<script src="/shared-nav.js" defer></script>
 </body>
 </html>

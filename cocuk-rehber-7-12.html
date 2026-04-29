@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -18,310 +17,311 @@
    ============================================================ */
 
 :root {
-–white: #ffffff;
-–off-white: #fafbfc;
-–surface: #f5f7fa;
-–border: #e4e8ed;
-–border-strong: #d0d6dd;
-–ink-900: #0f172a;
-–ink-800: #1e293b;
-–ink-700: #334155;
-–ink-500: #475569;
-–ink-400: #64748b;
-–ink-300: #94a3b8;
-–blue-50: #eff6ff;
-–blue-100: #dbeafe;
-–blue-500: #3b82f6;
-–blue-600: #2563eb;
-–blue-700: #1d4ed8;
-–blue-900: #1e3a8a;
-–green-50: #ecfdf5;
-–green-500: #10b981;
-–green-600: #059669;
-–amber-50: #fffbeb;
-–amber-500: #f59e0b;
-–red-50: #fef2f2;
-–red-500: #ef4444;
-–red-700: #b91c1c;
+  --white: #ffffff;
+  --off-white: #fafbfc;
+  --surface: #f5f7fa;
+  --border: #e4e8ed;
+  --border-strong: #d0d6dd;
+  --ink-900: #0f172a;
+  --ink-800: #1e293b;
+  --ink-700: #334155;
+  --ink-500: #475569;
+  --ink-400: #64748b;
+  --ink-300: #94a3b8;
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-900: #1e3a8a;
+  --green-50: #ecfdf5;
+  --green-500: #10b981;
+  --green-600: #059669;
+  --amber-50: #fffbeb;
+  --amber-500: #f59e0b;
+  --red-50: #fef2f2;
+  --red-500: #ef4444;
+  --red-700: #b91c1c;
 
-–serif: ‘Newsreader’, Georgia, serif;
-–sans: ‘DM Sans’, -apple-system, BlinkMacSystemFont, sans-serif;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
-–container-max: 1200px;
-–container-px: 24px;
+  --container-max: 1200px;
+  --container-px: 24px;
 
-–shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
-–shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
-–shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
-–shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
 }
 
 /* NAV */
 .rb-nav {
-position: sticky;
-top: 0;
-z-index: 100;
-background: rgba(255, 255, 255, 0.85);
-backdrop-filter: saturate(180%) blur(20px);
--webkit-backdrop-filter: saturate(180%) blur(20px);
-border-bottom: 1px solid transparent;
-transition: all 0.3s;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s;
 }
 .rb-nav.scrolled {
-border-bottom-color: var(–border);
-background: rgba(255, 255, 255, 0.95);
+  border-bottom-color: var(--border);
+  background: rgba(255, 255, 255, 0.95);
 }
 .rb-nav-inner {
-max-width: var(–container-max);
-margin: 0 auto;
-padding: 0 var(–container-px);
-height: 64px;
-display: flex;
-align-items: center;
-justify-content: space-between;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .rb-logo {
-display: flex;
-align-items: center;
-gap: 10px;
-font-family: var(–sans);
-font-weight: 700;
-font-size: 18px;
-letter-spacing: -0.02em;
-color: var(–ink-900);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
 }
 .rb-logo-mark {
-width: 30px;
-height: 30px;
-background: var(–ink-900);
-border-radius: 8px;
-display: grid;
-place-items: center;
-color: var(–white);
+  width: 30px;
+  height: 30px;
+  background: var(--ink-900);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
 }
 .rb-logo-mark svg { width: 16px; height: 16px; }
 
 .rb-nav-links {
-display: flex;
-align-items: center;
-gap: 28px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
 }
 .rb-nav-link {
-font-family: var(–sans);
-font-size: 14px;
-font-weight: 500;
-color: var(–ink-500);
-transition: color 0.15s;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-500);
+  transition: color 0.15s;
 }
-.rb-nav-link:hover { color: var(–ink-900); }
+.rb-nav-link:hover { color: var(--ink-900); }
 .rb-nav-cta {
-font-family: var(–sans);
-font-size: 14px;
-font-weight: 600;
-background: var(–ink-900);
-color: var(–white);
-padding: 10px 16px;
-border-radius: 10px;
-transition: all 0.2s;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--ink-900);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 10px;
+  transition: all 0.2s;
 }
 .rb-nav-cta:hover {
-background: var(–blue-700);
-transform: translateY(-1px);
+  background: var(--blue-700);
+  transform: translateY(-1px);
 }
 .rb-menu-btn {
-display: none;
-width: 40px;
-height: 40px;
-border-radius: 10px;
-background: var(–surface);
-color: var(–ink-900);
-align-items: center;
-justify-content: center;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink-900);
+  align-items: center;
+  justify-content: center;
 }
 .rb-menu-btn svg { width: 20px; height: 20px; }
 
 @media (max-width: 768px) {
-.rb-nav-links { display: none; }
-.rb-menu-btn { display: flex; }
+  .rb-nav-links { display: none; }
+  .rb-menu-btn { display: flex; }
 }
 
 /* MOBILE MENU */
 .rb-mobile-menu {
-position: fixed;
-inset: 0;
-background: var(–white);
-z-index: 150;
-transform: translateX(100%);
-transition: transform 0.3s ease;
-overflow-y: auto;
-padding: 80px 24px 40px;
-visibility: hidden;
+  position: fixed;
+  inset: 0;
+  background: var(--white);
+  z-index: 150;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  padding: 80px 24px 40px;
+  visibility: hidden;
 }
 .rb-mobile-menu.open {
-transform: translateX(0);
-visibility: visible;
+  transform: translateX(0);
+  visibility: visible;
 }
 .rb-mobile-close {
-position: absolute;
-top: 20px;
-right: 20px;
-width: 40px;
-height: 40px;
-border-radius: 10px;
-background: var(–surface);
-display: grid;
-place-items: center;
-color: var(–ink-900);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  color: var(--ink-900);
 }
 .rb-mobile-close svg { width: 20px; height: 20px; }
 .rb-mobile-section-label {
-font-family: var(–sans);
-font-size: 11px;
-font-weight: 700;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-color: var(–ink-400);
-margin: 24px 0 12px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+  margin: 24px 0 12px;
 }
 .rb-mobile-link {
-display: flex;
-align-items: center;
-padding: 14px 0;
-font-family: var(–sans);
-font-size: 17px;
-font-weight: 500;
-color: var(–ink-900);
-border-bottom: 1px solid var(–border);
+  display: flex;
+  align-items: center;
+  padding: 14px 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink-900);
+  border-bottom: 1px solid var(--border);
 }
 .rb-mobile-link.tool-link {
-gap: 14px;
-padding: 16px;
-margin-bottom: 8px;
-background: var(–surface);
-border-radius: 12px;
-border: none;
+  gap: 14px;
+  padding: 16px;
+  margin-bottom: 8px;
+  background: var(--surface);
+  border-radius: 12px;
+  border: none;
 }
 .rb-mobile-link-icon {
-width: 36px;
-height: 36px;
-background: var(–white);
-border-radius: 9px;
-display: grid;
-place-items: center;
-color: var(–blue-600);
-flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: var(--white);
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  color: var(--blue-600);
+  flex-shrink: 0;
 }
 .rb-mobile-link-icon svg { width: 18px; height: 18px; }
 .rb-mobile-cta {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-margin-top: 24px;
-width: 100%;
-padding: 14px 22px;
-background: #25D366;
-color: var(–white);
-border-radius: 12px;
-font-family: var(–sans);
-font-size: 15px;
-font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  width: 100%;
+  padding: 14px 22px;
+  background: #25D366;
+  color: var(--white);
+  border-radius: 12px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
 }
 .rb-mobile-cta svg { width: 16px; height: 16px; }
 
 /* FOOTER */
 .rb-footer {
-background: var(–ink-900);
-color: rgba(255, 255, 255, 0.5);
-padding: 48px 0 32px;
-border-top: 1px solid rgba(255, 255, 255, 0.08);
-font-family: var(–sans);
-font-size: 13px;
+  background: var(--ink-900);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 48px 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--sans);
+  font-size: 13px;
 }
 .rb-footer-inner {
-max-width: var(–container-max);
-margin: 0 auto;
-padding: 0 var(–container-px);
-display: flex;
-justify-content: space-between;
-gap: 20px;
-flex-wrap: wrap;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 .rb-footer-left {
-display: flex;
-align-items: center;
-gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 .rb-footer-logo-mark {
-width: 24px;
-height: 24px;
-background: rgba(255, 255, 255, 0.12);
-border-radius: 6px;
-display: grid;
-place-items: center;
-color: var(–white);
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
 }
 .rb-footer-logo-mark svg { width: 12px; height: 12px; }
 .rb-footer a {
-color: rgba(255, 255, 255, 0.5);
-transition: color 0.15s;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.15s;
 }
-.rb-footer a:hover { color: var(–white); }
+.rb-footer a:hover { color: var(--white); }
+
 
 /* ============================================================
-COCUK REHBER — SHARED STYLE
-3 yaş rehberi sayfasının ortak CSS’i
-============================================================ */
+   COCUK REHBER — SHARED STYLE
+   3 yaş rehberi sayfasının ortak CSS'i
+   ============================================================ */
 
 /* Fallback değişkenler — shared-theme.css yüklenmezse temel görünüm korunur */
 :root {
-–white: #ffffff;
-–off-white: #fafbfc;
-–surface: #f5f7fa;
-–border: #e4e8ed;
-–border-strong: #d0d6dd;
-–ink-900: #0f172a;
-–ink-800: #1e293b;
-–ink-700: #334155;
-–ink-500: #475569;
-–ink-400: #64748b;
-–ink-300: #94a3b8;
-–blue-50: #eff6ff;
-–blue-100: #dbeafe;
-–blue-500: #3b82f6;
-–blue-600: #2563eb;
-–blue-700: #1d4ed8;
-–blue-900: #1e3a8a;
-–green-50: #ecfdf5;
-–green-500: #10b981;
-–green-600: #059669;
-–amber-50: #fffbeb;
-–amber-500: #f59e0b;
-–red-50: #fef2f2;
-–red-500: #ef4444;
-–red-700: #b91c1c;
-–serif: ‘Newsreader’, Georgia, serif;
-–sans: ‘DM Sans’, -apple-system, BlinkMacSystemFont, sans-serif;
-–shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
-–shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
-–shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
-–shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
+  --white: #ffffff;
+  --off-white: #fafbfc;
+  --surface: #f5f7fa;
+  --border: #e4e8ed;
+  --border-strong: #d0d6dd;
+  --ink-900: #0f172a;
+  --ink-800: #1e293b;
+  --ink-700: #334155;
+  --ink-500: #475569;
+  --ink-400: #64748b;
+  --ink-300: #94a3b8;
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-900: #1e3a8a;
+  --green-50: #ecfdf5;
+  --green-500: #10b981;
+  --green-600: #059669;
+  --amber-50: #fffbeb;
+  --amber-500: #f59e0b;
+  --red-50: #fef2f2;
+  --red-500: #ef4444;
+  --red-700: #b91c1c;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
 }
 
-- { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
-/* Global media reset — SVG ve img’in taşmasını engeller */
+/* Global media reset — SVG ve img'in taşmasını engeller */
 img, svg { display: block; max-width: 100%; height: auto; }
 
 html { scroll-behavior: smooth; }
 body {
-font-family: var(–sans);
-color: var(–ink-700);
-background: var(–off-white);
-line-height: 1.6;
-font-size: 16px;
--webkit-font-smoothing: antialiased;
-min-height: 100vh;
+  font-family: var(--sans);
+  color: var(--ink-700);
+  background: var(--off-white);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
@@ -332,383 +332,383 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .guide-hero { padding: 64px 0 40px; text-align: left; }
 
 .guide-kicker {
-display: inline-flex; align-items: center; gap: 8px;
-padding: 6px 14px; border-radius: 100px;
-font-size: 11.5px; font-weight: 700;
-letter-spacing: 0.08em; text-transform: uppercase;
-margin-bottom: 22px; color: var(–white);
-background: linear-gradient(135deg, var(–blue-600), #6d28d9);
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 100px;
+  font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 22px; color: var(--white);
+  background: linear-gradient(135deg, var(--blue-600), #6d28d9);
 }
-.guide-kicker-dot { width: 6px; height: 6px; background: var(–white); border-radius: 50%; }
+.guide-kicker-dot { width: 6px; height: 6px; background: var(--white); border-radius: 50%; }
 
 h1 {
-font-size: clamp(34px, 5.5vw, 52px); font-weight: 700;
-color: var(–ink-900); letter-spacing: -0.04em;
-line-height: 1.02; margin-bottom: 22px;
+  font-size: clamp(34px, 5.5vw, 52px); font-weight: 700;
+  color: var(--ink-900); letter-spacing: -0.04em;
+  line-height: 1.02; margin-bottom: 22px;
 }
 h1 .accent {
-font-family: var(–serif); font-style: italic; font-weight: 500;
-color: var(–blue-700); letter-spacing: -0.025em;
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  color: var(--blue-700); letter-spacing: -0.025em;
 }
 
 .guide-lead {
-font-size: 18px; color: var(–ink-500);
-line-height: 1.55; max-width: 620px; margin-bottom: 28px;
+  font-size: 18px; color: var(--ink-500);
+  line-height: 1.55; max-width: 620px; margin-bottom: 28px;
 }
 
 .guide-meta {
-display: flex; gap: 22px; flex-wrap: wrap;
-font-size: 13px; color: var(–ink-500);
-padding-top: 22px; border-top: 1px solid var(–border);
+  display: flex; gap: 22px; flex-wrap: wrap;
+  font-size: 13px; color: var(--ink-500);
+  padding-top: 22px; border-top: 1px solid var(--border);
 }
 .guide-meta-item { display: inline-flex; align-items: center; gap: 7px; }
-.guide-meta-item svg { width: 14px; height: 14px; color: var(–ink-400); }
+.guide-meta-item svg { width: 14px; height: 14px; color: var(--ink-400); }
 
 /* ============= TOC ============= */
 .toc {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 18px; padding: 24px 26px; margin: 36px 0;
-box-shadow: var(–shadow-sm);
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 18px; padding: 24px 26px; margin: 36px 0;
+  box-shadow: var(--shadow-sm);
 }
 .toc h3 {
-font-size: 11px; font-weight: 700; color: var(–ink-400);
-text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
+  font-size: 11px; font-weight: 700; color: var(--ink-400);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
 }
 .toc-list { display: flex; flex-direction: column; list-style: none; }
 .toc-list a {
-display: flex; align-items: center; gap: 14px;
-padding: 10px 0; font-size: 14.5px; color: var(–ink-700);
-font-weight: 500; transition: all 0.15s;
-border-bottom: 1px dashed var(–border);
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px 0; font-size: 14.5px; color: var(--ink-700);
+  font-weight: 500; transition: all 0.15s;
+  border-bottom: 1px dashed var(--border);
 }
 .toc-list li:last-child a { border-bottom: none; }
-.toc-list a:hover { color: var(–ink-900); padding-left: 4px; }
+.toc-list a:hover { color: var(--ink-900); padding-left: 4px; }
 .toc-num {
-font-family: var(–serif); font-style: italic;
-color: var(–blue-700); font-weight: 600; font-size: 16px; min-width: 26px;
+  font-family: var(--serif); font-style: italic;
+  color: var(--blue-700); font-weight: 600; font-size: 16px; min-width: 26px;
 }
 
 /* ============= SECTIONS ============= */
 section.guide-section { padding: 48px 0 8px; scroll-margin-top: 80px; }
 
 .section-num {
-font-family: var(–serif); font-style: italic;
-font-size: 15px; font-weight: 600; color: var(–blue-700);
-letter-spacing: 0.02em; margin-bottom: 10px; display: block;
+  font-family: var(--serif); font-style: italic;
+  font-size: 15px; font-weight: 600; color: var(--blue-700);
+  letter-spacing: 0.02em; margin-bottom: 10px; display: block;
 }
 
 h2 {
-font-size: clamp(26px, 4vw, 34px); font-weight: 700;
-color: var(–ink-900); letter-spacing: -0.03em;
-line-height: 1.1; margin-bottom: 18px;
+  font-size: clamp(26px, 4vw, 34px); font-weight: 700;
+  color: var(--ink-900); letter-spacing: -0.03em;
+  line-height: 1.1; margin-bottom: 18px;
 }
 h2 .accent {
-font-family: var(–serif); font-style: italic;
-color: var(–blue-700); font-weight: 500; letter-spacing: -0.02em;
+  font-family: var(--serif); font-style: italic;
+  color: var(--blue-700); font-weight: 500; letter-spacing: -0.02em;
 }
 
 h3 {
-font-size: 19px; font-weight: 700; color: var(–ink-900);
-margin: 28px 0 14px; letter-spacing: -0.015em;
+  font-size: 19px; font-weight: 700; color: var(--ink-900);
+  margin: 28px 0 14px; letter-spacing: -0.015em;
 }
 
-p { margin-bottom: 16px; line-height: 1.65; color: var(–ink-700); font-size: 16px; }
-p strong { color: var(–ink-900); font-weight: 600; }
+p { margin-bottom: 16px; line-height: 1.65; color: var(--ink-700); font-size: 16px; }
+p strong { color: var(--ink-900); font-weight: 600; }
 
 .intro-para {
-font-size: 17px; line-height: 1.65; color: var(–ink-700);
-margin-bottom: 24px; padding-left: 18px;
-border-left: 3px solid var(–blue-600);
+  font-size: 17px; line-height: 1.65; color: var(--ink-700);
+  margin-bottom: 24px; padding-left: 18px;
+  border-left: 3px solid var(--blue-600);
 }
 
 /* ============= TIP CARD ============= */
 .tip-card {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 14px; padding: 20px 22px; margin: 14px 0;
-display: flex; gap: 16px; align-items: flex-start;
-transition: transform 0.15s;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 22px; margin: 14px 0;
+  display: flex; gap: 16px; align-items: flex-start;
+  transition: transform 0.15s;
 }
-.tip-card:hover { transform: translateY(-1px); box-shadow: var(–shadow-md); }
+.tip-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
 .tip-icon {
-width: 42px; height: 42px; border-radius: 12px;
-display: grid; place-items: center; flex-shrink: 0;
+  width: 42px; height: 42px; border-radius: 12px;
+  display: grid; place-items: center; flex-shrink: 0;
 }
 .tip-icon svg { width: 20px; height: 20px; }
-.tip-icon.green { background: var(–green-50); color: var(–green-600); }
-.tip-icon.amber { background: var(–amber-50); color: #a16207; }
-.tip-icon.red { background: var(–red-50); color: var(–red-700); }
-.tip-icon.blue { background: var(–blue-50); color: var(–blue-700); }
+.tip-icon.green { background: var(--green-50); color: var(--green-600); }
+.tip-icon.amber { background: var(--amber-50); color: #a16207; }
+.tip-icon.red { background: var(--red-50); color: var(--red-700); }
+.tip-icon.blue { background: var(--blue-50); color: var(--blue-700); }
 .tip-icon.purple { background: #ede9fe; color: #6d28d9; }
 
 .tip-content { flex: 1; }
 .tip-content h4 {
-font-size: 15.5px; font-weight: 700; color: var(–ink-900);
-margin-bottom: 6px; letter-spacing: -0.01em;
+  font-size: 15.5px; font-weight: 700; color: var(--ink-900);
+  margin-bottom: 6px; letter-spacing: -0.01em;
 }
 .tip-content p {
-font-size: 14px; color: var(–ink-500);
-margin-bottom: 0; line-height: 1.55;
+  font-size: 14px; color: var(--ink-500);
+  margin-bottom: 0; line-height: 1.55;
 }
 
 /* ============= STAT GRID ============= */
 .stat-grid {
-display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-gap: 12px; margin: 20px 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px; margin: 20px 0;
 }
 .stat-card {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 14px; padding: 20px 18px; text-align: center;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 18px; text-align: center;
 }
 .stat-num {
-font-family: var(–serif); font-style: italic;
-font-size: 36px; font-weight: 600; color: var(–blue-700);
-letter-spacing: -0.03em; line-height: 1;
-margin-bottom: 6px; display: block;
+  font-family: var(--serif); font-style: italic;
+  font-size: 36px; font-weight: 600; color: var(--blue-700);
+  letter-spacing: -0.03em; line-height: 1;
+  margin-bottom: 6px; display: block;
 }
-.stat-label { font-size: 12.5px; color: var(–ink-500); line-height: 1.4; }
+.stat-label { font-size: 12.5px; color: var(--ink-500); line-height: 1.4; }
 
 /* ============= CHECKLIST ============= */
 .checklist {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 16px; padding: 22px 24px; margin: 18px 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 22px 24px; margin: 18px 0;
 }
 .checklist h4 {
-font-size: 12px; font-weight: 700; color: var(–ink-500);
-text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;
+  font-size: 12px; font-weight: 700; color: var(--ink-500);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;
 }
 .checklist ul { list-style: none; }
 .checklist li {
-display: flex; align-items: flex-start; gap: 12px;
-padding: 9px 0; font-size: 14.5px; line-height: 1.6;
-color: var(–ink-700); border-bottom: 1px dashed var(–border);
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 9px 0; font-size: 14.5px; line-height: 1.6;
+  color: var(--ink-700); border-bottom: 1px dashed var(--border);
 }
 .checklist li:last-child { border-bottom: none; }
 .checklist li::before {
-content: ‘’; width: 18px; height: 18px;
-background: var(–green-50); border-radius: 50%;
-background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ viewBox=‘0 0 24 24’ fill=‘none’ stroke=’%2310b981’ stroke-width=‘3’ stroke-linecap=‘round’ stroke-linejoin=‘round’%3E%3Cpolyline points=‘20 6 9 17 4 12’/%3E%3C/svg%3E”);
-background-size: 11px; background-position: center; background-repeat: no-repeat;
-flex-shrink: 0; margin-top: 3px;
+  content: ''; width: 18px; height: 18px;
+  background: var(--green-50); border-radius: 50%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-size: 11px; background-position: center; background-repeat: no-repeat;
+  flex-shrink: 0; margin-top: 3px;
 }
 
 .avoid-list li::before {
-background: var(–red-50);
-background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ viewBox=‘0 0 24 24’ fill=‘none’ stroke=’%23ef4444’ stroke-width=‘3’ stroke-linecap=‘round’ stroke-linejoin=‘round’%3E%3Cline x1=‘18’ y1=‘6’ x2=‘6’ y2=‘18’/%3E%3Cline x1=‘6’ y1=‘6’ x2=‘18’ y2=‘18’/%3E%3C/svg%3E”);
-background-size: 11px;
+  background: var(--red-50);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E");
+  background-size: 11px;
 }
 
 /* ============= CALLOUT ============= */
 .callout {
-background: linear-gradient(135deg, var(–blue-50), #f5f7fa);
-border-left: 4px solid var(–blue-600);
-border-radius: 12px; padding: 20px 24px; margin: 24px 0;
-font-size: 15.5px; line-height: 1.6; color: var(–ink-700);
+  background: linear-gradient(135deg, var(--blue-50), #f5f7fa);
+  border-left: 4px solid var(--blue-600);
+  border-radius: 12px; padding: 20px 24px; margin: 24px 0;
+  font-size: 15.5px; line-height: 1.6; color: var(--ink-700);
 }
-.callout strong { color: var(–ink-900); }
+.callout strong { color: var(--ink-900); }
 .callout-label {
-display: block; font-size: 11px; font-weight: 700;
-color: var(–blue-700); text-transform: uppercase;
-letter-spacing: 0.08em; margin-bottom: 6px;
+  display: block; font-size: 11px; font-weight: 700;
+  color: var(--blue-700); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 6px;
 }
 
 /* ============= EXERCISE CARDS ============= */
 .exercise-card {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 16px; padding: 22px 24px;
-margin-bottom: 14px; transition: all 0.15s;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 22px 24px;
+  margin-bottom: 14px; transition: all 0.15s;
 }
 .exercise-card:hover {
-border-color: var(–ink-300); box-shadow: var(–shadow-md);
+  border-color: var(--ink-300); box-shadow: var(--shadow-md);
 }
 
 .exercise-head {
-display: flex; align-items: flex-start; justify-content: space-between;
-gap: 14px; margin-bottom: 14px; padding-bottom: 14px;
-border-bottom: 1px solid var(–border);
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 14px; margin-bottom: 14px; padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
 }
 .exercise-name {
-font-size: 16.5px; font-weight: 700; color: var(–ink-900);
-letter-spacing: -0.015em; display: flex; align-items: center; gap: 10px;
+  font-size: 16.5px; font-weight: 700; color: var(--ink-900);
+  letter-spacing: -0.015em; display: flex; align-items: center; gap: 10px;
 }
 .exercise-num {
-width: 28px; height: 28px; background: var(–ink-900);
-color: var(–white); border-radius: 50%;
-display: grid; place-items: center;
-font-size: 13px; font-weight: 700; flex-shrink: 0;
+  width: 28px; height: 28px; background: var(--ink-900);
+  color: var(--white); border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
 }
 .exercise-meta {
-font-family: var(–serif); font-style: italic;
-font-size: 13.5px; color: var(–blue-700);
-font-weight: 500; white-space: nowrap; padding-top: 4px;
+  font-family: var(--serif); font-style: italic;
+  font-size: 13.5px; color: var(--blue-700);
+  font-weight: 500; white-space: nowrap; padding-top: 4px;
 }
 
 .exercise-steps { list-style: none; counter-reset: step; }
 .exercise-steps li {
-counter-increment: step; padding: 8px 0 8px 32px;
-font-size: 14.5px; line-height: 1.6;
-color: var(–ink-700); position: relative;
+  counter-increment: step; padding: 8px 0 8px 32px;
+  font-size: 14.5px; line-height: 1.6;
+  color: var(--ink-700); position: relative;
 }
 .exercise-steps li::before {
-content: counter(step); position: absolute;
-left: 0; top: 9px; width: 22px; height: 22px;
-background: var(–surface); border-radius: 50%;
-display: grid; place-items: center;
-font-size: 11.5px; font-weight: 700; color: var(–ink-700);
+  content: counter(step); position: absolute;
+  left: 0; top: 9px; width: 22px; height: 22px;
+  background: var(--surface); border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 11.5px; font-weight: 700; color: var(--ink-700);
 }
 
 /* ============= COMPARE BLOCK ============= */
 .compare-block {
-display: grid; grid-template-columns: 1fr 1fr;
-gap: 14px; margin: 20px 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; margin: 20px 0;
 }
 @media (max-width: 600px) { .compare-block { grid-template-columns: 1fr; } }
 .compare-side {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 14px; padding: 18px 20px;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 20px;
 }
 .compare-side.bad {
-background: linear-gradient(180deg, #fef2f2, var(–white));
-border-color: #fecaca;
+  background: linear-gradient(180deg, #fef2f2, var(--white));
+  border-color: #fecaca;
 }
 .compare-side.good {
-background: linear-gradient(180deg, #ecfdf5, var(–white));
-border-color: #a7f3d0;
+  background: linear-gradient(180deg, #ecfdf5, var(--white));
+  border-color: #a7f3d0;
 }
 .compare-label {
-display: inline-flex; align-items: center; gap: 6px;
-font-size: 11px; font-weight: 700;
-letter-spacing: 0.08em; text-transform: uppercase;
-margin-bottom: 10px; padding: 3px 10px; border-radius: 100px;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 10px; padding: 3px 10px; border-radius: 100px;
 }
-.compare-side.bad .compare-label { background: var(–red-50); color: var(–red-700); }
-.compare-side.good .compare-label { background: var(–green-50); color: var(–green-600); }
+.compare-side.bad .compare-label { background: var(--red-50); color: var(--red-700); }
+.compare-side.good .compare-label { background: var(--green-50); color: var(--green-600); }
 .compare-side h4 {
-font-size: 15px; font-weight: 700;
-color: var(–ink-900); margin-bottom: 6px; letter-spacing: -0.01em;
+  font-size: 15px; font-weight: 700;
+  color: var(--ink-900); margin-bottom: 6px; letter-spacing: -0.01em;
 }
 .compare-side p {
-font-size: 13.5px; color: var(–ink-500);
-line-height: 1.55; margin-bottom: 0;
+  font-size: 13.5px; color: var(--ink-500);
+  line-height: 1.55; margin-bottom: 0;
 }
 
 /* ============= RED FLAGS ============= */
 .red-flags-block {
-background: linear-gradient(135deg, var(–red-50), #fee2e2);
-border: 2px solid #fca5a5; border-radius: 18px;
-padding: 28px; margin: 32px 0;
+  background: linear-gradient(135deg, var(--red-50), #fee2e2);
+  border: 2px solid #fca5a5; border-radius: 18px;
+  padding: 28px; margin: 32px 0;
 }
 .red-flags-block h3 {
-color: var(–red-700); margin-top: 0; margin-bottom: 12px;
-display: flex; align-items: center; gap: 12px; font-size: 20px;
+  color: var(--red-700); margin-top: 0; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px; font-size: 20px;
 }
 .red-flags-block h3 svg { width: 24px; height: 24px; flex-shrink: 0; }
 .red-flags-block p {
-color: var(–ink-700); margin-bottom: 16px; font-size: 14.5px;
+  color: var(--ink-700); margin-bottom: 16px; font-size: 14.5px;
 }
 .red-flags-block ul { list-style: none; padding: 0; }
 .red-flags-block li {
-padding: 9px 0 9px 26px; font-size: 14.5px;
-color: var(–ink-700); position: relative;
-line-height: 1.55; border-bottom: 1px dashed rgba(252, 165, 165, 0.5);
+  padding: 9px 0 9px 26px; font-size: 14.5px;
+  color: var(--ink-700); position: relative;
+  line-height: 1.55; border-bottom: 1px dashed rgba(252, 165, 165, 0.5);
 }
 .red-flags-block li:last-child { border-bottom: none; }
 .red-flags-block li::before {
-content: ‘’; position: absolute;
-left: 0; top: 16px; width: 8px; height: 8px;
-background: var(–red-500); border-radius: 50%;
+  content: ''; position: absolute;
+  left: 0; top: 16px; width: 8px; height: 8px;
+  background: var(--red-500); border-radius: 50%;
 }
 
 /* ============= CTA ============= */
 .guide-cta {
-background: linear-gradient(135deg, var(–ink-900), #1e1b4b);
-color: var(–white); border-radius: 22px;
-padding: 40px 32px; margin: 44px 0;
-text-align: center; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--ink-900), #1e1b4b);
+  color: var(--white); border-radius: 22px;
+  padding: 40px 32px; margin: 44px 0;
+  text-align: center; position: relative; overflow: hidden;
 }
 .guide-cta::before {
-content: ‘’; position: absolute;
-top: -50%; left: -20%; width: 60%; height: 200%;
-background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, transparent 60%);
-pointer-events: none;
+  content: ''; position: absolute;
+  top: -50%; left: -20%; width: 60%; height: 200%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, transparent 60%);
+  pointer-events: none;
 }
 .guide-cta > * { position: relative; }
 .guide-cta h3 {
-color: var(–white); font-size: 26px; font-weight: 700;
-letter-spacing: -0.02em; margin: 0 0 10px;
+  color: var(--white); font-size: 26px; font-weight: 700;
+  letter-spacing: -0.02em; margin: 0 0 10px;
 }
 .guide-cta p {
-color: rgba(255, 255, 255, 0.7); font-size: 15px;
-margin-bottom: 24px; max-width: 480px;
-margin-left: auto; margin-right: auto;
+  color: rgba(255, 255, 255, 0.7); font-size: 15px;
+  margin-bottom: 24px; max-width: 480px;
+  margin-left: auto; margin-right: auto;
 }
 .guide-cta-buttons {
-display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
 }
 
 .btn {
-display: inline-flex; align-items: center; justify-content: center;
-gap: 8px; padding: 14px 22px; border-radius: 12px;
-font-size: 14.5px; font-weight: 600;
-transition: all 0.2s; line-height: 1; cursor: pointer; border: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 14px 22px; border-radius: 12px;
+  font-size: 14.5px; font-weight: 600;
+  transition: all 0.2s; line-height: 1; cursor: pointer; border: none;
 }
-.btn-primary { background: var(–white); color: var(–ink-900); }
+.btn-primary { background: var(--white); color: var(--ink-900); }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); }
-.btn-wa { background: #25D366; color: var(–white); }
+.btn-wa { background: #25D366; color: var(--white); }
 .btn-wa:hover { background: #20b859; transform: translateY(-2px); }
 .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 
 /* ============= OTHER GUIDES ============= */
 .other-guides { margin: 44px 0; }
 .other-guides h3 {
-font-size: 12px; font-weight: 700; color: var(–ink-400);
-text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;
+  font-size: 12px; font-weight: 700; color: var(--ink-400);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;
 }
 .other-guides-grid {
-display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
 }
 @media (max-width: 480px) { .other-guides-grid { grid-template-columns: 1fr; } }
 .other-guide-link {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 14px; padding: 18px 20px;
-transition: all 0.15s; display: block;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 20px;
+  transition: all 0.15s; display: block;
 }
 .other-guide-link:hover {
-border-color: var(–ink-700); transform: translateY(-2px);
-box-shadow: var(–shadow-md);
+  border-color: var(--ink-700); transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 .other-guide-age {
-font-family: var(–serif); font-style: italic;
-font-size: 22px; font-weight: 600; color: var(–blue-700);
-margin-bottom: 4px; letter-spacing: -0.02em;
+  font-family: var(--serif); font-style: italic;
+  font-size: 22px; font-weight: 600; color: var(--blue-700);
+  margin-bottom: 4px; letter-spacing: -0.02em;
 }
-.other-guide-label { font-size: 13px; color: var(–ink-500); }
+.other-guide-label { font-size: 13px; color: var(--ink-500); }
 
 /* ============= DISCLAIMER ============= */
 .guide-disclaimer {
-background: var(–surface); border-radius: 12px;
-padding: 18px 20px; margin: 36px 0 64px;
-font-size: 13px; color: var(–ink-500); line-height: 1.6;
-border-left: 3px solid var(–ink-300);
+  background: var(--surface); border-radius: 12px;
+  padding: 18px 20px; margin: 36px 0 64px;
+  font-size: 13px; color: var(--ink-500); line-height: 1.6;
+  border-left: 3px solid var(--ink-300);
 }
-.guide-disclaimer strong { color: var(–ink-700); }
+.guide-disclaimer strong { color: var(--ink-700); }
 
 /* ============= QUICK REF BOX ============= */
 .quick-ref {
-background: var(–white); border: 2px solid var(–ink-900);
-border-radius: 16px; padding: 22px 24px; margin: 24px 0;
+  background: var(--white); border: 2px solid var(--ink-900);
+  border-radius: 16px; padding: 22px 24px; margin: 24px 0;
 }
 .quick-ref-label {
-display: inline-block; font-size: 11px; font-weight: 700;
-background: var(–ink-900); color: var(–white);
-padding: 4px 10px; border-radius: 6px;
-letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
+  display: inline-block; font-size: 11px; font-weight: 700;
+  background: var(--ink-900); color: var(--white);
+  padding: 4px 10px; border-radius: 6px;
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
 }
 .quick-ref h4 {
-font-size: 17px; font-weight: 700;
-color: var(–ink-900); margin-bottom: 8px;
+  font-size: 17px; font-weight: 700;
+  color: var(--ink-900); margin-bottom: 8px;
 }
-.quick-ref p { font-size: 14.5px; color: var(–ink-700); margin-bottom: 0; }
+.quick-ref p { font-size: 14.5px; color: var(--ink-700); margin-bottom: 0; }
 
 /* ============= AGE VARIANTS ============= */
 body.age-3-6 .guide-kicker { background: linear-gradient(135deg, #f59e0b, #ef4444); }
@@ -721,12 +721,12 @@ body.age-3-6 .stat-num,
 body.age-3-6 .exercise-meta,
 body.age-3-6 .callout-label { color: #d97706; }
 body.age-3-6 .callout {
-background: linear-gradient(135deg, var(–amber-50), #fef3c7);
-border-left-color: #f59e0b;
+  background: linear-gradient(135deg, var(--amber-50), #fef3c7);
+  border-left-color: #f59e0b;
 }
 body.age-3-6 .intro-para { border-left-color: #f59e0b; }
 
-body.age-13-18 .guide-kicker { background: linear-gradient(135deg, #6d28d9, var(–ink-900)); }
+body.age-13-18 .guide-kicker { background: linear-gradient(135deg, #6d28d9, var(--ink-900)); }
 body.age-13-18 .section-num,
 body.age-13-18 h1 .accent,
 body.age-13-18 h2 .accent,
@@ -736,8 +736,8 @@ body.age-13-18 .stat-num,
 body.age-13-18 .exercise-meta,
 body.age-13-18 .callout-label { color: #6d28d9; }
 body.age-13-18 .callout {
-background: linear-gradient(135deg, #ede9fe, #f5f3ff);
-border-left-color: #7c3aed;
+  background: linear-gradient(135deg, #ede9fe, #f5f3ff);
+  border-left-color: #7c3aed;
 }
 body.age-13-18 .intro-para { border-left-color: #7c3aed; }
 
@@ -772,325 +772,321 @@ body.age-13-18 .intro-para { border-left-color: #7c3aed; }
       </div>
     </header>
 
-```
-<nav class="toc">
-  <h3>Bu sayfada</h3>
-  <ul class="toc-list">
-    <li><a href="#genel"><span class="toc-num">01</span>Bu yaşta neye dikkat?</a></li>
-    <li><a href="#canta"><span class="toc-num">02</span>Çanta seçimi ve kullanımı</a></li>
-    <li><a href="#masa"><span class="toc-num">03</span>Çalışma masası ve oturuş</a></li>
-    <li><a href="#ekran"><span class="toc-num">04</span>Ekran kullanımı ve text neck</a></li>
-    <li><a href="#egzersiz"><span class="toc-num">05</span>Günlük 5 dakikalık rutin</a></li>
-    <li><a href="#kirmizi"><span class="toc-num">06</span>Ne zaman fizyoterapist görmeli?</a></li>
-  </ul>
-</nav>
+    <nav class="toc">
+      <h3>Bu sayfada</h3>
+      <ul class="toc-list">
+        <li><a href="#genel"><span class="toc-num">01</span>Bu yaşta neye dikkat?</a></li>
+        <li><a href="#canta"><span class="toc-num">02</span>Çanta seçimi ve kullanımı</a></li>
+        <li><a href="#masa"><span class="toc-num">03</span>Çalışma masası ve oturuş</a></li>
+        <li><a href="#ekran"><span class="toc-num">04</span>Ekran kullanımı ve text neck</a></li>
+        <li><a href="#egzersiz"><span class="toc-num">05</span>Günlük 5 dakikalık rutin</a></li>
+        <li><a href="#kirmizi"><span class="toc-num">06</span>Ne zaman fizyoterapist görmeli?</a></li>
+      </ul>
+    </nav>
 
-<section class="guide-section" id="genel">
-  <span class="section-num">01</span>
-  <h2>Bu yaşta <span class="accent">neye dikkat etmeli?</span></h2>
+    <section class="guide-section" id="genel">
+      <span class="section-num">01</span>
+      <h2>Bu yaşta <span class="accent">neye dikkat etmeli?</span></h2>
 
-  <p class="intro-para">7–12 yaş, çocuğun günde ortalama 6–7 saatini sırada geçirdiği dönem. Aynı zamanda büyüme henüz çok hızlı değil — yani postür alışkanlıkları bu yıllarda kalıcı şekil alıyor. Doğru pozisyonlar bu yaşta öğrenilirse, ergenlikte zaten içselleşmiş olur.</p>
+      <p class="intro-para">7–12 yaş, çocuğun günde ortalama 6–7 saatini sırada geçirdiği dönem. Aynı zamanda büyüme henüz çok hızlı değil — yani postür alışkanlıkları bu yıllarda kalıcı şekil alıyor. Doğru pozisyonlar bu yaşta öğrenilirse, ergenlikte zaten içselleşmiş olur.</p>
 
-  <h3>Bu yaşta sık görülen üç sorun</h3>
+      <h3>Bu yaşta sık görülen üç sorun</h3>
 
-  <div class="tip-card">
-    <div class="tip-icon amber">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 6v10M8 10l4-4 4 4"/></svg>
-    </div>
-    <div class="tip-content">
-      <h4>Baş öne kayması</h4>
-      <p>Telefon, kitap ve ekran kaynaklı. Boyun kaslarının dengesini bozar; ergenlikte ağrıya dönüşebilir.</p>
-    </div>
-  </div>
-
-  <div class="tip-card">
-    <div class="tip-icon amber">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-    </div>
-    <div class="tip-content">
-      <h4>Yuvarlak omuz</h4>
-      <p>Sırtı kambur tutarak oturma alışkanlığı. Pektoral kaslar kısalır, üst sırt kasları zayıflar.</p>
-    </div>
-  </div>
-
-  <div class="tip-card">
-    <div class="tip-icon amber">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v10l8 5 8-5V7L12 2z"/></svg>
-    </div>
-    <div class="tip-content">
-      <h4>Pelvis öne eğikliği</h4>
-      <p>Sandalyede uzun süre oturmak ve karın kaslarının zayıflığı. Bel bölgesinde aşırı içe çukurluk yaratır.</p>
-    </div>
-  </div>
-
-  <div class="callout">
-    <span class="callout-label">Skolyoz tarama</span>
-    Bu yaş grubunda <strong>idiyopatik skolyoz tarama yaşı başlar.</strong> 8–10 yaşta yıllık bir kontrol, 10 yaşından sonra hızlı büyüme dönemine girince 6 ayda bir kontrol önerilir.
-  </div>
-</section>
-
-<section class="guide-section" id="canta">
-  <span class="section-num">02</span>
-  <h2>Çanta seçimi ve <span class="accent">doğru kullanımı.</span></h2>
-
-  <p>Çanta, çocuğun postürünü en çok etkileyen günlük araç. Yanlış çanta veya yanlış taşıma şekli, omurga gelişimine kalıcı etkide bulunabilir.</p>
-
-  <div class="stat-grid">
-    <div class="stat-card">
-      <span class="stat-num">%10</span>
-      <div class="stat-label">Maksimum çanta ağırlığı (vücut ağırlığına oranla)</div>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">3 kg</span>
-      <div class="stat-label">30 kg çocuk için üst sınır</div>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">2 kol</span>
-      <div class="stat-label">Tek omuzda taşımak <em>kesinlikle</em> yanlış</div>
-    </div>
-  </div>
-
-  <div class="compare-block">
-    <div class="compare-side bad">
-      <span class="compare-label">Yanlış</span>
-      <h4>Tek omuza atılmış, ağır, sallanan</h4>
-      <p>Tek tarafa yük bindirir, omurgayı yan eğer. Sallanan çanta ileri-geri salınımla bel kasılmasına yol açar.</p>
-    </div>
-    <div class="compare-side good">
-      <span class="compare-label">Doğru</span>
-      <h4>İki omuzda, sırta yapışık, hafif</h4>
-      <p>Yük her iki tarafa eşit dağılır. Çantanın sırta sıkı durması belin doğal eğriliğini korur.</p>
-    </div>
-  </div>
-
-  <div class="checklist">
-    <h4>Doğru çanta için</h4>
-    <ul>
-      <li><strong>Ağırlık:</strong> Çocuğun vücut ağırlığının %10'unu geçmemeli. Tartı kullanın, "ağır mı?" diye sormakla yetinmeyin.</li>
-      <li><strong>Askılar:</strong> Geniş, dolgulu, ayarlanabilir. <em>İki</em> omuza birden takılmalı.</li>
-      <li><strong>Sırt teması:</strong> Çantanın arkası çocuğun sırtına yapışık olmalı, sallanmamalı.</li>
-      <li><strong>Yükseklik:</strong> Çantanın alt kısmı çocuğun belinin <em>üzerinde</em> kalmalı, kalçaya kadar sarkmamalı.</li>
-      <li><strong>İçerik düzeni:</strong> Ağır kitaplar arkaya, sırta yakın; hafif olanlar dışa.</li>
-      <li><strong>Tekerlekli çanta?</strong> Merdiven çok varsa kaçınılmalı; tek elle çekmek omuzu eşitsiz çalıştırır.</li>
-    </ul>
-  </div>
-
-  <div class="quick-ref">
-    <span class="quick-ref-label">Çabuk Cevap</span>
-    <h4>Çocuğum çantayı tek omzunda taşıyor, nasıl alıştırırım?</h4>
-    <p>Görsel hatırlatıcı işe yarar — çantanın iki omuz askısını birleştirip kapanış tokası ekleyin (göğüs hizasında). Toka, çantayı tek omuza atınca rahatsızlık verir; çocuk doğru taşımaya kendiliğinden geçer.</p>
-  </div>
-</section>
-
-<section class="guide-section" id="masa">
-  <span class="section-num">03</span>
-  <h2>Çalışma masası ve <span class="accent">doğru oturuş.</span></h2>
-
-  <p>Ev ödevi süresi günde 1–2 saati bulabiliyor. Bu süreyi nasıl geçirdiği, postürü için çok önemli.</p>
-
-  <h3>İdeal çalışma düzeni</h3>
-
-  <div class="checklist">
-    <ul>
-      <li><strong>Ayaklar yere değmeli.</strong> Değmiyorsa altına basamak veya kalın kitap koyun. Ayaklar havada sallanmamalı.</li>
-      <li><strong>Diz ve kalça açıları yaklaşık 90°</strong> olmalı. Sandalye yüksekliği buna göre ayarlanmalı.</li>
-      <li><strong>Sırt destekli</strong>, dirsekler masaya 90° açıyla yaslanabilmeli.</li>
-      <li><strong>Defter/kitap mesafesi:</strong> Göz ile sayfa arası en az 30–35 cm. Burnu kâğıda yapışmasın.</li>
-      <li><strong>Işık soldan</strong> gelmeli (sağlak çocuk için), sağdan (solak için). Kendi gölgesi yazıya düşmesin.</li>
-      <li><strong>30 dk'da bir kalkıp 2 dk gerinmeli.</strong> Çocuklar için bu kuralı oyuna dönüştürün — telefon alarmı kullanın.</li>
-    </ul>
-  </div>
-
-  <div class="tip-card">
-    <div class="tip-icon red">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-    </div>
-    <div class="tip-content">
-      <h4>Yatakta ödev yaptırma</h4>
-      <p>Yatağa uzanmış halde tablet veya kitap kullanmak boyun ve sırta zarar verir. Çocuğun çalışma için <em>özel</em> bir alanı olmalı.</p>
-    </div>
-  </div>
-
-  <div class="tip-card">
-    <div class="tip-icon red">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-    </div>
-    <div class="tip-content">
-      <h4>Koltukta laptop</h4>
-      <p>Laptop dizüstünde, sırt yamuk — konfor gibi görünür ama 30 dakika sonra boyun ağrısı çıkarır. Mutlaka masada kullansın.</p>
-    </div>
-  </div>
-</section>
-
-<section class="guide-section" id="ekran">
-  <span class="section-num">04</span>
-  <h2>Ekran kullanımı ve <span class="accent">"text neck".</span></h2>
-
-  <p class="intro-para">Boyun düz dururken yaklaşık 5 kg ağırlık taşır. 60° öne eğildiğinde bu yük <strong>27 kg</strong>'a çıkar. Çocuk telefon kullanırken çoğunlukla 60°'nin üzerinde eğiliyor.</p>
-
-  <div class="stat-grid">
-    <div class="stat-card">
-      <span class="stat-num">5 kg</span>
-      <div class="stat-label">Boyun yükü, dik dururken</div>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">27 kg</span>
-      <div class="stat-label">Boyun yükü, 60° eğildiğinde</div>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">20-20-20</span>
-      <div class="stat-label">Kuralı: 20 dk'da, 20 sn, 6 m uzağa bak</div>
-    </div>
-  </div>
-
-  <div class="checklist">
-    <h4>Ekran kullanım kuralları</h4>
-    <ul>
-      <li><strong>Telefonu göz hizasına kaldırtın.</strong> Boyun bükülerek bakmasın — eli yorulur ama postür korunur.</li>
-      <li><strong>Tabletleri masada kullansın</strong>, kucakta değil. Tablet standı veya kitap altına koyun.</li>
-      <li><strong>20-20-20 kuralı:</strong> 20 dakikada bir, 20 saniye, 6 metre uzağa bakmalı (göz ve boyun için birden).</li>
-      <li><strong>Günlük ekran süresi:</strong> Eğitim hariç 7–12 yaşta toplam 1–2 saat. Yatmadan 1 saat öncesinden kapanmalı.</li>
-      <li><strong>Yatakta telefon yok.</strong> Sadece postür için değil, uyku kalitesi için de kritik.</li>
-      <li><strong>Sen örnek ol.</strong> Ebeveyn telefonunu sürekli boyun bükerek kullanıyorsa, çocuk aynısını yapar.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="guide-section" id="egzersiz">
-  <span class="section-num">05</span>
-  <h2>Günlük 5 dakikalık <span class="accent">postür rutini.</span></h2>
-
-  <p>Bu 4 egzersiz okul sonrası veya yatmadan önce yapılabilir. Çocuk için bir oyun gibi sun — sayı sayarak, müzikle veya yarış olarak.</p>
-
-  <div class="exercise-card">
-    <div class="exercise-head">
-      <div class="exercise-name">
-        <span class="exercise-num">1</span>
-        Çene içeri çekme
+      <div class="tip-card">
+        <div class="tip-icon amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 6v10M8 10l4-4 4 4"/></svg>
+        </div>
+        <div class="tip-content">
+          <h4>Baş öne kayması</h4>
+          <p>Telefon, kitap ve ekran kaynaklı. Boyun kaslarının dengesini bozar; ergenlikte ağrıya dönüşebilir.</p>
+        </div>
       </div>
-      <span class="exercise-meta">10 tekrar</span>
-    </div>
-    <ol class="exercise-steps">
-      <li>Çocuk dik dursun, omuzlar gevşek, bakış ileride.</li>
-      <li>Çenesini içeri çekerek kafasını geriye doğru kaydırsın (çift çene yapar gibi).</li>
-      <li>Kafayı geri eğmeden, sadece geriye <em>kaydırarak</em> hareket etsin.</li>
-      <li>5 saniye tut, gevşet. Boyun arkasında hafif gerilme hissi normal.</li>
-    </ol>
-  </div>
 
-  <div class="exercise-card">
-    <div class="exercise-head">
-      <div class="exercise-name">
-        <span class="exercise-num">2</span>
-        Duvar açısı (Wall angel)
+      <div class="tip-card">
+        <div class="tip-icon amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </div>
+        <div class="tip-content">
+          <h4>Yuvarlak omuz</h4>
+          <p>Sırtı kambur tutarak oturma alışkanlığı. Pektoral kaslar kısalır, üst sırt kasları zayıflar.</p>
+        </div>
       </div>
-      <span class="exercise-meta">10 tekrar</span>
-    </div>
-    <ol class="exercise-steps">
-      <li>Sırtı, başı ve kalçası duvara yaslı dursun.</li>
-      <li>Kollar 90°, dirsekler ve eller duvarda kalsın.</li>
-      <li>Kolları yukarı–aşağı yavaşça hareket ettirsin (kar meleği yapar gibi).</li>
-      <li>Sırtı duvardan ayrılmamalı. Yapamazsa biraz öne dursun.</li>
-    </ol>
-  </div>
 
-  <div class="exercise-card">
-    <div class="exercise-head">
-      <div class="exercise-name">
-        <span class="exercise-num">3</span>
-        Kedi-deve
+      <div class="tip-card">
+        <div class="tip-icon amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v10l8 5 8-5V7L12 2z"/></svg>
+        </div>
+        <div class="tip-content">
+          <h4>Pelvis öne eğikliği</h4>
+          <p>Sandalyede uzun süre oturmak ve karın kaslarının zayıflığı. Bel bölgesinde aşırı içe çukurluk yaratır.</p>
+        </div>
       </div>
-      <span class="exercise-meta">8 tekrar</span>
-    </div>
-    <ol class="exercise-steps">
-      <li>Yere ellerini ve dizlerini koyarak otursun (4 ayak pozisyonu).</li>
-      <li>Nefes verirken sırtı yukarı kamburlaştırsın (kedi).</li>
-      <li>Nefes alırken sırtı içe çukurlaştırsın (deve).</li>
-      <li>Yavaşça 8 kez tekrar — nefes önemli.</li>
-    </ol>
-  </div>
 
-  <div class="exercise-card">
-    <div class="exercise-head">
-      <div class="exercise-name">
-        <span class="exercise-num">4</span>
-        Süpermen
+      <div class="callout">
+        <span class="callout-label">Skolyoz tarama</span>
+        Bu yaş grubunda <strong>idiyopatik skolyoz tarama yaşı başlar.</strong> 8–10 yaşta yıllık bir kontrol, 10 yaşından sonra hızlı büyüme dönemine girince 6 ayda bir kontrol önerilir.
       </div>
-      <span class="exercise-meta">10 tekrar</span>
+    </section>
+
+    <section class="guide-section" id="canta">
+      <span class="section-num">02</span>
+      <h2>Çanta seçimi ve <span class="accent">doğru kullanımı.</span></h2>
+
+      <p>Çanta, çocuğun postürünü en çok etkileyen günlük araç. Yanlış çanta veya yanlış taşıma şekli, omurga gelişimine kalıcı etkide bulunabilir.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-num">%10</span>
+          <div class="stat-label">Maksimum çanta ağırlığı (vücut ağırlığına oranla)</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">3 kg</span>
+          <div class="stat-label">30 kg çocuk için üst sınır</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">2 kol</span>
+          <div class="stat-label">Tek omuzda taşımak <em>kesinlikle</em> yanlış</div>
+        </div>
+      </div>
+
+      <div class="compare-block">
+        <div class="compare-side bad">
+          <span class="compare-label">Yanlış</span>
+          <h4>Tek omuza atılmış, ağır, sallanan</h4>
+          <p>Tek tarafa yük bindirir, omurgayı yan eğer. Sallanan çanta ileri-geri salınımla bel kasılmasına yol açar.</p>
+        </div>
+        <div class="compare-side good">
+          <span class="compare-label">Doğru</span>
+          <h4>İki omuzda, sırta yapışık, hafif</h4>
+          <p>Yük her iki tarafa eşit dağılır. Çantanın sırta sıkı durması belin doğal eğriliğini korur.</p>
+        </div>
+      </div>
+
+      <div class="checklist">
+        <h4>Doğru çanta için</h4>
+        <ul>
+          <li><strong>Ağırlık:</strong> Çocuğun vücut ağırlığının %10'unu geçmemeli. Tartı kullanın, "ağır mı?" diye sormakla yetinmeyin.</li>
+          <li><strong>Askılar:</strong> Geniş, dolgulu, ayarlanabilir. <em>İki</em> omuza birden takılmalı.</li>
+          <li><strong>Sırt teması:</strong> Çantanın arkası çocuğun sırtına yapışık olmalı, sallanmamalı.</li>
+          <li><strong>Yükseklik:</strong> Çantanın alt kısmı çocuğun belinin <em>üzerinde</em> kalmalı, kalçaya kadar sarkmamalı.</li>
+          <li><strong>İçerik düzeni:</strong> Ağır kitaplar arkaya, sırta yakın; hafif olanlar dışa.</li>
+          <li><strong>Tekerlekli çanta?</strong> Merdiven çok varsa kaçınılmalı; tek elle çekmek omuzu eşitsiz çalıştırır.</li>
+        </ul>
+      </div>
+
+      <div class="quick-ref">
+        <span class="quick-ref-label">Çabuk Cevap</span>
+        <h4>Çocuğum çantayı tek omzunda taşıyor, nasıl alıştırırım?</h4>
+        <p>Görsel hatırlatıcı işe yarar — çantanın iki omuz askısını birleştirip kapanış tokası ekleyin (göğüs hizasında). Toka, çantayı tek omuza atınca rahatsızlık verir; çocuk doğru taşımaya kendiliğinden geçer.</p>
+      </div>
+    </section>
+
+    <section class="guide-section" id="masa">
+      <span class="section-num">03</span>
+      <h2>Çalışma masası ve <span class="accent">doğru oturuş.</span></h2>
+
+      <p>Ev ödevi süresi günde 1–2 saati bulabiliyor. Bu süreyi nasıl geçirdiği, postürü için çok önemli.</p>
+
+      <h3>İdeal çalışma düzeni</h3>
+
+      <div class="checklist">
+        <ul>
+          <li><strong>Ayaklar yere değmeli.</strong> Değmiyorsa altına basamak veya kalın kitap koyun. Ayaklar havada sallanmamalı.</li>
+          <li><strong>Diz ve kalça açıları yaklaşık 90°</strong> olmalı. Sandalye yüksekliği buna göre ayarlanmalı.</li>
+          <li><strong>Sırt destekli</strong>, dirsekler masaya 90° açıyla yaslanabilmeli.</li>
+          <li><strong>Defter/kitap mesafesi:</strong> Göz ile sayfa arası en az 30–35 cm. Burnu kâğıda yapışmasın.</li>
+          <li><strong>Işık soldan</strong> gelmeli (sağlak çocuk için), sağdan (solak için). Kendi gölgesi yazıya düşmesin.</li>
+          <li><strong>30 dk'da bir kalkıp 2 dk gerinmeli.</strong> Çocuklar için bu kuralı oyuna dönüştürün — telefon alarmı kullanın.</li>
+        </ul>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="tip-content">
+          <h4>Yatakta ödev yaptırma</h4>
+          <p>Yatağa uzanmış halde tablet veya kitap kullanmak boyun ve sırta zarar verir. Çocuğun çalışma için <em>özel</em> bir alanı olmalı.</p>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="tip-content">
+          <h4>Koltukta laptop</h4>
+          <p>Laptop dizüstünde, sırt yamuk — konfor gibi görünür ama 30 dakika sonra boyun ağrısı çıkarır. Mutlaka masada kullansın.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section" id="ekran">
+      <span class="section-num">04</span>
+      <h2>Ekran kullanımı ve <span class="accent">"text neck".</span></h2>
+
+      <p class="intro-para">Boyun düz dururken yaklaşık 5 kg ağırlık taşır. 60° öne eğildiğinde bu yük <strong>27 kg</strong>'a çıkar. Çocuk telefon kullanırken çoğunlukla 60°'nin üzerinde eğiliyor.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-num">5 kg</span>
+          <div class="stat-label">Boyun yükü, dik dururken</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">27 kg</span>
+          <div class="stat-label">Boyun yükü, 60° eğildiğinde</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">20-20-20</span>
+          <div class="stat-label">Kuralı: 20 dk'da, 20 sn, 6 m uzağa bak</div>
+        </div>
+      </div>
+
+      <div class="checklist">
+        <h4>Ekran kullanım kuralları</h4>
+        <ul>
+          <li><strong>Telefonu göz hizasına kaldırtın.</strong> Boyun bükülerek bakmasın — eli yorulur ama postür korunur.</li>
+          <li><strong>Tabletleri masada kullansın</strong>, kucakta değil. Tablet standı veya kitap altına koyun.</li>
+          <li><strong>20-20-20 kuralı:</strong> 20 dakikada bir, 20 saniye, 6 metre uzağa bakmalı (göz ve boyun için birden).</li>
+          <li><strong>Günlük ekran süresi:</strong> Eğitim hariç 7–12 yaşta toplam 1–2 saat. Yatmadan 1 saat öncesinden kapanmalı.</li>
+          <li><strong>Yatakta telefon yok.</strong> Sadece postür için değil, uyku kalitesi için de kritik.</li>
+          <li><strong>Sen örnek ol.</strong> Ebeveyn telefonunu sürekli boyun bükerek kullanıyorsa, çocuk aynısını yapar.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="guide-section" id="egzersiz">
+      <span class="section-num">05</span>
+      <h2>Günlük 5 dakikalık <span class="accent">postür rutini.</span></h2>
+
+      <p>Bu 4 egzersiz okul sonrası veya yatmadan önce yapılabilir. Çocuk için bir oyun gibi sun — sayı sayarak, müzikle veya yarış olarak.</p>
+
+      <div class="exercise-card">
+        <div class="exercise-head">
+          <div class="exercise-name">
+            <span class="exercise-num">1</span>
+            Çene içeri çekme
+          </div>
+          <span class="exercise-meta">10 tekrar</span>
+        </div>
+        <ol class="exercise-steps">
+          <li>Çocuk dik dursun, omuzlar gevşek, bakış ileride.</li>
+          <li>Çenesini içeri çekerek kafasını geriye doğru kaydırsın (çift çene yapar gibi).</li>
+          <li>Kafayı geri eğmeden, sadece geriye <em>kaydırarak</em> hareket etsin.</li>
+          <li>5 saniye tut, gevşet. Boyun arkasında hafif gerilme hissi normal.</li>
+        </ol>
+      </div>
+
+      <div class="exercise-card">
+        <div class="exercise-head">
+          <div class="exercise-name">
+            <span class="exercise-num">2</span>
+            Duvar açısı (Wall angel)
+          </div>
+          <span class="exercise-meta">10 tekrar</span>
+        </div>
+        <ol class="exercise-steps">
+          <li>Sırtı, başı ve kalçası duvara yaslı dursun.</li>
+          <li>Kollar 90°, dirsekler ve eller duvarda kalsın.</li>
+          <li>Kolları yukarı–aşağı yavaşça hareket ettirsin (kar meleği yapar gibi).</li>
+          <li>Sırtı duvardan ayrılmamalı. Yapamazsa biraz öne dursun.</li>
+        </ol>
+      </div>
+
+      <div class="exercise-card">
+        <div class="exercise-head">
+          <div class="exercise-name">
+            <span class="exercise-num">3</span>
+            Kedi-deve
+          </div>
+          <span class="exercise-meta">8 tekrar</span>
+        </div>
+        <ol class="exercise-steps">
+          <li>Yere ellerini ve dizlerini koyarak otursun (4 ayak pozisyonu).</li>
+          <li>Nefes verirken sırtı yukarı kamburlaştırsın (kedi).</li>
+          <li>Nefes alırken sırtı içe çukurlaştırsın (deve).</li>
+          <li>Yavaşça 8 kez tekrar — nefes önemli.</li>
+        </ol>
+      </div>
+
+      <div class="exercise-card">
+        <div class="exercise-head">
+          <div class="exercise-name">
+            <span class="exercise-num">4</span>
+            Süpermen
+          </div>
+          <span class="exercise-meta">10 tekrar</span>
+        </div>
+        <ol class="exercise-steps">
+          <li>Yüzüstü yat, kollar ileri uzansın.</li>
+          <li>Aynı anda kollar ve bacaklar yerden hafifçe kaldırılsın.</li>
+          <li>3 saniye tut, yavaşça indir.</li>
+          <li>Boynu zorlamasın — bakışı yere baksın.</li>
+        </ol>
+      </div>
+
+      <div class="callout">
+        <span class="callout-label">Bonus</span>
+        Bu 4 egzersiz harika — ama hiçbiri <strong>dışarda 1 saat aktif oyunun</strong> yerini tutmaz. Park, koşu, ip atlama, bisiklet, basketbol — bunlar postürü doğal yoldan ve sürdürülebilir biçimde destekler.
+      </div>
+    </section>
+
+    <section class="guide-section" id="kirmizi">
+      <div class="red-flags-block">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+          Ne zaman fizyoterapist görmeli?
+        </h3>
+        <p>Aşağıdakilerden biri varsa beklemeden bir pediatrik fizyoterapist veya çocuk ortopedi uzmanı ile görüşün:</p>
+        <ul>
+          <li>Sırtın, çocuk öne eğildiğinde belirgin asimetrik (bir tarafı yüksek)</li>
+          <li>Omuzlardan biri devamlı diğerinden yüksek duruyor</li>
+          <li>Pelvis (kalça hizası) eşit değil, çocuk sürekli bir tarafa yatık</li>
+          <li>Sırt veya bel ağrısından şikayet ediyor (özellikle gece artıyorsa)</li>
+          <li>Yürüyüşü değişti veya topallıyor</li>
+          <li>Spora aktif başlamak istiyor ama postür endişen var</li>
+          <li>Ailede skolyoz öyküsü varsa — taramayı atlamayın</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="guide-cta">
+      <h3>Çocuğunun postürünü değerlendirelim</h3>
+      <p>Aydın çevresindeyseniz Fzt. Umut Yalçın ile evde değerlendirme randevusu alabilirsiniz. Çevrimiçi olarak da çocuğunun postürünü kendi kendine tarayabilirsin.</p>
+      <div class="guide-cta-buttons">
+        <a href="/cocuk-postur-analizi.html" class="btn btn-primary">
+          Postür Taraması Yap
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://wa.me/905345840913?text=Merhaba%2C%20%C3%A7ocu%C4%9Fum%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+          WhatsApp Randevu
+        </a>
+      </div>
     </div>
-    <ol class="exercise-steps">
-      <li>Yüzüstü yat, kollar ileri uzansın.</li>
-      <li>Aynı anda kollar ve bacaklar yerden hafifçe kaldırılsın.</li>
-      <li>3 saniye tut, yavaşça indir.</li>
-      <li>Boynu zorlamasın — bakışı yere baksın.</li>
-    </ol>
-  </div>
 
-  <div class="callout">
-    <span class="callout-label">Bonus</span>
-    Bu 4 egzersiz harika — ama hiçbiri <strong>dışarda 1 saat aktif oyunun</strong> yerini tutmaz. Park, koşu, ip atlama, bisiklet, basketbol — bunlar postürü doğal yoldan ve sürdürülebilir biçimde destekler.
-  </div>
-</section>
+    <div class="other-guides">
+      <h3>Diğer yaş rehberleri</h3>
+      <div class="other-guides-grid">
+        <a href="/cocuk-rehber-3-6.html" class="other-guide-link">
+          <div class="other-guide-age">3–6</div>
+          <div class="other-guide-label">Okul öncesi rehberi</div>
+        </a>
+        <a href="/cocuk-rehber-13-18.html" class="other-guide-link">
+          <div class="other-guide-age">13–18</div>
+          <div class="other-guide-label">Ergenlik rehberi</div>
+        </a>
+      </div>
+    </div>
 
-<section class="guide-section" id="kirmizi">
-  <div class="red-flags-block">
-    <h3>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
-      Ne zaman fizyoterapist görmeli?
-    </h3>
-    <p>Aşağıdakilerden biri varsa beklemeden bir pediatrik fizyoterapist veya çocuk ortopedi uzmanı ile görüşün:</p>
-    <ul>
-      <li>Sırtın, çocuk öne eğildiğinde belirgin asimetrik (bir tarafı yüksek)</li>
-      <li>Omuzlardan biri devamlı diğerinden yüksek duruyor</li>
-      <li>Pelvis (kalça hizası) eşit değil, çocuk sürekli bir tarafa yatık</li>
-      <li>Sırt veya bel ağrısından şikayet ediyor (özellikle gece artıyorsa)</li>
-      <li>Yürüyüşü değişti veya topallıyor</li>
-      <li>Spora aktif başlamak istiyor ama postür endişen var</li>
-      <li>Ailede skolyoz öyküsü varsa — taramayı atlamayın</li>
-    </ul>
-  </div>
-</section>
-
-<div class="guide-cta">
-  <h3>Çocuğunun postürünü değerlendirelim</h3>
-  <p>Aydın çevresindeyseniz Fzt. Umut Yalçın ile evde değerlendirme randevusu alabilirsiniz. Çevrimiçi olarak da çocuğunun postürünü kendi kendine tarayabilirsin.</p>
-  <div class="guide-cta-buttons">
-    <a href="/cocuk-postur-analizi.html" class="btn btn-primary">
-      Postür Taraması Yap
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-    <a href="https://wa.me/905345840913?text=Merhaba%2C%20%C3%A7ocu%C4%9Fum%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-      WhatsApp Randevu
-    </a>
-  </div>
-</div>
-
-<div class="other-guides">
-  <h3>Diğer yaş rehberleri</h3>
-  <div class="other-guides-grid">
-    <a href="/cocuk-rehber-3-6.html" class="other-guide-link">
-      <div class="other-guide-age">3–6</div>
-      <div class="other-guide-label">Okul öncesi rehberi</div>
-    </a>
-    <a href="/cocuk-rehber-13-18.html" class="other-guide-link">
-      <div class="other-guide-age">13–18</div>
-      <div class="other-guide-label">Ergenlik rehberi</div>
-    </a>
-  </div>
-</div>
-
-<div class="guide-disclaimer">
-  <strong>Önemli:</strong> Bu rehber genel bilgilendirme amaçlıdır ve fizyoterapist veya hekim değerlendirmesinin yerini tutmaz. Çocuğunda spesifik bir bulgu varsa veya bu öneriler yetersiz kalıyorsa, mutlaka bir uzmanla görüşün.
-</div>
-```
-
+    <div class="guide-disclaimer">
+      <strong>Önemli:</strong> Bu rehber genel bilgilendirme amaçlıdır ve fizyoterapist veya hekim değerlendirmesinin yerini tutmaz. Çocuğunda spesifik bir bulgu varsa veya bu öneriler yetersiz kalıyorsa, mutlaka bir uzmanla görüşün.
+    </div>
   </div>
 </main>
 
 <div id="rb-footer-mount"></div>
 
 <script src="shared-nav.js" defer></script>
-
 </body>
 </html>

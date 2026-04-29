@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -7,8 +6,6 @@
 <title>Rehabist Check-up — 60 saniyede vücut taraması | Rehabist</title>
 <meta name="description" content="60 saniyede vücudunun her bölgesini tara. Anında renkli vücut haritası ile sağlık durumunu gör. Paylaşılabilir kişisel sonuç.">
 <meta name="keywords" content="check-up, vücut taraması, sağlık testi, fizyoterapi, Rehabist">
-<link rel="canonical" href="https://rehabist.netlify.app/check-up.html">
-
 <meta property="og:title" content="Rehabist Check-up">
 <meta property="og:description" content="60 saniyede tüm vücut taraması. Hangi bölgeni dikkat gerekiyor?">
 
@@ -818,27 +815,16 @@
     .result-body-viz { max-width: 160px; margin: 0 auto; }
   }
 </style>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared-theme.css">
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-      </span>
-      Rehabist
-    </a>
-    <a href="index.html" class="back-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Ana Sayfa
-    </a>
-  </div>
-</nav>
+<div id="rb-nav-mount"></div>
 
 <!-- ========== INTRO ========== -->
-
 <section class="screen active" id="screenIntro">
   <div class="screen-inner">
     <span class="intro-kicker">
@@ -846,50 +832,46 @@
       60 SANİYE
     </span>
 
-```
-<div class="intro-body">
-  <svg viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
-    <!-- Simplified body with pulsing zones -->
-    <ellipse cx="50" cy="16" rx="10" ry="12" class="demo-zone pulse-green"/>
-    <rect x="36" y="30" width="28" height="40" rx="6" class="demo-zone pulse-amber"/>
-    <rect x="36" y="72" width="28" height="30" rx="6" class="demo-zone pulse-red"/>
-    <rect x="36" y="104" width="13" height="50" rx="5" class="demo-zone pulse-green"/>
-    <rect x="51" y="104" width="13" height="50" rx="5" class="demo-zone pulse-amber"/>
-  </svg>
-</div>
+    <div class="intro-body">
+      <svg viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+        <!-- Simplified body with pulsing zones -->
+        <ellipse cx="50" cy="16" rx="10" ry="12" class="demo-zone pulse-green"/>
+        <rect x="36" y="30" width="28" height="40" rx="6" class="demo-zone pulse-amber"/>
+        <rect x="36" y="72" width="28" height="30" rx="6" class="demo-zone pulse-red"/>
+        <rect x="36" y="104" width="13" height="50" rx="5" class="demo-zone pulse-green"/>
+        <rect x="51" y="104" width="13" height="50" rx="5" class="demo-zone pulse-amber"/>
+      </svg>
+    </div>
 
-<h1>60 saniyede <span class="accent">tüm vücut</span> taraması.</h1>
-<p>10 basit soruyla vücudunun hangi bölgelerinin dikkat gerektiğini anında gör. Kendi kişisel vücut haritanı oluştur.</p>
+    <h1>60 saniyede <span class="accent">tüm vücut</span> taraması.</h1>
+    <p>10 basit soruyla vücudunun hangi bölgelerinin dikkat gerektiğini anında gör. Kendi kişisel vücut haritanı oluştur.</p>
 
-<div class="intro-stats">
-  <div class="intro-stat">
-    <div class="intro-stat-val">10</div>
-    <div class="intro-stat-lbl">Soru</div>
-  </div>
-  <div class="intro-stat">
-    <div class="intro-stat-val">60s</div>
-    <div class="intro-stat-lbl">Süre</div>
-  </div>
-  <div class="intro-stat">
-    <div class="intro-stat-val">9</div>
-    <div class="intro-stat-lbl">Bölge</div>
-  </div>
-</div>
+    <div class="intro-stats">
+      <div class="intro-stat">
+        <div class="intro-stat-val">10</div>
+        <div class="intro-stat-lbl">Soru</div>
+      </div>
+      <div class="intro-stat">
+        <div class="intro-stat-val">60s</div>
+        <div class="intro-stat-lbl">Süre</div>
+      </div>
+      <div class="intro-stat">
+        <div class="intro-stat-val">9</div>
+        <div class="intro-stat-lbl">Bölge</div>
+      </div>
+    </div>
 
-<div class="intro-actions">
-  <button type="button" class="btn btn-primary btn-lg" onclick="startScan()">
-    Taramayı Başlat
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-  </button>
-  <p class="intro-disclaimer">Bu tarama bilgilendirme amaçlıdır, tıbbi tanı yerine geçmez.</p>
-</div>
-```
-
+    <div class="intro-actions">
+      <button type="button" class="btn btn-primary btn-lg" onclick="startScan()">
+        Taramayı Başlat
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </button>
+      <p class="intro-disclaimer">Bu tarama bilgilendirme amaçlıdır, tıbbi tanı yerine geçmez.</p>
+    </div>
   </div>
 </section>
 
 <!-- ========== SCAN ========== -->
-
 <section class="screen" id="screenScan">
   <div class="screen-inner">
     <div class="scan-header">
@@ -901,110 +883,106 @@
       <div class="scan-progress-fill" id="scanProgress"></div>
     </div>
 
-```
-<div class="scan-grid">
-  <!-- Body map (left) -->
-  <div class="body-container">
-    <div class="body-status" id="bodyStatus">TARANIYOR...</div>
-    <div class="body-svg-wrap">
-      <svg class="body-svg" viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
-        <!-- Body shape -->
-        <path class="body-shape" d="
-          M100 18
-          C108 18, 115 25, 115 35
-          C115 44, 112 49, 110 52
-          L112 64
-          C122 67, 132 71, 138 80
-          C142 87, 144 100, 144 112
-          L140 148
-          L144 174
-          L147 200
-          C147 210, 145 218, 142 226
-          L140 234
-          L136 270
-          L132 322
-          C132 330, 128 336, 122 336
-          C116 336, 113 330, 111 322
-          L107 278
-          L103 244
-          L100 240
-          L97 244
-          L93 278
-          L89 322
-          C87 330, 84 336, 78 336
-          C72 336, 68 330, 68 322
-          L64 270
-          L60 234
-          L58 226
-          C55 218, 53 210, 53 200
-          L56 174
-          L60 148
-          L56 112
-          C56 100, 58 87, 62 80
-          C68 71, 78 67, 88 64
-          L90 52
-          C88 49, 85 44, 85 35
-          C85 25, 92 18, 100 18 Z"/>
+    <div class="scan-grid">
+      <!-- Body map (left) -->
+      <div class="body-container">
+        <div class="body-status" id="bodyStatus">TARANIYOR...</div>
+        <div class="body-svg-wrap">
+          <svg class="body-svg" viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
+            <!-- Body shape -->
+            <path class="body-shape" d="
+              M100 18
+              C108 18, 115 25, 115 35
+              C115 44, 112 49, 110 52
+              L112 64
+              C122 67, 132 71, 138 80
+              C142 87, 144 100, 144 112
+              L140 148
+              L144 174
+              L147 200
+              C147 210, 145 218, 142 226
+              L140 234
+              L136 270
+              L132 322
+              C132 330, 128 336, 122 336
+              C116 336, 113 330, 111 322
+              L107 278
+              L103 244
+              L100 240
+              L97 244
+              L93 278
+              L89 322
+              C87 330, 84 336, 78 336
+              C72 336, 68 330, 68 322
+              L64 270
+              L60 234
+              L58 226
+              C55 218, 53 210, 53 200
+              L56 174
+              L60 148
+              L56 112
+              C56 100, 58 87, 62 80
+              C68 71, 78 67, 88 64
+              L90 52
+              C88 49, 85 44, 85 35
+              C85 25, 92 18, 100 18 Z"/>
 
-        <!-- Kol sol -->
-        <path class="body-shape" d="M62 80 C52 82, 44 90, 40 100 L36 140 L34 180 C34 192, 37 200, 40 208 L44 216 L42 220 C40 224, 40 228, 42 230 C44 232, 48 232, 50 229 L54 220 L57 210 L60 180 L62 148 Z"/>
-        <!-- Kol sağ -->
-        <path class="body-shape" d="M138 80 C148 82, 156 90, 160 100 L164 140 L166 180 C166 192, 163 200, 160 208 L156 216 L158 220 C160 224, 160 228, 158 230 C156 232, 152 232, 150 229 L146 220 L143 210 L140 180 L138 148 Z"/>
+            <!-- Kol sol -->
+            <path class="body-shape" d="M62 80 C52 82, 44 90, 40 100 L36 140 L34 180 C34 192, 37 200, 40 208 L44 216 L42 220 C40 224, 40 228, 42 230 C44 232, 48 232, 50 229 L54 220 L57 210 L60 180 L62 148 Z"/>
+            <!-- Kol sağ -->
+            <path class="body-shape" d="M138 80 C148 82, 156 90, 160 100 L164 140 L166 180 C166 192, 163 200, 160 208 L156 216 L158 220 C160 224, 160 228, 158 230 C156 232, 152 232, 150 229 L146 220 L143 210 L140 180 L138 148 Z"/>
 
-        <!-- BÖLGELER -->
-        <!-- Boyun -->
-        <rect class="body-zone" id="zone-boyun" x="88" y="50" width="24" height="16" rx="4"/>
-        <!-- Omuzlar -->
-        <ellipse class="body-zone" id="zone-omuz-sol" cx="70" cy="80" rx="14" ry="10"/>
-        <ellipse class="body-zone" id="zone-omuz-sag" cx="130" cy="80" rx="14" ry="10"/>
-        <!-- Göğüs/Sırt -->
-        <rect class="body-zone" id="zone-gogus" x="80" y="95" width="40" height="34" rx="8"/>
-        <!-- Bel/Karın -->
-        <rect class="body-zone" id="zone-bel" x="80" y="135" width="40" height="40" rx="8"/>
-        <!-- Kalça -->
-        <rect class="body-zone" id="zone-kalca" x="74" y="180" width="52" height="30" rx="10"/>
-        <!-- Dizler -->
-        <ellipse class="body-zone" id="zone-diz-sol" cx="88" cy="268" rx="12" ry="10"/>
-        <ellipse class="body-zone" id="zone-diz-sag" cx="112" cy="268" rx="12" ry="10"/>
-        <!-- Ayaklar -->
-        <ellipse class="body-zone" id="zone-ayak-sol" cx="86" cy="328" rx="12" ry="8"/>
-        <ellipse class="body-zone" id="zone-ayak-sag" cx="114" cy="328" rx="12" ry="8"/>
-      </svg>
-    </div>
-    <div class="body-legend">
-      <div class="legend-item">
-        <span class="legend-dot good"></span>
-        <span>İyi</span>
+            <!-- BÖLGELER -->
+            <!-- Boyun -->
+            <rect class="body-zone" id="zone-boyun" x="88" y="50" width="24" height="16" rx="4"/>
+            <!-- Omuzlar -->
+            <ellipse class="body-zone" id="zone-omuz-sol" cx="70" cy="80" rx="14" ry="10"/>
+            <ellipse class="body-zone" id="zone-omuz-sag" cx="130" cy="80" rx="14" ry="10"/>
+            <!-- Göğüs/Sırt -->
+            <rect class="body-zone" id="zone-gogus" x="80" y="95" width="40" height="34" rx="8"/>
+            <!-- Bel/Karın -->
+            <rect class="body-zone" id="zone-bel" x="80" y="135" width="40" height="40" rx="8"/>
+            <!-- Kalça -->
+            <rect class="body-zone" id="zone-kalca" x="74" y="180" width="52" height="30" rx="10"/>
+            <!-- Dizler -->
+            <ellipse class="body-zone" id="zone-diz-sol" cx="88" cy="268" rx="12" ry="10"/>
+            <ellipse class="body-zone" id="zone-diz-sag" cx="112" cy="268" rx="12" ry="10"/>
+            <!-- Ayaklar -->
+            <ellipse class="body-zone" id="zone-ayak-sol" cx="86" cy="328" rx="12" ry="8"/>
+            <ellipse class="body-zone" id="zone-ayak-sag" cx="114" cy="328" rx="12" ry="8"/>
+          </svg>
+        </div>
+        <div class="body-legend">
+          <div class="legend-item">
+            <span class="legend-dot good"></span>
+            <span>İyi</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot mid"></span>
+            <span>Dikkat</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot bad"></span>
+            <span>Sorunlu</span>
+          </div>
+        </div>
       </div>
-      <div class="legend-item">
-        <span class="legend-dot mid"></span>
-        <span>Dikkat</span>
-      </div>
-      <div class="legend-item">
-        <span class="legend-dot bad"></span>
-        <span>Sorunlu</span>
+
+      <!-- Question (right) -->
+      <div class="scan-question-wrap">
+        <div class="scan-question-zone" id="scanZone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+          <span id="scanZoneName">BOYUN</span>
+        </div>
+        <h2 class="scan-question-title" id="scanTitle">Soru yükleniyor...</h2>
+        <p class="scan-question-hint" id="scanHint"></p>
+        <div class="scan-options" id="scanOptions"></div>
       </div>
     </div>
-  </div>
-
-  <!-- Question (right) -->
-  <div class="scan-question-wrap">
-    <div class="scan-question-zone" id="scanZone">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
-      <span id="scanZoneName">BOYUN</span>
-    </div>
-    <h2 class="scan-question-title" id="scanTitle">Soru yükleniyor...</h2>
-    <p class="scan-question-hint" id="scanHint"></p>
-    <div class="scan-options" id="scanOptions"></div>
-  </div>
-</div>
-```
-
   </div>
 </section>
 
 <!-- ========== RESULT ========== -->
-
 <section class="screen" id="screenResult">
   <div class="screen-inner">
     <div class="result-header">
@@ -1013,116 +991,112 @@
       <p class="result-score" id="resultScore">Vücut sağlık skorun: 72 / 100</p>
     </div>
 
-```
-<div class="result-body-card">
-  <span class="result-body-badge">REHABİST CHECK-UP</span>
-  <div class="result-body-layout">
-    <div class="result-body-viz">
-      <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg" id="resultBodySvg">
-        <!-- Populated by JS -->
-      </svg>
-    </div>
-    <div class="result-body-summary">
-      <div class="result-summary-row">
-        <span class="result-summary-dot dot-good"></span>
-        <span class="result-summary-count" id="countGood">0</span>
-        <span class="result-summary-label" id="labelGood">bölgen iyi durumda</span>
+    <div class="result-body-card">
+      <span class="result-body-badge">REHABİST CHECK-UP</span>
+      <div class="result-body-layout">
+        <div class="result-body-viz">
+          <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg" id="resultBodySvg">
+            <!-- Populated by JS -->
+          </svg>
+        </div>
+        <div class="result-body-summary">
+          <div class="result-summary-row">
+            <span class="result-summary-dot dot-good"></span>
+            <span class="result-summary-count" id="countGood">0</span>
+            <span class="result-summary-label" id="labelGood">bölgen iyi durumda</span>
+          </div>
+          <div class="result-summary-row">
+            <span class="result-summary-dot dot-mid"></span>
+            <span class="result-summary-count" id="countMid">0</span>
+            <span class="result-summary-label" id="labelMid">bölgen dikkat gerektiriyor</span>
+          </div>
+          <div class="result-summary-row">
+            <span class="result-summary-dot dot-bad"></span>
+            <span class="result-summary-count" id="countBad">0</span>
+            <span class="result-summary-label" id="labelBad">bölgen sorunlu</span>
+          </div>
+        </div>
       </div>
-      <div class="result-summary-row">
-        <span class="result-summary-dot dot-mid"></span>
-        <span class="result-summary-count" id="countMid">0</span>
-        <span class="result-summary-label" id="labelMid">bölgen dikkat gerektiriyor</span>
-      </div>
-      <div class="result-summary-row">
-        <span class="result-summary-dot dot-bad"></span>
-        <span class="result-summary-count" id="countBad">0</span>
-        <span class="result-summary-label" id="labelBad">bölgen sorunlu</span>
+      <div class="result-verdict">
+        <p class="result-verdict-text" id="verdictText">Genel durumun değerlendiriliyor...</p>
       </div>
     </div>
-  </div>
-  <div class="result-verdict">
-    <p class="result-verdict-text" id="verdictText">Genel durumun değerlendiriliyor...</p>
-  </div>
-</div>
 
-<div class="zone-details">
-  <h3>Bölge Detayları</h3>
-  <div id="zoneDetailsList"></div>
-</div>
+    <div class="zone-details">
+      <h3>Bölge Detayları</h3>
+      <div id="zoneDetailsList"></div>
+    </div>
 
-<div class="share-block">
-  <h3>Vücut haritanı paylaş 📊</h3>
-  <p>Sonuç görselini indir, Instagram'da paylaş. Meraklıları "sende nasıl çıktı?" diye sorsun.</p>
-  <div class="share-buttons">
-    <button type="button" class="share-btn download" onclick="downloadShareCard()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-      Haritamı indir
-    </button>
-    <button type="button" class="share-btn" onclick="shareWhatsApp()">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-      WhatsApp
-    </button>
-    <button type="button" class="share-btn" onclick="copyLink()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1.5 1.5M14 11a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1.5-1.5"/></svg>
-      Link kopyala
-    </button>
-  </div>
-  <div class="share-preview" id="sharePreview">
-    <img id="sharePreviewImg" alt="Paylaşım görseli">
-    <div class="share-preview-help">Görsele basılı tut → "Fotoğraflara Kaydet"</div>
-  </div>
-</div>
+    <div class="share-block">
+      <h3>Vücut haritanı paylaş 📊</h3>
+      <p>Sonuç görselini indir, Instagram'da paylaş. Meraklıları "sende nasıl çıktı?" diye sorsun.</p>
+      <div class="share-buttons">
+        <button type="button" class="share-btn download" onclick="downloadShareCard()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Haritamı indir
+        </button>
+        <button type="button" class="share-btn" onclick="shareWhatsApp()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+          WhatsApp
+        </button>
+        <button type="button" class="share-btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1.5 1.5M14 11a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1.5-1.5"/></svg>
+          Link kopyala
+        </button>
+      </div>
+      <div class="share-preview" id="sharePreview">
+        <img id="sharePreviewImg" alt="Paylaşım görseli">
+        <div class="share-preview-help">Görsele basılı tut → "Fotoğraflara Kaydet"</div>
+      </div>
+    </div>
 
-<div class="result-actions">
-  <h3>Devam et</h3>
-  <a href="vucut-yasi.html" class="action-link">
-    <div class="action-link-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <div class="result-actions">
+      <h3>Devam et</h3>
+      <a href="/vucut-yasi.html" class="action-link">
+        <div class="action-link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="action-link-text">
+          <div class="action-link-title">Vücut Yaşı Testi</div>
+          <div class="action-link-desc">2 dakikada vücudunun yaşını öğren</div>
+        </div>
+        <span class="action-link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+      <a href="/harita.html" class="action-link">
+        <div class="action-link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div class="action-link-text">
+          <div class="action-link-title">Ağrı Haritası</div>
+          <div class="action-link-desc">Sorunlu bölgen hakkında detaylı bilgi al</div>
+        </div>
+        <span class="action-link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+      <a href="https://wa.me/905345840913?text=Merhaba%2C%20check-up%20sonucumu%20konu%C5%9Fmak%20istiyorum." target="_blank" rel="noopener" class="action-link">
+        <div class="action-link-icon" style="background:#d1fae5; color:#065f46;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+        </div>
+        <div class="action-link-text">
+          <div class="action-link-title">Sonucumu danış</div>
+          <div class="action-link-desc">Fzt. Umut'a WhatsApp'tan yaz</div>
+        </div>
+        <span class="action-link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </span>
+      </a>
     </div>
-    <div class="action-link-text">
-      <div class="action-link-title">Vücut Yaşı Testi</div>
-      <div class="action-link-desc">2 dakikada vücudunun yaşını öğren</div>
-    </div>
-    <span class="action-link-arrow">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
-    </span>
-  </a>
-  <a href="harita.html" class="action-link">
-    <div class="action-link-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-    </div>
-    <div class="action-link-text">
-      <div class="action-link-title">Ağrı Haritası</div>
-      <div class="action-link-desc">Sorunlu bölgen hakkında detaylı bilgi al</div>
-    </div>
-    <span class="action-link-arrow">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
-    </span>
-  </a>
-  <a href="https://wa.me/905345840913?text=Merhaba%2C%20check-up%20sonucumu%20konu%C5%9Fmak%20istiyorum." target="_blank" rel="noopener" class="action-link">
-    <div class="action-link-icon" style="background:#d1fae5; color:#065f46;">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-    </div>
-    <div class="action-link-text">
-      <div class="action-link-title">Sonucumu danış</div>
-      <div class="action-link-desc">Fzt. Umut'a WhatsApp'tan yaz</div>
-    </div>
-    <span class="action-link-arrow">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
-    </span>
-  </a>
-</div>
 
-<div class="result-reset">
-  <button type="button" class="reset-btn" onclick="resetScan()">Tekrar tara</button>
-</div>
-```
-
+    <div class="result-reset">
+      <button type="button" class="reset-btn" onclick="resetScan()">Tekrar tara</button>
+    </div>
   </div>
 </section>
 
 <canvas id="shareCanvas" width="1080" height="1920"></canvas>
-
 <div class="toast" id="toast">İşlem tamamlandı</div>
 
 <script>
@@ -1938,5 +1912,7 @@
 })();
 </script>
 
+<div id="rb-footer-mount"></div>
+<script src="/shared-nav.js" defer></script>
 </body>
 </html>

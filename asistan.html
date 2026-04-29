@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -441,29 +440,17 @@
     .nav-inner { padding: 0 16px; }
   }
 </style>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared-theme.css">
 </head>
 <body>
 
 <!-- NAV -->
-
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-      </span>
-      Rehabist
-    </a>
-    <a href="index.html" class="back-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Ana Sayfa
-    </a>
-  </div>
-</nav>
+<div id="rb-nav-mount"></div>
 
 <!-- GATE (üye değilse) -->
-
 <section id="accessGate">
   <div class="gate-content">
     <div class="gate-icon">
@@ -472,14 +459,13 @@
     <h1>AI Asistan üyelere özeldir</h1>
     <p>Rehabist yapay zeka asistanı ile sohbet etmek için ücretsiz üye olmanız yeterli. Kayıt 1 dakikanızı almaz.</p>
     <div class="gate-actions">
-      <a href="index.html" class="btn btn-primary">Ana Sayfaya Dön</a>
-      <a href="blog.html" class="btn btn-outline">Yazılara Göz At</a>
+      <a href="/" class="btn btn-primary">Ana Sayfaya Dön</a>
+      <a href="/blog.html" class="btn btn-outline">Yazılara Göz At</a>
     </div>
   </div>
 </section>
 
 <!-- CHAT (üye ise) -->
-
 <div id="chatWrap">
   <header class="chat-header">
     <div class="chat-header-inner">
@@ -520,9 +506,7 @@
 </div>
 
 <!-- Supabase -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
-
 <script>
 (function() {
   'use strict';
@@ -535,7 +519,7 @@
 
   // OPENROUTER API KEY - aşağıya kendi anahtarını koy (openrouter.ai'dan alacaksın)
   // Anahtar sk-or-v1-... ile başlar
-  var OPENROUTER_API_KEY = 'sk-or-v1-d6d730c37f90aa0aade0c8e0f92704d6c3ba9dde293ec8c2aebd851ac5265e9';
+  var OPENROUTER_API_KEY = 'YOUR_OPENROUTER_API_KEY';
 
   // Ücretsiz modeller (sırayla denenir, biri çalışmazsa diğerine geçer)
   // Nisan 2026 itibarıyla aktif olanlar
@@ -927,146 +911,9 @@
   init();
 
 })();
-// ============================================
-// AI MESSAGE SEND
-// ============================================
-
-async function sendMessage(e) {
-  if (e) e.preventDefault();
-
-  if (isGenerating) return;
-
-  var text = inputEl.value.trim();
-  if (!text) return;
-
-  inputEl.value = '';
-  addMessage('user', text);
-
-  conversationHistory.push({
-    role: "user",
-    content: text
-  });
-
-  isGenerating = true;
-  sendBtn.disabled = true;
-
-  const typingId = addTyping();
-
-  try {
-
-    let aiReply = null;
-
-    // MODELLER SIRAYLA DENENİR
-    for (const model of AI_MODELS) {
-
-      try {
-
-        const response = await fetch(
-          "https://openrouter.ai/api/v1/chat/completions",
-          {
-            method: "POST",
-            headers: {
-              "Authorization": "Bearer " + OPENROUTER_API_KEY,
-              "Content-Type": "application/json",
-              "HTTP-Referer": window.location.origin,
-              "X-Title": "Rehabist"
-            },
-            body: JSON.stringify({
-              model: model,
-              messages: [
-                { role: "system", content: SYSTEM_PROMPT },
-                ...conversationHistory
-              ]
-            })
-          }
-        );
-
-        if (!response.ok) continue;
-
-        const data = await response.json();
-
-        if (
-          data &&
-          data.choices &&
-          data.choices[0] &&
-          data.choices[0].message
-        ) {
-          aiReply = data.choices[0].message.content;
-          break;
-        }
-
-      } catch(err) {
-        console.log("Model başarısız:", model);
-      }
-    }
-
-    removeTyping(typingId);
-
-    if (!aiReply) {
-      throw new Error("Hiçbir ücretsiz model cevap vermedi");
-    }
-
-    addMessage('assistant', aiReply);
-
-    conversationHistory.push({
-      role: "assistant",
-      content: aiReply
-    });
-
-  } catch(err) {
-
-    removeTyping(typingId);
-
-    showError(
-      "Şu anda asistan yoğun görünüyor. Lütfen biraz sonra tekrar deneyin."
-    );
-
-    console.error(err);
-  }
-
-  isGenerating = false;
-  sendBtn.disabled = false;
-}
-
-// ============================================
-// TYPING EFFECT
-// ============================================
-
-function addTyping() {
-  const id = "typing-" + Date.now();
-
-  const msg = document.createElement("div");
-  msg.className = "message assistant";
-  msg.id = id;
-
-  msg.innerHTML = `
-    <div class="message-avatar">AI</div>
-    <div class="message-bubble">
-      <div class="typing">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  `;
-
-  messagesEl.appendChild(msg);
-  messagesEl.scrollTop = messagesEl.scrollHeight;
-
-  return id;
-}
-
-function removeTyping(id) {
-  const el = document.getElementById(id);
-  if (el) el.remove();
-}
-
-function showError(text) {
-  errorBanner.textContent = text;
-  errorBanner.classList.add("visible");
-  setTimeout(() => {
-    errorBanner.classList.remove("visible");
-  }, 4000);
-}
 </script>
 
+<div id="rb-footer-mount"></div>
+<script src="/shared-nav.js" defer></script>
 </body>
 </html>

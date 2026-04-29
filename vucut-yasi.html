@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -7,8 +6,6 @@
 <title>Vücut Yaşı Testi — Kronolojik yaşınla vücut yaşın aynı mı? | Rehabist</title>
 <meta name="description" content="2 dakikada vücudunun gerçek yaşını öğren. 12 soruluk bilimsel temelli test ile mobilite, güç, denge ve yaşam biçiminden hesaplanan vücut yaşı.">
 <meta name="keywords" content="vücut yaşı, fiziksel yaş testi, mobilite testi, vücut yaşı hesaplama, Rehabist">
-<link rel="canonical" href="https://rehabist.netlify.app/vucut-yasi.html">
-
 <meta property="og:title" content="Vücut Yaşı Testi — Rehabist">
 <meta property="og:description" content="Vücudunun gerçek yaşını öğren. 2 dakikada sonucu gör.">
 <meta property="og:type" content="website">
@@ -867,98 +864,79 @@
     .intro-hero { width: 130px; height: 130px; }
   }
 </style>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared-theme.css">
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-      </span>
-      Rehabist
-    </a>
-    <a href="index.html" class="back-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Ana Sayfa
-    </a>
-  </div>
-</nav>
+<div id="rb-nav-mount"></div>
 
 <!-- ========== SCREEN 1: INTRO ========== -->
-
 <section class="screen active" id="screenIntro">
   <div class="screen-inner">
     <span class="intro-kicker">REHABİST TESTİ</span>
 
-```
-<div class="intro-hero">
-  <div class="intro-hero-ring"></div>
-  <div class="intro-hero-num" id="heroNum">42</div>
-</div>
+    <div class="intro-hero">
+      <div class="intro-hero-ring"></div>
+      <div class="intro-hero-num" id="heroNum">42</div>
+    </div>
 
-<h1>Vücudunun gerçek <span class="accent">yaşı</span> kaç?</h1>
-<p>Kimliğindeki yaşla vücudunun gerçek yaşı farklı olabilir. 12 soruyla 2 dakikada öğren.</p>
+    <h1>Vücudunun gerçek <span class="accent">yaşı</span> kaç?</h1>
+    <p>Kimliğindeki yaşla vücudunun gerçek yaşı farklı olabilir. 12 soruyla 2 dakikada öğren.</p>
 
-<div class="intro-meta">
-  <div class="intro-meta-item">
-    <div class="intro-meta-value">12</div>
-    <div class="intro-meta-label">Soru</div>
-  </div>
-  <div class="intro-meta-item">
-    <div class="intro-meta-value">2 dk</div>
-    <div class="intro-meta-label">Süre</div>
-  </div>
-  <div class="intro-meta-item">
-    <div class="intro-meta-value">5</div>
-    <div class="intro-meta-label">Kategori</div>
-  </div>
-</div>
+    <div class="intro-meta">
+      <div class="intro-meta-item">
+        <div class="intro-meta-value">12</div>
+        <div class="intro-meta-label">Soru</div>
+      </div>
+      <div class="intro-meta-item">
+        <div class="intro-meta-value">2 dk</div>
+        <div class="intro-meta-label">Süre</div>
+      </div>
+      <div class="intro-meta-item">
+        <div class="intro-meta-value">5</div>
+        <div class="intro-meta-label">Kategori</div>
+      </div>
+    </div>
 
-<div class="intro-actions">
-  <button type="button" class="btn btn-primary btn-lg" onclick="goToAge()">
-    Teste Başla
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </button>
-  <p class="intro-disclaimer">Bu test bilgilendirme amaçlıdır, tıbbi tanı yerine geçmez.</p>
-</div>
-```
-
+    <div class="intro-actions">
+      <button type="button" class="btn btn-primary btn-lg" onclick="goToAge()">
+        Teste Başla
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <p class="intro-disclaimer">Bu test bilgilendirme amaçlıdır, tıbbi tanı yerine geçmez.</p>
+    </div>
   </div>
 </section>
 
 <!-- ========== SCREEN 2: AGE ========== -->
-
 <section class="screen" id="screenAge">
   <div class="screen-inner">
     <div class="question-content">
       <h2>Öncelikle seni tanıyalım</h2>
       <p>Bu bilgiler sadece skorunu hesaplamak için kullanılır.</p>
 
-```
-  <div class="age-input-wrap">
-    <input type="number" id="ageInput" class="age-input" placeholder="28" min="10" max="99" inputmode="numeric">
-    <span class="age-label">Yaşın</span>
-  </div>
+      <div class="age-input-wrap">
+        <input type="number" id="ageInput" class="age-input" placeholder="28" min="10" max="99" inputmode="numeric">
+        <span class="age-label">Yaşın</span>
+      </div>
 
-  <div class="gender-picker">
-    <button type="button" class="gender-btn active" data-gender="f" onclick="pickGender(this, 'f')">Kadın</button>
-    <button type="button" class="gender-btn" data-gender="m" onclick="pickGender(this, 'm')">Erkek</button>
-  </div>
+      <div class="gender-picker">
+        <button type="button" class="gender-btn active" data-gender="f" onclick="pickGender(this, 'f')">Kadın</button>
+        <button type="button" class="gender-btn" data-gender="m" onclick="pickGender(this, 'm')">Erkek</button>
+      </div>
 
-  <button type="button" class="btn btn-primary btn-next" onclick="startQuestions()" id="ageNextBtn">
-    Sorulara Geç
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </button>
-</div>
-```
-
+      <button type="button" class="btn btn-primary btn-next" onclick="startQuestions()" id="ageNextBtn">
+        Sorulara Geç
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
   </div>
 </section>
 
 <!-- ========== SCREEN 3: QUESTIONS ========== -->
-
 <section class="screen" id="screenQuestions">
   <div class="progress-wrap">
     <div class="progress-info">
@@ -978,26 +956,22 @@
       <h2 class="question-title" id="questionTitle">Soru yükleniyor...</h2>
       <p class="question-subtitle" id="questionSubtitle"></p>
 
-```
-  <div class="options" id="optionsList"></div>
+      <div class="options" id="optionsList"></div>
 
-  <div class="question-actions">
-    <button type="button" class="btn btn-back" onclick="prevQuestion()" id="backBtn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    </button>
-    <button type="button" class="btn btn-primary btn-next" onclick="nextQuestion()" id="nextBtn" disabled>
-      <span id="nextBtnText">Sonraki</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </button>
-  </div>
-</div>
-```
-
+      <div class="question-actions">
+        <button type="button" class="btn btn-back" onclick="prevQuestion()" id="backBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <button type="button" class="btn btn-primary btn-next" onclick="nextQuestion()" id="nextBtn" disabled>
+          <span id="nextBtnText">Sonraki</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ========== SCREEN 4: CALCULATING ========== -->
-
 <section class="screen" id="screenCalculating">
   <div class="screen-inner">
     <div class="calc-visual">
@@ -1019,7 +993,6 @@
 </section>
 
 <!-- ========== SCREEN 5: RESULT ========== -->
-
 <section class="screen" id="screenResult">
   <div class="screen-inner">
     <div class="result-top">
@@ -1027,111 +1000,107 @@
       <h1 class="result-headline" id="resultHeadline">Vücudun <span class="big">37</span> yaşında</h1>
     </div>
 
-```
-<div class="compare-card" id="compareCard">
-  <span class="compare-badge">REHABİST ANALİZİ</span>
-  <div class="compare-grid">
-    <div class="compare-col">
-      <div class="compare-label">Kronolojik</div>
-      <div class="compare-num" id="chronoNum">28</div>
-      <div class="compare-unit">yaşında</div>
+    <div class="compare-card" id="compareCard">
+      <span class="compare-badge">REHABİST ANALİZİ</span>
+      <div class="compare-grid">
+        <div class="compare-col">
+          <div class="compare-label">Kronolojik</div>
+          <div class="compare-num" id="chronoNum">28</div>
+          <div class="compare-unit">yaşında</div>
+        </div>
+        <div class="compare-divider"></div>
+        <div class="compare-col">
+          <div class="compare-label">Vücut</div>
+          <div class="compare-num" id="bodyNum">37</div>
+          <div class="compare-unit">yaşında</div>
+        </div>
+      </div>
+      <div class="compare-verdict">
+        <div class="compare-verdict-emoji" id="verdictEmoji">🫣</div>
+        <div class="compare-verdict-text" id="verdictText">Vücudun kronolojik yaşından 9 yaş büyük</div>
+      </div>
     </div>
-    <div class="compare-divider"></div>
-    <div class="compare-col">
-      <div class="compare-label">Vücut</div>
-      <div class="compare-num" id="bodyNum">37</div>
-      <div class="compare-unit">yaşında</div>
-    </div>
-  </div>
-  <div class="compare-verdict">
-    <div class="compare-verdict-emoji" id="verdictEmoji">🫣</div>
-    <div class="compare-verdict-text" id="verdictText">Vücudun kronolojik yaşından 9 yaş büyük</div>
-  </div>
-</div>
 
-<div class="breakdown">
-  <div class="breakdown-title">Kategori Detayları</div>
-  <div id="breakdownList"></div>
-</div>
+    <div class="breakdown">
+      <div class="breakdown-title">Kategori Detayları</div>
+      <div id="breakdownList"></div>
+    </div>
 
-<div class="suggestions">
-  <h3>Sana özel 3 öneri</h3>
-  <div id="suggestionsList"></div>
-</div>
+    <div class="suggestions">
+      <h3>Sana özel 3 öneri</h3>
+      <div id="suggestionsList"></div>
+    </div>
 
-<div class="share-block">
-  <h3>Arkadaşlarına meydan oku 💪</h3>
-  <p>Sonuç görselini indir, Instagram'a yükle, onları da denesin.</p>
-  <div class="share-buttons">
-    <button type="button" class="share-btn download" onclick="downloadShareCard()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-      Sonuç görselini indir
-    </button>
-    <button type="button" class="share-btn" onclick="shareWhatsApp()">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-      WhatsApp
-    </button>
-    <button type="button" class="share-btn" onclick="copyLink()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1.5 1.5M14 11a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1.5-1.5"/></svg>
-      Linki kopyala
-    </button>
-  </div>
-  <div class="share-preview" id="sharePreview">
-    <img id="sharePreviewImg" alt="Paylaşım görseli">
-    <div class="share-preview-help">Görsele basılı tut → "Fotoğraflara Kaydet"</div>
-  </div>
-</div>
+    <div class="share-block">
+      <h3>Arkadaşlarına meydan oku 💪</h3>
+      <p>Sonuç görselini indir, Instagram'a yükle, onları da denesin.</p>
+      <div class="share-buttons">
+        <button type="button" class="share-btn download" onclick="downloadShareCard()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Sonuç görselini indir
+        </button>
+        <button type="button" class="share-btn" onclick="shareWhatsApp()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+          WhatsApp
+        </button>
+        <button type="button" class="share-btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1.5 1.5M14 11a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1.5-1.5"/></svg>
+          Linki kopyala
+        </button>
+      </div>
+      <div class="share-preview" id="sharePreview">
+        <img id="sharePreviewImg" alt="Paylaşım görseli">
+        <div class="share-preview-help">Görsele basılı tut → "Fotoğraflara Kaydet"</div>
+      </div>
+    </div>
 
-<div class="next-steps">
-  <h3>Yolculuğuna devam et</h3>
-  <a href="check-up.html" class="next-link">
-    <div class="next-link-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <div class="next-steps">
+      <h3>Yolculuğuna devam et</h3>
+      <a href="/check-up.html" class="next-link">
+        <div class="next-link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="next-link-text">
+          <div class="next-link-title">Rehabist Check-up</div>
+          <div class="next-link-desc">60 saniyede tüm vücut taraması yap</div>
+        </div>
+        <span class="next-link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+      <a href="/harita.html" class="next-link">
+        <div class="next-link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div class="next-link-text">
+          <div class="next-link-title">Ağrı Haritası</div>
+          <div class="next-link-desc">Ağrılı bölgeni tıkla, rehber al</div>
+        </div>
+        <span class="next-link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+      <a href="https://wa.me/905345840913?text=Merhaba%2C%20v%C3%BCcut%20ya%C5%9F%C4%B1%20testi%20sonucumu%20konu%C5%9Fmak%20istiyorum." class="next-link" target="_blank" rel="noopener">
+        <div class="next-link-icon" style="background:#d1fae5; color:#065f46;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+        </div>
+        <div class="next-link-text">
+          <div class="next-link-title">Sonucumu danış</div>
+          <div class="next-link-desc">Fzt. Umut'a WhatsApp'tan yaz</div>
+        </div>
+        <span class="next-link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </span>
+      </a>
     </div>
-    <div class="next-link-text">
-      <div class="next-link-title">Rehabist Check-up</div>
-      <div class="next-link-desc">60 saniyede tüm vücut taraması yap</div>
-    </div>
-    <span class="next-link-arrow">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
-    </span>
-  </a>
-  <a href="harita.html" class="next-link">
-    <div class="next-link-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-    </div>
-    <div class="next-link-text">
-      <div class="next-link-title">Ağrı Haritası</div>
-      <div class="next-link-desc">Ağrılı bölgeni tıkla, rehber al</div>
-    </div>
-    <span class="next-link-arrow">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
-    </span>
-  </a>
-  <a href="https://wa.me/905345840913?text=Merhaba%2C%20v%C3%BCcut%20ya%C5%9F%C4%B1%20testi%20sonucumu%20konu%C5%9Fmak%20istiyorum." class="next-link" target="_blank" rel="noopener">
-    <div class="next-link-icon" style="background:#d1fae5; color:#065f46;">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-    </div>
-    <div class="next-link-text">
-      <div class="next-link-title">Sonucumu danış</div>
-      <div class="next-link-desc">Fzt. Umut'a WhatsApp'tan yaz</div>
-    </div>
-    <span class="next-link-arrow">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
-    </span>
-  </a>
-</div>
 
-<div class="result-reset">
-  <button type="button" class="reset-btn" onclick="resetTest()">Testi tekrar yap</button>
-</div>
-```
-
+    <div class="result-reset">
+      <button type="button" class="reset-btn" onclick="resetTest()">Testi tekrar yap</button>
+    </div>
   </div>
 </section>
 
 <!-- Hidden canvas for share card -->
-
 <canvas id="shareCanvas" width="1080" height="1920"></canvas>
 
 <div class="toast" id="toast">Bir şey olmadı!</div>
@@ -1951,5 +1920,7 @@
 })();
 </script>
 
+<div id="rb-footer-mount"></div>
+<script src="/shared-nav.js" defer></script>
 </body>
 </html>

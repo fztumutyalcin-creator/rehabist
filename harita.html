@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -525,29 +524,17 @@
     .info-actions .btn { width: 100%; justify-content: center; }
   }
 </style>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared-theme.css">
 </head>
 <body>
 
 <!-- NAV -->
-
-<nav class="nav">
-  <div class="container nav-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-      </span>
-      Rehabist
-    </a>
-    <a href="index.html" class="back-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Ana Sayfa
-    </a>
-  </div>
-</nav>
+<div id="rb-nav-mount"></div>
 
 <!-- HEADER -->
-
 <header class="page-header">
   <div class="container">
     <span class="page-kicker">AĞRI HARİTASI</span>
@@ -557,264 +544,248 @@
 </header>
 
 <!-- MAP SECTION -->
-
 <section class="map-section">
   <div class="container">
     <div class="map-layout">
 
-```
-  <!-- SOL: VÜCUT -->
-  <div class="body-wrap">
-    <div class="body-tabs">
-      <button type="button" class="body-tab active" onclick="switchView('front')" id="tabFront">Ön</button>
-      <button type="button" class="body-tab" onclick="switchView('back')" id="tabBack">Arka</button>
-    </div>
+      <!-- SOL: VÜCUT -->
+      <div class="body-wrap">
+        <div class="body-tabs">
+          <button type="button" class="body-tab active" onclick="switchView('front')" id="tabFront">Ön</button>
+          <button type="button" class="body-tab" onclick="switchView('back')" id="tabBack">Arka</button>
+        </div>
 
-    <div class="body-svg-wrap">
-      <!-- ÖN GÖRÜNÜM -->
-      <svg class="body-svg" id="svgFront" viewBox="0 0 240 400" xmlns="http://www.w3.org/2000/svg">
-        <!-- Vücut şekli (ön) -->
-        <path class="body-shape" d="
-          M120 20
-          C130 20, 138 28, 138 40
-          C138 50, 135 56, 132 60
-          L135 75
-          C148 78, 160 82, 168 92
-          C173 100, 176 115, 175 130
-          L170 170
-          L175 200
-          L178 230
-          C178 240, 176 250, 172 260
-          L170 270
-          L165 310
-          L160 370
-          C160 378, 155 385, 148 385
-          C141 385, 137 378, 135 370
-          L130 320
-          L125 280
-          L120 275
-          L115 280
-          L110 320
-          L105 370
-          C103 378, 99 385, 92 385
-          C85 385, 80 378, 80 370
-          L75 310
-          L70 270
-          L68 260
-          C64 250, 62 240, 62 230
-          L65 200
-          L70 170
-          L65 130
-          C64 115, 67 100, 72 92
-          C80 82, 92 78, 105 75
-          L108 60
-          C105 56, 102 50, 102 40
-          C102 28, 110 20, 120 20 Z"/>
+        <div class="body-svg-wrap">
+          <!-- ÖN GÖRÜNÜM -->
+          <svg class="body-svg" id="svgFront" viewBox="0 0 240 400" xmlns="http://www.w3.org/2000/svg">
+            <!-- Vücut şekli (ön) -->
+            <path class="body-shape" d="
+              M120 20
+              C130 20, 138 28, 138 40
+              C138 50, 135 56, 132 60
+              L135 75
+              C148 78, 160 82, 168 92
+              C173 100, 176 115, 175 130
+              L170 170
+              L175 200
+              L178 230
+              C178 240, 176 250, 172 260
+              L170 270
+              L165 310
+              L160 370
+              C160 378, 155 385, 148 385
+              C141 385, 137 378, 135 370
+              L130 320
+              L125 280
+              L120 275
+              L115 280
+              L110 320
+              L105 370
+              C103 378, 99 385, 92 385
+              C85 385, 80 378, 80 370
+              L75 310
+              L70 270
+              L68 260
+              C64 250, 62 240, 62 230
+              L65 200
+              L70 170
+              L65 130
+              C64 115, 67 100, 72 92
+              C80 82, 92 78, 105 75
+              L108 60
+              C105 56, 102 50, 102 40
+              C102 28, 110 20, 120 20 Z"/>
 
-        <!-- Kol sol (ön) -->
-        <path class="body-shape" d="
-          M72 92
-          C60 95, 50 105, 45 120
-          L40 165
-          L38 210
-          C38 225, 42 235, 45 245
-          L50 255
-          L48 260
-          C46 265, 46 270, 48 273
-          C50 275, 54 275, 56 272
-          L62 260
-          L65 245
-          L68 210
-          L70 170
-          Z"/>
+            <!-- Kol sol (ön) -->
+            <path class="body-shape" d="
+              M72 92
+              C60 95, 50 105, 45 120
+              L40 165
+              L38 210
+              C38 225, 42 235, 45 245
+              L50 255
+              L48 260
+              C46 265, 46 270, 48 273
+              C50 275, 54 275, 56 272
+              L62 260
+              L65 245
+              L68 210
+              L70 170
+              Z"/>
 
-        <!-- Kol sağ (ön) -->
-        <path class="body-shape" d="
-          M168 92
-          C180 95, 190 105, 195 120
-          L200 165
-          L202 210
-          C202 225, 198 235, 195 245
-          L190 255
-          L192 260
-          C194 265, 194 270, 192 273
-          C190 275, 186 275, 184 272
-          L178 260
-          L175 245
-          L172 210
-          L170 170
-          Z"/>
+            <!-- Kol sağ (ön) -->
+            <path class="body-shape" d="
+              M168 92
+              C180 95, 190 105, 195 120
+              L200 165
+              L202 210
+              C202 225, 198 235, 195 245
+              L190 255
+              L192 260
+              C194 265, 194 270, 192 273
+              C190 275, 186 275, 184 272
+              L178 260
+              L175 245
+              L172 210
+              L170 170
+              Z"/>
 
-        <!-- BÖLGE KUTULARI (ön) -->
-        <!-- Boyun -->
-        <rect class="pain-zone" data-region="boyun" x="106" y="58" width="28" height="22" rx="6"
-              onmouseover="showLabel(event, 'Boyun')" onmouseout="hideLabel()" onclick="selectRegion('boyun')"/>
+            <!-- BÖLGE KUTULARI (ön) -->
+            <!-- Boyun -->
+            <rect class="pain-zone" data-region="boyun" x="106" y="58" width="28" height="22" rx="6"
+                  onmouseover="showLabel(event, 'Boyun')" onmouseout="hideLabel()" onclick="selectRegion('boyun')"/>
 
-        <!-- Omuz Sol -->
-        <ellipse class="pain-zone" data-region="omuz" cx="80" cy="92" rx="16" ry="12"
-                 onmouseover="showLabel(event, 'Omuz')" onmouseout="hideLabel()" onclick="selectRegion('omuz')"/>
-        <!-- Omuz Sağ -->
-        <ellipse class="pain-zone" data-region="omuz" cx="160" cy="92" rx="16" ry="12"
-                 onmouseover="showLabel(event, 'Omuz')" onmouseout="hideLabel()" onclick="selectRegion('omuz')"/>
+            <!-- Omuz Sol -->
+            <ellipse class="pain-zone" data-region="omuz" cx="80" cy="92" rx="16" ry="12"
+                     onmouseover="showLabel(event, 'Omuz')" onmouseout="hideLabel()" onclick="selectRegion('omuz')"/>
+            <!-- Omuz Sağ -->
+            <ellipse class="pain-zone" data-region="omuz" cx="160" cy="92" rx="16" ry="12"
+                     onmouseover="showLabel(event, 'Omuz')" onmouseout="hideLabel()" onclick="selectRegion('omuz')"/>
 
-        <!-- Dirsek Sol -->
-        <ellipse class="pain-zone" data-region="dirsek" cx="45" cy="175" rx="12" ry="10"
-                 onmouseover="showLabel(event, 'Dirsek')" onmouseout="hideLabel()" onclick="selectRegion('dirsek')"/>
-        <!-- Dirsek Sağ -->
-        <ellipse class="pain-zone" data-region="dirsek" cx="195" cy="175" rx="12" ry="10"
-                 onmouseover="showLabel(event, 'Dirsek')" onmouseout="hideLabel()" onclick="selectRegion('dirsek')"/>
+            <!-- Dirsek Sol -->
+            <ellipse class="pain-zone" data-region="dirsek" cx="45" cy="175" rx="12" ry="10"
+                     onmouseover="showLabel(event, 'Dirsek')" onmouseout="hideLabel()" onclick="selectRegion('dirsek')"/>
+            <!-- Dirsek Sağ -->
+            <ellipse class="pain-zone" data-region="dirsek" cx="195" cy="175" rx="12" ry="10"
+                     onmouseover="showLabel(event, 'Dirsek')" onmouseout="hideLabel()" onclick="selectRegion('dirsek')"/>
 
-        <!-- El Bileği Sol -->
-        <ellipse class="pain-zone" data-region="elbileği" cx="50" cy="255" rx="10" ry="8"
-                 onmouseover="showLabel(event, 'El Bileği')" onmouseout="hideLabel()" onclick="selectRegion('elbileği')"/>
-        <!-- El Bileği Sağ -->
-        <ellipse class="pain-zone" data-region="elbileği" cx="190" cy="255" rx="10" ry="8"
-                 onmouseover="showLabel(event, 'El Bileği')" onmouseout="hideLabel()" onclick="selectRegion('elbileği')"/>
+            <!-- El Bileği Sol -->
+            <ellipse class="pain-zone" data-region="elbileği" cx="50" cy="255" rx="10" ry="8"
+                     onmouseover="showLabel(event, 'El Bileği')" onmouseout="hideLabel()" onclick="selectRegion('elbileği')"/>
+            <!-- El Bileği Sağ -->
+            <ellipse class="pain-zone" data-region="elbileği" cx="190" cy="255" rx="10" ry="8"
+                     onmouseover="showLabel(event, 'El Bileği')" onmouseout="hideLabel()" onclick="selectRegion('elbileği')"/>
 
-        <!-- Göğüs -->
-        <rect class="pain-zone" data-region="gogus" x="95" y="110" width="50" height="40" rx="10"
-              onmouseover="showLabel(event, 'Göğüs')" onmouseout="hideLabel()" onclick="selectRegion('gogus')"/>
+            <!-- Göğüs -->
+            <rect class="pain-zone" data-region="gogus" x="95" y="110" width="50" height="40" rx="10"
+                  onmouseover="showLabel(event, 'Göğüs')" onmouseout="hideLabel()" onclick="selectRegion('gogus')"/>
 
-        <!-- Karın -->
-        <rect class="pain-zone" data-region="karin" x="95" y="165" width="50" height="40" rx="10"
-              onmouseover="showLabel(event, 'Karın')" onmouseout="hideLabel()" onclick="selectRegion('karin')"/>
+            <!-- Karın -->
+            <rect class="pain-zone" data-region="karin" x="95" y="165" width="50" height="40" rx="10"
+                  onmouseover="showLabel(event, 'Karın')" onmouseout="hideLabel()" onclick="selectRegion('karin')"/>
 
-        <!-- Kalça -->
-        <rect class="pain-zone" data-region="kalca" x="85" y="220" width="70" height="40" rx="12"
-              onmouseover="showLabel(event, 'Kalça')" onmouseout="hideLabel()" onclick="selectRegion('kalca')"/>
+            <!-- Kalça -->
+            <rect class="pain-zone" data-region="kalca" x="85" y="220" width="70" height="40" rx="12"
+                  onmouseover="showLabel(event, 'Kalça')" onmouseout="hideLabel()" onclick="selectRegion('kalca')"/>
 
-        <!-- Diz Sol -->
-        <ellipse class="pain-zone" data-region="diz" cx="100" cy="310" rx="14" ry="12"
-                 onmouseover="showLabel(event, 'Diz')" onmouseout="hideLabel()" onclick="selectRegion('diz')"/>
-        <!-- Diz Sağ -->
-        <ellipse class="pain-zone" data-region="diz" cx="140" cy="310" rx="14" ry="12"
-                 onmouseover="showLabel(event, 'Diz')" onmouseout="hideLabel()" onclick="selectRegion('diz')"/>
+            <!-- Diz Sol -->
+            <ellipse class="pain-zone" data-region="diz" cx="100" cy="310" rx="14" ry="12"
+                     onmouseover="showLabel(event, 'Diz')" onmouseout="hideLabel()" onclick="selectRegion('diz')"/>
+            <!-- Diz Sağ -->
+            <ellipse class="pain-zone" data-region="diz" cx="140" cy="310" rx="14" ry="12"
+                     onmouseover="showLabel(event, 'Diz')" onmouseout="hideLabel()" onclick="selectRegion('diz')"/>
 
-        <!-- Ayak Sol -->
-        <ellipse class="pain-zone" data-region="ayak" cx="95" cy="378" rx="14" ry="10"
-                 onmouseover="showLabel(event, 'Ayak Bileği')" onmouseout="hideLabel()" onclick="selectRegion('ayak')"/>
-        <!-- Ayak Sağ -->
-        <ellipse class="pain-zone" data-region="ayak" cx="145" cy="378" rx="14" ry="10"
-                 onmouseover="showLabel(event, 'Ayak Bileği')" onmouseout="hideLabel()" onclick="selectRegion('ayak')"/>
-      </svg>
+            <!-- Ayak Sol -->
+            <ellipse class="pain-zone" data-region="ayak" cx="95" cy="378" rx="14" ry="10"
+                     onmouseover="showLabel(event, 'Ayak Bileği')" onmouseout="hideLabel()" onclick="selectRegion('ayak')"/>
+            <!-- Ayak Sağ -->
+            <ellipse class="pain-zone" data-region="ayak" cx="145" cy="378" rx="14" ry="10"
+                     onmouseover="showLabel(event, 'Ayak Bileği')" onmouseout="hideLabel()" onclick="selectRegion('ayak')"/>
+          </svg>
 
-      <!-- ARKA GÖRÜNÜM -->
-      <svg class="body-svg" id="svgBack" viewBox="0 0 240 400" xmlns="http://www.w3.org/2000/svg" style="display:none;">
-        <!-- Vücut şekli (arka, ön ile aynı) -->
-        <path class="body-shape" d="
-          M120 20
-          C130 20, 138 28, 138 40
-          C138 50, 135 56, 132 60
-          L135 75
-          C148 78, 160 82, 168 92
-          C173 100, 176 115, 175 130
-          L170 170
-          L175 200
-          L178 230
-          C178 240, 176 250, 172 260
-          L170 270
-          L165 310
-          L160 370
-          C160 378, 155 385, 148 385
-          C141 385, 137 378, 135 370
-          L130 320
-          L125 280
-          L120 275
-          L115 280
-          L110 320
-          L105 370
-          C103 378, 99 385, 92 385
-          C85 385, 80 378, 80 370
-          L75 310
-          L70 270
-          L68 260
-          C64 250, 62 240, 62 230
-          L65 200
-          L70 170
-          L65 130
-          C64 115, 67 100, 72 92
-          C80 82, 92 78, 105 75
-          L108 60
-          C105 56, 102 50, 102 40
-          C102 28, 110 20, 120 20 Z"/>
+          <!-- ARKA GÖRÜNÜM -->
+          <svg class="body-svg" id="svgBack" viewBox="0 0 240 400" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+            <!-- Vücut şekli (arka, ön ile aynı) -->
+            <path class="body-shape" d="
+              M120 20
+              C130 20, 138 28, 138 40
+              C138 50, 135 56, 132 60
+              L135 75
+              C148 78, 160 82, 168 92
+              C173 100, 176 115, 175 130
+              L170 170
+              L175 200
+              L178 230
+              C178 240, 176 250, 172 260
+              L170 270
+              L165 310
+              L160 370
+              C160 378, 155 385, 148 385
+              C141 385, 137 378, 135 370
+              L130 320
+              L125 280
+              L120 275
+              L115 280
+              L110 320
+              L105 370
+              C103 378, 99 385, 92 385
+              C85 385, 80 378, 80 370
+              L75 310
+              L70 270
+              L68 260
+              C64 250, 62 240, 62 230
+              L65 200
+              L70 170
+              L65 130
+              C64 115, 67 100, 72 92
+              C80 82, 92 78, 105 75
+              L108 60
+              C105 56, 102 50, 102 40
+              C102 28, 110 20, 120 20 Z"/>
 
-        <path class="body-shape" d="M72 92 C60 95, 50 105, 45 120 L40 165 L38 210 C38 225, 42 235, 45 245 L50 255 L48 260 C46 265, 46 270, 48 273 C50 275, 54 275, 56 272 L62 260 L65 245 L68 210 L70 170 Z"/>
-        <path class="body-shape" d="M168 92 C180 95, 190 105, 195 120 L200 165 L202 210 C202 225, 198 235, 195 245 L190 255 L192 260 C194 265, 194 270, 192 273 C190 275, 186 275, 184 272 L178 260 L175 245 L172 210 L170 170 Z"/>
+            <path class="body-shape" d="M72 92 C60 95, 50 105, 45 120 L40 165 L38 210 C38 225, 42 235, 45 245 L50 255 L48 260 C46 265, 46 270, 48 273 C50 275, 54 275, 56 272 L62 260 L65 245 L68 210 L70 170 Z"/>
+            <path class="body-shape" d="M168 92 C180 95, 190 105, 195 120 L200 165 L202 210 C202 225, 198 235, 195 245 L190 255 L192 260 C194 265, 194 270, 192 273 C190 275, 186 275, 184 272 L178 260 L175 245 L172 210 L170 170 Z"/>
 
-        <!-- Boyun (arka) -->
-        <rect class="pain-zone" data-region="boyun" x="106" y="58" width="28" height="22" rx="6"
-              onmouseover="showLabel(event, 'Boyun')" onmouseout="hideLabel()" onclick="selectRegion('boyun')"/>
+            <!-- Boyun (arka) -->
+            <rect class="pain-zone" data-region="boyun" x="106" y="58" width="28" height="22" rx="6"
+                  onmouseover="showLabel(event, 'Boyun')" onmouseout="hideLabel()" onclick="selectRegion('boyun')"/>
 
-        <!-- Sırt Üst -->
-        <rect class="pain-zone" data-region="sirt" x="90" y="90" width="60" height="55" rx="10"
-              onmouseover="showLabel(event, 'Sırt')" onmouseout="hideLabel()" onclick="selectRegion('sirt')"/>
+            <!-- Sırt Üst -->
+            <rect class="pain-zone" data-region="sirt" x="90" y="90" width="60" height="55" rx="10"
+                  onmouseover="showLabel(event, 'Sırt')" onmouseout="hideLabel()" onclick="selectRegion('sirt')"/>
 
-        <!-- Bel -->
-        <rect class="pain-zone" data-region="bel" x="90" y="155" width="60" height="50" rx="10"
-              onmouseover="showLabel(event, 'Bel')" onmouseout="hideLabel()" onclick="selectRegion('bel')"/>
+            <!-- Bel -->
+            <rect class="pain-zone" data-region="bel" x="90" y="155" width="60" height="50" rx="10"
+                  onmouseover="showLabel(event, 'Bel')" onmouseout="hideLabel()" onclick="selectRegion('bel')"/>
 
-        <!-- Kalça (arka) -->
-        <rect class="pain-zone" data-region="kalca" x="85" y="215" width="70" height="45" rx="12"
-              onmouseover="showLabel(event, 'Kalça')" onmouseout="hideLabel()" onclick="selectRegion('kalca')"/>
+            <!-- Kalça (arka) -->
+            <rect class="pain-zone" data-region="kalca" x="85" y="215" width="70" height="45" rx="12"
+                  onmouseover="showLabel(event, 'Kalça')" onmouseout="hideLabel()" onclick="selectRegion('kalca')"/>
 
-        <!-- Uyluk arka sol -->
-        <rect class="pain-zone" data-region="uyluk" x="83" y="265" width="32" height="40" rx="10"
-              onmouseover="showLabel(event, 'Uyluk Arka')" onmouseout="hideLabel()" onclick="selectRegion('uyluk')"/>
-        <!-- Uyluk arka sağ -->
-        <rect class="pain-zone" data-region="uyluk" x="125" y="265" width="32" height="40" rx="10"
-              onmouseover="showLabel(event, 'Uyluk Arka')" onmouseout="hideLabel()" onclick="selectRegion('uyluk')"/>
+            <!-- Uyluk arka sol -->
+            <rect class="pain-zone" data-region="uyluk" x="83" y="265" width="32" height="40" rx="10"
+                  onmouseover="showLabel(event, 'Uyluk Arka')" onmouseout="hideLabel()" onclick="selectRegion('uyluk')"/>
+            <!-- Uyluk arka sağ -->
+            <rect class="pain-zone" data-region="uyluk" x="125" y="265" width="32" height="40" rx="10"
+                  onmouseover="showLabel(event, 'Uyluk Arka')" onmouseout="hideLabel()" onclick="selectRegion('uyluk')"/>
 
-        <!-- Baldır Sol -->
-        <rect class="pain-zone" data-region="baldir" x="83" y="325" width="28" height="45" rx="10"
-              onmouseover="showLabel(event, 'Baldır')" onmouseout="hideLabel()" onclick="selectRegion('baldir')"/>
-        <!-- Baldır Sağ -->
-        <rect class="pain-zone" data-region="baldir" x="129" y="325" width="28" height="45" rx="10"
-              onmouseover="showLabel(event, 'Baldır')" onmouseout="hideLabel()" onclick="selectRegion('baldir')"/>
-      </svg>
+            <!-- Baldır Sol -->
+            <rect class="pain-zone" data-region="baldir" x="83" y="325" width="28" height="45" rx="10"
+                  onmouseover="showLabel(event, 'Baldır')" onmouseout="hideLabel()" onclick="selectRegion('baldir')"/>
+            <!-- Baldır Sağ -->
+            <rect class="pain-zone" data-region="baldir" x="129" y="325" width="28" height="45" rx="10"
+                  onmouseover="showLabel(event, 'Baldır')" onmouseout="hideLabel()" onclick="selectRegion('baldir')"/>
+          </svg>
 
-      <div class="body-label" id="bodyLabel"></div>
-    </div>
+          <div class="body-label" id="bodyLabel"></div>
+        </div>
 
-    <div class="body-help">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      Ağrılı bölgeye tıklayın
-    </div>
-  </div>
-
-  <!-- SAĞ: BİLGİ -->
-  <div class="info-panel" id="infoPanel">
-    <div class="info-empty" id="infoEmpty">
-      <div class="info-empty-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 0-5-4-5-4M15 19c5 0 5-4 5-4M9 9h.01M15 9h.01M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
+        <div class="body-help">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          Ağrılı bölgeye tıklayın
+        </div>
       </div>
-      <h3>Başlamak için bir bölge seçin</h3>
-      <p>Vücut diyagramında ağrılı bölgeye tıklayarak o bölgeye özel bilgileri ve önerileri görebilirsiniz.</p>
+
+      <!-- SAĞ: BİLGİ -->
+      <div class="info-panel" id="infoPanel">
+        <div class="info-empty" id="infoEmpty">
+          <div class="info-empty-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 0-5-4-5-4M15 19c5 0 5-4 5-4M9 9h.01M15 9h.01M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
+          </div>
+          <h3>Başlamak için bir bölge seçin</h3>
+          <p>Vücut diyagramında ağrılı bölgeye tıklayarak o bölgeye özel bilgileri ve önerileri görebilirsiniz.</p>
+        </div>
+        <!-- Info card buraya JavaScript ile render edilecek -->
+      </div>
+
     </div>
-    <!-- Info card buraya JavaScript ile render edilecek -->
-  </div>
-
-</div>
-```
-
   </div>
 </section>
 
 <!-- FOOTER -->
-
-<footer>
-  <div class="container footer-inner">
-    <div class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-      </span>
-      Rehabist
-    </div>
-    <p>© 2026 Fzt. Umut Yalçın — Aydın / Efeler</p>
-  </div>
-</footer>
+<div id="rb-footer-mount"></div>
 
 <!-- Toast -->
-
 <div class="toast" id="toast">Link kopyalandı!</div>
 
 <script>
@@ -1182,7 +1153,7 @@
     html += '<div class="track-card">';
     html += '<h3>Ağrını takip et</h3>';
     html += '<p>Şikayetinin zaman içinde nasıl değiştiğini görmek ister misin? Ücretsiz üyelikle ağrı günlüğü tut, grafikle takip et.</p>';
-    html += '<a href="panel.html" class="btn">Panele Git <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>';
+    html += '<a href="/panel.html" class="btn">Panele Git <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>';
     html += '</div>';
 
     panel.innerHTML = html;
@@ -1235,5 +1206,6 @@
 })();
 </script>
 
+<script src="/shared-nav.js" defer></script>
 </body>
 </html>

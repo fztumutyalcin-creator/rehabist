@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -741,37 +740,17 @@
     .ai-float span { display: none; }
   }
 </style>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared-theme.css">
 </head>
 <body>
 
 <!-- NAV -->
-
-<nav class="nav">
-  <div class="container-wide nav-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-      </span>
-      Rehabist
-    </a>
-    <div class="nav-right">
-      <a href="blog.html" class="nav-link">Blog</a>
-      <div class="user-chip" id="userChip">
-        <span class="user-chip-avatar" id="userAvatar">U</span>
-        <span id="userName">Üye</span>
-        <button type="button" onclick="handleLogout()">Çıkış</button>
-      </div>
-      <a href="https://wa.me/905345840913?text=Merhaba%2C%20randevu%20almak%20istiyorum." class="btn btn-primary" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-        Randevu Al
-      </a>
-    </div>
-  </div>
-</nav>
+<div id="rb-nav-mount"></div>
 
 <!-- GATE (varsayılan görünen ekran — giriş yoksa burada kalır) -->
-
 <section id="accessGate">
   <div class="gate-content">
     <div class="gate-icon">
@@ -787,15 +766,14 @@
 </section>
 
 <!-- ARTICLE (giriş yapılınca görünür) -->
-
 <div id="articleWrap">
 
 <header class="article-hero">
   <div class="container">
     <div class="breadcrumb">
-      <a href="index.html">Ana Sayfa</a>
+      <a href="/">Ana Sayfa</a>
       <span class="sep">/</span>
-      <a href="blog.html">Yazılar</a>
+      <a href="/blog.html">Yazılar</a>
       <span class="sep">/</span>
       <span>Bel Ağrısı</span>
     </div>
@@ -815,148 +793,135 @@
 <article class="article-body">
   <div class="container">
 
-```
-<p>Bel ağrısının çok farklı kaynakları olabilir: disk problemleri, faset eklem sorunları, kas spazmları, postür bozuklukları, sakroiliak eklem disfonksiyonu. Bu nedenle egzersiz önerileri her zaman genel nitelik taşır; uzun süreli veya tekrarlayan bel ağrısı için mutlaka bireysel değerlendirme gerekir.</p>
+    <p>Bel ağrısının çok farklı kaynakları olabilir: disk problemleri, faset eklem sorunları, kas spazmları, postür bozuklukları, sakroiliak eklem disfonksiyonu. Bu nedenle egzersiz önerileri her zaman genel nitelik taşır; uzun süreli veya tekrarlayan bel ağrısı için mutlaka bireysel değerlendirme gerekir.</p>
 
-<p>Aşağıdaki egzersizler, <strong>mekanik kaynaklı (spesifik olmayan) bel ağrısı</strong> için literatürde yaygın olarak önerilen hareketlerdir. Günde 10-15 dakikalık düzenli uygulama, haftada bir kez yapılan uzun seanslardan daha etkilidir.</p>
+    <p>Aşağıdaki egzersizler, <strong>mekanik kaynaklı (spesifik olmayan) bel ağrısı</strong> için literatürde yaygın olarak önerilen hareketlerdir. Günde 10-15 dakikalık düzenli uygulama, haftada bir kez yapılan uzun seanslardan daha etkilidir.</p>
 
-<div class="clinical-notice">
-  <div class="clinical-notice-icon">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
-  </div>
-  <div>
-    <h4>Ne zaman durmalıyım?</h4>
-    <p>Bacağa yayılan keskin ağrı, uyuşukluk, kuvvet kaybı, idrar/dışkı kontrolünde değişiklik, gece artan ağrı ya da 72 saati aşan şikayet varsa egzersizi kesin ve mutlaka bir hekime danışın. Bu egzersizler, akut ve spesifik bir patolojinin yerini tutmaz.</p>
-  </div>
-</div>
+    <div class="clinical-notice">
+      <div class="clinical-notice-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+      </div>
+      <div>
+        <h4>Ne zaman durmalıyım?</h4>
+        <p>Bacağa yayılan keskin ağrı, uyuşukluk, kuvvet kaybı, idrar/dışkı kontrolünde değişiklik, gece artan ağrı ya da 72 saati aşan şikayet varsa egzersizi kesin ve mutlaka bir hekime danışın. Bu egzersizler, akut ve spesifik bir patolojinin yerini tutmaz.</p>
+      </div>
+    </div>
 
-<h2>Başlamadan önce üç temel kural</h2>
-<ol>
-  <li><strong>Ağrı sınırını aşmayın.</strong> Hafif gerilme hissi normaldir, keskin ağrı her zaman uyarı sinyalidir.</li>
-  <li><strong>Nefesi tutmayın.</strong> Her tekrar sırasında düzenli nefes alıp verin.</li>
-  <li><strong>Yavaş ve kontrollü hareket edin.</strong> Hızlı tekrarlar yerine kontrollü, izometrik bekleme süreleri olan hareketler tercih edilir.</li>
-</ol>
+    <h2>Başlamadan önce üç temel kural</h2>
+    <ol>
+      <li><strong>Ağrı sınırını aşmayın.</strong> Hafif gerilme hissi normaldir, keskin ağrı her zaman uyarı sinyalidir.</li>
+      <li><strong>Nefesi tutmayın.</strong> Her tekrar sırasında düzenli nefes alıp verin.</li>
+      <li><strong>Yavaş ve kontrollü hareket edin.</strong> Hızlı tekrarlar yerine kontrollü, izometrik bekleme süreleri olan hareketler tercih edilir.</li>
+    </ol>
 
-<div class="exercise-card">
-  <div class="exercise-header">
-    <span class="exercise-num">1</span>
-    <div class="exercise-title">Kedi-Deve Hareketi</div>
-  </div>
-  <h4>Amaç</h4>
-  <p>Lomber omurganın mobilitesini artırır, paravertebral kasları yumuşatır. Sabah tutukluğu olan hastalarda ısınma egzersizi olarak önerilir.</p>
-  <h4>Uygulama</h4>
-  <p>Dört ayak pozisyonuna gelin; bilekler omuz, dizler kalça hizasında olsun. Nefes alarak beli tavana doğru kamburlaştırın (kedi), nefes vererek göbeği sarkıtıp beli hafifçe çukurlaştırın (deve). Hareket yumuşak ve kontrollü olmalı.</p>
-  <div class="exercise-specs">
-    <div class="exercise-spec"><div class="exercise-spec-label">Tekrar</div><div class="exercise-spec-value">10–15</div></div>
-    <div class="exercise-spec"><div class="exercise-spec-label">Set</div><div class="exercise-spec-value">2</div></div>
-    <div class="exercise-spec"><div class="exercise-spec-label">Sıklık</div><div class="exercise-spec-value">Günlük</div></div>
-  </div>
-</div>
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <span class="exercise-num">1</span>
+        <div class="exercise-title">Kedi-Deve Hareketi</div>
+      </div>
+      <h4>Amaç</h4>
+      <p>Lomber omurganın mobilitesini artırır, paravertebral kasları yumuşatır. Sabah tutukluğu olan hastalarda ısınma egzersizi olarak önerilir.</p>
+      <h4>Uygulama</h4>
+      <p>Dört ayak pozisyonuna gelin; bilekler omuz, dizler kalça hizasında olsun. Nefes alarak beli tavana doğru kamburlaştırın (kedi), nefes vererek göbeği sarkıtıp beli hafifçe çukurlaştırın (deve). Hareket yumuşak ve kontrollü olmalı.</p>
+      <div class="exercise-specs">
+        <div class="exercise-spec"><div class="exercise-spec-label">Tekrar</div><div class="exercise-spec-value">10–15</div></div>
+        <div class="exercise-spec"><div class="exercise-spec-label">Set</div><div class="exercise-spec-value">2</div></div>
+        <div class="exercise-spec"><div class="exercise-spec-label">Sıklık</div><div class="exercise-spec-value">Günlük</div></div>
+      </div>
+    </div>
 
-<div class="exercise-card">
-  <div class="exercise-header">
-    <span class="exercise-num">2</span>
-    <div class="exercise-title">Dizi Göğüse Çekme</div>
-  </div>
-  <h4>Amaç</h4>
-  <p>Alt lomber kasları ve gluteal bölgeyi gerer. Uzun süre oturan bireylerde biriken kas gerginliğini azaltır.</p>
-  <h4>Uygulama</h4>
-  <p>Sırt üstü yatın, dizleriniz bükülü olsun. Bir bacağı ellerinizle dizden tutup yavaşça göğsünüze yaklaştırın, bel yerden kalkmasın. Gerilme hissini tolere ettiğiniz noktada 20-30 saniye bekleyin.</p>
-  <div class="exercise-specs">
-    <div class="exercise-spec"><div class="exercise-spec-label">Bekleme</div><div class="exercise-spec-value">20–30 sn</div></div>
-    <div class="exercise-spec"><div class="exercise-spec-label">Tekrar</div><div class="exercise-spec-value">3 / bacak</div></div>
-    <div class="exercise-spec"><div class="exercise-spec-label">Sıklık</div><div class="exercise-spec-value">Günde 2</div></div>
-  </div>
-</div>
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <span class="exercise-num">2</span>
+        <div class="exercise-title">Dizi Göğüse Çekme</div>
+      </div>
+      <h4>Amaç</h4>
+      <p>Alt lomber kasları ve gluteal bölgeyi gerer. Uzun süre oturan bireylerde biriken kas gerginliğini azaltır.</p>
+      <h4>Uygulama</h4>
+      <p>Sırt üstü yatın, dizleriniz bükülü olsun. Bir bacağı ellerinizle dizden tutup yavaşça göğsünüze yaklaştırın, bel yerden kalkmasın. Gerilme hissini tolere ettiğiniz noktada 20-30 saniye bekleyin.</p>
+      <div class="exercise-specs">
+        <div class="exercise-spec"><div class="exercise-spec-label">Bekleme</div><div class="exercise-spec-value">20–30 sn</div></div>
+        <div class="exercise-spec"><div class="exercise-spec-label">Tekrar</div><div class="exercise-spec-value">3 / bacak</div></div>
+        <div class="exercise-spec"><div class="exercise-spec-label">Sıklık</div><div class="exercise-spec-value">Günde 2</div></div>
+      </div>
+    </div>
 
-<div class="exercise-card">
-  <div class="exercise-header">
-    <span class="exercise-num">3</span>
-    <div class="exercise-title">Köprü (Glute Bridge)</div>
-  </div>
-  <h4>Amaç</h4>
-  <p>Gluteal kasları ve lomber ekstansörleri güçlendirir. Zayıf kalça kasları, bel ağrısının dolaylı ancak sık görülen nedenlerindendir.</p>
-  <h4>Uygulama</h4>
-  <p>Sırt üstü yatın, dizler bükülü, ayaklar yerde. Gluteal kasları kasarak kalçayı tavana doğru kaldırın; omuz-kalça-diz bir doğru oluşturmalı. 5 saniye tutun, kontrollü şekilde indirin.</p>
-  <div class="exercise-specs">
-    <div class="exercise-spec"><div class="exercise-spec-label">Tekrar</div><div class="exercise-spec-value">12–15</div></div>
-    <div class="exercise-spec"><div class="exercise-spec-label">Set</div><div class="exercise-spec-value">3</div></div>
-    <div class="exercise-spec"><div class="exercise-spec-label">Bekleme</div><div class="exercise-spec-value">5 sn</div></div>
-  </div>
-</div>
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <span class="exercise-num">3</span>
+        <div class="exercise-title">Köprü (Glute Bridge)</div>
+      </div>
+      <h4>Amaç</h4>
+      <p>Gluteal kasları ve lomber ekstansörleri güçlendirir. Zayıf kalça kasları, bel ağrısının dolaylı ancak sık görülen nedenlerindendir.</p>
+      <h4>Uygulama</h4>
+      <p>Sırt üstü yatın, dizler bükülü, ayaklar yerde. Gluteal kasları kasarak kalçayı tavana doğru kaldırın; omuz-kalça-diz bir doğru oluşturmalı. 5 saniye tutun, kontrollü şekilde indirin.</p>
+      <div class="exercise-specs">
+        <div class="exercise-spec"><div class="exercise-spec-label">Tekrar</div><div class="exercise-spec-value">12–15</div></div>
+        <div class="exercise-spec"><div class="exercise-spec-label">Set</div><div class="exercise-spec-value">3</div></div>
+        <div class="exercise-spec"><div class="exercise-spec-label">Bekleme</div><div class="exercise-spec-value">5 sn</div></div>
+      </div>
+    </div>
 
-<div class="exercise-card">
-  <div class="exercise-header">
-    <span class="exercise-num">4</span>
-    <div class="exercise-title">Kuş-Köpek (Bird-Dog)</div>
-  </div>
-  <h4>Amaç</h4>
-  <p>Derin karın ve sırt kaslarını (core stabilizörler) çalıştırır. Omurga sağlığı için önerilen en temel egzersizlerden biridir.</p>
-  <h4>Uygulama</h4>
-  <p>Dört ayak pozisyonunda; sağ kolu öne, sol bacağı arkaya uzatın. Sırt düz, kalçalar yere paralel kalmalı. 3-5 saniye bu pozisyonda kalın, sonra diğer tarafla tekrarlayın.</p>
-  <div class="exercise-specs">
-    <div class="exercise-spec"><div class="exercise-spec-label">Tekrar</div><div class="exercise-spec-value">10 / taraf</div></div>
-    <div class="exercise-spec"><div class="exercise-spec-label">Set</div><div class="exercise-spec-value">2</div></div>
-    <div class="exercise-spec"><div class="exercise-spec-label">Bekleme</div><div class="exercise-spec-value">3–5 sn</div></div>
-  </div>
-</div>
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <span class="exercise-num">4</span>
+        <div class="exercise-title">Kuş-Köpek (Bird-Dog)</div>
+      </div>
+      <h4>Amaç</h4>
+      <p>Derin karın ve sırt kaslarını (core stabilizörler) çalıştırır. Omurga sağlığı için önerilen en temel egzersizlerden biridir.</p>
+      <h4>Uygulama</h4>
+      <p>Dört ayak pozisyonunda; sağ kolu öne, sol bacağı arkaya uzatın. Sırt düz, kalçalar yere paralel kalmalı. 3-5 saniye bu pozisyonda kalın, sonra diğer tarafla tekrarlayın.</p>
+      <div class="exercise-specs">
+        <div class="exercise-spec"><div class="exercise-spec-label">Tekrar</div><div class="exercise-spec-value">10 / taraf</div></div>
+        <div class="exercise-spec"><div class="exercise-spec-label">Set</div><div class="exercise-spec-value">2</div></div>
+        <div class="exercise-spec"><div class="exercise-spec-label">Bekleme</div><div class="exercise-spec-value">3–5 sn</div></div>
+      </div>
+    </div>
 
-<div class="exercise-card">
-  <div class="exercise-header">
-    <span class="exercise-num">5</span>
-    <div class="exercise-title">Pelvik Tilt</div>
-  </div>
-  <h4>Amaç</h4>
-  <p>Lomber bölgedeki derin kas aktivasyonunun temel taşıdır. Görünüşte basit olsa da birçok ileri seviye stabilizasyon egzersizinin motor öğrenme temelidir.</p>
-  <h4>Uygulama</h4>
-  <p>Sırt üstü yatın, dizler bükülü. Karın kaslarını aktive ederek pelvisi yukarı doğru yuvarlayın (bel yere yapışmalı). 5 saniye bu pozisyonda kalın, yavaşça bırakın.</p>
-  <div class="exercise-specs">
-    <div class="exercise-spec"><div class="exercise-spec-label">Tekrar</div><div class="exercise-spec-value">15</div></div>
-    <div class="exercise-spec"><div class="exercise-spec-label">Set</div><div class="exercise-spec-value">2</div></div>
-    <div class="exercise-spec"><div class="exercise-spec-label">Bekleme</div><div class="exercise-spec-value">5 sn</div></div>
-  </div>
-</div>
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <span class="exercise-num">5</span>
+        <div class="exercise-title">Pelvik Tilt</div>
+      </div>
+      <h4>Amaç</h4>
+      <p>Lomber bölgedeki derin kas aktivasyonunun temel taşıdır. Görünüşte basit olsa da birçok ileri seviye stabilizasyon egzersizinin motor öğrenme temelidir.</p>
+      <h4>Uygulama</h4>
+      <p>Sırt üstü yatın, dizler bükülü. Karın kaslarını aktive ederek pelvisi yukarı doğru yuvarlayın (bel yere yapışmalı). 5 saniye bu pozisyonda kalın, yavaşça bırakın.</p>
+      <div class="exercise-specs">
+        <div class="exercise-spec"><div class="exercise-spec-label">Tekrar</div><div class="exercise-spec-value">15</div></div>
+        <div class="exercise-spec"><div class="exercise-spec-label">Set</div><div class="exercise-spec-value">2</div></div>
+        <div class="exercise-spec"><div class="exercise-spec-label">Bekleme</div><div class="exercise-spec-value">5 sn</div></div>
+      </div>
+    </div>
 
-<h2>Beklenen süreç ve sonuçlar</h2>
-<p>Düzenli uygulandığında, hastaların çoğu <strong>2-3 hafta içinde</strong> belirgin rahatlama bildirir. Ancak bu süre; ağrının kronikliğine, yaşa, günlük aktivite düzeyine ve varsa eşlik eden patolojilere göre değişir.</p>
-<p>Egzersiz rutinine rağmen şikayet devam ediyor, tekrar ediyor ya da şiddetleniyorsa; genel önerilerin ötesinde bireysel bir değerlendirme kaçınılmazdır. Unutulmamalıdır ki egzersiz, rehabilitasyonun yalnızca bir bileşenidir.</p>
+    <h2>Beklenen süreç ve sonuçlar</h2>
+    <p>Düzenli uygulandığında, hastaların çoğu <strong>2-3 hafta içinde</strong> belirgin rahatlama bildirir. Ancak bu süre; ağrının kronikliğine, yaşa, günlük aktivite düzeyine ve varsa eşlik eden patolojilere göre değişir.</p>
+    <p>Egzersiz rutinine rağmen şikayet devam ediyor, tekrar ediyor ya da şiddetleniyorsa; genel önerilerin ötesinde bireysel bir değerlendirme kaçınılmazdır. Unutulmamalıdır ki egzersiz, rehabilitasyonun yalnızca bir bileşenidir.</p>
 
-<div class="article-cta">
-  <div class="article-cta-label">BİREYSEL DEĞERLENDİRME</div>
-  <h3>Bel ağrınızın kaynağını birlikte inceleyelim.</h3>
-  <p>Evde yapılan kapsamlı bir değerlendirme, hangi kas grubunun, hangi postüral düzensizliğin ya da hangi hareket örüntüsünün sorunun kaynağı olduğunu ortaya koyar.</p>
-  <a href="https://wa.me/905345840913?text=Merhaba%2C%20bel%20a%C4%9Fr%C4%B1s%C4%B1%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn">
-    <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-    WhatsApp'tan Randevu Al
-  </a>
-</div>
+    <div class="article-cta">
+      <div class="article-cta-label">BİREYSEL DEĞERLENDİRME</div>
+      <h3>Bel ağrınızın kaynağını birlikte inceleyelim.</h3>
+      <p>Evde yapılan kapsamlı bir değerlendirme, hangi kas grubunun, hangi postüral düzensizliğin ya da hangi hareket örüntüsünün sorunun kaynağı olduğunu ortaya koyar.</p>
+      <a href="https://wa.me/905345840913?text=Merhaba%2C%20bel%20a%C4%9Fr%C4%B1s%C4%B1%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+        WhatsApp'tan Randevu Al
+      </a>
+    </div>
 
-<div style="margin-top:32px;">
-  <a href="blog.html" class="back-link">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Tüm yazılara dön
-  </a>
-</div>
-```
-
+    <div style="margin-top:32px;">
+      <a href="/blog.html" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Tüm yazılara dön
+      </a>
+    </div>
   </div>
 </article>
 
 </div><!-- /articleWrap -->
 
-<footer>
-  <div class="container-wide footer-inner">
-    <div class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-      </span>
-      Rehabist
-    </div>
-    <p>© 2026 Fzt. Umut Yalçın — Aydın / Efeler</p>
-  </div>
-</footer>
+<div id="rb-footer-mount"></div>
 
-<a class="ai-float" href="asistan.html" aria-label="AI Asistan">
+<a class="ai-float" href="/asistan.html" aria-label="AI Asistan">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6M4 12h16M10 16h4"/><rect x="4" y="8" width="16" height="4" rx="1"/></svg>
   <span>AI Asistan</span>
   <span class="sparkle">YENİ</span>
@@ -968,7 +933,6 @@
 </a>
 
 <!-- AUTH MODAL -->
-
 <div class="modal-backdrop" id="authModal">
   <div class="modal">
     <div class="modal-header">
@@ -988,57 +952,52 @@
       </div>
       <div class="form-message" id="formMessage"></div>
 
-```
-  <form id="registerForm" onsubmit="handleRegister(event)">
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label" for="regFirstName">Ad</label>
-        <input type="text" id="regFirstName" class="form-input" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="regLastName">Soyad</label>
-        <input type="text" id="regLastName" class="form-input" required>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="form-label" for="regEmail">E-posta</label>
-      <input type="email" id="regEmail" class="form-input" required autocomplete="email">
-    </div>
-    <div class="form-group">
-      <label class="form-label" for="regCity">İkamet Ettiğiniz Şehir</label>
-      <input type="text" id="regCity" class="form-input" required placeholder="Örn: Aydın">
-    </div>
-    <div class="form-group">
-      <label class="form-label" for="regPassword">Şifre</label>
-      <input type="password" id="regPassword" class="form-input" required minlength="6" autocomplete="new-password">
-    </div>
-    <button type="submit" class="form-submit" id="regSubmit">Üye Ol</button>
-    <p class="form-note">Kayıt olarak bilgilerinizin içerik iletişimi amacıyla saklanmasını kabul edersiniz.</p>
-  </form>
+      <form id="registerForm" onsubmit="handleRegister(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="regFirstName">Ad</label>
+            <input type="text" id="regFirstName" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="regLastName">Soyad</label>
+            <input type="text" id="regLastName" class="form-input" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="regEmail">E-posta</label>
+          <input type="email" id="regEmail" class="form-input" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="regCity">İkamet Ettiğiniz Şehir</label>
+          <input type="text" id="regCity" class="form-input" required placeholder="Örn: Aydın">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="regPassword">Şifre</label>
+          <input type="password" id="regPassword" class="form-input" required minlength="6" autocomplete="new-password">
+        </div>
+        <button type="submit" class="form-submit" id="regSubmit">Üye Ol</button>
+        <p class="form-note">Kayıt olarak bilgilerinizin içerik iletişimi amacıyla saklanmasını kabul edersiniz.</p>
+      </form>
 
-  <form id="loginForm" onsubmit="handleLogin(event)" style="display:none;">
-    <div class="form-group">
-      <label class="form-label" for="logEmail">E-posta</label>
-      <input type="email" id="logEmail" class="form-input" required autocomplete="email">
+      <form id="loginForm" onsubmit="handleLogin(event)" style="display:none;">
+        <div class="form-group">
+          <label class="form-label" for="logEmail">E-posta</label>
+          <input type="email" id="logEmail" class="form-input" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="logPassword">Şifre</label>
+          <input type="password" id="logPassword" class="form-input" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="form-submit" id="logSubmit">Giriş Yap</button>
+      </form>
     </div>
-    <div class="form-group">
-      <label class="form-label" for="logPassword">Şifre</label>
-      <input type="password" id="logPassword" class="form-input" required autocomplete="current-password">
-    </div>
-    <button type="submit" class="form-submit" id="logSubmit">Giriş Yap</button>
-  </form>
-</div>
-```
-
   </div>
 </div>
 
 <!-- ============================================
      SUPABASE + JS
      ============================================ -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
-
 <script>
 (function() {
   'use strict';
@@ -1252,5 +1211,6 @@
 })();
 </script>
 
+<script src="/shared-nav.js" defer></script>
 </body>
 </html>

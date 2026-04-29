@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Avatar Kurucusu — Rehabist</title>
+<meta name="description" content="Kendi avatarını oluştur, postür yolculuğunda yanında olsun.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --white: #ffffff; --off-white: #fafbfc; --surface: #f5f7fa;
+    --border: #e4e8ed; --border-strong: #d0d6dd;
+    --ink-900: #0f172a; --ink-700: #1e293b; --ink-500: #475569;
+    --ink-400: #64748b; --ink-300: #94a3b8;
+    --blue-50: #eff6ff; --blue-100: #dbeafe; --blue-500: #3b82f6;
+    --blue-600: #2563eb; --blue-700: #1d4ed8; --blue-900: #1e3a8a;
+    --green-500: #10b981; --green-50: #ecfdf5; --green-600: #059669;
+    --amber-500: #f59e0b; --amber-50: #fffbeb;
+    --red-500: #ef4444; --red-50: #fef2f2; --red-700: #b91c1c;
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { overflow-x: hidden; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink-700);
+    background: var(--off-white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 20px; display: flex;
+    align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 17px;
+    letter-spacing: -0.02em; color: var(--ink-900);
+  }
+  .logo-mark {
+    width: 28px; height: 28px;
+    background: var(--blue-600); border-radius: 7px;
+    display: grid; place-items: center; color: var(--white);
+  }
+  .logo-mark svg { width: 15px; height: 15px; }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 12px; background: var(--surface);
+    border-radius: 6px; font-size: 12.5px; font-weight: 500;
+    color: var(--ink-700);
+  }
+  .back-btn svg { width: 13px; height: 13px; }
+
+  /* HERO */
+  .hero {
+    max-width: 1200px; margin: 0 auto;
+    padding: 32px 20px 16px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .hero h1 .accent {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--blue-700);
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--ink-500);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* STEP INDICATOR */
+  .steps {
+    max-width: 560px;
+    margin: 24px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .step-dot {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink-400);
+    transition: all 0.2s;
+  }
+  .step-dot.active { color: var(--blue-700); }
+  .step-dot.done { color: var(--green-600); }
+  .step-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--surface);
+    display: grid; place-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+  .step-dot.active .step-num {
+    background: var(--blue-600);
+    color: var(--white);
+  }
+  .step-dot.done .step-num {
+    background: var(--green-500);
+    color: var(--white);
+  }
+  .step-connector {
+    width: 28px; height: 2px;
+    background: var(--border);
+    border-radius: 1px;
+  }
+
+  /* LAYOUT */
+  .app {
+    max-width: 1200px; margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+
+  .section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .section-head {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .section-icon.blue { background: var(--blue-50); color: var(--blue-700); }
+  .section-icon.green { background: var(--green-50); color: var(--green-600); }
+  .section-icon svg { width: 20px; height: 20px; }
+  .section-head h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -0.02em;
+  }
+  .section-head p {
+    font-size: 13px;
+    color: var(--ink-500);
+    margin-top: 2px;
+  }
+
+  /* PROFIL SECTION */
+  .profil-body {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    padding: 28px;
+  }
+
+  .profil-preview {
+    text-align: center;
+    position: sticky; top: 80px;
+    height: fit-content;
+  }
+  .profil-avatar-frame {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto 16px;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-radius: 50%;
+    padding: 8px;
+    border: 2px solid var(--blue-100);
+    position: relative;
+    overflow: hidden;
+  }
+  .profil-avatar-frame img,
+  .profil-avatar-frame svg {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    display: block;
+  }
+  .loading-spinner {
+    position: absolute;
+    inset: 8px;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  .loading-spinner.visible { opacity: 1; }
+  .spinner {
+    width: 24px; height: 24px;
+    border: 3px solid var(--border);
+    border-top-color: var(--blue-600);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .preview-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-900);
+    margin-bottom: 2px;
+  }
+  .preview-name-sub {
+    font-size: 12px;
+    color: var(--ink-500);
+  }
+
+  .profil-controls {
+    min-width: 0;
+  }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 4px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    flex-shrink: 0;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-500);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .tab svg {
+    width: 15px; height: 15px;
+    flex-shrink: 0;
+  }
+  .tab.active {
+    background: var(--white);
+    color: var(--ink-900);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .tab:hover:not(.active) { color: var(--ink-700); }
+
+  /* PANELS */
+  .panel { display: none; animation: fadeIn 0.3s ease; }
+  .panel.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .panel-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-500);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    margin-top: 18px;
+  }
+  .panel-title:first-child { margin-top: 0; }
+
+  /* OPTION GRIDS */
+  .option-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
+    gap: 8px;
+  }
+  .option-tile {
+    aspect-ratio: 1;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.15s;
+    overflow: hidden;
+    padding: 4px;
+  }
+  .option-tile:hover { border-color: var(--ink-300); transform: translateY(-1px); }
+  .option-tile.selected {
+    border-color: var(--blue-600);
+    background: var(--blue-50);
+  }
+  .option-tile.selected::after {
+    content: '';
+    position: absolute;
+    top: 6px; right: 6px;
+    width: 18px; height: 18px;
+    background: var(--blue-600);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 3;
+  }
+  .option-tile img,
+  .option-tile svg {
+    width: 100%; height: 100%;
+    object-fit: contain;
+  }
+  .option-label {
+    position: absolute;
+    bottom: 4px;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--ink-500);
+    background: rgba(255,255,255,0.85);
+    padding: 1px 6px;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+
+  /* Color swatches */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+  }
+  .color-swatch {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    position: relative;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .color-swatch:hover { transform: scale(1.08); }
+  .color-swatch.selected {
+    border-color: var(--ink-900);
+    box-shadow: 0 0 0 3px var(--white) inset;
+  }
+
+  /* Toggle */
+  .toggle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+  }
+  .toggle-option {
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-500);
+    transition: all 0.15s;
+  }
+  .toggle-option.selected {
+    background: var(--white);
+    color: var(--ink-900);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  /* Actions */
+  .actions-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .btn {
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--ink-900);
+    color: var(--white);
+    flex: 1;
+  }
+  .btn-primary:hover { background: var(--blue-900); transform: translateY(-1px); }
+  .btn-secondary {
+    background: var(--surface);
+    color: var(--ink-700);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { background: var(--border); }
+  .btn svg { width: 15px; height: 15px; }
+
+  /* POSTÜR SECTION */
+  .postur-intro {
+    padding: 20px 24px;
+    background: var(--blue-50);
+    border-bottom: 1px solid var(--blue-100);
+    font-size: 13.5px;
+    color: var(--ink-700);
+    line-height: 1.6;
+  }
+  .postur-intro strong { color: var(--ink-900); font-weight: 600; }
+
+  .postur-body {
+    padding: 28px 24px;
+  }
+
+  /* View toggle (side / front / both) */
+  .view-toggle {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 24px;
+    background: var(--surface);
+    padding: 4px;
+    border-radius: 12px;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .view-btn {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-500);
+    transition: all 0.2s;
+  }
+  .view-btn.active {
+    background: var(--white);
+    color: var(--ink-900);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  /* Posture trio */
+  .posture-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .posture-card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .posture-card.ideal {
+    background: linear-gradient(180deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 1px solid #86efac;
+  }
+  .posture-card.current {
+    background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+    border: 1px solid #93c5fd;
+  }
+  .posture-card.future {
+    background: linear-gradient(180deg, #fff1f2 0%, #ffe4e6 100%);
+    border: 1px solid #fda4af;
+  }
+
+  .posture-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--white);
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .ideal .posture-tag { color: #065f46; }
+  .current .posture-tag { color: #1d4ed8; }
+  .future .posture-tag { color: #9f1239; }
+
+  .posture-views {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  .posture-views.both { grid-template-columns: 1fr 1fr; }
+  .posture-views.single { grid-template-columns: 1fr; }
+
+  .posture-view {
+    aspect-ratio: 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .posture-view svg {
+    width: 100%;
+    height: 100%;
+  }
+  .view-label {
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--ink-400);
+    background: rgba(255,255,255,0.7);
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .posture-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-900);
+    text-align: center;
+    margin-bottom: 2px;
+  }
+  .posture-desc {
+    font-size: 11px;
+    color: var(--ink-500);
+    text-align: center;
+    line-height: 1.35;
+  }
+
+  /* SAVE BAR */
+  .save-bar {
+    position: sticky;
+    bottom: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 14px 20px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.04);
+  }
+  .save-info {
+    font-size: 13px;
+    color: var(--ink-500);
+    line-height: 1.4;
+  }
+  .save-info strong { color: var(--ink-900); font-weight: 600; }
+
+  /* MODAL */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(6px);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-backdrop.visible { display: flex; animation: fadeIn 0.2s ease; }
+  .modal {
+    background: var(--white);
+    border-radius: 24px;
+    max-width: 420px;
+    width: 100%;
+    padding: 32px;
+    text-align: center;
+    animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .modal-icon {
+    width: 64px; height: 64px;
+    background: var(--green-50);
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 16px;
+    color: var(--green-500);
+  }
+  .modal-icon svg { width: 32px; height: 32px; }
+  .modal h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .modal p {
+    font-size: 14px;
+    color: var(--ink-500);
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+  .modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 28px; }
+    .profil-body {
+      grid-template-columns: 1fr;
+      padding: 20px;
+      gap: 20px;
+    }
+    .profil-preview {
+      position: static;
+      order: 1;
+    }
+    .profil-controls { order: 2; }
+    .profil-avatar-frame { width: 180px; height: 180px; }
+    .postur-body { padding: 20px 16px; }
+    .posture-trio { gap: 8px; }
+    .option-grid {
+      grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+      gap: 6px;
+    }
+    .color-grid { grid-template-columns: repeat(8, 1fr); gap: 6px; }
+    .section-head { padding: 16px 18px; }
+    .postur-intro { padding: 16px 18px; font-size: 12.5px; }
+    .save-bar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      text-align: center;
+    }
+  }
+  @media (max-width: 500px) {
+    .hero { padding: 24px 16px 12px; }
+    .hero h1 { font-size: 24px; }
+    .hero p { font-size: 14px; }
+    .app { padding: 16px 12px 40px; }
+    .profil-body { padding: 16px; }
+    .postur-body { padding: 16px 12px; }
+    .posture-card { padding: 12px 8px; }
+    .posture-tag { font-size: 9px; padding: 3px 10px; }
+    .posture-title { font-size: 12px; }
+    .posture-desc { font-size: 10px; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared-theme.css">
+</head>
+<body>
+
+<div id="rb-nav-mount"></div>
+
+<div class="hero">
+  <h1>Kendi <span class="accent">avatarını</span> oluştur</h1>
+  <p>Postür yolculuğunda seninle birlikte olacak avatarı kişiselleştir. Profil resmin ve postür üçlemen aynı kişiden — senden — gelsin.</p>
+
+  <div class="steps">
+    <div class="step-dot active" id="step1">
+      <span class="step-num">1</span>
+      Profil Avatarı
+    </div>
+    <div class="step-connector"></div>
+    <div class="step-dot" id="step2">
+      <span class="step-num">2</span>
+      Postür Üçlemesi
+    </div>
+    <div class="step-connector"></div>
+    <div class="step-dot" id="step3">
+      <span class="step-num">3</span>
+      Kaydet
+    </div>
+  </div>
+</div>
+
+<div class="app">
+
+  <!-- SECTION 1: PROFIL AVATARI -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-icon blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a4 4 0 014-4h8a4 4 0 014 4v2"/></svg>
+      </div>
+      <div>
+        <h2>1 · Profil Avatarın</h2>
+        <p>Rehabist üzerinde seni temsil edecek yüz — panelinde, yorumlarında, raporlarında görünecek.</p>
+      </div>
+    </div>
+
+    <div class="profil-body">
+      <!-- PREVIEW -->
+      <div class="profil-preview">
+        <div class="profil-avatar-frame">
+          <img id="avatarImg" alt="" src="">
+          <div class="loading-spinner" id="loadingSpinner"><div class="spinner"></div></div>
+        </div>
+        <div class="preview-name">Canlı Önizleme</div>
+        <div class="preview-name-sub">Her değişiklik anında yansır</div>
+      </div>
+
+      <!-- CONTROLS -->
+      <div class="profil-controls">
+        <div class="tabs">
+          <button class="tab active" onclick="switchTab('hair')" data-tab="hair">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11c0-3 2-6 5-6s5 3 5 6v3H7v-3z"/><path d="M7 14c0 4 3 7 5 7s5-3 5-7"/></svg>
+            Saç
+          </button>
+          <button class="tab" onclick="switchTab('skin')" data-tab="skin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+            Ten
+          </button>
+          <button class="tab" onclick="switchTab('face')" data-tab="face">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+            Yüz
+          </button>
+          <button class="tab" onclick="switchTab('beard')" data-tab="beard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M6 10c0 6 3 10 6 10s6-4 6-10"/></svg>
+            Sakal
+          </button>
+          <button class="tab" onclick="switchTab('outfit')" data-tab="outfit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l4-4 4 4 4-4 4 4v13H4V7z"/></svg>
+            Kıyafet
+          </button>
+        </div>
+
+        <!-- PANEL: SAÇ -->
+        <div class="panel active" id="panel-hair">
+          <div class="panel-title">Saç Stili</div>
+          <div class="option-grid" id="hairGrid"></div>
+          <div class="panel-title">Saç Rengi</div>
+          <div class="color-grid" id="hairColorGrid"></div>
+        </div>
+
+        <!-- PANEL: TEN -->
+        <div class="panel" id="panel-skin">
+          <div class="panel-title">Ten Tonu</div>
+          <div class="color-grid" id="skinGrid"></div>
+        </div>
+
+        <!-- PANEL: YÜZ -->
+        <div class="panel" id="panel-face">
+          <div class="panel-title">Gözler</div>
+          <div class="option-grid" id="eyesGrid"></div>
+          <div class="panel-title">Ağız</div>
+          <div class="option-grid" id="mouthGrid"></div>
+          <div class="panel-title">Burun</div>
+          <div class="option-grid" id="noseGrid"></div>
+        </div>
+
+        <!-- PANEL: SAKAL -->
+        <div class="panel" id="panel-beard">
+          <div class="panel-title">Sakal / Bıyık</div>
+          <div class="toggle-grid" id="beardToggle">
+            <button class="toggle-option selected" data-beard="none">Yok</button>
+            <button class="toggle-option" data-beard="yes">Var</button>
+          </div>
+          <div id="beardOptions" style="display:none">
+            <div class="panel-title">Stil</div>
+            <div class="option-grid" id="beardGrid"></div>
+          </div>
+        </div>
+
+        <!-- PANEL: KIYAFET -->
+        <div class="panel" id="panel-outfit">
+          <div class="panel-title">Vücut / Kıyafet Şekli</div>
+          <div class="option-grid" id="bodyGrid"></div>
+          <div class="panel-title">Kıyafet Rengi</div>
+          <div class="color-grid" id="clothingColorGrid"></div>
+        </div>
+
+        <div class="actions-row">
+          <button class="btn btn-primary" onclick="randomizeProfile()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M4 4l5 5M15 15l6 6"/></svg>
+            Rastgele Avatar
+          </button>
+          <button class="btn btn-secondary" onclick="scrollToPosture()">
+            Devam Et
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: POSTÜR ÜÇLEMESİ -->
+  <div class="section" id="postureSection">
+    <div class="section-head">
+      <div class="section-icon green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 6v10M8 10l4-4 4 4M8 21l4-7 4 7"/></svg>
+      </div>
+      <div>
+        <h2>2 · Postür Üçlemen</h2>
+        <p>Fizyoterapi yolculuğunun üç hali: ideal hedef, şu anki durumun ve değişmezse gelecek.</p>
+      </div>
+    </div>
+
+    <div class="postur-intro">
+      <strong>Bilgi:</strong> Bu üç avatar, postür analizi sonucunda sana özel ölçülecek.
+      Şimdi önizlemesini görüyorsun. Seçtiğin profil avatarının vücut rengi ve kıyafet rengi burada da kullanılıyor.
+    </div>
+
+    <div class="postur-body">
+      <!-- VIEW TOGGLE -->
+      <div class="view-toggle">
+        <button class="view-btn active" data-view="both">Yan + Ön</button>
+        <button class="view-btn" data-view="side">Yalnız Yan</button>
+        <button class="view-btn" data-view="front">Yalnız Ön</button>
+      </div>
+
+      <!-- TRIO -->
+      <div class="posture-trio">
+        <div class="posture-card ideal">
+          <span class="posture-tag">İDEAL</span>
+          <div class="posture-views both" id="views-ideal">
+            <div class="posture-view">
+              <span class="view-label">Yan</span>
+              <svg id="p-ideal-side" viewBox="0 0 200 360"></svg>
+            </div>
+            <div class="posture-view">
+              <span class="view-label">Ön</span>
+              <svg id="p-ideal-front" viewBox="0 0 200 360"></svg>
+            </div>
+          </div>
+          <div class="posture-title">İdeal Sen</div>
+          <div class="posture-desc">Başarılması mümkün hedef postür</div>
+        </div>
+
+        <div class="posture-card current">
+          <span class="posture-tag">MEVCUT</span>
+          <div class="posture-views both" id="views-current">
+            <div class="posture-view">
+              <span class="view-label">Yan</span>
+              <svg id="p-current-side" viewBox="0 0 200 360"></svg>
+            </div>
+            <div class="posture-view">
+              <span class="view-label">Ön</span>
+              <svg id="p-current-front" viewBox="0 0 200 360"></svg>
+            </div>
+          </div>
+          <div class="posture-title">Şu Anki Sen</div>
+          <div class="posture-desc">Postür analizinden gelen durum</div>
+        </div>
+
+        <div class="posture-card future">
+          <span class="posture-tag">GELECEK</span>
+          <div class="posture-views both" id="views-future">
+            <div class="posture-view">
+              <span class="view-label">Yan</span>
+              <svg id="p-future-side" viewBox="0 0 200 360"></svg>
+            </div>
+            <div class="posture-view">
+              <span class="view-label">Ön</span>
+              <svg id="p-future-front" viewBox="0 0 200 360"></svg>
+            </div>
+          </div>
+          <div class="posture-title">5 Yıl Sonra</div>
+          <div class="posture-desc">Hiçbir şey değişmezse</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAVE BAR -->
+  <div class="save-bar">
+    <div class="save-info">
+      <strong>Hazırsan kaydedelim.</strong><br>
+      Avatarın panelinde, rapor ve yorumlarında görünecek.
+    </div>
+    <button class="btn btn-primary" onclick="saveAvatar()" style="flex: 0 0 auto;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+      Avatarımı Kaydet
+    </button>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="saveModal">
+  <div class="modal">
+    <div class="modal-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+    </div>
+    <h3>Avatarın kaydedildi!</h3>
+    <p>Artık Rehabist'te seni temsil ediyor. Postür analizi yaptığında, seçtiğin bu kişi üç farklı postürde sana yol gösterecek.</p>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="modalContinueBtn">Postür Analizine Başla</button>
+      <button class="btn btn-secondary" onclick="closeModal()">Daha Sonra</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===================================================================
+// DICEBEAR PERSONAS - URL API
+// ===================================================================
+const API_BASE = 'https://api.dicebear.com/9.x/personas/svg';
+
+// Personas seçenek listeleri (DiceBear'dan)
+const HAIR_OPTIONS = [
+  'bald', 'balding', 'beanie', 'bobBangs', 'bobCut', 'bunUndercut',
+  'buzzcut', 'cap', 'curly', 'curlyBun', 'curlyHighTop', 'extraLong',
+  'fade', 'long', 'mohawk', 'pigtails', 'shortCombover',
+  'shortComboverChops', 'sideShave', 'straightBun'
+];
+
+const HAIR_LABELS = {
+  bald: 'Dazlak', balding: 'Kel', beanie: 'Bere', bobBangs: 'Bob Kahkül',
+  bobCut: 'Bob', bunUndercut: 'Topuz+Kısa', buzzcut: 'Asker Tıraşı',
+  cap: 'Şapka', curly: 'Kıvırcık', curlyBun: 'Kıvırcık Topuz',
+  curlyHighTop: 'Kıvırcık Yüksek', extraLong: 'Çok Uzun', fade: 'Fade',
+  long: 'Uzun', mohawk: 'Mohawk', pigtails: 'Örgü',
+  shortCombover: 'Taralı', shortComboverChops: 'Taralı+Fav',
+  sideShave: 'Yan Kesim', straightBun: 'Düz Topuz'
+};
+
+const EYES_OPTIONS = ['open', 'happy', 'wink', 'sleep', 'glasses', 'sunglasses'];
+const EYES_LABELS = {
+  open: 'Açık', happy: 'Mutlu', wink: 'Göz Kırp',
+  sleep: 'Uykulu', glasses: 'Gözlüklü', sunglasses: 'Güneş Gözlüğü'
+};
+
+const MOUTH_OPTIONS = ['smile', 'bigSmile', 'smirk', 'lips', 'frown', 'surprise', 'pacifier'];
+const MOUTH_LABELS = {
+  smile: 'Gülüş', bigSmile: 'Kahkaha', smirk: 'Kıpırdanma',
+  lips: 'Dudak', frown: 'Üzgün', surprise: 'Şaşkın', pacifier: 'Emzik'
+};
+
+const NOSE_OPTIONS = ['mediumRound', 'smallRound', 'wrinkles'];
+const NOSE_LABELS = {
+  mediumRound: 'Orta', smallRound: 'Küçük', wrinkles: 'Çizgili'
+};
+
+const BODY_OPTIONS = ['rounded', 'squared', 'small', 'checkered'];
+const BODY_LABELS = {
+  rounded: 'Yuvarlak', squared: 'Köşeli', small: 'Küçük', checkered: 'Desenli'
+};
+
+const BEARD_OPTIONS = ['beardMustache', 'goatee', 'pyramid', 'shadow', 'soulPatch', 'walrus'];
+const BEARD_LABELS = {
+  beardMustache: 'Tam Sakal', goatee: 'Keçi', pyramid: 'Üçgen',
+  shadow: 'Hafif', soulPatch: 'Alt Dudak', walrus: 'Mors'
+};
+
+// Renk paletleri
+const SKIN_COLORS = ['eeb4a4', 'e7a391', 'e5a07e', 'd78774', 'b16a5b', '92594b', '623d36'];
+const HAIR_COLORS = ['362c47', '6c4545', 'a55728', 'b58143', 'c19a6b', 'dee1f5', 'e15c66', 'f29c65'];
+const CLOTHING_COLORS = ['2563eb', '059669', 'dc2626', '7c3aed', 'd97706', '0f172a', 'ec4899', '14b8a6', '64748b', 'f59e0b', '6366f1', '991b1b', '166534', '1e293b', 'ffffff', 'fbbf24'];
+
+// ===================================================================
+// STATE
+// ===================================================================
+const state = {
+  seed: 'rehabist-' + Date.now(),
+  hair: 'short' === 'short' ? 'shortCombover' : 'shortCombover',
+  hairColor: '362c47',
+  skinColor: 'e5a07e',
+  eyes: 'open',
+  mouth: 'smile',
+  nose: 'mediumRound',
+  body: 'rounded',
+  clothingColor: '2563eb',
+  hasBeard: false,
+  facialHair: 'shadow',
+  currentView: 'both'
+};
+
+// ===================================================================
+// AVATAR URL BUILDER
+// ===================================================================
+function buildAvatarUrl(overrides = {}) {
+  const s = { ...state, ...overrides };
+  const params = new URLSearchParams();
+  params.set('seed', s.seed || 'rehabist');
+  params.set('hair', s.hair);
+  params.set('hairColor', s.hairColor);
+  params.set('skinColor', s.skinColor);
+  params.set('eyes', s.eyes);
+  params.set('mouth', s.mouth);
+  params.set('nose', s.nose);
+  params.set('body', s.body);
+  params.set('clothingColor', s.clothingColor);
+  if (s.hasBeard) {
+    params.set('facialHair', s.facialHair);
+    params.set('facialHairProbability', '100');
+  } else {
+    params.set('facialHairProbability', '0');
+  }
+  params.set('backgroundColor', 'transparent');
+  return `${API_BASE}?${params.toString()}`;
+}
+
+// ===================================================================
+// POSTURE SVG BUILDER (yan ve ön görünüm)
+// ===================================================================
+function getPostureParams(posture) {
+  // Anatomi açılarına göre postür parametreleri
+  // Fizyoterapik gerçeklik: servikal lordoz düzleşmesi, torakal kifoz,
+  // lumbar lordoz, omuz öne düşmesi, pelvik eğim
+  const presets = {
+    ideal: {
+      cervicalOffset: 0,    // Boyun öne = 0 (normal)
+      thoracicBend: 0,       // Torakal kifoz artışı = 0
+      lumbarCurve: 8,        // Normal lomber lordoz
+      shoulderDrop: 0,       // Omuz düşmesi
+      shoulderTilt: 0,       // Sol-sağ omuz asimetrisi (ön)
+      hipTilt: 0,            // Pelvik tilt (ön)
+      headForward: 0,
+      kneeSoften: 0
+    },
+    current: {
+      cervicalOffset: 14,
+      thoracicBend: 10,
+      lumbarCurve: 14,
+      shoulderDrop: 8,
+      shoulderTilt: 4,
+      hipTilt: 3,
+      headForward: 10,
+      kneeSoften: 2
+    },
+    future: {
+      cervicalOffset: 28,
+      thoracicBend: 22,
+      lumbarCurve: 20,
+      shoulderDrop: 16,
+      shoulderTilt: 8,
+      hipTilt: 6,
+      headForward: 22,
+      kneeSoften: 4
+    }
+  };
+  return presets[posture];
+}
+
+// YAN GÖRÜNÜM — postür eğrilerini net gösterir
+function buildSideView(posture) {
+  const p = getPostureParams(posture);
+  const skin = '#' + state.skinColor;
+  const skinDark = shadeHex(skin, -15);
+  const shirt = '#' + state.clothingColor;
+  const shirtDark = shadeHex(shirt, -20);
+  const hair = '#' + state.hairColor;
+  const pants = '#1e293b';
+  const shoes = '#0f172a';
+
+  // Koordinatlar (viewBox 200x360, kişi profilden)
+  // Yan görünüm: kişi sola bakıyor (profile left-facing)
+  const cx = 100;                    // Merkez X
+  const headCy = 52;                 // Baş merkezi Y
+  const neckBase = 86;               // Boyun dip
+  const shoulderY = 104;             // Omuz
+  const thoracicY = 155;             // Göğüs orta
+  const lumbarY = 210;               // Bel orta
+  const hipY = 248;                  // Kalça
+  const kneeY = 300;                 // Diz
+  const footY = 348;                 // Ayak
+
+  // Omurga çizgileri (arka profil — yan görünümde omurga görünür)
+  // İdeal omurga: hafif servikal lordoz, torakal kifoz, lomber lordoz (doğal S)
+  // Bozuk: servikal düzleşme/kambur, torakal hiperkifoz, lumbar değişim
+
+  // Baş pozisyonu (öne doğru)
+  const headX = cx + p.headForward - 4;
+  const headCyAdj = headCy;
+
+  // Omuz X (yan profilde tek omuz görünür, öne düşmüş olabilir)
+  const shoulderX = cx + p.shoulderDrop * 0.3 - 2;
+
+  // Pantolon pozisyonu
+  const kneeXOffset = p.kneeSoften;
+
+  let svg = '';
+
+  // ---- ARKA SAÇ (eğer uzun) ----
+  if (['long', 'extraLong', 'curly', 'curlyBun', 'pigtails', 'bobCut', 'bobBangs', 'bunUndercut', 'straightBun'].includes(state.hair)) {
+    svg += `<path d="M ${headX - 12} ${headCyAdj - 8}
+      Q ${headX - 20} ${headCyAdj + 10}, ${headX - 18} ${headCyAdj + 24}
+      L ${headX - 8} ${headCyAdj + 28}
+      Q ${headX - 8} ${headCyAdj + 15}, ${headX - 4} ${headCyAdj + 4} Z"
+      fill="${hair}" opacity="0.9"/>`;
+  }
+
+  // ---- OMURGA (arka siluet) ----
+  // Görselleştirme için: vücut konturu zaten omurganın eğrisini gösterir
+
+  // ---- GÖVDE (yandan S/C eğrisi) ----
+  // Arka kontur (sırt): ideal düz, bozukta kifoz artar
+  const spineBackX1 = cx + 18 - p.thoracicBend * 0.6; // Boyun arkası
+  const spineBackX2 = cx + 22 + p.thoracicBend * 0.7; // Torakal tepe (kambur)
+  const spineBackX3 = cx + 18 - p.lumbarCurve * 0.3;  // Bel girinti
+  const spineBackX4 = cx + 20;                         // Kalça
+
+  // Ön kontur (göğüs + karın)
+  const spineFrontX1 = cx - 14 - p.cervicalOffset * 0.2; // Boğaz
+  const spineFrontX2 = cx - 18 - p.thoracicBend * 0.2;   // Göğüs
+  const spineFrontX3 = cx - 12 + p.lumbarCurve * 0.4;    // Karın çıkıntı
+  const spineFrontX4 = cx - 16;                          // Pelvis
+
+  // Gövde shirt path
+  const bodyPath = `
+    M ${shoulderX - 18} ${shoulderY}
+    C ${spineFrontX1} ${shoulderY + 20}, ${spineFrontX2} ${thoracicY}, ${spineFrontX3} ${lumbarY}
+    L ${spineFrontX4} ${hipY}
+    L ${spineBackX4} ${hipY}
+    C ${spineBackX3} ${lumbarY}, ${spineBackX2} ${thoracicY}, ${spineBackX1} ${shoulderY + 20}
+    L ${shoulderX + 18} ${shoulderY}
+    Z`;
+  svg += `<path d="${bodyPath}" fill="${shirt}" stroke="${shirtDark}" stroke-width="1.2"/>`;
+
+  // ---- KOL (yandan, tek kol görünür) ----
+  const armX = shoulderX + 2;
+  svg += `<path d="M ${armX - 8} ${shoulderY + 6}
+    Q ${armX - 14 + p.shoulderDrop * 0.4} ${shoulderY + 40},
+      ${armX - 10 + p.shoulderDrop * 0.6} ${shoulderY + 78}
+    Q ${armX - 6 + p.shoulderDrop * 0.6} ${shoulderY + 82},
+      ${armX - 2 + p.shoulderDrop * 0.6} ${shoulderY + 78}
+    Q ${armX - 4 + p.shoulderDrop * 0.4} ${shoulderY + 40},
+      ${armX + 8} ${shoulderY + 6} Z"
+    fill="${shirt}" stroke="${shirtDark}" stroke-width="1"/>`;
+
+  // El
+  svg += `<circle cx="${armX - 5 + p.shoulderDrop * 0.6}" cy="${shoulderY + 86}" r="5" fill="${skin}" stroke="${skinDark}" stroke-width="0.8"/>`;
+
+  // ---- BOYUN ----
+  const neckX1 = headX + 2;
+  const neckX2 = headX + 10;
+  svg += `<path d="M ${neckX1} ${headCyAdj + 26}
+    L ${neckX2} ${neckBase}
+    L ${shoulderX + 14} ${shoulderY}
+    L ${shoulderX - 2} ${shoulderY}
+    L ${neckX1 - 6} ${neckBase - 2} Z"
+    fill="${skin}" stroke="${skinDark}" stroke-width="0.8"/>`;
+
+  // ---- BAŞ (yan profil) ----
+  const headPath = `
+    M ${headX + 14} ${headCyAdj - 14}
+    Q ${headX + 18} ${headCyAdj - 4}, ${headX + 16} ${headCyAdj + 10}
+    Q ${headX + 12} ${headCyAdj + 26}, ${headX + 2} ${headCyAdj + 26}
+    L ${headX - 6} ${headCyAdj + 24}
+    Q ${headX - 14} ${headCyAdj + 16}, ${headX - 16} ${headCyAdj + 6}
+    L ${headX - 18} ${headCyAdj - 4}
+    Q ${headX - 14} ${headCyAdj - 18}, ${headX - 4} ${headCyAdj - 20}
+    Q ${headX + 10} ${headCyAdj - 20}, ${headX + 14} ${headCyAdj - 14} Z`;
+  svg += `<path d="${headPath}" fill="${skin}" stroke="${skinDark}" stroke-width="1"/>`;
+
+  // Kulak (yan profilde belirgin)
+  svg += `<ellipse cx="${headX + 2}" cy="${headCyAdj + 4}" rx="3" ry="6" fill="${skin}" stroke="${skinDark}" stroke-width="0.8"/>`;
+  svg += `<path d="M ${headX} ${headCyAdj + 2} Q ${headX + 1} ${headCyAdj + 5}, ${headX - 1} ${headCyAdj + 8}" stroke="${skinDark}" stroke-width="0.6" fill="none"/>`;
+
+  // Burun (yandan profile belirgin)
+  svg += `<path d="M ${headX - 16} ${headCyAdj + 2}
+    Q ${headX - 22} ${headCyAdj + 5}, ${headX - 20} ${headCyAdj + 10}
+    Q ${headX - 16} ${headCyAdj + 12}, ${headX - 14} ${headCyAdj + 10}"
+    fill="${skin}" stroke="${skinDark}" stroke-width="0.8"/>`;
+
+  // Göz (yandan ince)
+  svg += `<ellipse cx="${headX - 8}" cy="${headCyAdj}" rx="1.5" ry="1.8" fill="#1a1a1a"/>`;
+
+  // Ağız (yandan ince çizgi)
+  svg += `<path d="M ${headX - 14} ${headCyAdj + 16} Q ${headX - 10} ${headCyAdj + 17}, ${headX - 6} ${headCyAdj + 15}" stroke="#8a2c2c" stroke-width="1.2" fill="none" stroke-linecap="round"/>`;
+
+  // Sakal (yandan profilde)
+  if (state.hasBeard) {
+    svg += `<path d="M ${headX - 8} ${headCyAdj + 18}
+      Q ${headX - 14} ${headCyAdj + 24}, ${headX - 4} ${headCyAdj + 26}
+      Q ${headX + 6} ${headCyAdj + 24}, ${headX + 10} ${headCyAdj + 20}
+      L ${headX + 8} ${headCyAdj + 16} Z"
+      fill="${hair}" opacity="0.85"/>`;
+  }
+
+  // ---- SAÇ (ön saç yandan) ----
+  svg += getHairSide(state.hair, hair, headX, headCyAdj);
+
+  // ---- PANTOLON (yan) ----
+  const pantsTop = hipY;
+  const pantsBottom = footY - 4;
+  svg += `<path d="
+    M ${cx - 16} ${pantsTop}
+    L ${cx - 18 - p.kneeSoften} ${kneeY}
+    L ${cx - 14 - p.kneeSoften} ${pantsBottom}
+    L ${cx + 2} ${pantsBottom}
+    L ${cx + 4 - p.kneeSoften * 0.5} ${kneeY}
+    L ${cx + 4} ${pantsTop} Z"
+    fill="${pants}" stroke="${shadeHex(pants, -15)}" stroke-width="1"/>`;
+
+  // Ayak (yan görünüm)
+  svg += `<path d="M ${cx - 22 - p.kneeSoften} ${footY - 2}
+    Q ${cx - 28 - p.kneeSoften} ${footY + 4}, ${cx - 14 - p.kneeSoften} ${footY + 6}
+    L ${cx + 2 - p.kneeSoften * 0.5} ${footY + 4}
+    L ${cx + 2 - p.kneeSoften * 0.5} ${footY}
+    L ${cx - 14 - p.kneeSoften} ${footY - 2} Z"
+    fill="${shoes}"/>`;
+
+  // ---- POSTÜR ÇİZGİSİ (ince referans çizgisi) ----
+  if (posture !== 'ideal') {
+    // Dikey referans çizgisi (kulak-omuz-kalça-ayak bileği olmalı)
+    svg += `<line x1="${cx - 4}" y1="12" x2="${cx - 4}" y2="${footY + 4}"
+      stroke="#ef4444" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.55"/>`;
+  } else {
+    svg += `<line x1="${cx - 4}" y1="12" x2="${cx - 4}" y2="${footY + 4}"
+      stroke="#10b981" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.5"/>`;
+  }
+
+  return svg;
+}
+
+// ÖN GÖRÜNÜM — omuz asimetrisi, pelvik tilt net görünür
+function buildFrontView(posture) {
+  const p = getPostureParams(posture);
+  const skin = '#' + state.skinColor;
+  const skinDark = shadeHex(skin, -15);
+  const shirt = '#' + state.clothingColor;
+  const shirtDark = shadeHex(shirt, -20);
+  const hair = '#' + state.hairColor;
+  const pants = '#1e293b';
+  const shoes = '#0f172a';
+
+  const cx = 100;
+  const headCy = 52;
+  const shoulderY = 104 + p.shoulderDrop * 0.2;
+  const hipY = 248;
+  const footY = 348;
+
+  // Omuz asimetrisi: sol omuz yukarı, sağ aşağı (veya tersi)
+  const shoulderTiltL = -p.shoulderTilt;
+  const shoulderTiltR = p.shoulderTilt;
+
+  // Pelvik tilt
+  const hipTiltL = p.hipTilt;
+  const hipTiltR = -p.hipTilt;
+
+  // Omuz genişliği
+  const shoulderW = 44;
+  const waistW = 32;
+  const hipW = 38;
+
+  let svg = '';
+
+  // ---- BOYUN ----
+  svg += `<path d="M ${cx - 8} ${headCy + 26}
+    Q ${cx} ${headCy + 30}, ${cx + 8} ${headCy + 26}
+    L ${cx + 10} ${shoulderY - 2}
+    L ${cx - 10} ${shoulderY - 2} Z"
+    fill="${skin}" stroke="${skinDark}" stroke-width="0.8"/>`;
+
+  // ---- GÖVDE (ön) ----
+  const bodyPath = `
+    M ${cx - shoulderW} ${shoulderY + shoulderTiltL}
+    C ${cx - shoulderW - 2} ${shoulderY + 25}, ${cx - waistW - 2} ${180}, ${cx - waistW} ${210}
+    L ${cx - hipW} ${hipY + hipTiltL}
+    L ${cx + hipW} ${hipY + hipTiltR}
+    L ${cx + waistW} ${210}
+    C ${cx + waistW + 2} ${180}, ${cx + shoulderW + 2} ${shoulderY + 25}, ${cx + shoulderW} ${shoulderY + shoulderTiltR}
+    Z`;
+  svg += `<path d="${bodyPath}" fill="${shirt}" stroke="${shirtDark}" stroke-width="1.2"/>`;
+
+  // ---- KOLLAR ----
+  // Sol kol (ekranda kişinin sağ tarafı)
+  svg += `<path d="M ${cx - shoulderW + 2} ${shoulderY + shoulderTiltL + 4}
+    Q ${cx - shoulderW - 6} ${shoulderY + 40},
+      ${cx - shoulderW - 2} ${shoulderY + 78}
+    Q ${cx - shoulderW + 4} ${shoulderY + 82},
+      ${cx - shoulderW + 8} ${shoulderY + 78}
+    Q ${cx - shoulderW + 4} ${shoulderY + 40},
+      ${cx - shoulderW + 12} ${shoulderY + shoulderTiltL + 4} Z"
+    fill="${shirt}" stroke="${shirtDark}" stroke-width="1"/>`;
+
+  // Sağ kol
+  svg += `<path d="M ${cx + shoulderW - 2} ${shoulderY + shoulderTiltR + 4}
+    Q ${cx + shoulderW + 6} ${shoulderY + 40},
+      ${cx + shoulderW + 2} ${shoulderY + 78}
+    Q ${cx + shoulderW - 4} ${shoulderY + 82},
+      ${cx + shoulderW - 8} ${shoulderY + 78}
+    Q ${cx + shoulderW - 4} ${shoulderY + 40},
+      ${cx + shoulderW - 12} ${shoulderY + shoulderTiltR + 4} Z"
+    fill="${shirt}" stroke="${shirtDark}" stroke-width="1"/>`;
+
+  // Eller
+  svg += `<circle cx="${cx - shoulderW + 3}" cy="${shoulderY + 86}" r="5" fill="${skin}" stroke="${skinDark}" stroke-width="0.8"/>`;
+  svg += `<circle cx="${cx + shoulderW - 3}" cy="${shoulderY + 86}" r="5" fill="${skin}" stroke="${skinDark}" stroke-width="0.8"/>`;
+
+  // ---- BAŞ ----
+  // Baş hafif tilted (postür bozuksa)
+  const headRotation = p.shoulderTilt * 0.3;
+  svg += `<g transform="rotate(${headRotation}, ${cx}, ${headCy})">`;
+  svg += `<ellipse cx="${cx}" cy="${headCy}" rx="22" ry="26" fill="${skin}" stroke="${skinDark}" stroke-width="1"/>`;
+
+  // Kulaklar
+  svg += `<ellipse cx="${cx - 22}" cy="${headCy + 4}" rx="3" ry="6" fill="${skin}" stroke="${skinDark}" stroke-width="0.8"/>`;
+  svg += `<ellipse cx="${cx + 22}" cy="${headCy + 4}" rx="3" ry="6" fill="${skin}" stroke="${skinDark}" stroke-width="0.8"/>`;
+
+  // Gözler
+  svg += `<ellipse cx="${cx - 8}" cy="${headCy - 2}" rx="3" ry="2.5" fill="#fff" stroke="#888" stroke-width="0.5"/>`;
+  svg += `<circle cx="${cx - 8}" cy="${headCy - 2}" r="1.6" fill="#1a1a1a"/>`;
+  svg += `<ellipse cx="${cx + 8}" cy="${headCy - 2}" rx="3" ry="2.5" fill="#fff" stroke="#888" stroke-width="0.5"/>`;
+  svg += `<circle cx="${cx + 8}" cy="${headCy - 2}" r="1.6" fill="#1a1a1a"/>`;
+
+  // Kaşlar
+  svg += `<path d="M ${cx - 12} ${headCy - 8} Q ${cx - 8} ${headCy - 10}, ${cx - 4} ${headCy - 8}" stroke="${hair}" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
+  svg += `<path d="M ${cx + 4} ${headCy - 8} Q ${cx + 8} ${headCy - 10}, ${cx + 12} ${headCy - 8}" stroke="${hair}" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
+
+  // Burun
+  svg += `<path d="M ${cx - 2} ${headCy + 4} Q ${cx} ${headCy + 10}, ${cx + 3} ${headCy + 8} Q ${cx} ${headCy + 11}, ${cx - 2} ${headCy + 4}" fill="${skinDark}" opacity="0.3"/>`;
+
+  // Ağız
+  svg += `<path d="M ${cx - 6} ${headCy + 16} Q ${cx} ${headCy + 18}, ${cx + 6} ${headCy + 16}" stroke="#8a2c2c" stroke-width="1.5" fill="none" stroke-linecap="round"/>`;
+
+  // Sakal (ön)
+  if (state.hasBeard) {
+    svg += `<path d="M ${cx - 16} ${headCy + 14}
+      Q ${cx - 12} ${headCy + 26}, ${cx} ${headCy + 28}
+      Q ${cx + 12} ${headCy + 26}, ${cx + 16} ${headCy + 14}
+      Q ${cx + 10} ${headCy + 22}, ${cx} ${headCy + 22}
+      Q ${cx - 10} ${headCy + 22}, ${cx - 16} ${headCy + 14} Z"
+      fill="${hair}" opacity="0.85"/>`;
+  }
+
+  // Saç (ön)
+  svg += getHairFront(state.hair, hair, cx, headCy);
+
+  svg += `</g>`;
+
+  // ---- PANTOLON ----
+  svg += `<path d="
+    M ${cx - hipW} ${hipY + hipTiltL}
+    L ${cx - hipW - 2} ${300}
+    L ${cx - 12} ${footY - 4}
+    L ${cx - 2} ${footY - 4}
+    L ${cx} ${hipY + 4}
+    L ${cx + 2} ${footY - 4}
+    L ${cx + 12} ${footY - 4}
+    L ${cx + hipW + 2} ${300}
+    L ${cx + hipW} ${hipY + hipTiltR} Z"
+    fill="${pants}" stroke="${shadeHex(pants, -15)}" stroke-width="1"/>`;
+
+  // Ayaklar
+  svg += `<ellipse cx="${cx - 10}" cy="${footY + 2}" rx="10" ry="5" fill="${shoes}"/>`;
+  svg += `<ellipse cx="${cx + 10}" cy="${footY + 2}" rx="10" ry="5" fill="${shoes}"/>`;
+
+  // Omuz asimetrisi işareti (referans çizgisi)
+  if (posture !== 'ideal' && p.shoulderTilt > 0) {
+    svg += `<line x1="${cx - shoulderW - 6}" y1="${shoulderY + shoulderTiltL}"
+      x2="${cx + shoulderW + 6}" y2="${shoulderY + shoulderTiltR}"
+      stroke="#ef4444" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.55"/>`;
+  }
+
+  return svg;
+}
+
+// Yan görünüm saç
+function getHairSide(style, color, headX, headCy) {
+  const dark = shadeHex(color, -15);
+
+  const baldStyles = ['bald', 'balding', 'buzzcut', 'fade'];
+  if (baldStyles.includes(style)) {
+    if (style === 'buzzcut' || style === 'fade') {
+      return `<path d="M ${headX - 18} ${headCy - 14}
+        Q ${headX - 12} ${headCy - 22}, ${headX + 4} ${headCy - 22}
+        Q ${headX + 14} ${headCy - 18}, ${headX + 16} ${headCy - 10}
+        L ${headX + 14} ${headCy - 12}
+        Q ${headX + 8} ${headCy - 18}, ${headX} ${headCy - 18}
+        Q ${headX - 8} ${headCy - 16}, ${headX - 14} ${headCy - 10} Z"
+        fill="${color}" opacity="0.9"/>`;
+    }
+    return '';
+  }
+
+  // Genel saç (yan profil)
+  return `<path d="M ${headX - 18} ${headCy - 14}
+    Q ${headX - 14} ${headCy - 24}, ${headX} ${headCy - 22}
+    Q ${headX + 14} ${headCy - 20}, ${headX + 18} ${headCy - 8}
+    Q ${headX + 16} ${headCy - 14}, ${headX + 10} ${headCy - 16}
+    Q ${headX + 2} ${headCy - 18}, ${headX - 6} ${headCy - 16}
+    Q ${headX - 14} ${headCy - 12}, ${headX - 18} ${headCy - 6} Z"
+    fill="${color}" stroke="${dark}" stroke-width="0.8"/>`;
+}
+
+// Ön görünüm saç
+function getHairFront(style, color, cx, cy) {
+  const dark = shadeHex(color, -15);
+
+  const baldStyles = ['bald', 'balding'];
+  if (baldStyles.includes(style)) return '';
+
+  const shortBuzz = ['buzzcut', 'fade'];
+  if (shortBuzz.includes(style)) {
+    return `<path d="M ${cx - 20} ${cy - 18}
+      Q ${cx - 22} ${cy - 26}, ${cx} ${cy - 28}
+      Q ${cx + 22} ${cy - 26}, ${cx + 20} ${cy - 18}
+      Q ${cx + 16} ${cy - 22}, ${cx + 8} ${cy - 24}
+      Q ${cx} ${cy - 26}, ${cx - 8} ${cy - 24}
+      Q ${cx - 16} ${cy - 22}, ${cx - 20} ${cy - 18} Z"
+      fill="${color}" opacity="0.9"/>`;
+  }
+
+  // Uzun saçlar için iki taraftan düşen
+  const longStyles = ['long', 'extraLong', 'curly', 'bobCut', 'bobBangs', 'pigtails', 'straightBun'];
+  if (longStyles.includes(style)) {
+    return `<path d="M ${cx - 24} ${cy - 8}
+      Q ${cx - 28} ${cy - 26}, ${cx} ${cy - 30}
+      Q ${cx + 28} ${cy - 26}, ${cx + 24} ${cy - 8}
+      L ${cx + 26} ${cy + 20}
+      Q ${cx + 20} ${cy + 26}, ${cx + 18} ${cy + 20}
+      L ${cx + 20} ${cy - 6}
+      Q ${cx} ${cy - 10}, ${cx - 20} ${cy - 6}
+      L ${cx - 18} ${cy + 20}
+      Q ${cx - 20} ${cy + 26}, ${cx - 26} ${cy + 20} Z"
+      fill="${color}" stroke="${dark}" stroke-width="1"/>`;
+  }
+
+  // Default kısa saç
+  return `<path d="M ${cx - 22} ${cy - 10}
+    Q ${cx - 26} ${cy - 28}, ${cx} ${cy - 30}
+    Q ${cx + 26} ${cy - 28}, ${cx + 22} ${cy - 10}
+    Q ${cx + 18} ${cy - 20}, ${cx + 10} ${cy - 22}
+    Q ${cx} ${cy - 24}, ${cx - 10} ${cy - 22}
+    Q ${cx - 18} ${cy - 20}, ${cx - 22} ${cy - 10} Z"
+    fill="${color}" stroke="${dark}" stroke-width="1"/>`;
+}
+
+// Renk tonlama
+function shadeHex(hex, percent) {
+  if (hex.startsWith('#')) hex = hex.slice(1);
+  const num = parseInt(hex, 16);
+  let r = (num >> 16) + Math.round(255 * percent / 100);
+  let g = ((num >> 8) & 0xff) + Math.round(255 * percent / 100);
+  let b = (num & 0xff) + Math.round(255 * percent / 100);
+  r = Math.max(0, Math.min(255, r));
+  g = Math.max(0, Math.min(255, g));
+  b = Math.max(0, Math.min(255, b));
+  return '#' + ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
+}
+
+// ===================================================================
+// RENDER
+// ===================================================================
+function render() {
+  // DiceBear profil avatarı
+  const url = buildAvatarUrl();
+  const img = document.getElementById('avatarImg');
+  const spinner = document.getElementById('loadingSpinner');
+
+  spinner.classList.add('visible');
+  img.onload = () => spinner.classList.remove('visible');
+  img.onerror = () => spinner.classList.remove('visible');
+  img.src = url;
+
+  // Postür üçlemesi — yan ve ön
+  ['ideal', 'current', 'future'].forEach(posture => {
+    document.getElementById(`p-${posture}-side`).innerHTML = buildSideView(posture);
+    document.getElementById(`p-${posture}-front`).innerHTML = buildFrontView(posture);
+  });
+
+  // Step indicator güncelle
+  const hasCustomized = state.seed !== 'rehabist-default';
+  if (hasCustomized) {
+    document.getElementById('step1').classList.remove('active');
+    document.getElementById('step1').classList.add('done');
+    document.getElementById('step2').classList.add('active');
+  }
+}
+
+// ===================================================================
+// UI BUILDERS
+// ===================================================================
+function miniAvatarUrl(overrides) {
+  const params = new URLSearchParams();
+  params.set('seed', 'preview-' + (overrides.hair || overrides.eyes || overrides.mouth || overrides.nose || overrides.body || overrides.facialHair || 'x'));
+  params.set('hair', overrides.hair || state.hair);
+  params.set('hairColor', overrides.hairColor || state.hairColor);
+  params.set('skinColor', overrides.skinColor || state.skinColor);
+  params.set('eyes', overrides.eyes || state.eyes);
+  params.set('mouth', overrides.mouth || state.mouth);
+  params.set('nose', overrides.nose || state.nose);
+  params.set('body', overrides.body || state.body);
+  params.set('clothingColor', overrides.clothingColor || state.clothingColor);
+  if (overrides.facialHair) {
+    params.set('facialHair', overrides.facialHair);
+    params.set('facialHairProbability', '100');
+  } else {
+    params.set('facialHairProbability', '0');
+  }
+  params.set('backgroundColor', 'transparent');
+  params.set('size', '80');
+  return `${API_BASE}?${params.toString()}`;
+}
+
+function buildHairGrid() {
+  const grid = document.getElementById('hairGrid');
+  grid.innerHTML = HAIR_OPTIONS.map(h => `
+    <button class="option-tile ${state.hair === h ? 'selected' : ''}"
+      onclick="state.hair = '${h}'; render(); updateSelections();">
+      <img src="${miniAvatarUrl({ hair: h })}" alt="${HAIR_LABELS[h]}" loading="lazy">
+    </button>
+  `).join('');
+}
+
+function buildHairColorGrid() {
+  const grid = document.getElementById('hairColorGrid');
+  grid.innerHTML = HAIR_COLORS.map(c => `
+    <button class="color-swatch ${state.hairColor === c ? 'selected' : ''}"
+      style="background: #${c};"
+      onclick="state.hairColor = '${c}'; render(); updateSelections();"
+      data-swatch="hairColor" data-val="${c}">
+    </button>
+  `).join('');
+}
+
+function buildSkinGrid() {
+  const grid = document.getElementById('skinGrid');
+  grid.innerHTML = SKIN_COLORS.map(c => `
+    <button class="color-swatch ${state.skinColor === c ? 'selected' : ''}"
+      style="background: #${c};"
+      onclick="state.skinColor = '${c}'; render(); updateSelections();"
+      data-swatch="skinColor" data-val="${c}">
+    </button>
+  `).join('');
+}
+
+function buildEyesGrid() {
+  const grid = document.getElementById('eyesGrid');
+  grid.innerHTML = EYES_OPTIONS.map(e => `
+    <button class="option-tile ${state.eyes === e ? 'selected' : ''}"
+      onclick="state.eyes = '${e}'; render(); updateSelections();">
+      <img src="${miniAvatarUrl({ eyes: e })}" alt="${EYES_LABELS[e]}" loading="lazy">
+    </button>
+  `).join('');
+}
+
+function buildMouthGrid() {
+  const grid = document.getElementById('mouthGrid');
+  grid.innerHTML = MOUTH_OPTIONS.map(m => `
+    <button class="option-tile ${state.mouth === m ? 'selected' : ''}"
+      onclick="state.mouth = '${m}'; render(); updateSelections();">
+      <img src="${miniAvatarUrl({ mouth: m })}" alt="${MOUTH_LABELS[m]}" loading="lazy">
+    </button>
+  `).join('');
+}
+
+function buildNoseGrid() {
+  const grid = document.getElementById('noseGrid');
+  grid.innerHTML = NOSE_OPTIONS.map(n => `
+    <button class="option-tile ${state.nose === n ? 'selected' : ''}"
+      onclick="state.nose = '${n}'; render(); updateSelections();">
+      <img src="${miniAvatarUrl({ nose: n })}" alt="${NOSE_LABELS[n]}" loading="lazy">
+    </button>
+  `).join('');
+}
+
+function buildBeardGrid() {
+  const grid = document.getElementById('beardGrid');
+  grid.innerHTML = BEARD_OPTIONS.map(b => `
+    <button class="option-tile ${state.facialHair === b ? 'selected' : ''}"
+      onclick="state.facialHair = '${b}'; state.hasBeard = true; render(); updateSelections();">
+      <img src="${miniAvatarUrl({ facialHair: b })}" alt="${BEARD_LABELS[b]}" loading="lazy">
+    </button>
+  `).join('');
+}
+
+function buildBodyGrid() {
+  const grid = document.getElementById('bodyGrid');
+  grid.innerHTML = BODY_OPTIONS.map(b => `
+    <button class="option-tile ${state.body === b ? 'selected' : ''}"
+      onclick="state.body = '${b}'; render(); updateSelections();">
+      <img src="${miniAvatarUrl({ body: b })}" alt="${BODY_LABELS[b]}" loading="lazy">
+    </button>
+  `).join('');
+}
+
+function buildClothingColorGrid() {
+  const grid = document.getElementById('clothingColorGrid');
+  grid.innerHTML = CLOTHING_COLORS.map(c => `
+    <button class="color-swatch ${state.clothingColor === c ? 'selected' : ''}"
+      style="background: #${c}; ${c === 'ffffff' ? 'border: 2px solid var(--border-strong);' : ''}"
+      onclick="state.clothingColor = '${c}'; render(); updateSelections();"
+      data-swatch="clothingColor" data-val="${c}">
+    </button>
+  `).join('');
+}
+
+// Beard toggle
+function setupBeardToggle() {
+  document.querySelectorAll('#beardToggle .toggle-option').forEach(b => {
+    b.onclick = () => {
+      document.querySelectorAll('#beardToggle .toggle-option').forEach(x => x.classList.remove('selected'));
+      b.classList.add('selected');
+      state.hasBeard = b.dataset.beard === 'yes';
+      document.getElementById('beardOptions').style.display = state.hasBeard ? 'block' : 'none';
+      render();
+    };
+  });
+}
+
+// ===================================================================
+// SELECTIONS UPDATE
+// ===================================================================
+function updateSelections() {
+  document.querySelectorAll('.color-swatch').forEach(s => {
+    const key = s.dataset.swatch;
+    const val = s.dataset.val;
+    if (key && val) s.classList.toggle('selected', state[key] === val);
+  });
+  buildHairGrid();
+  buildEyesGrid();
+  buildMouthGrid();
+  buildNoseGrid();
+  buildBeardGrid();
+  buildBodyGrid();
+}
+
+// ===================================================================
+// TAB
+// ===================================================================
+function switchTab(tabName) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+  document.getElementById(`panel-${tabName}`).classList.add('active');
+}
+
+// ===================================================================
+// VIEW TOGGLE
+// ===================================================================
+function setupViewToggle() {
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.onclick = () => {
+      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const view = btn.dataset.view;
+      state.currentView = view;
+
+      ['ideal', 'current', 'future'].forEach(p => {
+        const container = document.getElementById(`views-${p}`);
+        container.classList.remove('both', 'single');
+
+        const views = container.querySelectorAll('.posture-view');
+        const labels = container.querySelectorAll('.view-label');
+
+        if (view === 'both') {
+          container.classList.add('both');
+          views.forEach(v => v.style.display = 'flex');
+          labels.forEach(l => l.style.display = 'block');
+        } else {
+          container.classList.add('single');
+          labels.forEach(l => l.style.display = 'none');
+          if (view === 'side') {
+            views[0].style.display = 'flex';
+            views[1].style.display = 'none';
+          } else {
+            views[0].style.display = 'none';
+            views[1].style.display = 'flex';
+          }
+        }
+      });
+    };
+  });
+}
+
+// ===================================================================
+// RASTGELE AVATAR
+// ===================================================================
+function randomizeProfile() {
+  const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+  state.seed = 'rehabist-' + Date.now();
+  state.hair = rand(HAIR_OPTIONS);
+  state.hairColor = rand(HAIR_COLORS);
+  state.skinColor = rand(SKIN_COLORS);
+  state.eyes = rand(EYES_OPTIONS);
+  state.mouth = rand(MOUTH_OPTIONS);
+  state.nose = rand(NOSE_OPTIONS);
+  state.body = rand(BODY_OPTIONS);
+  state.clothingColor = rand(CLOTHING_COLORS);
+  state.hasBeard = Math.random() > 0.7;
+  if (state.hasBeard) state.facialHair = rand(BEARD_OPTIONS);
+
+  // Beard toggle güncelle
+  document.querySelectorAll('#beardToggle .toggle-option').forEach(b => {
+    b.classList.toggle('selected', (b.dataset.beard === 'yes') === state.hasBeard);
+  });
+  document.getElementById('beardOptions').style.display = state.hasBeard ? 'block' : 'none';
+
+  render();
+  updateSelections();
+}
+
+// ===================================================================
+// SCROLL
+// ===================================================================
+function scrollToPosture() {
+  document.getElementById('postureSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ===================================================================
+// KAYDET / LOAD
+// ===================================================================
+function saveAvatar() {
+  try {
+    localStorage.setItem('rehabist_avatar', JSON.stringify({
+      ...state,
+      avatarUrl: buildAvatarUrl()
+    }));
+    document.getElementById('saveModal').classList.add('visible');
+    document.getElementById('step2').classList.remove('active');
+    document.getElementById('step2').classList.add('done');
+    document.getElementById('step3').classList.add('done');
+  } catch(e) {
+    alert('Kaydedilirken bir sorun oluştu.');
+  }
+}
+
+function closeModal() {
+  document.getElementById('saveModal').classList.remove('visible');
+}
+
+function loadAvatar() {
+  try {
+    const saved = localStorage.getItem('rehabist_avatar');
+    if (saved) {
+      const data = JSON.parse(saved);
+      delete data.avatarUrl;
+      Object.assign(state, data);
+
+      // Beard toggle'ı güncelle
+      document.querySelectorAll('#beardToggle .toggle-option').forEach(b => {
+        b.classList.toggle('selected', (b.dataset.beard === 'yes') === state.hasBeard);
+      });
+      const bo = document.getElementById('beardOptions');
+      if (bo) bo.style.display = state.hasBeard ? 'block' : 'none';
+    }
+  } catch(e) {}
+}
+
+// ===================================================================
+// INIT
+// ===================================================================
+function init() {
+  loadAvatar();
+  buildHairGrid();
+  buildHairColorGrid();
+  buildSkinGrid();
+  buildEyesGrid();
+  buildMouthGrid();
+  buildNoseGrid();
+  buildBeardGrid();
+  buildBodyGrid();
+  buildClothingColorGrid();
+  setupBeardToggle();
+  setupViewToggle();
+  render();
+  setupContinueButton();
+}
+
+function setupContinueButton() {
+  // ?next= parametresi varsa modal "Devam et" butonu oraya yönlensin
+  // Yoksa default olarak postur-analizi.html'e gitsin
+  var btn = document.getElementById('modalContinueBtn');
+  if (!btn) return;
+  var params = new URLSearchParams(window.location.search);
+  var next = params.get('next') || 'postur-analizi.html';
+  // Sonsuz döngüyü engellemek için skip-avatar parametresi ekle
+  var separator = next.indexOf('?') >= 0 ? '&' : '?';
+  btn.onclick = function() {
+    window.location.href = next + separator + 'skip-avatar=1';
+  };
+}
+
+init();
+
+// Modal close
+document.getElementById('saveModal').addEventListener('click', (e) => {
+  if (e.target.id === 'saveModal') closeModal();
+});
+</script>
+
+<div id="rb-footer-mount"></div>
+<script src="/shared-nav.js" defer></script>
+</body>
+</html>

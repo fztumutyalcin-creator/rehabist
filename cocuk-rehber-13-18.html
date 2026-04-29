@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -18,310 +17,311 @@
    ============================================================ */
 
 :root {
-–white: #ffffff;
-–off-white: #fafbfc;
-–surface: #f5f7fa;
-–border: #e4e8ed;
-–border-strong: #d0d6dd;
-–ink-900: #0f172a;
-–ink-800: #1e293b;
-–ink-700: #334155;
-–ink-500: #475569;
-–ink-400: #64748b;
-–ink-300: #94a3b8;
-–blue-50: #eff6ff;
-–blue-100: #dbeafe;
-–blue-500: #3b82f6;
-–blue-600: #2563eb;
-–blue-700: #1d4ed8;
-–blue-900: #1e3a8a;
-–green-50: #ecfdf5;
-–green-500: #10b981;
-–green-600: #059669;
-–amber-50: #fffbeb;
-–amber-500: #f59e0b;
-–red-50: #fef2f2;
-–red-500: #ef4444;
-–red-700: #b91c1c;
+  --white: #ffffff;
+  --off-white: #fafbfc;
+  --surface: #f5f7fa;
+  --border: #e4e8ed;
+  --border-strong: #d0d6dd;
+  --ink-900: #0f172a;
+  --ink-800: #1e293b;
+  --ink-700: #334155;
+  --ink-500: #475569;
+  --ink-400: #64748b;
+  --ink-300: #94a3b8;
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-900: #1e3a8a;
+  --green-50: #ecfdf5;
+  --green-500: #10b981;
+  --green-600: #059669;
+  --amber-50: #fffbeb;
+  --amber-500: #f59e0b;
+  --red-50: #fef2f2;
+  --red-500: #ef4444;
+  --red-700: #b91c1c;
 
-–serif: ‘Newsreader’, Georgia, serif;
-–sans: ‘DM Sans’, -apple-system, BlinkMacSystemFont, sans-serif;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
-–container-max: 1200px;
-–container-px: 24px;
+  --container-max: 1200px;
+  --container-px: 24px;
 
-–shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
-–shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
-–shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
-–shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
 }
 
 /* NAV */
 .rb-nav {
-position: sticky;
-top: 0;
-z-index: 100;
-background: rgba(255, 255, 255, 0.85);
-backdrop-filter: saturate(180%) blur(20px);
--webkit-backdrop-filter: saturate(180%) blur(20px);
-border-bottom: 1px solid transparent;
-transition: all 0.3s;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s;
 }
 .rb-nav.scrolled {
-border-bottom-color: var(–border);
-background: rgba(255, 255, 255, 0.95);
+  border-bottom-color: var(--border);
+  background: rgba(255, 255, 255, 0.95);
 }
 .rb-nav-inner {
-max-width: var(–container-max);
-margin: 0 auto;
-padding: 0 var(–container-px);
-height: 64px;
-display: flex;
-align-items: center;
-justify-content: space-between;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .rb-logo {
-display: flex;
-align-items: center;
-gap: 10px;
-font-family: var(–sans);
-font-weight: 700;
-font-size: 18px;
-letter-spacing: -0.02em;
-color: var(–ink-900);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
 }
 .rb-logo-mark {
-width: 30px;
-height: 30px;
-background: var(–ink-900);
-border-radius: 8px;
-display: grid;
-place-items: center;
-color: var(–white);
+  width: 30px;
+  height: 30px;
+  background: var(--ink-900);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
 }
 .rb-logo-mark svg { width: 16px; height: 16px; }
 
 .rb-nav-links {
-display: flex;
-align-items: center;
-gap: 28px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
 }
 .rb-nav-link {
-font-family: var(–sans);
-font-size: 14px;
-font-weight: 500;
-color: var(–ink-500);
-transition: color 0.15s;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-500);
+  transition: color 0.15s;
 }
-.rb-nav-link:hover { color: var(–ink-900); }
+.rb-nav-link:hover { color: var(--ink-900); }
 .rb-nav-cta {
-font-family: var(–sans);
-font-size: 14px;
-font-weight: 600;
-background: var(–ink-900);
-color: var(–white);
-padding: 10px 16px;
-border-radius: 10px;
-transition: all 0.2s;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--ink-900);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 10px;
+  transition: all 0.2s;
 }
 .rb-nav-cta:hover {
-background: var(–blue-700);
-transform: translateY(-1px);
+  background: var(--blue-700);
+  transform: translateY(-1px);
 }
 .rb-menu-btn {
-display: none;
-width: 40px;
-height: 40px;
-border-radius: 10px;
-background: var(–surface);
-color: var(–ink-900);
-align-items: center;
-justify-content: center;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink-900);
+  align-items: center;
+  justify-content: center;
 }
 .rb-menu-btn svg { width: 20px; height: 20px; }
 
 @media (max-width: 768px) {
-.rb-nav-links { display: none; }
-.rb-menu-btn { display: flex; }
+  .rb-nav-links { display: none; }
+  .rb-menu-btn { display: flex; }
 }
 
 /* MOBILE MENU */
 .rb-mobile-menu {
-position: fixed;
-inset: 0;
-background: var(–white);
-z-index: 150;
-transform: translateX(100%);
-transition: transform 0.3s ease;
-overflow-y: auto;
-padding: 80px 24px 40px;
-visibility: hidden;
+  position: fixed;
+  inset: 0;
+  background: var(--white);
+  z-index: 150;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  padding: 80px 24px 40px;
+  visibility: hidden;
 }
 .rb-mobile-menu.open {
-transform: translateX(0);
-visibility: visible;
+  transform: translateX(0);
+  visibility: visible;
 }
 .rb-mobile-close {
-position: absolute;
-top: 20px;
-right: 20px;
-width: 40px;
-height: 40px;
-border-radius: 10px;
-background: var(–surface);
-display: grid;
-place-items: center;
-color: var(–ink-900);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  color: var(--ink-900);
 }
 .rb-mobile-close svg { width: 20px; height: 20px; }
 .rb-mobile-section-label {
-font-family: var(–sans);
-font-size: 11px;
-font-weight: 700;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-color: var(–ink-400);
-margin: 24px 0 12px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+  margin: 24px 0 12px;
 }
 .rb-mobile-link {
-display: flex;
-align-items: center;
-padding: 14px 0;
-font-family: var(–sans);
-font-size: 17px;
-font-weight: 500;
-color: var(–ink-900);
-border-bottom: 1px solid var(–border);
+  display: flex;
+  align-items: center;
+  padding: 14px 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink-900);
+  border-bottom: 1px solid var(--border);
 }
 .rb-mobile-link.tool-link {
-gap: 14px;
-padding: 16px;
-margin-bottom: 8px;
-background: var(–surface);
-border-radius: 12px;
-border: none;
+  gap: 14px;
+  padding: 16px;
+  margin-bottom: 8px;
+  background: var(--surface);
+  border-radius: 12px;
+  border: none;
 }
 .rb-mobile-link-icon {
-width: 36px;
-height: 36px;
-background: var(–white);
-border-radius: 9px;
-display: grid;
-place-items: center;
-color: var(–blue-600);
-flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: var(--white);
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  color: var(--blue-600);
+  flex-shrink: 0;
 }
 .rb-mobile-link-icon svg { width: 18px; height: 18px; }
 .rb-mobile-cta {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-margin-top: 24px;
-width: 100%;
-padding: 14px 22px;
-background: #25D366;
-color: var(–white);
-border-radius: 12px;
-font-family: var(–sans);
-font-size: 15px;
-font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  width: 100%;
+  padding: 14px 22px;
+  background: #25D366;
+  color: var(--white);
+  border-radius: 12px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
 }
 .rb-mobile-cta svg { width: 16px; height: 16px; }
 
 /* FOOTER */
 .rb-footer {
-background: var(–ink-900);
-color: rgba(255, 255, 255, 0.5);
-padding: 48px 0 32px;
-border-top: 1px solid rgba(255, 255, 255, 0.08);
-font-family: var(–sans);
-font-size: 13px;
+  background: var(--ink-900);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 48px 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--sans);
+  font-size: 13px;
 }
 .rb-footer-inner {
-max-width: var(–container-max);
-margin: 0 auto;
-padding: 0 var(–container-px);
-display: flex;
-justify-content: space-between;
-gap: 20px;
-flex-wrap: wrap;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 .rb-footer-left {
-display: flex;
-align-items: center;
-gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 .rb-footer-logo-mark {
-width: 24px;
-height: 24px;
-background: rgba(255, 255, 255, 0.12);
-border-radius: 6px;
-display: grid;
-place-items: center;
-color: var(–white);
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
 }
 .rb-footer-logo-mark svg { width: 12px; height: 12px; }
 .rb-footer a {
-color: rgba(255, 255, 255, 0.5);
-transition: color 0.15s;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.15s;
 }
-.rb-footer a:hover { color: var(–white); }
+.rb-footer a:hover { color: var(--white); }
+
 
 /* ============================================================
-COCUK REHBER — SHARED STYLE
-3 yaş rehberi sayfasının ortak CSS’i
-============================================================ */
+   COCUK REHBER — SHARED STYLE
+   3 yaş rehberi sayfasının ortak CSS'i
+   ============================================================ */
 
 /* Fallback değişkenler — shared-theme.css yüklenmezse temel görünüm korunur */
 :root {
-–white: #ffffff;
-–off-white: #fafbfc;
-–surface: #f5f7fa;
-–border: #e4e8ed;
-–border-strong: #d0d6dd;
-–ink-900: #0f172a;
-–ink-800: #1e293b;
-–ink-700: #334155;
-–ink-500: #475569;
-–ink-400: #64748b;
-–ink-300: #94a3b8;
-–blue-50: #eff6ff;
-–blue-100: #dbeafe;
-–blue-500: #3b82f6;
-–blue-600: #2563eb;
-–blue-700: #1d4ed8;
-–blue-900: #1e3a8a;
-–green-50: #ecfdf5;
-–green-500: #10b981;
-–green-600: #059669;
-–amber-50: #fffbeb;
-–amber-500: #f59e0b;
-–red-50: #fef2f2;
-–red-500: #ef4444;
-–red-700: #b91c1c;
-–serif: ‘Newsreader’, Georgia, serif;
-–sans: ‘DM Sans’, -apple-system, BlinkMacSystemFont, sans-serif;
-–shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
-–shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
-–shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
-–shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
+  --white: #ffffff;
+  --off-white: #fafbfc;
+  --surface: #f5f7fa;
+  --border: #e4e8ed;
+  --border-strong: #d0d6dd;
+  --ink-900: #0f172a;
+  --ink-800: #1e293b;
+  --ink-700: #334155;
+  --ink-500: #475569;
+  --ink-400: #64748b;
+  --ink-300: #94a3b8;
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-900: #1e3a8a;
+  --green-50: #ecfdf5;
+  --green-500: #10b981;
+  --green-600: #059669;
+  --amber-50: #fffbeb;
+  --amber-500: #f59e0b;
+  --red-50: #fef2f2;
+  --red-500: #ef4444;
+  --red-700: #b91c1c;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
 }
 
-- { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
-/* Global media reset — SVG ve img’in taşmasını engeller */
+/* Global media reset — SVG ve img'in taşmasını engeller */
 img, svg { display: block; max-width: 100%; height: auto; }
 
 html { scroll-behavior: smooth; }
 body {
-font-family: var(–sans);
-color: var(–ink-700);
-background: var(–off-white);
-line-height: 1.6;
-font-size: 16px;
--webkit-font-smoothing: antialiased;
-min-height: 100vh;
+  font-family: var(--sans);
+  color: var(--ink-700);
+  background: var(--off-white);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
@@ -332,383 +332,383 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .guide-hero { padding: 64px 0 40px; text-align: left; }
 
 .guide-kicker {
-display: inline-flex; align-items: center; gap: 8px;
-padding: 6px 14px; border-radius: 100px;
-font-size: 11.5px; font-weight: 700;
-letter-spacing: 0.08em; text-transform: uppercase;
-margin-bottom: 22px; color: var(–white);
-background: linear-gradient(135deg, var(–blue-600), #6d28d9);
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 100px;
+  font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 22px; color: var(--white);
+  background: linear-gradient(135deg, var(--blue-600), #6d28d9);
 }
-.guide-kicker-dot { width: 6px; height: 6px; background: var(–white); border-radius: 50%; }
+.guide-kicker-dot { width: 6px; height: 6px; background: var(--white); border-radius: 50%; }
 
 h1 {
-font-size: clamp(34px, 5.5vw, 52px); font-weight: 700;
-color: var(–ink-900); letter-spacing: -0.04em;
-line-height: 1.02; margin-bottom: 22px;
+  font-size: clamp(34px, 5.5vw, 52px); font-weight: 700;
+  color: var(--ink-900); letter-spacing: -0.04em;
+  line-height: 1.02; margin-bottom: 22px;
 }
 h1 .accent {
-font-family: var(–serif); font-style: italic; font-weight: 500;
-color: var(–blue-700); letter-spacing: -0.025em;
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  color: var(--blue-700); letter-spacing: -0.025em;
 }
 
 .guide-lead {
-font-size: 18px; color: var(–ink-500);
-line-height: 1.55; max-width: 620px; margin-bottom: 28px;
+  font-size: 18px; color: var(--ink-500);
+  line-height: 1.55; max-width: 620px; margin-bottom: 28px;
 }
 
 .guide-meta {
-display: flex; gap: 22px; flex-wrap: wrap;
-font-size: 13px; color: var(–ink-500);
-padding-top: 22px; border-top: 1px solid var(–border);
+  display: flex; gap: 22px; flex-wrap: wrap;
+  font-size: 13px; color: var(--ink-500);
+  padding-top: 22px; border-top: 1px solid var(--border);
 }
 .guide-meta-item { display: inline-flex; align-items: center; gap: 7px; }
-.guide-meta-item svg { width: 14px; height: 14px; color: var(–ink-400); }
+.guide-meta-item svg { width: 14px; height: 14px; color: var(--ink-400); }
 
 /* ============= TOC ============= */
 .toc {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 18px; padding: 24px 26px; margin: 36px 0;
-box-shadow: var(–shadow-sm);
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 18px; padding: 24px 26px; margin: 36px 0;
+  box-shadow: var(--shadow-sm);
 }
 .toc h3 {
-font-size: 11px; font-weight: 700; color: var(–ink-400);
-text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
+  font-size: 11px; font-weight: 700; color: var(--ink-400);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
 }
 .toc-list { display: flex; flex-direction: column; list-style: none; }
 .toc-list a {
-display: flex; align-items: center; gap: 14px;
-padding: 10px 0; font-size: 14.5px; color: var(–ink-700);
-font-weight: 500; transition: all 0.15s;
-border-bottom: 1px dashed var(–border);
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px 0; font-size: 14.5px; color: var(--ink-700);
+  font-weight: 500; transition: all 0.15s;
+  border-bottom: 1px dashed var(--border);
 }
 .toc-list li:last-child a { border-bottom: none; }
-.toc-list a:hover { color: var(–ink-900); padding-left: 4px; }
+.toc-list a:hover { color: var(--ink-900); padding-left: 4px; }
 .toc-num {
-font-family: var(–serif); font-style: italic;
-color: var(–blue-700); font-weight: 600; font-size: 16px; min-width: 26px;
+  font-family: var(--serif); font-style: italic;
+  color: var(--blue-700); font-weight: 600; font-size: 16px; min-width: 26px;
 }
 
 /* ============= SECTIONS ============= */
 section.guide-section { padding: 48px 0 8px; scroll-margin-top: 80px; }
 
 .section-num {
-font-family: var(–serif); font-style: italic;
-font-size: 15px; font-weight: 600; color: var(–blue-700);
-letter-spacing: 0.02em; margin-bottom: 10px; display: block;
+  font-family: var(--serif); font-style: italic;
+  font-size: 15px; font-weight: 600; color: var(--blue-700);
+  letter-spacing: 0.02em; margin-bottom: 10px; display: block;
 }
 
 h2 {
-font-size: clamp(26px, 4vw, 34px); font-weight: 700;
-color: var(–ink-900); letter-spacing: -0.03em;
-line-height: 1.1; margin-bottom: 18px;
+  font-size: clamp(26px, 4vw, 34px); font-weight: 700;
+  color: var(--ink-900); letter-spacing: -0.03em;
+  line-height: 1.1; margin-bottom: 18px;
 }
 h2 .accent {
-font-family: var(–serif); font-style: italic;
-color: var(–blue-700); font-weight: 500; letter-spacing: -0.02em;
+  font-family: var(--serif); font-style: italic;
+  color: var(--blue-700); font-weight: 500; letter-spacing: -0.02em;
 }
 
 h3 {
-font-size: 19px; font-weight: 700; color: var(–ink-900);
-margin: 28px 0 14px; letter-spacing: -0.015em;
+  font-size: 19px; font-weight: 700; color: var(--ink-900);
+  margin: 28px 0 14px; letter-spacing: -0.015em;
 }
 
-p { margin-bottom: 16px; line-height: 1.65; color: var(–ink-700); font-size: 16px; }
-p strong { color: var(–ink-900); font-weight: 600; }
+p { margin-bottom: 16px; line-height: 1.65; color: var(--ink-700); font-size: 16px; }
+p strong { color: var(--ink-900); font-weight: 600; }
 
 .intro-para {
-font-size: 17px; line-height: 1.65; color: var(–ink-700);
-margin-bottom: 24px; padding-left: 18px;
-border-left: 3px solid var(–blue-600);
+  font-size: 17px; line-height: 1.65; color: var(--ink-700);
+  margin-bottom: 24px; padding-left: 18px;
+  border-left: 3px solid var(--blue-600);
 }
 
 /* ============= TIP CARD ============= */
 .tip-card {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 14px; padding: 20px 22px; margin: 14px 0;
-display: flex; gap: 16px; align-items: flex-start;
-transition: transform 0.15s;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 22px; margin: 14px 0;
+  display: flex; gap: 16px; align-items: flex-start;
+  transition: transform 0.15s;
 }
-.tip-card:hover { transform: translateY(-1px); box-shadow: var(–shadow-md); }
+.tip-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
 .tip-icon {
-width: 42px; height: 42px; border-radius: 12px;
-display: grid; place-items: center; flex-shrink: 0;
+  width: 42px; height: 42px; border-radius: 12px;
+  display: grid; place-items: center; flex-shrink: 0;
 }
 .tip-icon svg { width: 20px; height: 20px; }
-.tip-icon.green { background: var(–green-50); color: var(–green-600); }
-.tip-icon.amber { background: var(–amber-50); color: #a16207; }
-.tip-icon.red { background: var(–red-50); color: var(–red-700); }
-.tip-icon.blue { background: var(–blue-50); color: var(–blue-700); }
+.tip-icon.green { background: var(--green-50); color: var(--green-600); }
+.tip-icon.amber { background: var(--amber-50); color: #a16207; }
+.tip-icon.red { background: var(--red-50); color: var(--red-700); }
+.tip-icon.blue { background: var(--blue-50); color: var(--blue-700); }
 .tip-icon.purple { background: #ede9fe; color: #6d28d9; }
 
 .tip-content { flex: 1; }
 .tip-content h4 {
-font-size: 15.5px; font-weight: 700; color: var(–ink-900);
-margin-bottom: 6px; letter-spacing: -0.01em;
+  font-size: 15.5px; font-weight: 700; color: var(--ink-900);
+  margin-bottom: 6px; letter-spacing: -0.01em;
 }
 .tip-content p {
-font-size: 14px; color: var(–ink-500);
-margin-bottom: 0; line-height: 1.55;
+  font-size: 14px; color: var(--ink-500);
+  margin-bottom: 0; line-height: 1.55;
 }
 
 /* ============= STAT GRID ============= */
 .stat-grid {
-display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-gap: 12px; margin: 20px 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px; margin: 20px 0;
 }
 .stat-card {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 14px; padding: 20px 18px; text-align: center;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 18px; text-align: center;
 }
 .stat-num {
-font-family: var(–serif); font-style: italic;
-font-size: 36px; font-weight: 600; color: var(–blue-700);
-letter-spacing: -0.03em; line-height: 1;
-margin-bottom: 6px; display: block;
+  font-family: var(--serif); font-style: italic;
+  font-size: 36px; font-weight: 600; color: var(--blue-700);
+  letter-spacing: -0.03em; line-height: 1;
+  margin-bottom: 6px; display: block;
 }
-.stat-label { font-size: 12.5px; color: var(–ink-500); line-height: 1.4; }
+.stat-label { font-size: 12.5px; color: var(--ink-500); line-height: 1.4; }
 
 /* ============= CHECKLIST ============= */
 .checklist {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 16px; padding: 22px 24px; margin: 18px 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 22px 24px; margin: 18px 0;
 }
 .checklist h4 {
-font-size: 12px; font-weight: 700; color: var(–ink-500);
-text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;
+  font-size: 12px; font-weight: 700; color: var(--ink-500);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;
 }
 .checklist ul { list-style: none; }
 .checklist li {
-display: flex; align-items: flex-start; gap: 12px;
-padding: 9px 0; font-size: 14.5px; line-height: 1.6;
-color: var(–ink-700); border-bottom: 1px dashed var(–border);
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 9px 0; font-size: 14.5px; line-height: 1.6;
+  color: var(--ink-700); border-bottom: 1px dashed var(--border);
 }
 .checklist li:last-child { border-bottom: none; }
 .checklist li::before {
-content: ‘’; width: 18px; height: 18px;
-background: var(–green-50); border-radius: 50%;
-background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ viewBox=‘0 0 24 24’ fill=‘none’ stroke=’%2310b981’ stroke-width=‘3’ stroke-linecap=‘round’ stroke-linejoin=‘round’%3E%3Cpolyline points=‘20 6 9 17 4 12’/%3E%3C/svg%3E”);
-background-size: 11px; background-position: center; background-repeat: no-repeat;
-flex-shrink: 0; margin-top: 3px;
+  content: ''; width: 18px; height: 18px;
+  background: var(--green-50); border-radius: 50%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-size: 11px; background-position: center; background-repeat: no-repeat;
+  flex-shrink: 0; margin-top: 3px;
 }
 
 .avoid-list li::before {
-background: var(–red-50);
-background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ viewBox=‘0 0 24 24’ fill=‘none’ stroke=’%23ef4444’ stroke-width=‘3’ stroke-linecap=‘round’ stroke-linejoin=‘round’%3E%3Cline x1=‘18’ y1=‘6’ x2=‘6’ y2=‘18’/%3E%3Cline x1=‘6’ y1=‘6’ x2=‘18’ y2=‘18’/%3E%3C/svg%3E”);
-background-size: 11px;
+  background: var(--red-50);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E");
+  background-size: 11px;
 }
 
 /* ============= CALLOUT ============= */
 .callout {
-background: linear-gradient(135deg, var(–blue-50), #f5f7fa);
-border-left: 4px solid var(–blue-600);
-border-radius: 12px; padding: 20px 24px; margin: 24px 0;
-font-size: 15.5px; line-height: 1.6; color: var(–ink-700);
+  background: linear-gradient(135deg, var(--blue-50), #f5f7fa);
+  border-left: 4px solid var(--blue-600);
+  border-radius: 12px; padding: 20px 24px; margin: 24px 0;
+  font-size: 15.5px; line-height: 1.6; color: var(--ink-700);
 }
-.callout strong { color: var(–ink-900); }
+.callout strong { color: var(--ink-900); }
 .callout-label {
-display: block; font-size: 11px; font-weight: 700;
-color: var(–blue-700); text-transform: uppercase;
-letter-spacing: 0.08em; margin-bottom: 6px;
+  display: block; font-size: 11px; font-weight: 700;
+  color: var(--blue-700); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 6px;
 }
 
 /* ============= EXERCISE CARDS ============= */
 .exercise-card {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 16px; padding: 22px 24px;
-margin-bottom: 14px; transition: all 0.15s;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 22px 24px;
+  margin-bottom: 14px; transition: all 0.15s;
 }
 .exercise-card:hover {
-border-color: var(–ink-300); box-shadow: var(–shadow-md);
+  border-color: var(--ink-300); box-shadow: var(--shadow-md);
 }
 
 .exercise-head {
-display: flex; align-items: flex-start; justify-content: space-between;
-gap: 14px; margin-bottom: 14px; padding-bottom: 14px;
-border-bottom: 1px solid var(–border);
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 14px; margin-bottom: 14px; padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
 }
 .exercise-name {
-font-size: 16.5px; font-weight: 700; color: var(–ink-900);
-letter-spacing: -0.015em; display: flex; align-items: center; gap: 10px;
+  font-size: 16.5px; font-weight: 700; color: var(--ink-900);
+  letter-spacing: -0.015em; display: flex; align-items: center; gap: 10px;
 }
 .exercise-num {
-width: 28px; height: 28px; background: var(–ink-900);
-color: var(–white); border-radius: 50%;
-display: grid; place-items: center;
-font-size: 13px; font-weight: 700; flex-shrink: 0;
+  width: 28px; height: 28px; background: var(--ink-900);
+  color: var(--white); border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
 }
 .exercise-meta {
-font-family: var(–serif); font-style: italic;
-font-size: 13.5px; color: var(–blue-700);
-font-weight: 500; white-space: nowrap; padding-top: 4px;
+  font-family: var(--serif); font-style: italic;
+  font-size: 13.5px; color: var(--blue-700);
+  font-weight: 500; white-space: nowrap; padding-top: 4px;
 }
 
 .exercise-steps { list-style: none; counter-reset: step; }
 .exercise-steps li {
-counter-increment: step; padding: 8px 0 8px 32px;
-font-size: 14.5px; line-height: 1.6;
-color: var(–ink-700); position: relative;
+  counter-increment: step; padding: 8px 0 8px 32px;
+  font-size: 14.5px; line-height: 1.6;
+  color: var(--ink-700); position: relative;
 }
 .exercise-steps li::before {
-content: counter(step); position: absolute;
-left: 0; top: 9px; width: 22px; height: 22px;
-background: var(–surface); border-radius: 50%;
-display: grid; place-items: center;
-font-size: 11.5px; font-weight: 700; color: var(–ink-700);
+  content: counter(step); position: absolute;
+  left: 0; top: 9px; width: 22px; height: 22px;
+  background: var(--surface); border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 11.5px; font-weight: 700; color: var(--ink-700);
 }
 
 /* ============= COMPARE BLOCK ============= */
 .compare-block {
-display: grid; grid-template-columns: 1fr 1fr;
-gap: 14px; margin: 20px 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; margin: 20px 0;
 }
 @media (max-width: 600px) { .compare-block { grid-template-columns: 1fr; } }
 .compare-side {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 14px; padding: 18px 20px;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 20px;
 }
 .compare-side.bad {
-background: linear-gradient(180deg, #fef2f2, var(–white));
-border-color: #fecaca;
+  background: linear-gradient(180deg, #fef2f2, var(--white));
+  border-color: #fecaca;
 }
 .compare-side.good {
-background: linear-gradient(180deg, #ecfdf5, var(–white));
-border-color: #a7f3d0;
+  background: linear-gradient(180deg, #ecfdf5, var(--white));
+  border-color: #a7f3d0;
 }
 .compare-label {
-display: inline-flex; align-items: center; gap: 6px;
-font-size: 11px; font-weight: 700;
-letter-spacing: 0.08em; text-transform: uppercase;
-margin-bottom: 10px; padding: 3px 10px; border-radius: 100px;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 10px; padding: 3px 10px; border-radius: 100px;
 }
-.compare-side.bad .compare-label { background: var(–red-50); color: var(–red-700); }
-.compare-side.good .compare-label { background: var(–green-50); color: var(–green-600); }
+.compare-side.bad .compare-label { background: var(--red-50); color: var(--red-700); }
+.compare-side.good .compare-label { background: var(--green-50); color: var(--green-600); }
 .compare-side h4 {
-font-size: 15px; font-weight: 700;
-color: var(–ink-900); margin-bottom: 6px; letter-spacing: -0.01em;
+  font-size: 15px; font-weight: 700;
+  color: var(--ink-900); margin-bottom: 6px; letter-spacing: -0.01em;
 }
 .compare-side p {
-font-size: 13.5px; color: var(–ink-500);
-line-height: 1.55; margin-bottom: 0;
+  font-size: 13.5px; color: var(--ink-500);
+  line-height: 1.55; margin-bottom: 0;
 }
 
 /* ============= RED FLAGS ============= */
 .red-flags-block {
-background: linear-gradient(135deg, var(–red-50), #fee2e2);
-border: 2px solid #fca5a5; border-radius: 18px;
-padding: 28px; margin: 32px 0;
+  background: linear-gradient(135deg, var(--red-50), #fee2e2);
+  border: 2px solid #fca5a5; border-radius: 18px;
+  padding: 28px; margin: 32px 0;
 }
 .red-flags-block h3 {
-color: var(–red-700); margin-top: 0; margin-bottom: 12px;
-display: flex; align-items: center; gap: 12px; font-size: 20px;
+  color: var(--red-700); margin-top: 0; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px; font-size: 20px;
 }
 .red-flags-block h3 svg { width: 24px; height: 24px; flex-shrink: 0; }
 .red-flags-block p {
-color: var(–ink-700); margin-bottom: 16px; font-size: 14.5px;
+  color: var(--ink-700); margin-bottom: 16px; font-size: 14.5px;
 }
 .red-flags-block ul { list-style: none; padding: 0; }
 .red-flags-block li {
-padding: 9px 0 9px 26px; font-size: 14.5px;
-color: var(–ink-700); position: relative;
-line-height: 1.55; border-bottom: 1px dashed rgba(252, 165, 165, 0.5);
+  padding: 9px 0 9px 26px; font-size: 14.5px;
+  color: var(--ink-700); position: relative;
+  line-height: 1.55; border-bottom: 1px dashed rgba(252, 165, 165, 0.5);
 }
 .red-flags-block li:last-child { border-bottom: none; }
 .red-flags-block li::before {
-content: ‘’; position: absolute;
-left: 0; top: 16px; width: 8px; height: 8px;
-background: var(–red-500); border-radius: 50%;
+  content: ''; position: absolute;
+  left: 0; top: 16px; width: 8px; height: 8px;
+  background: var(--red-500); border-radius: 50%;
 }
 
 /* ============= CTA ============= */
 .guide-cta {
-background: linear-gradient(135deg, var(–ink-900), #1e1b4b);
-color: var(–white); border-radius: 22px;
-padding: 40px 32px; margin: 44px 0;
-text-align: center; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--ink-900), #1e1b4b);
+  color: var(--white); border-radius: 22px;
+  padding: 40px 32px; margin: 44px 0;
+  text-align: center; position: relative; overflow: hidden;
 }
 .guide-cta::before {
-content: ‘’; position: absolute;
-top: -50%; left: -20%; width: 60%; height: 200%;
-background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, transparent 60%);
-pointer-events: none;
+  content: ''; position: absolute;
+  top: -50%; left: -20%; width: 60%; height: 200%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, transparent 60%);
+  pointer-events: none;
 }
 .guide-cta > * { position: relative; }
 .guide-cta h3 {
-color: var(–white); font-size: 26px; font-weight: 700;
-letter-spacing: -0.02em; margin: 0 0 10px;
+  color: var(--white); font-size: 26px; font-weight: 700;
+  letter-spacing: -0.02em; margin: 0 0 10px;
 }
 .guide-cta p {
-color: rgba(255, 255, 255, 0.7); font-size: 15px;
-margin-bottom: 24px; max-width: 480px;
-margin-left: auto; margin-right: auto;
+  color: rgba(255, 255, 255, 0.7); font-size: 15px;
+  margin-bottom: 24px; max-width: 480px;
+  margin-left: auto; margin-right: auto;
 }
 .guide-cta-buttons {
-display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
 }
 
 .btn {
-display: inline-flex; align-items: center; justify-content: center;
-gap: 8px; padding: 14px 22px; border-radius: 12px;
-font-size: 14.5px; font-weight: 600;
-transition: all 0.2s; line-height: 1; cursor: pointer; border: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 14px 22px; border-radius: 12px;
+  font-size: 14.5px; font-weight: 600;
+  transition: all 0.2s; line-height: 1; cursor: pointer; border: none;
 }
-.btn-primary { background: var(–white); color: var(–ink-900); }
+.btn-primary { background: var(--white); color: var(--ink-900); }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); }
-.btn-wa { background: #25D366; color: var(–white); }
+.btn-wa { background: #25D366; color: var(--white); }
 .btn-wa:hover { background: #20b859; transform: translateY(-2px); }
 .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 
 /* ============= OTHER GUIDES ============= */
 .other-guides { margin: 44px 0; }
 .other-guides h3 {
-font-size: 12px; font-weight: 700; color: var(–ink-400);
-text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;
+  font-size: 12px; font-weight: 700; color: var(--ink-400);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;
 }
 .other-guides-grid {
-display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
 }
 @media (max-width: 480px) { .other-guides-grid { grid-template-columns: 1fr; } }
 .other-guide-link {
-background: var(–white); border: 1px solid var(–border);
-border-radius: 14px; padding: 18px 20px;
-transition: all 0.15s; display: block;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 20px;
+  transition: all 0.15s; display: block;
 }
 .other-guide-link:hover {
-border-color: var(–ink-700); transform: translateY(-2px);
-box-shadow: var(–shadow-md);
+  border-color: var(--ink-700); transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 .other-guide-age {
-font-family: var(–serif); font-style: italic;
-font-size: 22px; font-weight: 600; color: var(–blue-700);
-margin-bottom: 4px; letter-spacing: -0.02em;
+  font-family: var(--serif); font-style: italic;
+  font-size: 22px; font-weight: 600; color: var(--blue-700);
+  margin-bottom: 4px; letter-spacing: -0.02em;
 }
-.other-guide-label { font-size: 13px; color: var(–ink-500); }
+.other-guide-label { font-size: 13px; color: var(--ink-500); }
 
 /* ============= DISCLAIMER ============= */
 .guide-disclaimer {
-background: var(–surface); border-radius: 12px;
-padding: 18px 20px; margin: 36px 0 64px;
-font-size: 13px; color: var(–ink-500); line-height: 1.6;
-border-left: 3px solid var(–ink-300);
+  background: var(--surface); border-radius: 12px;
+  padding: 18px 20px; margin: 36px 0 64px;
+  font-size: 13px; color: var(--ink-500); line-height: 1.6;
+  border-left: 3px solid var(--ink-300);
 }
-.guide-disclaimer strong { color: var(–ink-700); }
+.guide-disclaimer strong { color: var(--ink-700); }
 
 /* ============= QUICK REF BOX ============= */
 .quick-ref {
-background: var(–white); border: 2px solid var(–ink-900);
-border-radius: 16px; padding: 22px 24px; margin: 24px 0;
+  background: var(--white); border: 2px solid var(--ink-900);
+  border-radius: 16px; padding: 22px 24px; margin: 24px 0;
 }
 .quick-ref-label {
-display: inline-block; font-size: 11px; font-weight: 700;
-background: var(–ink-900); color: var(–white);
-padding: 4px 10px; border-radius: 6px;
-letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
+  display: inline-block; font-size: 11px; font-weight: 700;
+  background: var(--ink-900); color: var(--white);
+  padding: 4px 10px; border-radius: 6px;
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
 }
 .quick-ref h4 {
-font-size: 17px; font-weight: 700;
-color: var(–ink-900); margin-bottom: 8px;
+  font-size: 17px; font-weight: 700;
+  color: var(--ink-900); margin-bottom: 8px;
 }
-.quick-ref p { font-size: 14.5px; color: var(–ink-700); margin-bottom: 0; }
+.quick-ref p { font-size: 14.5px; color: var(--ink-700); margin-bottom: 0; }
 
 /* ============= AGE VARIANTS ============= */
 body.age-3-6 .guide-kicker { background: linear-gradient(135deg, #f59e0b, #ef4444); }
@@ -721,12 +721,12 @@ body.age-3-6 .stat-num,
 body.age-3-6 .exercise-meta,
 body.age-3-6 .callout-label { color: #d97706; }
 body.age-3-6 .callout {
-background: linear-gradient(135deg, var(–amber-50), #fef3c7);
-border-left-color: #f59e0b;
+  background: linear-gradient(135deg, var(--amber-50), #fef3c7);
+  border-left-color: #f59e0b;
 }
 body.age-3-6 .intro-para { border-left-color: #f59e0b; }
 
-body.age-13-18 .guide-kicker { background: linear-gradient(135deg, #6d28d9, var(–ink-900)); }
+body.age-13-18 .guide-kicker { background: linear-gradient(135deg, #6d28d9, var(--ink-900)); }
 body.age-13-18 .section-num,
 body.age-13-18 h1 .accent,
 body.age-13-18 h2 .accent,
@@ -736,8 +736,8 @@ body.age-13-18 .stat-num,
 body.age-13-18 .exercise-meta,
 body.age-13-18 .callout-label { color: #6d28d9; }
 body.age-13-18 .callout {
-background: linear-gradient(135deg, #ede9fe, #f5f3ff);
-border-left-color: #7c3aed;
+  background: linear-gradient(135deg, #ede9fe, #f5f3ff);
+  border-left-color: #7c3aed;
 }
 body.age-13-18 .intro-para { border-left-color: #7c3aed; }
 
@@ -772,361 +772,357 @@ body.age-13-18 .intro-para { border-left-color: #7c3aed; }
       </div>
     </header>
 
-```
-<nav class="toc">
-  <h3>Bu sayfada</h3>
-  <ul class="toc-list">
-    <li><a href="#buyume"><span class="toc-num">01</span>Hızlı büyüme ve postür</a></li>
-    <li><a href="#skolyoz"><span class="toc-num">02</span>İdiyopatik skolyoz: ne, ne değil</a></li>
-    <li><a href="#tarama"><span class="toc-num">03</span>Evde Adams testi nasıl yapılır?</a></li>
-    <li><a href="#teknoloji"><span class="toc-num">04</span>Telefon, oyun ve text neck</a></li>
-    <li><a href="#spor"><span class="toc-num">05</span>Spor ve postür</a></li>
-    <li><a href="#egzersiz"><span class="toc-num">06</span>Günlük 10 dakikalık rutin</a></li>
-    <li><a href="#kirmizi"><span class="toc-num">07</span>Ne zaman fizyoterapist görmeli?</a></li>
-  </ul>
-</nav>
+    <nav class="toc">
+      <h3>Bu sayfada</h3>
+      <ul class="toc-list">
+        <li><a href="#buyume"><span class="toc-num">01</span>Hızlı büyüme ve postür</a></li>
+        <li><a href="#skolyoz"><span class="toc-num">02</span>İdiyopatik skolyoz: ne, ne değil</a></li>
+        <li><a href="#tarama"><span class="toc-num">03</span>Evde Adams testi nasıl yapılır?</a></li>
+        <li><a href="#teknoloji"><span class="toc-num">04</span>Telefon, oyun ve text neck</a></li>
+        <li><a href="#spor"><span class="toc-num">05</span>Spor ve postür</a></li>
+        <li><a href="#egzersiz"><span class="toc-num">06</span>Günlük 10 dakikalık rutin</a></li>
+        <li><a href="#kirmizi"><span class="toc-num">07</span>Ne zaman fizyoterapist görmeli?</a></li>
+      </ul>
+    </nav>
 
-<section class="guide-section" id="buyume">
-  <span class="section-num">01</span>
-  <h2>Hızlı büyüme ve <span class="accent">postür ilişkisi.</span></h2>
+    <section class="guide-section" id="buyume">
+      <span class="section-num">01</span>
+      <h2>Hızlı büyüme ve <span class="accent">postür ilişkisi.</span></h2>
 
-  <p class="intro-para">Ergenlikte (kızlarda 10–14, erkeklerde 12–16 yaş arası) çocuklar yılda 8–12 cm uzayabilir. Bu hızlı uzama döneminde kemikler kaslardan daha hızlı büyür — sonuç: gergin, kısalmış kaslar, geçici beceriksizlik ve postür alışkanlıklarının değişmesi.</p>
+      <p class="intro-para">Ergenlikte (kızlarda 10–14, erkeklerde 12–16 yaş arası) çocuklar yılda 8–12 cm uzayabilir. Bu hızlı uzama döneminde kemikler kaslardan daha hızlı büyür — sonuç: gergin, kısalmış kaslar, geçici beceriksizlik ve postür alışkanlıklarının değişmesi.</p>
 
-  <h3>Bu dönemde sıkça görülen şeyler</h3>
+      <h3>Bu dönemde sıkça görülen şeyler</h3>
 
-  <div class="tip-card">
-    <div class="tip-icon amber">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 12h14"/></svg>
-    </div>
-    <div class="tip-content">
-      <h4>Kifoz (kambur duruş)</h4>
-      <p>Boy uzayınca uzun görünmek istemeyen genç sırtını kamburlaştırarak gizlemeye çalışır. Birkaç ay içinde kalıcı duruşa dönüşebilir.</p>
-    </div>
-  </div>
-
-  <div class="tip-card">
-    <div class="tip-icon amber">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M12 3v18"/></svg>
-    </div>
-    <div class="tip-content">
-      <h4>Hamstring kısalığı</h4>
-      <p>Bacak arkası kasları kemiklerden geride kalır. Genç eğilince elleri yere değmez, koşarken adım kısalır. Esneme programı kritik.</p>
-    </div>
-  </div>
-
-  <div class="tip-card">
-    <div class="tip-icon amber">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
-    </div>
-    <div class="tip-content">
-      <h4>Geçici dengesizlik</h4>
-      <p>Vücut yeni boyutlara alışana kadar koordinasyon biraz bozulabilir. "Sakar dönemi" geçicidir — gence sabırlı olun.</p>
-    </div>
-  </div>
-
-  <div class="callout">
-    <span class="callout-label">Önemli</span>
-    Bu dönem aynı zamanda <strong>idiyopatik skolyozun en sık görüldüğü yaş.</strong> Tarama yaşı kızlarda 10–12, erkeklerde 13–14. Hızlı büyüme döneminde 6 ayda bir kontrol idealdir.
-  </div>
-</section>
-
-<section class="guide-section" id="skolyoz">
-  <span class="section-num">02</span>
-  <h2>İdiyopatik skolyoz: <span class="accent">ne, ne değil.</span></h2>
-
-  <p>Skolyoz, omurganın yandan bakıldığında düz olması gerekirken yana doğru eğilmesi ve dönmesidir. <strong>Adolesan idiyopatik skolyoz (AIS),</strong> 10–18 yaş arası ortaya çıkan, sebebi bilinmeyen formdur ve bu yaş grubunun yaklaşık <strong>%2–3'ünü</strong> etkiler.</p>
-
-  <div class="stat-grid">
-    <div class="stat-card">
-      <span class="stat-num">%2–3</span>
-      <div class="stat-label">10–18 yaş AIS prevalansı</div>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">10°</span>
-      <div class="stat-label">Cobb açısı tanı eşiği</div>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">25–40°</span>
-      <div class="stat-label">Korse aralığı</div>
-    </div>
-  </div>
-
-  <h3>Bilmesi gerekenler</h3>
-
-  <div class="checklist">
-    <ul>
-      <li><strong>Çoğu skolyoz hafiftir.</strong> Cobb açısı 10°–25° arasında olan vakaların büyük kısmı tedavi gerektirmez, sadece izlenir.</li>
-      <li><strong>Erken yakalamak çok önemli.</strong> Hızlı büyüme döneminde tedavi en etkili olduğu zamandır.</li>
-      <li><strong>Ağrı yapmaz.</strong> Çoğu hafif skolyoz ağrısızdır — bu yüzden gözden kaçabilir.</li>
-      <li><strong>Postür bozukluğu değildir.</strong> Yanlış oturmaktan veya çantadan olmaz. Ailesel yatkınlık vardır.</li>
-      <li><strong>Korse veya cerrahi?</strong> Sadece ileri vakalarda. 25°–40° korse, 45°+ cerrahi gündeme gelir.</li>
-    </ul>
-  </div>
-
-  <div class="quick-ref">
-    <span class="quick-ref-label">Sık Soru</span>
-    <h4>Skolyoz egzersizle düzeltilebilir mi?</h4>
-    <p>Hafif vakalarda (Cobb &lt; 25°) <strong>SEAS</strong> ve <strong>Schroth</strong> gibi özel fizyoterapi yöntemleri eğriliğin ilerlemesini yavaşlatabilir. Tek başına genel egzersiz veya yüzme yetmez. Pediatrik fizyoterapiste başvurmak şart.</p>
-  </div>
-</section>
-
-<section class="guide-section" id="tarama">
-  <span class="section-num">03</span>
-  <h2>Evde Adams testi <span class="accent">nasıl yapılır?</span></h2>
-
-  <p>Adams forward bend testi, evde bile yapılabilecek basit bir tarama yöntemidir. Bu test <em>tanı koymaz</em> ama belirgin asimetri varsa fizyoterapist görme ihtiyacını ortaya çıkarır.</p>
-
-  <div class="exercise-card">
-    <div class="exercise-head">
-      <div class="exercise-name">
-        <span class="exercise-num">A</span>
-        Adams testi adımları
+      <div class="tip-card">
+        <div class="tip-icon amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 12h14"/></svg>
+        </div>
+        <div class="tip-content">
+          <h4>Kifoz (kambur duruş)</h4>
+          <p>Boy uzayınca uzun görünmek istemeyen genç sırtını kamburlaştırarak gizlemeye çalışır. Birkaç ay içinde kalıcı duruşa dönüşebilir.</p>
+        </div>
       </div>
-      <span class="exercise-meta">2 dk</span>
-    </div>
-    <ol class="exercise-steps">
-      <li>Genç dik dursun: ayaklar bitişik, dizler düz, kollar serbest sarkık.</li>
-      <li>Üstü açık veya streç olsun (tişört aşağıya sıyrılmasın, sırt görünür kalsın).</li>
-      <li>Yavaşça öne eğilsin, eller yere doğru sarksın.</li>
-      <li>Sırtı, yaklaşık yere paralel hale gelsin.</li>
-      <li>Sen tam arkadan bak — sırtın iki yanı aynı seviyede mi?</li>
-      <li>Bir taraf belirgin yüksekse (kostal arkus veya kambur şişkinlik): <strong>fizyoterapist görmeli.</strong></li>
-    </ol>
-  </div>
 
-  <div class="compare-block">
-    <div class="compare-side good">
-      <span class="compare-label">Beklenir</span>
-      <h4>Sırtın iki yanı simetrik</h4>
-      <p>Kostal arkuslar (kaburga kemerleri) aynı seviyede. Yıllık genel kontrol yeterli.</p>
-    </div>
-    <div class="compare-side bad">
-      <span class="compare-label">Şüpheli</span>
-      <h4>Bir taraf belirgin yüksek</h4>
-      <p>Bir kostal arkus dışarı çıkık veya kambur şişkin. Kesin tanı için x-ray ve uzman değerlendirmesi gerekir.</p>
-    </div>
-  </div>
-
-  <div class="callout">
-    <span class="callout-label">Pratik İpucu</span>
-    Adams testini her 6 ayda bir yapmak, hızlı büyüme dönemindeki bir genç için ideal. Telefonla aynı pozisyondan fotoğraf çekip kaydederseniz, zaman içinde değişiklikleri kıyaslayabilirsiniz.
-  </div>
-</section>
-
-<section class="guide-section" id="teknoloji">
-  <span class="section-num">04</span>
-  <h2>Telefon, oyun ve <span class="accent">"text neck".</span></h2>
-
-  <p class="intro-para">Bu yaş grubu günde ortalama 6–8 saat telefon/ekran karşısında. Boyun düz dururken 5 kg ağırlık taşır. 60° öne eğildiğinde bu yük <strong>27 kg</strong>'a çıkar. Çocuk telefon kullanırken çoğunlukla 60°'nin üzerinde eğiliyor.</p>
-
-  <h3>Bu kronik yüklenme ergenlikte ne yapar?</h3>
-
-  <div class="checklist">
-    <ul>
-      <li>Servikal disk yapılarına yük bindirir</li>
-      <li>Yuvarlak omuz ve baş öne kayması alışkanlığı yapar</li>
-      <li>Üst sırtta erken yaşta gerilim ağrıları çıkarır</li>
-      <li>Uzun vadede TMJ (çene eklemi) sorunlarına zemin hazırlar</li>
-      <li>Uyku kalitesini düşürür (yatakta telefon yüzünden)</li>
-    </ul>
-  </div>
-
-  <div class="checklist">
-    <h4>Yapılması gerekenler</h4>
-    <ul>
-      <li><strong>Telefonu göz hizasına</strong> getirme alışkanlığı kazandır. Boyun bükülmesin.</li>
-      <li><strong>Konsol oyunları için</strong> sandalye yüksekliği ayarlı olsun, ekran göz hizasında.</li>
-      <li><strong>20-20-20 kuralı:</strong> 20 dk ekran sonrası 20 sn 20 fit (~6 m) uzağa bak.</li>
-      <li><strong>Yatakta telefon yok.</strong> Yatak sadece uyku için.</li>
-      <li><strong>Ebeveyn olarak örnek ol.</strong> Eğer sen sürekli telefon eğikliğindeysen genç de aynısını yapar.</li>
-      <li><strong>Saatlik gerinme molası</strong> — alarm kurulması faydalı olabilir.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="guide-section" id="spor">
-  <span class="section-num">05</span>
-  <h2>Spor ve <span class="accent">postür ilişkisi.</span></h2>
-
-  <p>Ergen sporu ile ilgili yaygın bir yanlış anlayış var: <em>"Spor zaten yapıyor, postürü iyidir."</em> Doğru değil. Tek yönlü spor postür asimetrisi yapabilir.</p>
-
-  <div class="compare-block">
-    <div class="compare-side bad">
-      <span class="compare-label">Dikkat</span>
-      <h4>Asimetrik sporlar</h4>
-      <p>Tenis, masa tenisi, bowling, badminton, golf, tek tarafa kürek. Hep aynı kolu/tarafı kullanırlar.</p>
-    </div>
-    <div class="compare-side good">
-      <span class="compare-label">Postüre dost</span>
-      <h4>Simetrik sporlar</h4>
-      <p>Yüzme, basketbol, voleybol, çift kürek, atletizm, dans, bisiklet. İki tarafı eşit çalıştırır.</p>
-    </div>
-  </div>
-
-  <div class="checklist">
-    <h4>Spor öncesi ve sonrası</h4>
-    <ul>
-      <li><strong>Isınma:</strong> 5–10 dk dinamik germe ve düşük tempolu kardiyo.</li>
-      <li><strong>Soğuma:</strong> Statik germe (her bir kas grubuna 30 sn).</li>
-      <li><strong>Hidrasyon ve uyku:</strong> Postür kasları yorgun bedende ilk teslim olur.</li>
-      <li><strong>Asimetrik spor yapıyorsa:</strong> Karşı taraf için telafi egzersizleri (örn. tenisçi için sol-sağ kuvvet dengesi).</li>
-      <li><strong>Aşırı antrenman uyarısı:</strong> Genç sürekli aynı kası çalıştırırsa erken yıpranma olur.</li>
-    </ul>
-  </div>
-
-  <div class="quick-ref">
-    <span class="quick-ref-label">Sık Soru</span>
-    <h4>Genç ağırlık çalışabilir mi?</h4>
-    <p>Doğru tekniğe odaklanılırsa <strong>evet</strong> — kemik gelişimini engellemez, hatta destekler. Önemli olan: bir antrenör eşliği, doğru yükler, asla maksimum tek tekrar denenmemesi. Form kötüyse zarar yapar.</p>
-  </div>
-</section>
-
-<section class="guide-section" id="egzersiz">
-  <span class="section-num">06</span>
-  <h2>Günlük 10 dakikalık <span class="accent">postür rutini.</span></h2>
-
-  <p>Ergen postürünü düzeltmenin en etkili yolu, 10 dakikalık günlük rutindir. Tutarlı ve sürekli olunca işe yarar.</p>
-
-  <div class="exercise-card">
-    <div class="exercise-head">
-      <div class="exercise-name">
-        <span class="exercise-num">1</span>
-        Çene içeri çekme + duvar yaslama
+      <div class="tip-card">
+        <div class="tip-icon amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M12 3v18"/></svg>
+        </div>
+        <div class="tip-content">
+          <h4>Hamstring kısalığı</h4>
+          <p>Bacak arkası kasları kemiklerden geride kalır. Genç eğilince elleri yere değmez, koşarken adım kısalır. Esneme programı kritik.</p>
+        </div>
       </div>
-      <span class="exercise-meta">2 dk · günde</span>
-    </div>
-    <ol class="exercise-steps">
-      <li>Sırt, baş ve kalça duvara yaslı dur.</li>
-      <li>Çeneyi içeri çek (çift çene yapar gibi).</li>
-      <li>Boynun arkasını duvara değdirmeye çalış.</li>
-      <li>10 sn tut, gevşet. 6 tekrar.</li>
-    </ol>
-  </div>
 
-  <div class="exercise-card">
-    <div class="exercise-head">
-      <div class="exercise-name">
-        <span class="exercise-num">2</span>
-        Skapular retraksiyon (omuz arkaya çekme)
+      <div class="tip-card">
+        <div class="tip-icon amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div class="tip-content">
+          <h4>Geçici dengesizlik</h4>
+          <p>Vücut yeni boyutlara alışana kadar koordinasyon biraz bozulabilir. "Sakar dönemi" geçicidir — gence sabırlı olun.</p>
+        </div>
       </div>
-      <span class="exercise-meta">2 dk · günde</span>
-    </div>
-    <ol class="exercise-steps">
-      <li>Otur veya ayakta dur, sırt dik.</li>
-      <li>Omuzları kulaklara doğru kaldırmadan, geriye-aşağı çek.</li>
-      <li>Sanki kürek kemiklerini birbirine yaklaştırır gibi.</li>
-      <li>5 sn tut, gevşet. 10 tekrar.</li>
-    </ol>
-  </div>
 
-  <div class="exercise-card">
-    <div class="exercise-head">
-      <div class="exercise-name">
-        <span class="exercise-num">3</span>
-        Kalça fleksör ve hamstring esnemesi
+      <div class="callout">
+        <span class="callout-label">Önemli</span>
+        Bu dönem aynı zamanda <strong>idiyopatik skolyozun en sık görüldüğü yaş.</strong> Tarama yaşı kızlarda 10–12, erkeklerde 13–14. Hızlı büyüme döneminde 6 ayda bir kontrol idealdir.
       </div>
-      <span class="exercise-meta">3 dk · günde</span>
-    </div>
-    <ol class="exercise-steps">
-      <li>Hamlede pozisyon al (bir diz önde, diğer arkada).</li>
-      <li>Kalça öne doğru kayarken arka bacağın önünü ger.</li>
-      <li>Her bacakta 30 sn tut.</li>
-      <li>Sonra otur, bacaklar uzanmış halde, gövdeyi öne eğ — hamstring esnesin.</li>
-      <li>30 sn tut.</li>
-    </ol>
-  </div>
+    </section>
 
-  <div class="exercise-card">
-    <div class="exercise-head">
-      <div class="exercise-name">
-        <span class="exercise-num">4</span>
-        Plank ve yan plank
+    <section class="guide-section" id="skolyoz">
+      <span class="section-num">02</span>
+      <h2>İdiyopatik skolyoz: <span class="accent">ne, ne değil.</span></h2>
+
+      <p>Skolyoz, omurganın yandan bakıldığında düz olması gerekirken yana doğru eğilmesi ve dönmesidir. <strong>Adolesan idiyopatik skolyoz (AIS),</strong> 10–18 yaş arası ortaya çıkan, sebebi bilinmeyen formdur ve bu yaş grubunun yaklaşık <strong>%2–3'ünü</strong> etkiler.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-num">%2–3</span>
+          <div class="stat-label">10–18 yaş AIS prevalansı</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">10°</span>
+          <div class="stat-label">Cobb açısı tanı eşiği</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">25–40°</span>
+          <div class="stat-label">Korse aralığı</div>
+        </div>
       </div>
-      <span class="exercise-meta">2 dk · günde</span>
-    </div>
-    <ol class="exercise-steps">
-      <li>Yüzüstü plank pozisyonunda 20 sn tut, 3 tekrar.</li>
-      <li>Yan plank her tarafa 15 sn, 2 tekrar.</li>
-      <li>Sırt düz, popo yukarı veya aşağı kaymasın.</li>
-    </ol>
-  </div>
 
-  <div class="exercise-card">
-    <div class="exercise-head">
-      <div class="exercise-name">
-        <span class="exercise-num">5</span>
-        Foam roller (varsa)
+      <h3>Bilmesi gerekenler</h3>
+
+      <div class="checklist">
+        <ul>
+          <li><strong>Çoğu skolyoz hafiftir.</strong> Cobb açısı 10°–25° arasında olan vakaların büyük kısmı tedavi gerektirmez, sadece izlenir.</li>
+          <li><strong>Erken yakalamak çok önemli.</strong> Hızlı büyüme döneminde tedavi en etkili olduğu zamandır.</li>
+          <li><strong>Ağrı yapmaz.</strong> Çoğu hafif skolyoz ağrısızdır — bu yüzden gözden kaçabilir.</li>
+          <li><strong>Postür bozukluğu değildir.</strong> Yanlış oturmaktan veya çantadan olmaz. Ailesel yatkınlık vardır.</li>
+          <li><strong>Korse veya cerrahi?</strong> Sadece ileri vakalarda. 25°–40° korse, 45°+ cerrahi gündeme gelir.</li>
+        </ul>
       </div>
-      <span class="exercise-meta">1 dk · günde</span>
+
+      <div class="quick-ref">
+        <span class="quick-ref-label">Sık Soru</span>
+        <h4>Skolyoz egzersizle düzeltilebilir mi?</h4>
+        <p>Hafif vakalarda (Cobb &lt; 25°) <strong>SEAS</strong> ve <strong>Schroth</strong> gibi özel fizyoterapi yöntemleri eğriliğin ilerlemesini yavaşlatabilir. Tek başına genel egzersiz veya yüzme yetmez. Pediatrik fizyoterapiste başvurmak şart.</p>
+      </div>
+    </section>
+
+    <section class="guide-section" id="tarama">
+      <span class="section-num">03</span>
+      <h2>Evde Adams testi <span class="accent">nasıl yapılır?</span></h2>
+
+      <p>Adams forward bend testi, evde bile yapılabilecek basit bir tarama yöntemidir. Bu test <em>tanı koymaz</em> ama belirgin asimetri varsa fizyoterapist görme ihtiyacını ortaya çıkarır.</p>
+
+      <div class="exercise-card">
+        <div class="exercise-head">
+          <div class="exercise-name">
+            <span class="exercise-num">A</span>
+            Adams testi adımları
+          </div>
+          <span class="exercise-meta">2 dk</span>
+        </div>
+        <ol class="exercise-steps">
+          <li>Genç dik dursun: ayaklar bitişik, dizler düz, kollar serbest sarkık.</li>
+          <li>Üstü açık veya streç olsun (tişört aşağıya sıyrılmasın, sırt görünür kalsın).</li>
+          <li>Yavaşça öne eğilsin, eller yere doğru sarksın.</li>
+          <li>Sırtı, yaklaşık yere paralel hale gelsin.</li>
+          <li>Sen tam arkadan bak — sırtın iki yanı aynı seviyede mi?</li>
+          <li>Bir taraf belirgin yüksekse (kostal arkus veya kambur şişkinlik): <strong>fizyoterapist görmeli.</strong></li>
+        </ol>
+      </div>
+
+      <div class="compare-block">
+        <div class="compare-side good">
+          <span class="compare-label">Beklenir</span>
+          <h4>Sırtın iki yanı simetrik</h4>
+          <p>Kostal arkuslar (kaburga kemerleri) aynı seviyede. Yıllık genel kontrol yeterli.</p>
+        </div>
+        <div class="compare-side bad">
+          <span class="compare-label">Şüpheli</span>
+          <h4>Bir taraf belirgin yüksek</h4>
+          <p>Bir kostal arkus dışarı çıkık veya kambur şişkin. Kesin tanı için x-ray ve uzman değerlendirmesi gerekir.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="callout-label">Pratik İpucu</span>
+        Adams testini her 6 ayda bir yapmak, hızlı büyüme dönemindeki bir genç için ideal. Telefonla aynı pozisyondan fotoğraf çekip kaydederseniz, zaman içinde değişiklikleri kıyaslayabilirsiniz.
+      </div>
+    </section>
+
+    <section class="guide-section" id="teknoloji">
+      <span class="section-num">04</span>
+      <h2>Telefon, oyun ve <span class="accent">"text neck".</span></h2>
+
+      <p class="intro-para">Bu yaş grubu günde ortalama 6–8 saat telefon/ekran karşısında. Boyun düz dururken 5 kg ağırlık taşır. 60° öne eğildiğinde bu yük <strong>27 kg</strong>'a çıkar. Çocuk telefon kullanırken çoğunlukla 60°'nin üzerinde eğiliyor.</p>
+
+      <h3>Bu kronik yüklenme ergenlikte ne yapar?</h3>
+
+      <div class="checklist">
+        <ul>
+          <li>Servikal disk yapılarına yük bindirir</li>
+          <li>Yuvarlak omuz ve baş öne kayması alışkanlığı yapar</li>
+          <li>Üst sırtta erken yaşta gerilim ağrıları çıkarır</li>
+          <li>Uzun vadede TMJ (çene eklemi) sorunlarına zemin hazırlar</li>
+          <li>Uyku kalitesini düşürür (yatakta telefon yüzünden)</li>
+        </ul>
+      </div>
+
+      <div class="checklist">
+        <h4>Yapılması gerekenler</h4>
+        <ul>
+          <li><strong>Telefonu göz hizasına</strong> getirme alışkanlığı kazandır. Boyun bükülmesin.</li>
+          <li><strong>Konsol oyunları için</strong> sandalye yüksekliği ayarlı olsun, ekran göz hizasında.</li>
+          <li><strong>20-20-20 kuralı:</strong> 20 dk ekran sonrası 20 sn 20 fit (~6 m) uzağa bak.</li>
+          <li><strong>Yatakta telefon yok.</strong> Yatak sadece uyku için.</li>
+          <li><strong>Ebeveyn olarak örnek ol.</strong> Eğer sen sürekli telefon eğikliğindeysen genç de aynısını yapar.</li>
+          <li><strong>Saatlik gerinme molası</strong> — alarm kurulması faydalı olabilir.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="guide-section" id="spor">
+      <span class="section-num">05</span>
+      <h2>Spor ve <span class="accent">postür ilişkisi.</span></h2>
+
+      <p>Ergen sporu ile ilgili yaygın bir yanlış anlayış var: <em>"Spor zaten yapıyor, postürü iyidir."</em> Doğru değil. Tek yönlü spor postür asimetrisi yapabilir.</p>
+
+      <div class="compare-block">
+        <div class="compare-side bad">
+          <span class="compare-label">Dikkat</span>
+          <h4>Asimetrik sporlar</h4>
+          <p>Tenis, masa tenisi, bowling, badminton, golf, tek tarafa kürek. Hep aynı kolu/tarafı kullanırlar.</p>
+        </div>
+        <div class="compare-side good">
+          <span class="compare-label">Postüre dost</span>
+          <h4>Simetrik sporlar</h4>
+          <p>Yüzme, basketbol, voleybol, çift kürek, atletizm, dans, bisiklet. İki tarafı eşit çalıştırır.</p>
+        </div>
+      </div>
+
+      <div class="checklist">
+        <h4>Spor öncesi ve sonrası</h4>
+        <ul>
+          <li><strong>Isınma:</strong> 5–10 dk dinamik germe ve düşük tempolu kardiyo.</li>
+          <li><strong>Soğuma:</strong> Statik germe (her bir kas grubuna 30 sn).</li>
+          <li><strong>Hidrasyon ve uyku:</strong> Postür kasları yorgun bedende ilk teslim olur.</li>
+          <li><strong>Asimetrik spor yapıyorsa:</strong> Karşı taraf için telafi egzersizleri (örn. tenisçi için sol-sağ kuvvet dengesi).</li>
+          <li><strong>Aşırı antrenman uyarısı:</strong> Genç sürekli aynı kası çalıştırırsa erken yıpranma olur.</li>
+        </ul>
+      </div>
+
+      <div class="quick-ref">
+        <span class="quick-ref-label">Sık Soru</span>
+        <h4>Genç ağırlık çalışabilir mi?</h4>
+        <p>Doğru tekniğe odaklanılırsa <strong>evet</strong> — kemik gelişimini engellemez, hatta destekler. Önemli olan: bir antrenör eşliği, doğru yükler, asla maksimum tek tekrar denenmemesi. Form kötüyse zarar yapar.</p>
+      </div>
+    </section>
+
+    <section class="guide-section" id="egzersiz">
+      <span class="section-num">06</span>
+      <h2>Günlük 10 dakikalık <span class="accent">postür rutini.</span></h2>
+
+      <p>Ergen postürünü düzeltmenin en etkili yolu, 10 dakikalık günlük rutindir. Tutarlı ve sürekli olunca işe yarar.</p>
+
+      <div class="exercise-card">
+        <div class="exercise-head">
+          <div class="exercise-name">
+            <span class="exercise-num">1</span>
+            Çene içeri çekme + duvar yaslama
+          </div>
+          <span class="exercise-meta">2 dk · günde</span>
+        </div>
+        <ol class="exercise-steps">
+          <li>Sırt, baş ve kalça duvara yaslı dur.</li>
+          <li>Çeneyi içeri çek (çift çene yapar gibi).</li>
+          <li>Boynun arkasını duvara değdirmeye çalış.</li>
+          <li>10 sn tut, gevşet. 6 tekrar.</li>
+        </ol>
+      </div>
+
+      <div class="exercise-card">
+        <div class="exercise-head">
+          <div class="exercise-name">
+            <span class="exercise-num">2</span>
+            Skapular retraksiyon (omuz arkaya çekme)
+          </div>
+          <span class="exercise-meta">2 dk · günde</span>
+        </div>
+        <ol class="exercise-steps">
+          <li>Otur veya ayakta dur, sırt dik.</li>
+          <li>Omuzları kulaklara doğru kaldırmadan, geriye-aşağı çek.</li>
+          <li>Sanki kürek kemiklerini birbirine yaklaştırır gibi.</li>
+          <li>5 sn tut, gevşet. 10 tekrar.</li>
+        </ol>
+      </div>
+
+      <div class="exercise-card">
+        <div class="exercise-head">
+          <div class="exercise-name">
+            <span class="exercise-num">3</span>
+            Kalça fleksör ve hamstring esnemesi
+          </div>
+          <span class="exercise-meta">3 dk · günde</span>
+        </div>
+        <ol class="exercise-steps">
+          <li>Hamlede pozisyon al (bir diz önde, diğer arkada).</li>
+          <li>Kalça öne doğru kayarken arka bacağın önünü ger.</li>
+          <li>Her bacakta 30 sn tut.</li>
+          <li>Sonra otur, bacaklar uzanmış halde, gövdeyi öne eğ — hamstring esnesin.</li>
+          <li>30 sn tut.</li>
+        </ol>
+      </div>
+
+      <div class="exercise-card">
+        <div class="exercise-head">
+          <div class="exercise-name">
+            <span class="exercise-num">4</span>
+            Plank ve yan plank
+          </div>
+          <span class="exercise-meta">2 dk · günde</span>
+        </div>
+        <ol class="exercise-steps">
+          <li>Yüzüstü plank pozisyonunda 20 sn tut, 3 tekrar.</li>
+          <li>Yan plank her tarafa 15 sn, 2 tekrar.</li>
+          <li>Sırt düz, popo yukarı veya aşağı kaymasın.</li>
+        </ol>
+      </div>
+
+      <div class="exercise-card">
+        <div class="exercise-head">
+          <div class="exercise-name">
+            <span class="exercise-num">5</span>
+            Foam roller (varsa)
+          </div>
+          <span class="exercise-meta">1 dk · günde</span>
+        </div>
+        <ol class="exercise-steps">
+          <li>Foam roller'ı sırta enine koy.</li>
+          <li>Üzerine sırtüstü uzan, kollar yana açık.</li>
+          <li>Yavaşça yukarı-aşağı kayarak üst sırtı yumuşat.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="guide-section" id="kirmizi">
+      <div class="red-flags-block">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+          Ne zaman fizyoterapist görmeli?
+        </h3>
+        <p>Aşağıdakilerden biri varsa beklemeden bir pediatrik fizyoterapist veya ortopedi uzmanı ile görüşün:</p>
+        <ul>
+          <li>Adams testinde belirgin asimetri (bir taraf yüksek, kostal arkus dışarı çıkık)</li>
+          <li>Omuzlardan biri sürekli diğerinden yüksek</li>
+          <li>Bel veya sırt ağrısı, özellikle gece artıyorsa</li>
+          <li>Hızlı boy uzaması ile birlikte sırt ağrısı (Scheuermann hastalığı şüphesi)</li>
+          <li>Kambur duruş — kendi düzeltmeye çalışınca düzelmiyor</li>
+          <li>Spor sırasında veya sonrasında devam eden ağrı</li>
+          <li>Ailede skolyoz öyküsü varsa, taramayı atlamayın</li>
+          <li>Spor performansında açıklanamayan düşüş</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="guide-cta">
+      <h3>Postür değerlendirmesi yapalım</h3>
+      <p>Aydın çevresindeyseniz Fzt. Umut Yalçın ile evde değerlendirme randevusu alabilirsiniz. Çevrimiçi olarak da tarama yapabilirsiniz.</p>
+      <div class="guide-cta-buttons">
+        <a href="/cocuk-postur-analizi.html" class="btn btn-primary">
+          Postür Taraması Yap
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://wa.me/905345840913?text=Merhaba%2C%20%C3%A7ocu%C4%9Fum%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+          WhatsApp Randevu
+        </a>
+      </div>
     </div>
-    <ol class="exercise-steps">
-      <li>Foam roller'ı sırta enine koy.</li>
-      <li>Üzerine sırtüstü uzan, kollar yana açık.</li>
-      <li>Yavaşça yukarı-aşağı kayarak üst sırtı yumuşat.</li>
-    </ol>
-  </div>
-</section>
 
-<section class="guide-section" id="kirmizi">
-  <div class="red-flags-block">
-    <h3>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
-      Ne zaman fizyoterapist görmeli?
-    </h3>
-    <p>Aşağıdakilerden biri varsa beklemeden bir pediatrik fizyoterapist veya ortopedi uzmanı ile görüşün:</p>
-    <ul>
-      <li>Adams testinde belirgin asimetri (bir taraf yüksek, kostal arkus dışarı çıkık)</li>
-      <li>Omuzlardan biri sürekli diğerinden yüksek</li>
-      <li>Bel veya sırt ağrısı, özellikle gece artıyorsa</li>
-      <li>Hızlı boy uzaması ile birlikte sırt ağrısı (Scheuermann hastalığı şüphesi)</li>
-      <li>Kambur duruş — kendi düzeltmeye çalışınca düzelmiyor</li>
-      <li>Spor sırasında veya sonrasında devam eden ağrı</li>
-      <li>Ailede skolyoz öyküsü varsa, taramayı atlamayın</li>
-      <li>Spor performansında açıklanamayan düşüş</li>
-    </ul>
-  </div>
-</section>
+    <div class="other-guides">
+      <h3>Diğer yaş rehberleri</h3>
+      <div class="other-guides-grid">
+        <a href="/cocuk-rehber-3-6.html" class="other-guide-link">
+          <div class="other-guide-age">3–6</div>
+          <div class="other-guide-label">Okul öncesi rehberi</div>
+        </a>
+        <a href="/cocuk-rehber-7-12.html" class="other-guide-link">
+          <div class="other-guide-age">7–12</div>
+          <div class="other-guide-label">Okul çağı rehberi</div>
+        </a>
+      </div>
+    </div>
 
-<div class="guide-cta">
-  <h3>Postür değerlendirmesi yapalım</h3>
-  <p>Aydın çevresindeyseniz Fzt. Umut Yalçın ile evde değerlendirme randevusu alabilirsiniz. Çevrimiçi olarak da tarama yapabilirsiniz.</p>
-  <div class="guide-cta-buttons">
-    <a href="/cocuk-postur-analizi.html" class="btn btn-primary">
-      Postür Taraması Yap
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-    <a href="https://wa.me/905345840913?text=Merhaba%2C%20%C3%A7ocu%C4%9Fum%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-wa">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
-      WhatsApp Randevu
-    </a>
-  </div>
-</div>
-
-<div class="other-guides">
-  <h3>Diğer yaş rehberleri</h3>
-  <div class="other-guides-grid">
-    <a href="/cocuk-rehber-3-6.html" class="other-guide-link">
-      <div class="other-guide-age">3–6</div>
-      <div class="other-guide-label">Okul öncesi rehberi</div>
-    </a>
-    <a href="/cocuk-rehber-7-12.html" class="other-guide-link">
-      <div class="other-guide-age">7–12</div>
-      <div class="other-guide-label">Okul çağı rehberi</div>
-    </a>
-  </div>
-</div>
-
-<div class="guide-disclaimer">
-  <strong>Önemli:</strong> Bu rehber genel bilgilendirme amaçlıdır ve fizyoterapist veya hekim değerlendirmesinin yerini tutmaz. Spesifik bir bulgu varsa veya bu öneriler yetersiz kalıyorsa, mutlaka bir uzmanla görüşün.
-</div>
-```
-
+    <div class="guide-disclaimer">
+      <strong>Önemli:</strong> Bu rehber genel bilgilendirme amaçlıdır ve fizyoterapist veya hekim değerlendirmesinin yerini tutmaz. Spesifik bir bulgu varsa veya bu öneriler yetersiz kalıyorsa, mutlaka bir uzmanla görüşün.
+    </div>
   </div>
 </main>
 
 <div id="rb-footer-mount"></div>
 
 <script src="shared-nav.js" defer></script>
-
 </body>
 </html>
