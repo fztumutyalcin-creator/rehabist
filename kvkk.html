@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KVKK Aydınlatma Metni | Rehabist</title>
+<meta name="description" content="Rehabist KVKK Aydınlatma Metni. Kişisel verilerinizin nasıl işlendiği, korunduğu ve haklarınız hakkında bilgilendirme.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+/* SHARED-THEME INLINE */
+/* ============================================================
+   REHABIST — SHARED THEME
+   Bu dosya tüm sayfaların ortak temelini sağlar.
+   Tek bir yerden değiştirildiğinde tüm sayfalar güncellenir.
+   ============================================================ */
+
+:root {
+  --white: #ffffff;
+  --off-white: #fafbfc;
+  --surface: #f5f7fa;
+  --border: #e4e8ed;
+  --border-strong: #d0d6dd;
+  --ink-900: #0f172a;
+  --ink-800: #1e293b;
+  --ink-700: #334155;
+  --ink-500: #475569;
+  --ink-400: #64748b;
+  --ink-300: #94a3b8;
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-900: #1e3a8a;
+  --green-50: #ecfdf5;
+  --green-500: #10b981;
+  --green-600: #059669;
+  --amber-50: #fffbeb;
+  --amber-500: #f59e0b;
+  --red-50: #fef2f2;
+  --red-500: #ef4444;
+  --red-700: #b91c1c;
+
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --container-max: 1200px;
+  --container-px: 24px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
+}
+
+/* NAV */
+.rb-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s;
+}
+.rb-nav.scrolled {
+  border-bottom-color: var(--border);
+  background: rgba(255, 255, 255, 0.95);
+}
+.rb-nav-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rb-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+}
+.rb-logo-mark {
+  width: 30px;
+  height: 30px;
+  background: var(--ink-900);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+}
+.rb-logo-mark svg { width: 16px; height: 16px; }
+
+.rb-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.rb-nav-link {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-500);
+  transition: color 0.15s;
+}
+.rb-nav-link:hover { color: var(--ink-900); }
+.rb-nav-cta {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--ink-900);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+.rb-nav-cta:hover {
+  background: var(--blue-700);
+  transform: translateY(-1px);
+}
+.rb-menu-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink-900);
+  align-items: center;
+  justify-content: center;
+}
+.rb-menu-btn svg { width: 20px; height: 20px; }
+
+@media (max-width: 768px) {
+  .rb-nav-links { display: none; }
+  .rb-menu-btn { display: flex; }
+}
+
+/* MOBILE MENU */
+.rb-mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--white);
+  z-index: 150;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  padding: 80px 24px 40px;
+  visibility: hidden;
+}
+.rb-mobile-menu.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+.rb-mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  color: var(--ink-900);
+}
+.rb-mobile-close svg { width: 20px; height: 20px; }
+.rb-mobile-section-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+  margin: 24px 0 12px;
+}
+.rb-mobile-link {
+  display: flex;
+  align-items: center;
+  padding: 14px 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink-900);
+  border-bottom: 1px solid var(--border);
+}
+.rb-mobile-link.tool-link {
+  gap: 14px;
+  padding: 16px;
+  margin-bottom: 8px;
+  background: var(--surface);
+  border-radius: 12px;
+  border: none;
+}
+.rb-mobile-link-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--white);
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  color: var(--blue-600);
+  flex-shrink: 0;
+}
+.rb-mobile-link-icon svg { width: 18px; height: 18px; }
+.rb-mobile-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  width: 100%;
+  padding: 14px 22px;
+  background: #25D366;
+  color: var(--white);
+  border-radius: 12px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+}
+.rb-mobile-cta svg { width: 16px; height: 16px; }
+
+/* FOOTER */
+.rb-footer {
+  background: var(--ink-900);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 48px 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+.rb-footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.rb-footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.rb-footer-bottom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12.5px;
+}
+.rb-footer-legal-link {
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+.rb-footer-legal-link:hover {
+  color: var(--white);
+}
+.rb-footer-sep {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 13px;
+}
+.rb-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.rb-footer-logo-mark {
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+}
+.rb-footer-logo-mark svg { width: 12px; height: 12px; }
+.rb-footer a {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.15s;
+}
+.rb-footer a:hover { color: var(--white); }
+
+/* LEGAL INLINE */
+/* ============================================================
+   LEGAL PAGES — KVKK, Gizlilik, Çerez, Kullanım Koşulları
+   ============================================================ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  color: var(--ink-700);
+  background: var(--off-white);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+a { color: var(--blue-700); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img, svg { display: block; max-width: 100%; }
+
+.legal-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* HERO */
+.legal-hero {
+  padding: 56px 0 32px;
+}
+.legal-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 12px;
+  background: var(--surface);
+  color: var(--ink-700);
+  border-radius: 100px;
+  font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.legal-kicker-dot {
+  width: 6px; height: 6px;
+  background: var(--ink-700); border-radius: 50%;
+}
+.legal-hero h1 {
+  font-size: clamp(30px, 4.5vw, 42px);
+  font-weight: 700;
+  color: var(--ink-900);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.legal-hero h1 .accent {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--blue-700);
+}
+.legal-lead {
+  font-size: 16px;
+  color: var(--ink-500);
+  line-height: 1.6;
+  max-width: 600px;
+}
+.legal-meta {
+  display: flex; gap: 18px; flex-wrap: wrap;
+  font-size: 13px; color: var(--ink-500);
+  padding-top: 18px;
+  margin-top: 22px;
+  border-top: 1px solid var(--border);
+}
+.legal-meta-item {
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.legal-meta-item svg { width: 14px; height: 14px; color: var(--ink-400); }
+
+/* CONTENT */
+.legal-content {
+  padding: 24px 0 80px;
+}
+
+.legal-content section {
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 80px;
+}
+.legal-content section:first-of-type { border-top: none; }
+
+.legal-content h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink-900);
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  display: flex; align-items: baseline; gap: 12px;
+}
+.legal-content h2 .num {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--blue-700);
+  font-size: 20px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.legal-content h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink-900);
+  margin: 22px 0 10px;
+}
+
+.legal-content p {
+  margin-bottom: 14px;
+  line-height: 1.7;
+  color: var(--ink-700);
+}
+.legal-content p strong { color: var(--ink-900); }
+
+.legal-content ul, .legal-content ol {
+  margin: 12px 0 16px 0;
+  padding-left: 20px;
+}
+.legal-content li {
+  margin-bottom: 8px;
+  line-height: 1.65;
+  color: var(--ink-700);
+}
+
+/* INFO BOX */
+.info-box {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--blue-600);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin: 18px 0;
+}
+.info-box p { margin: 0; font-size: 15px; }
+.info-box strong { color: var(--ink-900); }
+
+.info-box.warn {
+  border-left-color: #f59e0b;
+  background: linear-gradient(135deg, #fffbeb, var(--white));
+}
+.info-box.success {
+  border-left-color: var(--green-600);
+  background: linear-gradient(135deg, var(--green-50), var(--white));
+}
+
+/* TOC */
+.legal-toc {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin: 28px 0;
+}
+.legal-toc h3 {
+  font-size: 11px; font-weight: 700;
+  color: var(--ink-400);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.legal-toc ol {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: toc;
+}
+.legal-toc li {
+  counter-increment: toc;
+  padding: 6px 0;
+  font-size: 14.5px;
+  border-bottom: 1px dashed var(--border);
+  margin-bottom: 0;
+}
+.legal-toc li:last-child { border-bottom: none; }
+.legal-toc li::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--blue-700);
+  font-weight: 600;
+  margin-right: 12px;
+}
+.legal-toc a {
+  color: var(--ink-700);
+  font-weight: 500;
+}
+.legal-toc a:hover {
+  color: var(--ink-900);
+  text-decoration: none;
+}
+
+/* CONTACT BOX */
+.contact-box {
+  background: linear-gradient(135deg, var(--ink-900), #1e1b4b);
+  color: var(--white);
+  border-radius: 18px;
+  padding: 32px 28px;
+  margin: 36px 0;
+  text-align: center;
+}
+.contact-box h3 {
+  color: var(--white);
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.015em;
+}
+.contact-box p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14.5px;
+  margin-bottom: 18px;
+}
+.contact-box a {
+  color: var(--white);
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.contact-box a:hover {
+  background: rgba(255, 255, 255, 0.25);
+  text-decoration: none;
+}
+
+/* OTHER LEGAL LINKS */
+.other-legal {
+  margin: 36px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.other-legal h3 {
+  font-size: 11px; font-weight: 700;
+  color: var(--ink-400);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.other-legal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 600px) {
+  .other-legal-grid { grid-template-columns: 1fr; }
+}
+.other-legal-link {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 13.5px;
+  color: var(--ink-900);
+  font-weight: 600;
+  transition: all 0.15s;
+  display: block;
+}
+.other-legal-link:hover {
+  border-color: var(--ink-700);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+</style>
+</head>
+<body>
+
+<div id="rb-nav-mount"></div>
+
+<main>
+  <div class="legal-container">
+
+    <header class="legal-hero">
+      <span class="legal-kicker">
+        <span class="legal-kicker-dot"></span>
+        Yasal Bilgilendirme
+      </span>
+      <h1>KVKK <span class="accent">Aydınlatma Metni.</span></h1>
+      <p class="legal-lead">6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında, Rehabist'i kullanırken kişisel verilerinizin nasıl işlendiğini, hangi haklara sahip olduğunuzu ve bizimle nasıl iletişime geçeceğinizi açıklar.</p>
+      <div class="legal-meta">
+        <span class="legal-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Yürürlük tarihi: 30 Nisan 2026
+        </span>
+        <span class="legal-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          KVKK uyumlu
+        </span>
+      </div>
+    </header>
+
+    <nav class="legal-toc">
+      <h3>İçindekiler</h3>
+      <ol>
+        <li><a href="#veri-sorumlusu">Veri Sorumlusu</a></li>
+        <li><a href="#islenen-veriler">İşlenen Kişisel Veriler</a></li>
+        <li><a href="#islenme-amaclari">Verilerin İşlenme Amaçları</a></li>
+        <li><a href="#hukuki-sebep">Hukuki Sebep</a></li>
+        <li><a href="#aktarim">Verilerin Aktarımı</a></li>
+        <li><a href="#yontem">Veri Toplama Yöntemi</a></li>
+        <li><a href="#saklama">Saklama Süresi</a></li>
+        <li><a href="#haklariniz">İlgili Kişinin Hakları</a></li>
+        <li><a href="#basvuru">Başvuru Yöntemi</a></li>
+      </ol>
+    </nav>
+
+    <article class="legal-content">
+
+      <div class="info-box success">
+        <p><strong>Önemli:</strong> Rehabist şu anda <strong>üyelik sistemi olmadan</strong> hizmet vermektedir. Postür analizi, çocuk değerlendirmesi, yürüyüş analizi gibi araçlardaki veriler <strong>yalnızca tarayıcınızda işlenir, sunucularımıza aktarılmaz.</strong> Bu, Avrupa standartlarında en güçlü gizlilik korumasıdır.</p>
+      </div>
+
+      <section id="veri-sorumlusu">
+        <h2><span class="num">01</span> Veri Sorumlusu</h2>
+        <p>Bu aydınlatma metni kapsamında veri sorumlusu sıfatıyla hareket eden kişi:</p>
+        <p><strong>Fzt. Umut Yalçın</strong><br>
+        Fizyoterapi ve Rehabilitasyon Uzmanı<br>
+        Aydın / Efeler<br>
+        Telefon: 0534 584 0913<br>
+        E-posta: <a href="mailto:iletisim@rehabist.app">iletisim@rehabist.app</a></p>
+      </section>
+
+      <section id="islenen-veriler">
+        <h2><span class="num">02</span> İşlenen Kişisel Veriler</h2>
+        <p>Rehabist'i kullanırken aşağıdaki veri kategorileri işlenebilir:</p>
+
+        <h3>Kendiliğinden işlenmeyen, sadece tarayıcınızda saklanan veriler</h3>
+        <ul>
+          <li>Postür analizinde yüklediğiniz fotoğraflar</li>
+          <li>Yürüyüş analizinde yüklediğiniz video</li>
+          <li>Ağrı haritası seçimleri</li>
+          <li>Çocuk postür değerlendirmesi yanıtları</li>
+          <li>Klinisyen modunda hasta dosyaları (yalnızca cihazınızda)</li>
+        </ul>
+        <p>Bu veriler <strong>cihazınızın tarayıcı belleğinde</strong> tutulur, sunucumuza gönderilmez ve sayfa kapatıldığında veya tarayıcı verisi silindiğinde silinir.</p>
+
+        <h3>Bizimle iletişim kurduğunuzda işlenebilecek veriler</h3>
+        <ul>
+          <li>WhatsApp veya telefon iletişiminde sağladığınız ad-soyad, telefon numarası</li>
+          <li>Randevu süreçlerinde verdiğiniz sağlık bilgileri (özel nitelikli kişisel veri)</li>
+          <li>E-posta yazışmaları</li>
+        </ul>
+
+        <h3>Otomatik olarak toplanabilecek teknik veriler</h3>
+        <ul>
+          <li>Site ziyaretine ilişkin anonim istatistikler (IP adresi anonimleştirilmiş şekilde)</li>
+          <li>Kullanılan tarayıcı ve cihaz bilgisi (sayfa görüntüleme amacıyla)</li>
+        </ul>
+      </section>
+
+      <section id="islenme-amaclari">
+        <h2><span class="num">03</span> Verilerin İşlenme Amaçları</h2>
+        <p>Yukarıda belirtilen kişisel veriler aşağıdaki amaçlarla işlenebilir:</p>
+        <ul>
+          <li>Sağlık hizmetlerinin yürütülmesi (randevu, değerlendirme, takip)</li>
+          <li>Hizmet kalitesinin artırılması</li>
+          <li>Site fonksiyonlarının düzgün çalışması</li>
+          <li>Kanuni yükümlülüklerin yerine getirilmesi</li>
+          <li>İletişim taleplerinin karşılanması</li>
+          <li>Şikayet ve hukuki süreçlerin yönetilmesi</li>
+        </ul>
+        <p><strong>Pazarlama amaçlı veri işlemiyoruz.</strong> Reklam ağlarına veri aktarmıyoruz.</p>
+      </section>
+
+      <section id="hukuki-sebep">
+        <h2><span class="num">04</span> Hukuki Sebep</h2>
+        <p>Kişisel verileriniz KVKK Madde 5 ve Madde 6 kapsamında aşağıdaki hukuki sebeplere dayanılarak işlenir:</p>
+        <ul>
+          <li><strong>Açık rıza:</strong> Sağlık verisi işlenmesi için ayrıca alınır</li>
+          <li><strong>Sözleşmenin kurulması veya ifası:</strong> Randevu ve hizmet süreçleri</li>
+          <li><strong>Hukuki yükümlülük:</strong> Mevzuattan kaynaklanan kayıt zorunlulukları</li>
+          <li><strong>Meşru menfaat:</strong> Site fonksiyonelliğinin sağlanması</li>
+        </ul>
+      </section>
+
+      <section id="aktarim">
+        <h2><span class="num">05</span> Verilerin Aktarımı</h2>
+        <p>Kişisel verileriniz <strong>üçüncü kişilere ticari amaçla aktarılmaz.</strong> Yalnızca aşağıdaki durumlarda sınırlı aktarım yapılabilir:</p>
+        <ul>
+          <li>Yasal zorunluluk veya yargı kararı gereği yetkili kamu kurum ve kuruluşlarına</li>
+          <li>Site barındırma hizmeti aldığımız teknik altyapı sağlayıcısına (Vercel) — yalnızca anonim teknik veriler</li>
+          <li>Açık rızanız bulunduğu durumlarda diğer sağlık profesyonellerine</li>
+        </ul>
+        <p>Yurt dışına aktarım, KVKK'nın 9. maddesi kapsamında yalnızca açık rızanız ile yapılır.</p>
+      </section>
+
+      <section id="yontem">
+        <h2><span class="num">06</span> Veri Toplama Yöntemi</h2>
+        <p>Kişisel verileriniz aşağıdaki yöntemlerle toplanır:</p>
+        <ul>
+          <li>Web sitesi üzerinden gönüllü olarak girdiğiniz bilgiler</li>
+          <li>WhatsApp, telefon, e-posta gibi iletişim kanalları</li>
+          <li>Yüz yüze veya çevrimiçi randevu süreçlerinde</li>
+          <li>Tarayıcının otomatik olarak ilettiği teknik bilgiler</li>
+        </ul>
+      </section>
+
+      <section id="saklama">
+        <h2><span class="num">07</span> Saklama Süresi</h2>
+        <p>Kişisel verileriniz, işlenme amacının gerektirdiği süre boyunca ve yasal saklama yükümlülüklerinin gerektirdiği sürelerde saklanır:</p>
+        <ul>
+          <li><strong>Tarayıcıda saklanan değerlendirme verileri:</strong> Siz silene kadar (siz kontrol edersiniz)</li>
+          <li><strong>İletişim kayıtları:</strong> 2 yıl</li>
+          <li><strong>Sağlık hizmeti kayıtları:</strong> İlgili mevzuat gereği 20 yıl</li>
+          <li><strong>Anonim teknik veriler:</strong> 12 ay</li>
+        </ul>
+        <p>Süre dolduğunda veriler silinir, yok edilir veya anonim hâle getirilir.</p>
+      </section>
+
+      <section id="haklariniz">
+        <h2><span class="num">08</span> İlgili Kişinin Hakları</h2>
+        <p>KVKK'nın 11. maddesi kapsamında aşağıdaki haklara sahipsiniz:</p>
+        <ul>
+          <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
+          <li>İşlenmişse buna ilişkin bilgi talep etme</li>
+          <li>İşlenme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme</li>
+          <li>Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme</li>
+          <li>Eksik veya yanlış işlenmesi hâlinde düzeltilmesini isteme</li>
+          <li>KVKK Madde 7'de öngörülen şartlar çerçevesinde silinmesini veya yok edilmesini isteme</li>
+          <li>Düzeltme/silme/yok etme işlemlerinin verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme</li>
+          <li>İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme</li>
+          <li>Kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme</li>
+        </ul>
+      </section>
+
+      <section id="basvuru">
+        <h2><span class="num">09</span> Başvuru Yöntemi</h2>
+        <p>Yukarıdaki haklarınızı kullanmak için, kimliğinizi tespit edici belgelerle birlikte yazılı olarak veya elektronik ortamda bize başvurabilirsiniz.</p>
+        <p>Başvurularınız, niteliğine göre en geç 30 gün içerisinde sonuçlandırılır. Başvuru ücretsizdir; ancak işlemin ayrıca bir maliyet gerektirmesi hâlinde KVKK'nın belirlediği tarifeye göre ücret alınabilir.</p>
+
+        <div class="contact-box">
+          <h3>İletişim</h3>
+          <p>Veri haklarınızla ilgili her türlü başvuru için:</p>
+          <a href="mailto:iletisim@rehabist.app">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            iletisim@rehabist.app
+          </a>
+        </div>
+      </section>
+
+      <div class="other-legal">
+        <h3>Diğer Yasal Sayfalar</h3>
+        <div class="other-legal-grid">
+          <a href="/gizlilik.html" class="other-legal-link">Gizlilik Politikası</a>
+          <a href="/cerez.html" class="other-legal-link">Çerez Politikası</a>
+          <a href="/kullanim-kosullari.html" class="other-legal-link">Kullanım Koşulları</a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<div id="rb-footer-mount"></div>
+
+<script src="shared-nav.js" defer></script>
+</body>
+</html>

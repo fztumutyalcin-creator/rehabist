@@ -230,9 +230,35 @@
   margin: 0 auto;
   padding: 0 var(--container-px);
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.rb-footer-top {
+  display: flex;
   justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
+}
+.rb-footer-bottom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12.5px;
+}
+.rb-footer-legal-link {
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+.rb-footer-legal-link:hover {
+  color: var(--white);
+}
+.rb-footer-sep {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 13px;
 }
 .rb-footer-left {
   display: flex;

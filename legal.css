@@ -1,0 +1,270 @@
+/* ============================================================
+   LEGAL PAGES — KVKK, Gizlilik, Çerez, Kullanım Koşulları
+   ============================================================ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  color: var(--ink-700);
+  background: var(--off-white);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+a { color: var(--blue-700); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img, svg { display: block; max-width: 100%; }
+
+.legal-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* HERO */
+.legal-hero {
+  padding: 56px 0 32px;
+}
+.legal-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 12px;
+  background: var(--surface);
+  color: var(--ink-700);
+  border-radius: 100px;
+  font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.legal-kicker-dot {
+  width: 6px; height: 6px;
+  background: var(--ink-700); border-radius: 50%;
+}
+.legal-hero h1 {
+  font-size: clamp(30px, 4.5vw, 42px);
+  font-weight: 700;
+  color: var(--ink-900);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.legal-hero h1 .accent {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--blue-700);
+}
+.legal-lead {
+  font-size: 16px;
+  color: var(--ink-500);
+  line-height: 1.6;
+  max-width: 600px;
+}
+.legal-meta {
+  display: flex; gap: 18px; flex-wrap: wrap;
+  font-size: 13px; color: var(--ink-500);
+  padding-top: 18px;
+  margin-top: 22px;
+  border-top: 1px solid var(--border);
+}
+.legal-meta-item {
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.legal-meta-item svg { width: 14px; height: 14px; color: var(--ink-400); }
+
+/* CONTENT */
+.legal-content {
+  padding: 24px 0 80px;
+}
+
+.legal-content section {
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 80px;
+}
+.legal-content section:first-of-type { border-top: none; }
+
+.legal-content h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink-900);
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  display: flex; align-items: baseline; gap: 12px;
+}
+.legal-content h2 .num {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--blue-700);
+  font-size: 20px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.legal-content h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink-900);
+  margin: 22px 0 10px;
+}
+
+.legal-content p {
+  margin-bottom: 14px;
+  line-height: 1.7;
+  color: var(--ink-700);
+}
+.legal-content p strong { color: var(--ink-900); }
+
+.legal-content ul, .legal-content ol {
+  margin: 12px 0 16px 0;
+  padding-left: 20px;
+}
+.legal-content li {
+  margin-bottom: 8px;
+  line-height: 1.65;
+  color: var(--ink-700);
+}
+
+/* INFO BOX */
+.info-box {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--blue-600);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin: 18px 0;
+}
+.info-box p { margin: 0; font-size: 15px; }
+.info-box strong { color: var(--ink-900); }
+
+.info-box.warn {
+  border-left-color: #f59e0b;
+  background: linear-gradient(135deg, #fffbeb, var(--white));
+}
+.info-box.success {
+  border-left-color: var(--green-600);
+  background: linear-gradient(135deg, var(--green-50), var(--white));
+}
+
+/* TOC */
+.legal-toc {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin: 28px 0;
+}
+.legal-toc h3 {
+  font-size: 11px; font-weight: 700;
+  color: var(--ink-400);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.legal-toc ol {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: toc;
+}
+.legal-toc li {
+  counter-increment: toc;
+  padding: 6px 0;
+  font-size: 14.5px;
+  border-bottom: 1px dashed var(--border);
+  margin-bottom: 0;
+}
+.legal-toc li:last-child { border-bottom: none; }
+.legal-toc li::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--blue-700);
+  font-weight: 600;
+  margin-right: 12px;
+}
+.legal-toc a {
+  color: var(--ink-700);
+  font-weight: 500;
+}
+.legal-toc a:hover {
+  color: var(--ink-900);
+  text-decoration: none;
+}
+
+/* CONTACT BOX */
+.contact-box {
+  background: linear-gradient(135deg, var(--ink-900), #1e1b4b);
+  color: var(--white);
+  border-radius: 18px;
+  padding: 32px 28px;
+  margin: 36px 0;
+  text-align: center;
+}
+.contact-box h3 {
+  color: var(--white);
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.015em;
+}
+.contact-box p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14.5px;
+  margin-bottom: 18px;
+}
+.contact-box a {
+  color: var(--white);
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.contact-box a:hover {
+  background: rgba(255, 255, 255, 0.25);
+  text-decoration: none;
+}
+
+/* OTHER LEGAL LINKS */
+.other-legal {
+  margin: 36px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.other-legal h3 {
+  font-size: 11px; font-weight: 700;
+  color: var(--ink-400);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.other-legal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 600px) {
+  .other-legal-grid { grid-template-columns: 1fr; }
+}
+.other-legal-link {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 13.5px;
+  color: var(--ink-900);
+  font-weight: 600;
+  transition: all 0.15s;
+  display: block;
+}
+.other-legal-link:hover {
+  border-color: var(--ink-700);
+  transform: translateY(-1px);
+  text-decoration: none;
+}

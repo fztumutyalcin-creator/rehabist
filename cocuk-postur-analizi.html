@@ -9,9 +9,293 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/shared-theme.css">
 
 <style>
+/* SHARED-THEME INLINE */
+/* ============================================================
+   REHABIST — SHARED THEME
+   Bu dosya tüm sayfaların ortak temelini sağlar.
+   Tek bir yerden değiştirildiğinde tüm sayfalar güncellenir.
+   ============================================================ */
+
+:root {
+  --white: #ffffff;
+  --off-white: #fafbfc;
+  --surface: #f5f7fa;
+  --border: #e4e8ed;
+  --border-strong: #d0d6dd;
+  --ink-900: #0f172a;
+  --ink-800: #1e293b;
+  --ink-700: #334155;
+  --ink-500: #475569;
+  --ink-400: #64748b;
+  --ink-300: #94a3b8;
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-900: #1e3a8a;
+  --green-50: #ecfdf5;
+  --green-500: #10b981;
+  --green-600: #059669;
+  --amber-50: #fffbeb;
+  --amber-500: #f59e0b;
+  --red-50: #fef2f2;
+  --red-500: #ef4444;
+  --red-700: #b91c1c;
+
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --container-max: 1200px;
+  --container-px: 24px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.12);
+}
+
+/* NAV */
+.rb-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s;
+}
+.rb-nav.scrolled {
+  border-bottom-color: var(--border);
+  background: rgba(255, 255, 255, 0.95);
+}
+.rb-nav-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rb-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+}
+.rb-logo-mark {
+  width: 30px;
+  height: 30px;
+  background: var(--ink-900);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+}
+.rb-logo-mark svg { width: 16px; height: 16px; }
+
+.rb-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.rb-nav-link {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-500);
+  transition: color 0.15s;
+}
+.rb-nav-link:hover { color: var(--ink-900); }
+.rb-nav-cta {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--ink-900);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+.rb-nav-cta:hover {
+  background: var(--blue-700);
+  transform: translateY(-1px);
+}
+.rb-menu-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink-900);
+  align-items: center;
+  justify-content: center;
+}
+.rb-menu-btn svg { width: 20px; height: 20px; }
+
+@media (max-width: 768px) {
+  .rb-nav-links { display: none; }
+  .rb-menu-btn { display: flex; }
+}
+
+/* MOBILE MENU */
+.rb-mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--white);
+  z-index: 150;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  padding: 80px 24px 40px;
+  visibility: hidden;
+}
+.rb-mobile-menu.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+.rb-mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  color: var(--ink-900);
+}
+.rb-mobile-close svg { width: 20px; height: 20px; }
+.rb-mobile-section-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+  margin: 24px 0 12px;
+}
+.rb-mobile-link {
+  display: flex;
+  align-items: center;
+  padding: 14px 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink-900);
+  border-bottom: 1px solid var(--border);
+}
+.rb-mobile-link.tool-link {
+  gap: 14px;
+  padding: 16px;
+  margin-bottom: 8px;
+  background: var(--surface);
+  border-radius: 12px;
+  border: none;
+}
+.rb-mobile-link-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--white);
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  color: var(--blue-600);
+  flex-shrink: 0;
+}
+.rb-mobile-link-icon svg { width: 18px; height: 18px; }
+.rb-mobile-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  width: 100%;
+  padding: 14px 22px;
+  background: #25D366;
+  color: var(--white);
+  border-radius: 12px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+}
+.rb-mobile-cta svg { width: 16px; height: 16px; }
+
+/* FOOTER */
+.rb-footer {
+  background: var(--ink-900);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 48px 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+.rb-footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.rb-footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.rb-footer-bottom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12.5px;
+}
+.rb-footer-legal-link {
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+.rb-footer-legal-link:hover {
+  color: var(--white);
+}
+.rb-footer-sep {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 13px;
+}
+.rb-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.rb-footer-logo-mark {
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+}
+.rb-footer-logo-mark svg { width: 12px; height: 12px; }
+.rb-footer a {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.15s;
+}
+.rb-footer a:hover { color: var(--white); }
+
+/* PAGE STYLES */
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html { scroll-behavior: smooth; }
   body {
@@ -598,6 +882,79 @@
     color: var(--ink-500);
     margin-top: 4px;
     line-height: 1.5;
+  }
+
+  /* Confidence badges */
+  .conf-badge {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .conf-badge.conf-high { background: var(--green-50); color: var(--green-600); }
+  .conf-badge.conf-medium { background: var(--blue-50); color: var(--blue-700); }
+  .conf-badge.conf-low { background: #fef3c7; color: #a16207; }
+  .conf-badge.conf-very-low { background: var(--red-50); color: var(--red-700); }
+
+  /* Düşük güvenli ölçüm kart fonu */
+  .ai-measurement.ai-measurement-uncertain {
+    background: linear-gradient(180deg, #fffbeb, var(--white));
+    border-color: #fde68a;
+  }
+
+  /* Model agreement kartı */
+  .model-agreement {
+    background: linear-gradient(135deg, var(--ink-900), #1e1b4b);
+    color: var(--white);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-top: 16px;
+  }
+  .model-agreement-header {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 10px;
+  }
+  .model-agreement-header svg { width: 16px; height: 16px; color: rgba(255, 255, 255, 0.65); }
+  .model-agreement-body {
+    font-size: 14px;
+    color: var(--white);
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .model-agreement-models {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .model-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .model-tag.active {
+    background: rgba(34, 197, 94, 0.25);
+    color: #86efac;
+    border-color: rgba(134, 239, 172, 0.4);
+  }
+
+  /* Landmark overlay (pose çizimi fotoğraf üzerinde) */
+  .landmark-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 5;
   }
 
   .ai-failed {
@@ -2572,51 +2929,57 @@
 
   // Açı ölçümleri
   // Omuz asimetri: sol omuz (11) - sağ omuz (12) yatay açısı
+  // GÜNCELLEME: Düşük güvenirlikte de değer döndürür, sadece confidence düşük gösterir
   function measureShoulderAsymmetry(landmarks) {
     var leftShoulder = landmarks[11];
     var rightShoulder = landmarks[12];
     if (!leftShoulder || !rightShoulder) return null;
     var minVis = Math.min(leftShoulder.visibility || 0, rightShoulder.visibility || 0);
-    if (minVis < 0.7) return { confidence: 'low', visibility: minVis };
     var dy = leftShoulder.y - rightShoulder.y;
     var dx = leftShoulder.x - rightShoulder.x;
     var angle = Math.abs(Math.atan2(dy, dx) * 180 / Math.PI);
-    // 0° = mükemmel yatay, 90° = dikey
     var asymmetry = Math.min(angle, 180 - angle);
+    var conf = 'high';
+    if (minVis < 0.5) conf = 'very-low';
+    else if (minVis < 0.7) conf = 'low';
+    else if (minVis < 0.85) conf = 'medium';
     return {
-      confidence: minVis >= 0.85 ? 'high' : 'medium',
+      confidence: conf,
       angle: asymmetry.toFixed(1),
       visibility: minVis
     };
   }
 
   // Pelvis tilt: sol kalça (23) - sağ kalça (24)
+  // GÜNCELLEME: Düşük görünürlükte de hesaplar
   function measurePelvisTilt(landmarks) {
     var leftHip = landmarks[23];
     var rightHip = landmarks[24];
     if (!leftHip || !rightHip) return null;
     var minVis = Math.min(leftHip.visibility || 0, rightHip.visibility || 0);
-    if (minVis < 0.7) return { confidence: 'low', visibility: minVis };
     var dy = leftHip.y - rightHip.y;
     var dx = leftHip.x - rightHip.x;
     var angle = Math.abs(Math.atan2(dy, dx) * 180 / Math.PI);
     var asymmetry = Math.min(angle, 180 - angle);
+    var conf = 'high';
+    if (minVis < 0.5) conf = 'very-low';
+    else if (minVis < 0.7) conf = 'low';
+    else if (minVis < 0.85) conf = 'medium';
     return {
-      confidence: minVis >= 0.85 ? 'high' : 'medium',
+      confidence: conf,
       angle: asymmetry.toFixed(1),
       visibility: minVis
     };
   }
 
   // Baş öne kayması: kulak (7 veya 8) - omuz (11 veya 12) dikey hizası (yan görüntü)
+  // GÜNCELLEME: Düşük güvende de hesaplar, geri pozisyonu da kabul eder
   function measureForwardHead(landmarks) {
-    // Yan görüntüde sadece bir taraf görünür - daha visible olanı al
     var leftEar = landmarks[7];
     var rightEar = landmarks[8];
     var leftShoulder = landmarks[11];
     var rightShoulder = landmarks[12];
     if (!leftEar || !rightEar || !leftShoulder || !rightShoulder) return null;
-    // En görünür kulak-omuz çiftini seç
     var leftPair = Math.min(leftEar.visibility || 0, leftShoulder.visibility || 0);
     var rightPair = Math.min(rightEar.visibility || 0, rightShoulder.visibility || 0);
     var ear, shoulder, vis;
@@ -2625,19 +2988,351 @@
     } else {
       ear = rightEar; shoulder = rightShoulder; vis = rightPair;
     }
-    if (vis < 0.6) return { confidence: 'low', visibility: vis };
     var dx = ear.x - shoulder.x;
-    var dy = shoulder.y - ear.y; // negatif olmamalı (kulak omzun üstünde)
-    if (dy <= 0) return { confidence: 'low', visibility: vis };
-    var angle = Math.atan2(Math.abs(dx), dy) * 180 / Math.PI;
+    var dy = shoulder.y - ear.y;
+    // Negatif dy: kulak omzun altında — hâlâ değer hesapla, ama 'unusual' işaretle
+    var unusual = (dy <= 0);
+    var angle = unusual ? 0 : (Math.atan2(Math.abs(dx), Math.abs(dy)) * 180 / Math.PI);
+    var conf = 'high';
+    if (vis < 0.4) conf = 'very-low';
+    else if (vis < 0.6) conf = 'low';
+    else if (vis < 0.8) conf = 'medium';
     return {
-      confidence: vis >= 0.8 ? 'high' : 'medium',
+      confidence: conf,
       angle: angle.toFixed(1),
-      visibility: vis
+      visibility: vis,
+      unusual: unusual
     };
   }
 
-  // AI butonu handler
+  // === YENİ: GELİŞMİŞ ÖLÇÜMLER ===
+
+  // Omurga lateral sapma (skolyoz indikatörü)
+  function measureSpineLateral(landmarks) {
+    var lShoulder = landmarks[11];
+    var rShoulder = landmarks[12];
+    var lHip = landmarks[23];
+    var rHip = landmarks[24];
+    if (!lShoulder || !rShoulder || !lHip || !rHip) return null;
+    var visibilities = [lShoulder.visibility||0, rShoulder.visibility||0, lHip.visibility||0, rHip.visibility||0];
+    var minVis = Math.min.apply(null, visibilities);
+    var shoulderMidX = (lShoulder.x + rShoulder.x) / 2;
+    var shoulderMidY = (lShoulder.y + rShoulder.y) / 2;
+    var hipMidX = (lHip.x + rHip.x) / 2;
+    var hipMidY = (lHip.y + rHip.y) / 2;
+    var dx = shoulderMidX - hipMidX;
+    var dy = Math.abs(shoulderMidY - hipMidY);
+    if (dy < 0.01) return null;
+    var angle = Math.atan2(Math.abs(dx), dy) * 180 / Math.PI;
+    var conf = 'high';
+    if (minVis < 0.5) conf = 'very-low';
+    else if (minVis < 0.7) conf = 'low';
+    else if (minVis < 0.85) conf = 'medium';
+    return { confidence: conf, angle: angle.toFixed(1), visibility: minVis, direction: dx > 0 ? 'sol' : 'sağ' };
+  }
+
+  // Diz hizalanması (Q-açısı tahmini)
+  function measureKneeAlignment(landmarks) {
+    var lHip = landmarks[23], rHip = landmarks[24];
+    var lKnee = landmarks[25], rKnee = landmarks[26];
+    var lAnkle = landmarks[27], rAnkle = landmarks[28];
+    if (!lHip || !rHip || !lKnee || !rKnee || !lAnkle || !rAnkle) return null;
+    var visibilities = [lHip.visibility||0, rHip.visibility||0, lKnee.visibility||0, rKnee.visibility||0, lAnkle.visibility||0, rAnkle.visibility||0];
+    var minVis = Math.min.apply(null, visibilities);
+    function legAngle(hip, knee, ankle) {
+      var v1x = hip.x - knee.x, v1y = hip.y - knee.y;
+      var v2x = ankle.x - knee.x, v2y = ankle.y - knee.y;
+      var dot = v1x * v2x + v1y * v2y;
+      var mag1 = Math.sqrt(v1x*v1x + v1y*v1y);
+      var mag2 = Math.sqrt(v2x*v2x + v2y*v2y);
+      if (mag1 < 0.01 || mag2 < 0.01) return 180;
+      var cos = dot / (mag1 * mag2);
+      cos = Math.max(-1, Math.min(1, cos));
+      return Math.acos(cos) * 180 / Math.PI;
+    }
+    var leftAngle = 180 - legAngle(lHip, lKnee, lAnkle);
+    var rightAngle = 180 - legAngle(rHip, rKnee, rAnkle);
+    var avgDeviation = (leftAngle + rightAngle) / 2;
+    var kneeWidth = Math.abs(lKnee.x - rKnee.x);
+    var ankleWidth = Math.abs(lAnkle.x - rAnkle.x);
+    var type;
+    if (kneeWidth < ankleWidth - 0.02) type = 'valgus';
+    else if (kneeWidth > ankleWidth + 0.02) type = 'varus';
+    else type = 'normal';
+    var conf = 'high';
+    if (minVis < 0.5) conf = 'very-low';
+    else if (minVis < 0.7) conf = 'low';
+    else if (minVis < 0.85) conf = 'medium';
+    return { confidence: conf, angle: avgDeviation.toFixed(1), type: type, visibility: minVis };
+  }
+
+  // Bacak uzunluk farkı
+  function measureLegLength(landmarks) {
+    var lHip = landmarks[23], rHip = landmarks[24];
+    var lAnkle = landmarks[27], rAnkle = landmarks[28];
+    if (!lHip || !rHip || !lAnkle || !rAnkle) return null;
+    var visibilities = [lHip.visibility||0, rHip.visibility||0, lAnkle.visibility||0, rAnkle.visibility||0];
+    var minVis = Math.min.apply(null, visibilities);
+    var leftLen = Math.sqrt(Math.pow(lHip.x - lAnkle.x, 2) + Math.pow(lHip.y - lAnkle.y, 2));
+    var rightLen = Math.sqrt(Math.pow(rHip.x - rAnkle.x, 2) + Math.pow(rHip.y - rAnkle.y, 2));
+    var avg = (leftLen + rightLen) / 2;
+    if (avg < 0.01) return null;
+    var diffPercent = Math.abs(leftLen - rightLen) / avg * 100;
+    var conf = 'high';
+    if (minVis < 0.5) conf = 'very-low';
+    else if (minVis < 0.7) conf = 'low';
+    else if (minVis < 0.85) conf = 'medium';
+    return { confidence: conf, diff: diffPercent.toFixed(1), longerSide: leftLen > rightLen ? 'sol' : 'sağ', visibility: minVis };
+  }
+
+  // Plumb line — yan profil
+  function measurePlumbLine(landmarks) {
+    var rEar = landmarks[8], lEar = landmarks[7];
+    var rShoulder = landmarks[12], lShoulder = landmarks[11];
+    var rHip = landmarks[24], lHip = landmarks[23];
+    var rKnee = landmarks[26], lKnee = landmarks[25];
+    var rAnkle = landmarks[28], lAnkle = landmarks[27];
+    if (!rEar || !lEar || !rShoulder || !lShoulder || !rHip || !lHip || !rKnee || !lKnee || !rAnkle || !lAnkle) return null;
+    var leftSum = (lEar.visibility||0) + (lShoulder.visibility||0) + (lHip.visibility||0) + (lKnee.visibility||0) + (lAnkle.visibility||0);
+    var rightSum = (rEar.visibility||0) + (rShoulder.visibility||0) + (rHip.visibility||0) + (rKnee.visibility||0) + (rAnkle.visibility||0);
+    var ear, shoulder, hip, knee, ankle, vis;
+    if (leftSum > rightSum) {
+      ear = lEar; shoulder = lShoulder; hip = lHip; knee = lKnee; ankle = lAnkle;
+      vis = leftSum / 5;
+    } else {
+      ear = rEar; shoulder = rShoulder; hip = rHip; knee = rKnee; ankle = rAnkle;
+      vis = rightSum / 5;
+    }
+    var refX = ankle.x;
+    var deviations = [Math.abs(ear.x - refX), Math.abs(shoulder.x - refX), Math.abs(hip.x - refX), Math.abs(knee.x - refX)];
+    var avgDev = deviations.reduce(function(a,b){return a+b;}, 0) / deviations.length;
+    var degree = avgDev * 100;
+    var conf = 'high';
+    if (vis < 0.5) conf = 'very-low';
+    else if (vis < 0.7) conf = 'low';
+    else if (vis < 0.85) conf = 'medium';
+    return { confidence: conf, deviation: degree.toFixed(1), visibility: vis };
+  }
+
+  // Genel simetri skoru
+  function measureSymmetryIndex(landmarks) {
+    var pairs = [[11,12],[23,24],[25,26],[27,28],[13,14],[15,16]];
+    var totalDev = 0, count = 0, totalVis = 0;
+    for (var i = 0; i < pairs.length; i++) {
+      var a = landmarks[pairs[i][0]], b = landmarks[pairs[i][1]];
+      if (!a || !b) continue;
+      var av = a.visibility || 0, bv = b.visibility || 0;
+      if (av < 0.3 || bv < 0.3) continue;
+      var dev = Math.abs(a.y - b.y);
+      totalDev += dev;
+      totalVis += Math.min(av, bv);
+      count++;
+    }
+    if (count === 0) return null;
+    var avgDev = totalDev / count;
+    var avgVis = totalVis / count;
+    var score = Math.max(0, Math.min(100, 100 - (avgDev * 500)));
+    var conf = 'high';
+    if (avgVis < 0.5) conf = 'very-low';
+    else if (avgVis < 0.7) conf = 'low';
+    else if (avgVis < 0.85) conf = 'medium';
+    return { confidence: conf, score: score.toFixed(0), visibility: avgVis, pairsUsed: count };
+  }
+
+  // === ÇOKLU MODEL ENSEMBLE ===
+  // MoveNet ile ikinci görüş (TensorFlow.js)
+  var moveNetModel = null;
+  var tfLoaded = false;
+
+  function loadMoveNet(callback) {
+    if (moveNetModel) { callback(null, moveNetModel); return; }
+
+    function loadScript(src, cb) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.crossOrigin = 'anonymous';
+      s.onload = cb;
+      s.onerror = function() { cb(new Error('Script yüklenemedi: ' + src)); };
+      document.head.appendChild(s);
+    }
+
+    function init() {
+      if (!window.tf || !window.poseDetection) {
+        callback(new Error('TF.js veya pose-detection yüklenemedi'));
+        return;
+      }
+      window.poseDetection.createDetector(
+        window.poseDetection.SupportedModels.MoveNet,
+        { modelType: window.poseDetection.movenet.modelType.SINGLEPOSE_THUNDER }
+      ).then(function(detector) {
+        moveNetModel = detector;
+        callback(null, detector);
+      }).catch(function(err) {
+        callback(err);
+      });
+    }
+
+    if (!window.tf) {
+      loadScript('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js', function(err) {
+        if (err) { callback(err); return; }
+        loadScript('https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@2.1.0/dist/pose-detection.min.js', function(err2) {
+          if (err2) { callback(err2); return; }
+          init();
+        });
+      });
+    } else if (!window.poseDetection) {
+      loadScript('https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@2.1.0/dist/pose-detection.min.js', function(err2) {
+        if (err2) { callback(err2); return; }
+        init();
+      });
+    } else {
+      init();
+    }
+  }
+
+  // MoveNet ile pose tespiti — img elementinden
+  function detectPoseMoveNet(imageDataUrl) {
+    return new Promise(function(resolve) {
+      loadMoveNet(function(err, detector) {
+        if (err) { resolve(null); return; }
+        var img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = function() {
+          detector.estimatePoses(img).then(function(poses) {
+            if (!poses || poses.length === 0) { resolve(null); return; }
+            // MoveNet keypoint formatını MediaPipe'a benzet
+            var kp = poses[0].keypoints;
+            // MoveNet 17 nokta, MediaPipe 33 nokta. Eşleştir.
+            // MoveNet: nose=0, leye=1, reye=2, lear=3, rear=4, lshoulder=5, rshoulder=6,
+            // lelbow=7, relbow=8, lwrist=9, rwrist=10, lhip=11, rhip=12, lknee=13, rknee=14, lankle=15, rankle=16
+            // MediaPipe karşılıkları: 0,2,5,7,8,11,12,13,14,15,16,23,24,25,26,27,28
+            var landmarks = new Array(33);
+            var moveToMP = [0, 2, 5, 7, 8, 11, 12, 13, 14, 15, 16, 23, 24, 25, 26, 27, 28];
+            for (var i = 0; i < kp.length && i < moveToMP.length; i++) {
+              var mpIdx = moveToMP[i];
+              if (kp[i] && img.width && img.height) {
+                landmarks[mpIdx] = {
+                  x: kp[i].x / img.width,
+                  y: kp[i].y / img.height,
+                  visibility: kp[i].score || 0.5
+                };
+              }
+            }
+            resolve({ landmarks: landmarks, source: 'movenet' });
+          }).catch(function() { resolve(null); });
+        };
+        img.onerror = function() { resolve(null); };
+        img.src = imageDataUrl;
+      });
+    });
+  }
+
+  // BlazePose 3D — TF.js ile, derinlik bilgisi içerir
+  var blazePoseModel = null;
+
+  function loadBlazePose3D(callback) {
+    if (blazePoseModel) { callback(null, blazePoseModel); return; }
+    if (!window.poseDetection) {
+      callback(new Error('pose-detection henüz yüklenmedi'));
+      return;
+    }
+    window.poseDetection.createDetector(
+      window.poseDetection.SupportedModels.BlazePose,
+      { runtime: 'tfjs', modelType: 'full' }
+    ).then(function(detector) {
+      blazePoseModel = detector;
+      callback(null, detector);
+    }).catch(function(err) { callback(err); });
+  }
+
+  function detectPoseBlazePose3D(imageDataUrl) {
+    return new Promise(function(resolve) {
+      loadBlazePose3D(function(err, detector) {
+        if (err) { resolve(null); return; }
+        var img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = function() {
+          detector.estimatePoses(img).then(function(poses) {
+            if (!poses || poses.length === 0) { resolve(null); return; }
+            var kp = poses[0].keypoints;
+            var landmarks = new Array(33);
+            // BlazePose 33 nokta, MediaPipe ile aynı sıra
+            for (var i = 0; i < kp.length && i < 33; i++) {
+              if (kp[i] && img.width && img.height) {
+                landmarks[i] = {
+                  x: kp[i].x / img.width,
+                  y: kp[i].y / img.height,
+                  z: kp[i].z || 0,
+                  visibility: kp[i].score || 0.5
+                };
+              }
+            }
+            resolve({ landmarks: landmarks, source: 'blazepose3d' });
+          }).catch(function() { resolve(null); });
+        };
+        img.onerror = function() { resolve(null); };
+        img.src = imageDataUrl;
+      });
+    });
+  }
+
+  // 3 modelin sonuçlarını birleştir
+  function ensembleLandmarks(results) {
+    // results: [{landmarks, source}, ...]
+    var valid = results.filter(function(r) { return r && r.landmarks; });
+    if (valid.length === 0) return null;
+    if (valid.length === 1) return valid[0].landmarks;
+
+    // Her landmark için modellerin ağırlıklı ortalaması (visibility'e göre ağırlık)
+    var merged = new Array(33);
+    for (var i = 0; i < 33; i++) {
+      var totalWeight = 0;
+      var sumX = 0, sumY = 0, sumZ = 0, sumVis = 0;
+      var validCount = 0;
+      for (var j = 0; j < valid.length; j++) {
+        var lm = valid[j].landmarks[i];
+        if (!lm) continue;
+        var w = lm.visibility || 0.3;
+        sumX += lm.x * w;
+        sumY += lm.y * w;
+        sumZ += (lm.z || 0) * w;
+        sumVis += lm.visibility || 0;
+        totalWeight += w;
+        validCount++;
+      }
+      if (validCount === 0 || totalWeight < 0.01) continue;
+      merged[i] = {
+        x: sumX / totalWeight,
+        y: sumY / totalWeight,
+        z: sumZ / totalWeight,
+        visibility: sumVis / validCount
+      };
+    }
+    return merged;
+  }
+
+  // Modellerin uyumunu hesapla
+  function computeModelAgreement(results) {
+    var valid = results.filter(function(r) { return r && r.landmarks; });
+    var hasMP = valid.some(function(r) { return r.source === 'mediapipe'; });
+    var hasMN = valid.some(function(r) { return r.source === 'movenet'; });
+    var hasBP = valid.some(function(r) { return r.source === 'blazepose3d'; });
+
+    var modelCount = valid.length;
+    var text;
+    if (modelCount === 0) text = 'Hiçbir model pose tespit edemedi.';
+    else if (modelCount === 1) text = 'Tek model sonuç verdi — diğerleri zorlandı. Sonuçlar yaklaşık.';
+    else if (modelCount === 2) text = 'İki model uyumlu sonuç verdi — güven orta.';
+    else text = 'Üç modelden de tutarlı sonuç alındı — güven yüksek.';
+
+    return {
+      mediapipe: hasMP,
+      movenet: hasMN,
+      blazepose3d: hasBP,
+      count: modelCount,
+      text: text
+    };
+  }
   document.getElementById('aiAnalyzeBtn').addEventListener('click', function() {
     runAiAnalysis();
   });
@@ -2670,32 +3365,185 @@
     var measurements = {
       shoulder: null,
       pelvis: null,
-      forwardHead: null
+      forwardHead: null,
+      spineLateral: null,
+      kneeAlignment: null,
+      legLength: null,
+      plumbLine: null,
+      symmetryIndex: null,
+      modelAgreement: null
     };
 
-    var tasks = [];
+    var loadingEl = document.getElementById('aiLoading');
+    var statusEl = loadingEl ? loadingEl.querySelector('.ai-loading-status') : null;
+    function setStatus(text) { if (statusEl) statusEl.textContent = text; }
+
+    setStatus('AI motoru hazırlanıyor — 3 model paralel...');
+
+    var allResults = []; // tüm modellerden sonuçlar (debug + agreement için)
+
+    // Ön foto: 3 model ile dene
+    var frontTasks = [];
     if (photoData.front) {
-      tasks.push(detectPose(photoData.front).then(function(r) {
-        if (r.success) {
-          measurements.shoulder = measureShoulderAsymmetry(r.landmarks);
-          measurements.pelvis = measurePelvisTilt(r.landmarks);
-        }
-        return r;
-      }).catch(function() { return { success: false }; }));
-    }
-    if (photoData.side) {
-      tasks.push(detectPose(photoData.side).then(function(r) {
-        if (r.success) {
-          measurements.forwardHead = measureForwardHead(r.landmarks);
-        }
-        return r;
-      }).catch(function() { return { success: false }; }));
+      // MediaPipe (mevcut)
+      frontTasks.push(
+        detectPose(photoData.front).then(function(r) {
+          if (r && r.success) return { landmarks: r.landmarks, source: 'mediapipe', view: 'front' };
+          return null;
+        }).catch(function() { return null; })
+      );
+      // MoveNet
+      frontTasks.push(
+        detectPoseMoveNet(photoData.front).then(function(r) {
+          if (r) { r.view = 'front'; return r; }
+          return null;
+        }).catch(function() { return null; })
+      );
+      // BlazePose 3D
+      frontTasks.push(
+        detectPoseBlazePose3D(photoData.front).then(function(r) {
+          if (r) { r.view = 'front'; return r; }
+          return null;
+        }).catch(function() { return null; })
+      );
     }
 
-    Promise.all(tasks).then(function() {
-      document.getElementById('aiLoading').classList.remove('show');
-      document.getElementById('aiAnalyzeBtn').disabled = false;
-      renderAiResults(measurements);
+    var sideTasks = [];
+    if (photoData.side) {
+      sideTasks.push(
+        detectPose(photoData.side).then(function(r) {
+          if (r && r.success) return { landmarks: r.landmarks, source: 'mediapipe', view: 'side' };
+          return null;
+        }).catch(function() { return null; })
+      );
+      sideTasks.push(
+        detectPoseMoveNet(photoData.side).then(function(r) {
+          if (r) { r.view = 'side'; return r; }
+          return null;
+        }).catch(function() { return null; })
+      );
+      sideTasks.push(
+        detectPoseBlazePose3D(photoData.side).then(function(r) {
+          if (r) { r.view = 'side'; return r; }
+          return null;
+        }).catch(function() { return null; })
+      );
+    }
+
+    setStatus('Modeller pose arıyor...');
+
+    Promise.all(frontTasks).then(function(frontResults) {
+      setStatus('Yan profil işleniyor...');
+      var frontEnsemble = ensembleLandmarks(frontResults);
+      var frontAgreement = computeModelAgreement(frontResults);
+      frontResults.forEach(function(r) { if (r) allResults.push(r); });
+
+      return Promise.all(sideTasks).then(function(sideResults) {
+        var sideEnsemble = ensembleLandmarks(sideResults);
+        sideResults.forEach(function(r) { if (r) allResults.push(r); });
+
+        setStatus('Klinik ölçümler hesaplanıyor...');
+
+        // ÖN GÖRÜNTÜDEN ÖLÇÜMLER
+        if (frontEnsemble) {
+          measurements.shoulder = measureShoulderAsymmetry(frontEnsemble);
+          measurements.pelvis = measurePelvisTilt(frontEnsemble);
+          measurements.spineLateral = measureSpineLateral(frontEnsemble);
+          measurements.kneeAlignment = measureKneeAlignment(frontEnsemble);
+          measurements.legLength = measureLegLength(frontEnsemble);
+          measurements.symmetryIndex = measureSymmetryIndex(frontEnsemble);
+        }
+
+        // YAN GÖRÜNTÜDEN ÖLÇÜMLER
+        if (sideEnsemble) {
+          measurements.forwardHead = measureForwardHead(sideEnsemble);
+          measurements.plumbLine = measurePlumbLine(sideEnsemble);
+        }
+
+        // Çoklu model uyum bilgisi
+        var agreement = computeModelAgreement(allResults);
+        measurements.modelAgreement = agreement;
+
+        // State'e landmark'ları kaydet (overlay çizimi için)
+        state.aiLandmarks = {
+          front: frontEnsemble,
+          side: sideEnsemble
+        };
+
+        document.getElementById('aiLoading').classList.remove('show');
+        document.getElementById('aiAnalyzeBtn').disabled = false;
+        renderAiResults(measurements);
+
+        // Landmark overlay çiz
+        try { drawLandmarkOverlay(); } catch(e) {}
+      });
+    });
+  }
+
+  // Yüklenen fotoğraf üzerine landmark'ları ve hat çizgilerini çiz
+  function drawLandmarkOverlay() {
+    var data = state.aiLandmarks || {};
+    ['front', 'side'].forEach(function(view) {
+      var lm = data[view];
+      if (!lm) return;
+      var photoSrc = photoData[view];
+      if (!photoSrc) return;
+
+      var slot = document.querySelector('[data-view="' + view + '"]') ||
+                 document.getElementById('photo-' + view + '-slot');
+      if (!slot) return;
+
+      // Mevcut overlay'i temizle
+      var oldCanvas = slot.querySelector('.landmark-overlay');
+      if (oldCanvas) oldCanvas.remove();
+
+      var img = new Image();
+      img.onload = function() {
+        var canvas = document.createElement('canvas');
+        canvas.className = 'landmark-overlay';
+        canvas.width = img.width;
+        canvas.height = img.height;
+        canvas.style.cssText = 'position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;';
+        slot.style.position = 'relative';
+        slot.appendChild(canvas);
+
+        var ctx = canvas.getContext('2d');
+        // Landmark noktaları
+        ctx.lineWidth = 2;
+        // Bağlantılar (omurga, kollar, bacaklar)
+        var connections = [
+          [11, 12], // omuzlar
+          [11, 23], [12, 24], // gövde kenarları
+          [23, 24], // kalçalar
+          [11, 13], [13, 15], // sol kol
+          [12, 14], [14, 16], // sağ kol
+          [23, 25], [25, 27], // sol bacak
+          [24, 26], [26, 28]  // sağ bacak
+        ];
+        ctx.strokeStyle = 'rgba(37, 99, 235, 0.7)';
+        ctx.lineWidth = Math.max(2, canvas.width * 0.005);
+        connections.forEach(function(c) {
+          var a = lm[c[0]], b = lm[c[1]];
+          if (!a || !b) return;
+          if ((a.visibility||0) < 0.3 || (b.visibility||0) < 0.3) return;
+          ctx.beginPath();
+          ctx.moveTo(a.x * canvas.width, a.y * canvas.height);
+          ctx.lineTo(b.x * canvas.width, b.y * canvas.height);
+          ctx.stroke();
+        });
+        // Noktalar
+        var keyPoints = [11, 12, 23, 24, 25, 26, 27, 28, 7, 8, 0];
+        ctx.fillStyle = 'rgba(220, 38, 38, 0.85)';
+        var pointSize = Math.max(4, canvas.width * 0.012);
+        keyPoints.forEach(function(idx) {
+          var p = lm[idx];
+          if (!p || (p.visibility||0) < 0.3) return;
+          ctx.beginPath();
+          ctx.arc(p.x * canvas.width, p.y * canvas.height, pointSize, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      };
+      img.src = photoSrc;
     });
   }
 
@@ -2704,78 +3552,176 @@
     var results = document.getElementById('aiResults');
     var html = '';
 
-    var anyValid = false;
+    // Confidence badge oluştur
+    function confBadge(conf) {
+      if (conf === 'high') return '<span class="conf-badge conf-high">Yüksek güven</span>';
+      if (conf === 'medium') return '<span class="conf-badge conf-medium">Orta güven</span>';
+      if (conf === 'low') return '<span class="conf-badge conf-low">Düşük güven</span>';
+      if (conf === 'very-low') return '<span class="conf-badge conf-very-low">Çok düşük güven</span>';
+      return '';
+    }
+
+    // Confidence için not açıklaması
+    function confNote(conf) {
+      if (conf === 'low') return ' Görüntüde landmarklar zayıf görünüyor — değer yaklaşık.';
+      if (conf === 'very-low') return ' Görüntüde landmarklar çok zayıf — değer çok yaklaşık, netlik için yeniden çekim önerilir.';
+      return '';
+    }
 
     // Omuz asimetri
     if (m.shoulder) {
-      if (m.shoulder.confidence === 'low') {
-        html += '<div class="ai-failed">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>' +
-          '<div><strong>Omuz hizası:</strong> Görüntü yetersiz, ölçüm güvenilir değil. Daha iyi aydınlatma ve pozisyonla tekrar dene.</div>' +
-        '</div>';
-      } else {
-        anyValid = true;
-        var sa = parseFloat(m.shoulder.angle);
-        var saNote = sa < 2 ? 'Belirgin asimetri yok.' : (sa < 5 ? 'Hafif asimetri görüldü.' : 'Belirgin asimetri görüldü — fizyoterapist görmen önerilir.');
-        html += '<div class="ai-measurement">' +
-          '<div class="ai-measurement-label">Omuz hizası asimetrisi (ön görüntü)</div>' +
-          '<div class="ai-measurement-value">~' + sa + '°<span class="ai-measurement-uncertainty">± 2°</span></div>' +
-          '<div class="ai-measurement-note">' + saNote + '</div>' +
-        '</div>';
-      }
+      var sa = parseFloat(m.shoulder.angle);
+      var saNote;
+      if (sa < 2) saNote = 'Belirgin asimetri yok.';
+      else if (sa < 5) saNote = 'Hafif asimetri görüldü.';
+      else saNote = 'Belirgin asimetri görüldü — fizyoterapist görmen önerilir.';
+      saNote += confNote(m.shoulder.confidence);
+      var saTone = (m.shoulder.confidence === 'low' || m.shoulder.confidence === 'very-low') ? ' ai-measurement-uncertain' : '';
+      html += '<div class="ai-measurement' + saTone + '">' +
+        '<div class="ai-measurement-label">Omuz hizası asimetrisi (ön görüntü) ' + confBadge(m.shoulder.confidence) + '</div>' +
+        '<div class="ai-measurement-value">~' + sa + '°<span class="ai-measurement-uncertainty">± 2°</span></div>' +
+        '<div class="ai-measurement-note">' + saNote + '</div>' +
+      '</div>';
     }
 
     // Pelvis tilt
     if (m.pelvis) {
-      if (m.pelvis.confidence === 'low') {
-        html += '<div class="ai-failed">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>' +
-          '<div><strong>Pelvis hizası:</strong> Görüntü yetersiz (kalçalar açık görünmüyor olabilir). Ölçüm güvenilir değil.</div>' +
-        '</div>';
-      } else {
-        anyValid = true;
-        var pa = parseFloat(m.pelvis.angle);
-        var paNote = pa < 2 ? 'Belirgin asimetri yok.' : (pa < 4 ? 'Hafif asimetri görüldü.' : 'Belirgin asimetri görüldü — fizyoterapist görmen önerilir.');
-        html += '<div class="ai-measurement">' +
-          '<div class="ai-measurement-label">Pelvis (kalça) hizası asimetrisi (ön görüntü)</div>' +
-          '<div class="ai-measurement-value">~' + pa + '°<span class="ai-measurement-uncertainty">± 2°</span></div>' +
-          '<div class="ai-measurement-note">' + paNote + '</div>' +
-        '</div>';
-      }
+      var pa = parseFloat(m.pelvis.angle);
+      var paNote;
+      if (pa < 2) paNote = 'Belirgin asimetri yok.';
+      else if (pa < 4) paNote = 'Hafif asimetri görüldü.';
+      else paNote = 'Belirgin asimetri görüldü — fizyoterapist görmen önerilir.';
+      paNote += confNote(m.pelvis.confidence);
+      var paTone = (m.pelvis.confidence === 'low' || m.pelvis.confidence === 'very-low') ? ' ai-measurement-uncertain' : '';
+      html += '<div class="ai-measurement' + paTone + '">' +
+        '<div class="ai-measurement-label">Pelvis (kalça) hizası asimetrisi (ön görüntü) ' + confBadge(m.pelvis.confidence) + '</div>' +
+        '<div class="ai-measurement-value">~' + pa + '°<span class="ai-measurement-uncertainty">± 2°</span></div>' +
+        '<div class="ai-measurement-note">' + paNote + '</div>' +
+      '</div>';
     }
 
     // Forward head (yan görüntü)
     if (m.forwardHead) {
-      if (m.forwardHead.confidence === 'low') {
-        html += '<div class="ai-failed">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>' +
-          '<div><strong>Baş pozisyonu:</strong> Yan görüntü yeterince net değil veya kulak/omuz tam görünmüyor.</div>' +
+      if (m.forwardHead.unusual) {
+        html += '<div class="ai-measurement ai-measurement-uncertain">' +
+          '<div class="ai-measurement-label">Baş öne kayma açısı (yan görüntü) ' + confBadge('low') + '</div>' +
+          '<div class="ai-measurement-value">—<span class="ai-measurement-uncertainty">ölçüm güvenilmez</span></div>' +
+          '<div class="ai-measurement-note">Kulak omuz hizasının altında veya pose tespitinde sapma var. Düz duruşla yan profil çekimi öneririz.</div>' +
         '</div>';
       } else {
-        anyValid = true;
         var fh = parseFloat(m.forwardHead.angle);
-        var fhNote = fh < 10 ? 'Baş omuz hizasında — normal.' : (fh < 20 ? 'Hafif baş öne kayması.' : 'Belirgin baş öne kayması — postür çalışması önerilir.');
-        html += '<div class="ai-measurement">' +
-          '<div class="ai-measurement-label">Baş öne kayma açısı (yan görüntü)</div>' +
+        var fhNote;
+        if (fh < 10) fhNote = 'Baş omuz hizasında — normal.';
+        else if (fh < 20) fhNote = 'Hafif baş öne kayması.';
+        else fhNote = 'Belirgin baş öne kayması — postür çalışması önerilir.';
+        fhNote += confNote(m.forwardHead.confidence);
+        var fhTone = (m.forwardHead.confidence === 'low' || m.forwardHead.confidence === 'very-low') ? ' ai-measurement-uncertain' : '';
+        html += '<div class="ai-measurement' + fhTone + '">' +
+          '<div class="ai-measurement-label">Baş öne kayma açısı (yan görüntü) ' + confBadge(m.forwardHead.confidence) + '</div>' +
           '<div class="ai-measurement-value">~' + fh + '°<span class="ai-measurement-uncertainty">± 3°</span></div>' +
           '<div class="ai-measurement-note">' + fhNote + '</div>' +
         '</div>';
       }
     }
 
+    // Yeni ölçümler — eğer varsa göster
+    if (m.spineLateral) {
+      var sl = parseFloat(m.spineLateral.angle);
+      var slNote;
+      if (sl < 3) slNote = 'Omurga merkezde — normal.';
+      else if (sl < 7) slNote = 'Hafif lateral sapma görüldü.';
+      else slNote = 'Belirgin lateral sapma — skolyoz değerlendirmesi önerilir.';
+      slNote += confNote(m.spineLateral.confidence);
+      html += '<div class="ai-measurement">' +
+        '<div class="ai-measurement-label">Omurga lateral sapma (skolyoz indikatörü) ' + confBadge(m.spineLateral.confidence) + '</div>' +
+        '<div class="ai-measurement-value">~' + sl + '°<span class="ai-measurement-uncertainty">± 3°</span></div>' +
+        '<div class="ai-measurement-note">' + slNote + '</div>' +
+      '</div>';
+    }
+
+    if (m.kneeAlignment) {
+      var ka = parseFloat(m.kneeAlignment.angle);
+      var kaNote;
+      var kaType = m.kneeAlignment.type;
+      if (Math.abs(ka) < 5) kaNote = 'Diz hizası normal aralıkta.';
+      else if (kaType === 'valgus') kaNote = 'Genu valgum (X bacak) eğilimi görüldü.';
+      else kaNote = 'Genu varum (O bacak) eğilimi görüldü.';
+      kaNote += confNote(m.kneeAlignment.confidence);
+      html += '<div class="ai-measurement">' +
+        '<div class="ai-measurement-label">Diz hizalanması (Q-açısı tahmini) ' + confBadge(m.kneeAlignment.confidence) + '</div>' +
+        '<div class="ai-measurement-value">~' + Math.abs(ka) + '°<span class="ai-measurement-uncertainty">± 3°</span></div>' +
+        '<div class="ai-measurement-note">' + kaNote + '</div>' +
+      '</div>';
+    }
+
+    if (m.legLength) {
+      var ll = parseFloat(m.legLength.diff);
+      var llNote;
+      if (ll < 1) llNote = 'Bacak uzunluğu sol-sağ dengeli görünüyor.';
+      else if (ll < 3) llNote = 'Hafif bacak uzunluk farkı görüldü.';
+      else llNote = 'Belirgin bacak uzunluk farkı — klinik ölçüm önerilir.';
+      llNote += confNote(m.legLength.confidence);
+      html += '<div class="ai-measurement">' +
+        '<div class="ai-measurement-label">Bacak uzunluk farkı (göreceli) ' + confBadge(m.legLength.confidence) + '</div>' +
+        '<div class="ai-measurement-value">~%' + ll + '<span class="ai-measurement-uncertainty">± 1%</span></div>' +
+        '<div class="ai-measurement-note">' + llNote + '</div>' +
+      '</div>';
+    }
+
+    if (m.plumbLine) {
+      var pl = parseFloat(m.plumbLine.deviation);
+      var plNote;
+      if (pl < 3) plNote = 'Yan profil ideal hizada.';
+      else if (pl < 7) plNote = 'Hafif sapma görüldü.';
+      else plNote = 'Belirgin postür sapması — fizyoterapist değerlendirmesi önerilir.';
+      plNote += confNote(m.plumbLine.confidence);
+      html += '<div class="ai-measurement">' +
+        '<div class="ai-measurement-label">Plumb line (yan profil hizası) ' + confBadge(m.plumbLine.confidence) + '</div>' +
+        '<div class="ai-measurement-value">~' + pl + '°<span class="ai-measurement-uncertainty">± 3°</span></div>' +
+        '<div class="ai-measurement-note">' + plNote + '</div>' +
+      '</div>';
+    }
+
+    if (m.symmetryIndex) {
+      var si = parseFloat(m.symmetryIndex.score);
+      var siNote;
+      if (si > 90) siNote = 'Vücut simetrisi yüksek.';
+      else if (si > 75) siNote = 'Genel simetri iyi, küçük dengesizlikler var.';
+      else siNote = 'Belirgin simetri kaybı — değerlendirme önerilir.';
+      html += '<div class="ai-measurement">' +
+        '<div class="ai-measurement-label">Genel simetri skoru ' + confBadge(m.symmetryIndex.confidence) + '</div>' +
+        '<div class="ai-measurement-value">' + si + '<span class="ai-measurement-uncertainty">/100</span></div>' +
+        '<div class="ai-measurement-note">' + siNote + '</div>' +
+      '</div>';
+    }
+
+    if (m.modelAgreement) {
+      var ma = m.modelAgreement;
+      html += '<div class="model-agreement">' +
+        '<div class="model-agreement-header">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>' +
+          '<span>Çoklu Model Çapraz Kontrol</span>' +
+        '</div>' +
+        '<div class="model-agreement-body">' + ma.text + '</div>' +
+        '<div class="model-agreement-models">' +
+          '<span class="model-tag' + (ma.mediapipe ? ' active' : '') + '">MediaPipe</span>' +
+          '<span class="model-tag' + (ma.movenet ? ' active' : '') + '">MoveNet</span>' +
+          '<span class="model-tag' + (ma.blazepose3d ? ' active' : '') + '">BlazePose 3D</span>' +
+        '</div>' +
+      '</div>';
+    }
+
     // Hiç ölçüm yapılamadıysa
     if (!html) {
       html = '<div class="ai-failed">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>' +
-        '<div><strong>Görüntülerden ölçüm yapılamadı.</strong> Daha iyi aydınlatma, çocuğun düz duruşu ve tüm vücudun kareye girmesi için fotoğrafları yenileyebilirsin.</div>' +
+        '<div><strong>AI ölçüm tamamlanamadı.</strong> Pose tespiti zorlandı, sonuç güvenilir değil. Yine de klinik check-listi tek başına değerlendirme için yeterli olabilir.</div>' +
       '</div>';
     }
 
     content.innerHTML = html;
     results.classList.add('show');
-    // State'e kaydet (sonuç ekranında da gösterilebilir ileride)
     state.aiMeasurements = m;
-    // Sonuçların yanına scroll
     results.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
@@ -3733,7 +4679,7 @@
 })();
 </script>
 
-<script src="/shared-nav.js" defer></script>
+<script src="shared-nav.js" defer></script>
 
 </body>
 </html>

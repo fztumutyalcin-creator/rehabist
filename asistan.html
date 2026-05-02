@@ -3,917 +3,199 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Asistan — Rehabist | Fzt. Umut Yalçın</title>
-<meta name="description" content="Rehabist AI Asistan — Fizyoterapi hakkında sorularınızı yanıtlayan dijital danışman.">
+<title>AI Asistan — Yakında | Rehabist</title>
+<meta name="description" content="Rehabist AI Asistan yakında hizmette. Şimdilik fizyoterapi araçlarını ücretsiz keşfet veya WhatsApp'tan randevu al.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared-theme.css">
 
 <style>
-  :root {
-    --white: #ffffff;
-    --off-white: #fafbfc;
-    --surface: #f5f7fa;
-    --border: #e4e8ed;
-    --border-strong: #d0d6dd;
-    --ink-900: #0f172a;
-    --ink-700: #1e293b;
-    --ink-500: #475569;
-    --ink-400: #64748b;
-    --ink-300: #94a3b8;
-    --blue-50: #eff6ff;
-    --blue-100: #dbeafe;
-    --blue-500: #3b82f6;
-    --blue-600: #2563eb;
-    --blue-700: #1d4ed8;
-    --purple-500: #8b5cf6;
-    --purple-600: #7c3aed;
-    --serif: 'Newsreader', Georgia, serif;
-    --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; }
   body {
     font-family: var(--sans);
-    color: var(--ink-700);
     background: var(--off-white);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    color: var(--ink-700);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-  }
-  a { color: inherit; text-decoration: none; }
-  ::selection { background: var(--blue-100); color: var(--blue-700); }
-
-  /* ============ NAV ============ */
-  .nav {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    flex-shrink: 0;
-  }
-  .nav-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 18px;
-    letter-spacing: -0.02em;
-    color: var(--ink-900);
-  }
-  .logo-mark {
-    width: 28px;
-    height: 28px;
-    background: var(--blue-600);
-    border-radius: 7px;
-    display: grid;
-    place-items: center;
-    color: var(--white);
-  }
-  .logo-mark svg { width: 15px; height: 15px; }
-  .back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    background: var(--surface);
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink-700);
-  }
-  .back-btn:hover { background: var(--border); color: var(--ink-900); }
-  .back-btn svg { width: 14px; height: 14px; }
-
-  /* ============ GATE (üye değilse) ============ */
-  #accessGate {
-    display: none;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 24px;
-  }
-  #accessGate.visible { display: flex; }
-  .gate-content {
-    max-width: 440px;
-    text-align: center;
-  }
-  .gate-icon {
-    width: 64px;
-    height: 64px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    color: var(--purple-600);
-    border-radius: 16px;
-    display: grid;
-    place-items: center;
-    margin: 0 auto 24px;
-    box-shadow: 0 1px 2px rgba(15,23,42,0.04);
-  }
-  .gate-icon svg { width: 26px; height: 26px; }
-  .gate-content h1 {
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    color: var(--ink-900);
-    margin-bottom: 12px;
-  }
-  .gate-content > p {
-    font-size: 15px;
-    color: var(--ink-500);
-    margin-bottom: 28px;
     line-height: 1.6;
   }
-  .gate-actions {
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+  }
+  .container {
+    max-width: 580px;
+    text-align: center;
+  }
+  .icon-wrap {
+    width: 80px; height: 80px;
+    margin: 0 auto 28px;
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    border-radius: 24px;
+    display: grid; place-items: center;
+    color: #6d28d9;
+  }
+  .icon-wrap svg { width: 36px; height: 36px; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, #6d28d9, #2563eb);
+    color: var(--white);
+    border-radius: 100px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(28px, 4.5vw, 40px);
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  h1 .accent {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--blue-700);
+  }
+  .lead {
+    font-size: 16.5px;
+    color: var(--ink-500);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .actions {
     display: flex;
     gap: 10px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 36px;
   }
   .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    padding: 11px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    font-weight: 600;
+    transition: all 0.2s;
+    line-height: 1;
+    border: none;
     cursor: pointer;
-    border: 1px solid transparent;
-    font-family: inherit;
-    transition: all .15s;
-    white-space: nowrap;
+    text-decoration: none;
   }
   .btn-primary {
-    background: var(--blue-600);
+    background: var(--ink-900);
     color: var(--white);
   }
-  .btn-primary:hover { background: var(--blue-700); }
-  .btn-outline {
-    background: var(--white);
-    color: var(--ink-900);
-    border-color: var(--border-strong);
+  .btn-primary:hover {
+    background: var(--blue-700);
+    transform: translateY(-2px);
   }
-  .btn-outline:hover { background: var(--off-white); }
-
-  /* ============ CHAT ============ */
-  #chatWrap {
-    display: none;
-    flex: 1;
-    flex-direction: column;
-    overflow: hidden;
-    max-width: 820px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-  }
-  #chatWrap.visible { display: flex; }
-
-  .chat-header {
-    padding: 24px 24px 16px;
-    background: var(--off-white);
-    flex-shrink: 0;
-  }
-  .chat-header-inner {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .assistant-avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--purple-500), var(--blue-600));
-    display: grid;
-    place-items: center;
-    color: var(--white);
-    flex-shrink: 0;
-    position: relative;
-  }
-  .assistant-avatar svg { width: 22px; height: 22px; }
-  .assistant-avatar::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 11px;
-    height: 11px;
-    background: #10b981;
-    border: 2px solid var(--off-white);
-    border-radius: 50%;
-  }
-  .chat-header-text h1 {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--ink-900);
-    margin-bottom: 2px;
-  }
-  .chat-header-text p {
-    font-size: 12.5px;
-    color: var(--ink-500);
-  }
-
-  .chat-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px 24px 120px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    scroll-behavior: smooth;
-  }
-
-  .message {
-    display: flex;
-    gap: 10px;
-    max-width: 85%;
-    animation: fadeUp .25s ease;
-  }
-  .message.user { align-self: flex-end; flex-direction: row-reverse; }
-  .message.assistant { align-self: flex-start; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .message-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  .message.assistant .message-avatar {
-    background: linear-gradient(135deg, var(--purple-500), var(--blue-600));
-    color: var(--white);
-  }
-  .message.assistant .message-avatar svg {
-    width: 16px; height: 16px;
-  }
-  .message.user .message-avatar {
-    background: var(--blue-600);
-    color: var(--white);
-  }
-
-  .message-bubble {
-    padding: 12px 16px;
-    border-radius: 14px;
-    font-size: 14.5px;
-    line-height: 1.55;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-  .message.assistant .message-bubble {
-    background: var(--white);
-    border: 1px solid var(--border);
-    color: var(--ink-900);
-    border-top-left-radius: 4px;
-  }
-  .message.user .message-bubble {
-    background: var(--blue-600);
-    color: var(--white);
-    border-top-right-radius: 4px;
-  }
-
-  /* WhatsApp link within message */
-  .message-wa-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 10px;
-    padding: 8px 14px;
+  .btn-wa {
     background: #25D366;
-    color: white;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    transition: transform .15s;
+    color: var(--white);
   }
-  .message-wa-link:hover { transform: translateY(-1px); }
-  .message-wa-link svg { width: 14px; height: 14px; fill: currentColor; }
-
-  /* Typing indicator */
-  .typing {
-    display: inline-flex;
-    gap: 4px;
-    align-items: center;
-    padding: 4px 0;
-  }
-  .typing span {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--ink-300);
-    animation: bounce 1.2s infinite ease-in-out;
-  }
-  .typing span:nth-child(2) { animation-delay: 0.15s; }
-  .typing span:nth-child(3) { animation-delay: 0.3s; }
-  @keyframes bounce {
-    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
-    30% { transform: translateY(-5px); opacity: 1; }
-  }
-
-  /* Quick suggestions */
-  .suggestions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+  .btn-wa:hover { background: #20b859; transform: translateY(-2px); }
+  .btn svg { width: 16px; height: 16px; }
+  .tools {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
     margin-top: 8px;
   }
-  .suggestion {
+  @media (max-width: 480px) {
+    .tools { grid-template-columns: 1fr; }
+    .btn { width: 100%; }
+  }
+  .tool-link {
     background: var(--white);
-    border: 1px solid var(--border-strong);
-    padding: 8px 14px;
-    border-radius: 100px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink-700);
-    cursor: pointer;
-    font-family: inherit;
-    transition: all .15s;
-  }
-  .suggestion:hover {
-    border-color: var(--blue-500);
-    color: var(--blue-700);
-    background: var(--blue-50);
-  }
-
-  /* Chat input area */
-  .chat-input-wrap {
-    position: sticky;
-    bottom: 0;
-    background: linear-gradient(to top, var(--off-white) 70%, transparent);
-    padding: 16px 24px 20px;
-    flex-shrink: 0;
-  }
-  .chat-input-form {
-    display: flex;
-    gap: 10px;
-    align-items: flex-end;
-    background: var(--white);
-    border: 1px solid var(--border-strong);
-    border-radius: 16px;
-    padding: 8px 8px 8px 16px;
-    transition: border-color .15s, box-shadow .15s;
-    box-shadow: 0 2px 10px -4px rgba(15,23,42,0.05);
-  }
-  .chat-input-form:focus-within {
-    border-color: var(--blue-500);
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
-  }
-  .chat-input {
-    flex: 1;
-    border: none;
-    outline: none;
-    resize: none;
-    font-family: inherit;
-    font-size: 15px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-decoration: none;
     color: var(--ink-900);
-    line-height: 1.5;
-    max-height: 120px;
-    padding: 8px 0;
-    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    transition: all 0.15s;
+    display: block;
   }
-  .chat-input::placeholder { color: var(--ink-400); }
-  .chat-send {
-    width: 38px;
-    height: 38px;
-    border: none;
-    background: var(--blue-600);
-    color: var(--white);
-    border-radius: 10px;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    transition: all .15s;
-    flex-shrink: 0;
+  .tool-link:hover {
+    border-color: var(--ink-900);
+    transform: translateY(-1px);
   }
-  .chat-send:hover:not(:disabled) { background: var(--blue-700); }
-  .chat-send:disabled {
-    background: var(--ink-300);
-    cursor: not-allowed;
+  .tool-link span {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-500);
+    font-weight: 500;
+    margin-top: 2px;
   }
-  .chat-send svg { width: 16px; height: 16px; }
-
-  .chat-disclaimer {
-    font-size: 11.5px;
-    color: var(--ink-400);
-    text-align: center;
-    margin-top: 10px;
-    line-height: 1.4;
-  }
-  .chat-disclaimer strong { color: var(--ink-500); font-weight: 500; }
-
-  /* Error banner */
-  .error-banner {
-    display: none;
-    padding: 10px 14px;
-    margin: 0 24px 12px;
-    background: #fef2f2;
-    color: #991b1b;
-    border: 1px solid #fecaca;
-    border-radius: 8px;
+  .small-note {
     font-size: 13px;
-  }
-  .error-banner.visible { display: block; }
-
-  @media (max-width: 700px) {
-    .chat-header { padding: 16px 16px 12px; }
-    .chat-messages { padding: 16px 16px 100px; }
-    .chat-input-wrap { padding: 12px 16px 16px; }
-    .message { max-width: 92%; }
-    .nav-inner { padding: 0 16px; }
+    color: var(--ink-400);
+    margin-top: 24px;
   }
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/shared-theme.css">
 </head>
 <body>
 
-<!-- NAV -->
 <div id="rb-nav-mount"></div>
 
-<!-- GATE (üye değilse) -->
-<section id="accessGate">
-  <div class="gate-content">
-    <div class="gate-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 013 3v7a3 3 0 01-6 0V5a3 3 0 013-3zM19 10v2a7 7 0 01-14 0v-2M12 19v3M8 22h8"/></svg>
+<main>
+  <div class="container">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     </div>
-    <h1>AI Asistan üyelere özeldir</h1>
-    <p>Rehabist yapay zeka asistanı ile sohbet etmek için ücretsiz üye olmanız yeterli. Kayıt 1 dakikanızı almaz.</p>
-    <div class="gate-actions">
-      <a href="/" class="btn btn-primary">Ana Sayfaya Dön</a>
-      <a href="/blog.html" class="btn btn-outline">Yazılara Göz At</a>
+
+    <span class="badge">Yakında Hizmette</span>
+
+    <h1>AI Asistan <span class="accent">geliştiriliyor.</span></h1>
+    <p class="lead">Rehabist'in dijital asistanı şu an üzerinde çalıştığımız bir özellik. Sıcak ve profesyonel bir fizyoterapi sohbet asistanı için biraz sabır.</p>
+
+    <div class="actions">
+      <a href="/" class="btn btn-primary">
+        Ana Sayfaya Dön
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://wa.me/905345840913?text=Merhaba%2C%20bir%20sorum%20var." target="_blank" rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>
+        WhatsApp'tan Sor
+      </a>
     </div>
-  </div>
-</section>
 
-<!-- CHAT (üye ise) -->
-<div id="chatWrap">
-  <header class="chat-header">
-    <div class="chat-header-inner">
-      <div class="assistant-avatar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6M4 12h16M10 16h4"/><rect x="4" y="8" width="16" height="4" rx="1"/></svg>
-      </div>
-      <div class="chat-header-text">
-        <h1>Rehabist Asistan</h1>
-        <p>Fzt. Umut Yalçın'ın dijital asistanı · Çevrimiçi</p>
-      </div>
+    <div class="tools">
+      <a href="/harita.html" class="tool-link">
+        Ağrı Haritası
+        <span>14 bölge değerlendirme</span>
+      </a>
+      <a href="/postur-analizi.html" class="tool-link">
+        Postür Analizi
+        <span>Fotoğraftan değerlendirme</span>
+      </a>
     </div>
-  </header>
 
-  <div class="error-banner" id="errorBanner"></div>
-
-  <div class="chat-messages" id="chatMessages">
-    <!-- Mesajlar buraya eklenir -->
+    <p class="small-note">Asistan hazır olduğunda buradan duyuracağız.</p>
   </div>
-
-  <div class="chat-input-wrap">
-    <form class="chat-input-form" id="chatForm" onsubmit="sendMessage(event)">
-      <textarea
-        class="chat-input"
-        id="chatInput"
-        placeholder="Şikayetinizi veya sorunuzu yazın..."
-        rows="1"
-        required></textarea>
-      <button type="submit" class="chat-send" id="chatSend" aria-label="Gönder">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
-      </button>
-    </form>
-    <p class="chat-disclaimer">
-      <strong>Not:</strong> Bu asistan tanı koyamaz ve tedavi öneremez. Ciddi şikayetler için
-      <a href="https://wa.me/905345840913?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" style="color:var(--blue-700);">Fzt. Umut ile WhatsApp'tan iletişime</a>
-      geçmeniz önerilir.
-    </p>
-  </div>
-</div>
-
-<!-- Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
-<script>
-(function() {
-  'use strict';
-
-  // ============================================
-  // KONFİGÜRASYON
-  // ============================================
-  var SUPABASE_URL = 'https://vphmzrxiynjtdwxjtnvw.supabase.co';
-  var SUPABASE_KEY = 'sb_publishable_GPelhhr1szU9qzmSNw0VLw_jaeNDp6I';
-
-  // OPENROUTER API KEY - aşağıya kendi anahtarını koy (openrouter.ai'dan alacaksın)
-  // Anahtar sk-or-v1-... ile başlar
-  var OPENROUTER_API_KEY = 'YOUR_OPENROUTER_API_KEY';
-
-  // Ücretsiz modeller (sırayla denenir, biri çalışmazsa diğerine geçer)
-  // Nisan 2026 itibarıyla aktif olanlar
-  var AI_MODELS = [
-    'meta-llama/llama-3.3-70b-instruct:free',
-    'deepseek/deepseek-r1:free',
-    'qwen/qwen3-235b-a22b:free',
-    'google/gemma-3-27b-it:free'
-  ];
-
-  // ============================================
-
-  var sb = null;
-  try {
-    if (window.supabase && window.supabase.createClient) {
-      sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    }
-  } catch(e) {}
-
-  var gate = document.getElementById('accessGate');
-  var chatWrap = document.getElementById('chatWrap');
-  var messagesEl = document.getElementById('chatMessages');
-  var inputEl = document.getElementById('chatInput');
-  var sendBtn = document.getElementById('chatSend');
-  var errorBanner = document.getElementById('errorBanner');
-
-  var currentUser = null;
-  var conversationHistory = [];
-  var isGenerating = false;
-
-  // Sistem promptu - asistanın kişiliği
-  var SYSTEM_PROMPT = [
-    "Sen Rehabist'in dijital asistanısın. Rehabist, Aydın'da faaliyet gösteren Fizyoterapist Umut Yalçın'ın evde fizyoterapi hizmeti veren platformudur.",
-    "",
-    "KİMLİĞİN:",
-    "- Adın: Rehabist Asistan",
-    "- Görevin: Hastaların fizyoterapi ile ilgili sorularını sıcak ve profesyonel şekilde yanıtlamak, randevu almalarına yardımcı olmak",
-    "- Ton: Nazik, empatik, anlayışlı ama profesyonel.",
-    "",
-    "KURALLARIN (KESİNLİKLE UYULACAK):",
-    "1. ASLA tanı koymazsın. 'Sizde şu var' demezsin. 'Bu tabloda şunlar görülebilir, ancak kesin değerlendirme için muayene gerekir' dersin.",
-    "2. ASLA ilaç, doz, tedavi protokolü önermezsin.",
-    "3. Genel bilgilendirme yapabilirsin: örn. 'Bel ağrısı genel olarak şu sebeplerden olabilir...', 'Fizyoterapide şu yöntemler kullanılır...'",
-    "4. 2-3 mesaj alışverişinden sonra ya da hastanın şikayeti netleştiğinde, mutlaka Fzt. Umut ile WhatsApp üzerinden iletişime geçmesini öner.",
-    "5. Acil belirtiler varsa (bacağa vuran keskin ağrı, uyuşukluk, kuvvet kaybı, idrar/dışkı kontrolünde sorun, gece şiddetlenen ağrı, travma sonrası ağrı) acil servise başvurmasını söylersin.",
-    "6. Fizyoterapi/sağlık dışı konulara girme. Nazikçe 'Ben fizyoterapi asistanıyım, bu konuda yardımcı olamam' de.",
-    "7. KISA ve NET cevaplar ver. 3-4 cümleyi geçme. Madde işareti kullanma, doğal konuş.",
-    "8. SADECE TÜRKÇE konuş. İngilizce, madde işareti, başlık, markdown formatı KULLANMA. Normal bir insan gibi cevap ver.",
-    "9. Empatik ifadeler kullan: 'Anladım, bu rahatsız edici olmalı', 'Geçmiş olsun' gibi.",
-    "10. Cevabının sonuna [WA_LINK] yaz — sistem bunu otomatik olarak WhatsApp butonu olarak gösterecek. Her cevaba koymana gerek yok, sadece randevu önerdiğinde veya uygun gördüğünde.",
-    "",
-    "RANDEVU SORULARI İÇİN TIPKI ŞÖYLE CEVAP VER:",
-    "Soru: 'Nasıl randevu alabilirim?'",
-    "Cevap: 'Randevu almak çok kolay! WhatsApp üzerinden 0534 584 09 13 numarasına şikayetinizi kısaca yazmanız yeterli. Fzt. Umut size en kısa sürede dönüş yapacaktır. [WA_LINK]'",
-    "",
-    "UMUT YALÇIN HAKKINDA:",
-    "- Adnan Menderes Üniversitesi Fizyoterapi ve Rehabilitasyon mezunu",
-    "- 2+ yıl deneyim, 100+ hasta",
-    "- Uzmanlık: Pediatri, Nöroloji, Ortopedi",
-    "- Aydın Merkez (Efeler) ve çevresinde evde fizyoterapi hizmeti",
-    "- Özel bir kurumda pediatrik rehabilitasyon alanında tam zamanlı çalışıyor",
-    "- Ev ziyareti ve özel seanslar yapıyor",
-    "- İletişim: 0534 584 09 13 (WhatsApp)",
-    "",
-    "İlk mesajında kısa, sıcak bir karşılama yap ve 'size nasıl yardımcı olabilirim' diye sor. Kısa cümlelerle doğal konuş."
-  ].join("\n");
-
-  // ============================================
-  // AUTH CHECK
-  // ============================================
-  async function init() {
-    if (!sb) {
-      showGate();
-      return;
-    }
-    try {
-      var r = await sb.auth.getSession();
-      if (r.data && r.data.session) {
-        currentUser = r.data.session.user;
-        showChat();
-      } else {
-        showGate();
-      }
-    } catch(e) {
-      showGate();
-    }
-  }
-
-  function showGate() {
-    gate.classList.add('visible');
-    chatWrap.classList.remove('visible');
-  }
-
-  function showChat() {
-    gate.classList.remove('visible');
-    chatWrap.classList.add('visible');
-    startConversation();
-  }
-
-  // ============================================
-  // CHAT
-  // ============================================
-  function startConversation() {
-    var firstName = (currentUser && currentUser.user_metadata && currentUser.user_metadata.first_name)
-      ? currentUser.user_metadata.first_name
-      : '';
-    var greeting = firstName
-      ? "Merhaba " + firstName + "! 👋 Ben Rehabist Asistan, Fzt. Umut Yalçın'ın dijital yardımcısıyım. Size nasıl yardımcı olabilirim?"
-      : "Merhaba! 👋 Ben Rehabist Asistan, Fzt. Umut Yalçın'ın dijital yardımcısıyım. Size nasıl yardımcı olabilirim?";
-
-    addMessage('assistant', greeting, ['Belim ağrıyor', 'Boynum tutuldu', 'Nasıl randevu alabilirim?']);
-  }
-
-  function addMessage(role, text, suggestions) {
-    var msg = document.createElement('div');
-    msg.className = 'message ' + role;
-
-    var avatar = document.createElement('div');
-    avatar.className = 'message-avatar';
-    if (role === 'assistant') {
-      avatar.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6M4 12h16M10 16h4"/><rect x="4" y="8" width="16" height="4" rx="1"/></svg>';
-    } else {
-      var initial = 'S';
-      if (currentUser && currentUser.user_metadata && currentUser.user_metadata.first_name) {
-        initial = currentUser.user_metadata.first_name.charAt(0).toUpperCase();
-      }
-      avatar.textContent = initial;
-    }
-
-    var bubble = document.createElement('div');
-    bubble.className = 'message-bubble';
-
-    // [WA_LINK] placeholder'ı WhatsApp butonu ile değiştir
-    var hasWaLink = text.indexOf('[WA_LINK]') > -1;
-    var cleanText = text.replace(/\[WA_LINK\]/g, '').trim();
-    bubble.textContent = cleanText;
-
-    if (hasWaLink) {
-      var waLink = document.createElement('a');
-      waLink.className = 'message-wa-link';
-      waLink.href = 'https://wa.me/905345840913?text=Merhaba%2C%20randevu%20almak%20istiyorum.';
-      waLink.target = '_blank';
-      waLink.rel = 'noopener';
-      waLink.innerHTML = '<svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.76 1.47c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.46-8.41z"/></svg>WhatsApp\'tan Yaz';
-      bubble.appendChild(document.createElement('br'));
-      bubble.appendChild(waLink);
-    }
-
-    msg.appendChild(avatar);
-    msg.appendChild(bubble);
-
-    if (suggestions && suggestions.length && role === 'assistant') {
-      var wrapper = document.createElement('div');
-      wrapper.style.width = '100%';
-      wrapper.appendChild(msg);
-      var sugBox = document.createElement('div');
-      sugBox.className = 'suggestions';
-      suggestions.forEach(function(s) {
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'suggestion';
-        btn.textContent = s;
-        btn.onclick = function() {
-          inputEl.value = s;
-          sendMessage({ preventDefault: function(){} });
-        };
-        sugBox.appendChild(btn);
-      });
-      wrapper.appendChild(sugBox);
-      messagesEl.appendChild(wrapper);
-    } else {
-      messagesEl.appendChild(msg);
-    }
-
-    scrollToBottom();
-  }
-
-  function addTyping() {
-    var msg = document.createElement('div');
-    msg.className = 'message assistant';
-    msg.id = 'typingIndicator';
-
-    var avatar = document.createElement('div');
-    avatar.className = 'message-avatar';
-    avatar.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6M4 12h16M10 16h4"/><rect x="4" y="8" width="16" height="4" rx="1"/></svg>';
-
-    var bubble = document.createElement('div');
-    bubble.className = 'message-bubble';
-    bubble.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
-
-    msg.appendChild(avatar);
-    msg.appendChild(bubble);
-    messagesEl.appendChild(msg);
-    scrollToBottom();
-  }
-
-  function removeTyping() {
-    var t = document.getElementById('typingIndicator');
-    if (t) t.remove();
-  }
-
-  function scrollToBottom() {
-    setTimeout(function() {
-      messagesEl.scrollTop = messagesEl.scrollHeight;
-    }, 50);
-  }
-
-  function showError(text) {
-    errorBanner.textContent = text;
-    errorBanner.classList.add('visible');
-    setTimeout(function() {
-      errorBanner.classList.remove('visible');
-    }, 5000);
-  }
-
-  // ============================================
-  // OPENROUTER API CALL (with automatic fallback)
-  // ============================================
-  async function callAI(userMessage) {
-    if (OPENROUTER_API_KEY === 'YOUR_OPENROUTER_API_KEY' || !OPENROUTER_API_KEY) {
-      throw new Error('API anahtarı yapılandırılmamış');
-    }
-
-    var messages = [
-      { role: 'system', content: SYSTEM_PROMPT }
-    ];
-
-    conversationHistory.forEach(function(m) {
-      messages.push({
-        role: m.role === 'assistant' ? 'assistant' : 'user',
-        content: m.text
-      });
-    });
-
-    messages.push({
-      role: 'user',
-      content: userMessage
-    });
-
-    var lastError = null;
-
-    // Modelleri sırayla dene
-    for (var i = 0; i < AI_MODELS.length; i++) {
-      var model = AI_MODELS[i];
-      try {
-        console.log('[' + (i+1) + '/' + AI_MODELS.length + '] Deneniyor:', model);
-
-        var response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Authorization': 'Bearer ' + OPENROUTER_API_KEY,
-            'Content-Type': 'application/json',
-            'HTTP-Referer': 'https://rehabist.netlify.app',
-            'X-Title': 'Rehabist AI Asistan'
-          },
-          body: JSON.stringify({
-            model: model,
-            messages: messages,
-            temperature: 0.7,
-            max_tokens: 500
-          })
-        });
-
-        // 404 = model yok, bir sonrakini dene
-        // 429 = rate limit, bir sonrakini dene (farklı modelin kendi limiti var)
-        if (response.status === 404 || response.status === 429) {
-          console.warn('Model ' + model + ' şu an kullanılamıyor (' + response.status + '), bir sonrakini deniyorum...');
-          lastError = new Error('HTTP ' + response.status);
-          continue;
-        }
-
-        if (!response.ok) {
-          var errText = await response.text();
-          console.error('Model ' + model + ' hatası:', response.status, errText);
-          lastError = new Error('HTTP ' + response.status + ': ' + errText.substring(0, 150));
-          continue;
-        }
-
-        var data = await response.json();
-
-        if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-          console.error('Model ' + model + ' geçersiz yanıt:', data);
-          lastError = new Error('Geçersiz yanıt');
-          continue;
-        }
-
-        var content = data.choices[0].message.content;
-        if (!content || content.trim() === '') {
-          console.warn('Model ' + model + ' boş yanıt verdi, bir sonrakini deniyorum...');
-          lastError = new Error('Boş yanıt');
-          continue;
-        }
-
-        console.log('✓ Yanıt alındı:', model);
-        return content;
-
-      } catch (err) {
-        console.error('Model ' + model + ' exception:', err);
-        lastError = err;
-        continue;
-      }
-    }
-
-    throw lastError || new Error('Hiçbir model yanıt vermedi');
-  }
-
-  // ============================================
-  // SEND MESSAGE
-  // ============================================
-  window.sendMessage = async function(e) {
-    if (e && e.preventDefault) e.preventDefault();
-    if (isGenerating) return;
-
-    var text = inputEl.value.trim();
-    if (!text) return;
-
-    // Kullanıcı mesajını ekle
-    addMessage('user', text);
-    conversationHistory.push({ role: 'user', text: text });
-
-    inputEl.value = '';
-    inputEl.style.height = 'auto';
-    isGenerating = true;
-    sendBtn.disabled = true;
-
-    addTyping();
-
-    try {
-      var response = await callAI(text);
-      removeTyping();
-
-      // Yanıtı ekle
-      addMessage('assistant', response);
-      conversationHistory.push({ role: 'assistant', text: response });
-
-      // Maksimum 20 mesaj tut (çok uzun geçmiş performansı düşürür)
-      if (conversationHistory.length > 20) {
-        conversationHistory = conversationHistory.slice(-20);
-      }
-
-    } catch (err) {
-      removeTyping();
-      console.error('Hata detayı:', err);
-      var msg = err.message || 'Bilinmeyen hata';
-
-      // Kullanıcıya detaylı ama anlaşılır hata
-      var userMsg = 'Şu an yanıt veremiyorum. ';
-      if (msg.indexOf('API anahtarı') > -1) {
-        showError('API anahtarı yapılandırılmamış. Site yöneticisi ile iletişime geçin.');
-        userMsg += 'Yapılandırma hatası.';
-      } else if (msg.indexOf('401') > -1 || msg.indexOf('Unauthorized') > -1) {
-        showError('API anahtarı geçersiz. Site yöneticisi ile iletişime geçin.');
-        userMsg += 'Yetkilendirme hatası.';
-      } else if (msg.indexOf('429') > -1 || msg.indexOf('quota') > -1 || msg.indexOf('rate') > -1) {
-        showError('Günlük mesaj limiti geçici olarak doldu. Biraz sonra tekrar deneyin.');
-        userMsg += 'Günlük limit doldu.';
-      } else if (msg.indexOf('402') > -1 || msg.indexOf('insufficient') > -1 || msg.indexOf('credit') > -1) {
-        showError('Hesap bakiyesi yetersiz. Site yöneticisi ile iletişime geçin.');
-        userMsg += 'Hesap bakiyesi yetersiz.';
-      } else {
-        showError('Bağlantı sorunu: ' + msg.substring(0, 100));
-        userMsg += 'Teknik bir sorun oluştu.';
-      }
-      userMsg += ' Lütfen Fzt. Umut ile doğrudan WhatsApp üzerinden iletişime geçin. [WA_LINK]';
-
-      addMessage('assistant', userMsg);
-    } finally {
-      isGenerating = false;
-      sendBtn.disabled = false;
-      inputEl.focus();
-    }
-  };
-
-  // Auto-resize textarea
-  inputEl.addEventListener('input', function() {
-    this.style.height = 'auto';
-    this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-  });
-
-  // Enter to send (Shift+Enter for new line)
-  inputEl.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
-  });
-
-  // Start
-  init();
-
-})();
-</script>
+</main>
 
 <div id="rb-footer-mount"></div>
+
 <script src="/shared-nav.js" defer></script>
 </body>
 </html>

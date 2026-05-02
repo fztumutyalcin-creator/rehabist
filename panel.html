@@ -486,27 +486,12 @@
 
 <div id="rb-nav-mount"></div>
 
-<!-- GATE (üye değilse) -->
-<section id="accessGate">
-  <div class="gate-content">
-    <div class="gate-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 013 3v7a3 3 0 01-6 0V5a3 3 0 013-3zM19 10v2a7 7 0 01-14 0v-2M12 19v3M8 22h8"/></svg>
-    </div>
-    <h1>Panel üyelere özeldir</h1>
-    <p>Kişisel panelinizi görüntülemek ve ağrı takibi yapabilmek için ücretsiz üye olmanız yeterli.</p>
-    <div class="gate-actions">
-      <a href="/" class="btn btn-primary">Ana Sayfaya Dön</a>
-      <a href="/harita.html" class="btn btn-outline">Ağrı Haritası</a>
-    </div>
-  </div>
-</section>
-
-<!-- PANEL (üye ise) -->
+<!-- PANEL -->
 <main id="panelContent">
   <div class="container">
 
     <div class="page-header">
-      <h1>Merhaba <span class="accent" id="greetingName">!</span></h1>
+      <h1>Hoş geldin <span class="accent" id="greetingName">👋</span></h1>
       <p>Rehabist panelinize hoş geldiniz. Ağrı takibinizi buradan yönetebilirsiniz.</p>
     </div>
 
@@ -724,7 +709,7 @@
     document.getElementById('karneDate').textContent = now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
 
     if (!sb) {
-      showGate();
+      showPanel();
       return;
     }
 
@@ -732,31 +717,33 @@
       var r = await sb.auth.getSession();
       if (r.data && r.data.session) {
         currentUser = r.data.session.user;
-        showPanel();
-      } else {
-        showGate();
       }
+      showPanel();
     } catch(e) {
-      showGate();
+      showPanel();
     }
   }
 
   function showGate() {
-    document.getElementById('accessGate').classList.add('visible');
-    document.getElementById('panelContent').classList.remove('visible');
-    document.getElementById('logoutBtn').style.display = 'none';
+    // No-op (gate removed)
   }
 
   async function showPanel() {
-    document.getElementById('accessGate').classList.remove('visible');
     document.getElementById('panelContent').classList.add('visible');
-    document.getElementById('logoutBtn').style.display = '';
+    var logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) logoutBtn.style.display = currentUser ? '' : 'none';
 
-    // İsim
-    var firstName = (currentUser.user_metadata && currentUser.user_metadata.first_name)
-      ? currentUser.user_metadata.first_name
-      : 'Üye';
-    document.getElementById('greetingName').textContent = firstName;
+    // İsim — auth yoksa generic karşılama
+    var firstName;
+    if (currentUser && currentUser.user_metadata && currentUser.user_metadata.first_name) {
+      firstName = currentUser.user_metadata.first_name;
+    } else {
+      firstName = '';
+    }
+    var greetingEl = document.getElementById('greetingName');
+    if (greetingEl) {
+      greetingEl.textContent = firstName || '👋';
+    }
 
     // Logları yükle
     await loadLogs();

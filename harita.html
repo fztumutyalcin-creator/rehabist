@@ -1105,7 +1105,7 @@
 
   function renderInfo(region, key) {
     var panel = document.getElementById('infoPanel');
-    var shareUrl = 'https://rehabist.netlify.app/harita.html?bolge=' + key;
+    var shareUrl = window.location.origin + '/harita.html?bolge=' + key;
 
     var html = '<div class="info-card">';
     html += '<div class="info-card-header">';
@@ -1152,7 +1152,7 @@
     // Ağrı takibi CTA
     html += '<div class="track-card">';
     html += '<h3>Ağrını takip et</h3>';
-    html += '<p>Şikayetinin zaman içinde nasıl değiştiğini görmek ister misin? Ücretsiz üyelikle ağrı günlüğü tut, grafikle takip et.</p>';
+    html += '<p>Şikayetinin zaman içinde nasıl değiştiğini görmek ister misin? Panelde ağrı günlüğü tut, grafikle takip et.</p>';
     html += '<a href="/panel.html" class="btn">Panele Git <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>';
     html += '</div>';
 
@@ -1162,7 +1162,7 @@
 
   // Share functions
   window.shareWhatsApp = function(key) {
-    var url = 'https://rehabist.netlify.app/harita.html?bolge=' + key;
+    var url = window.location.origin + '/harita.html?bolge=' + key;
     var text = 'Ağrı haritasına göz at, neresi ağrıyorsa öğren: ' + url;
     window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
   };

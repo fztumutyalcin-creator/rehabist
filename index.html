@@ -1534,6 +1534,28 @@
     color: var(--white);
   }
   .footer-logo-mark svg { width: 12px; height: 12px; }
+  .footer-legal {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    font-size: 12.5px;
+  }
+  .footer-legal a {
+    color: rgba(255, 255, 255, 0.55);
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .footer-legal a:hover {
+    color: var(--white);
+  }
+  .footer-legal-sep {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 13px;
+  }
 
   /* ============================================================
      REVEAL ANIMATIONS
@@ -1734,6 +1756,18 @@
     </span>
     Postür Analizi
   </a>
+  <a href="/cocuk-postur-analizi.html" class="mobile-link tool-link">
+    <span class="mobile-link-icon" style="color:#a16207; background:#fef3c7">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-12a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+    </span>
+    Çocuk Postür Analizi
+  </a>
+  <a href="/yuruyus-analizi.html" class="mobile-link tool-link">
+    <span class="mobile-link-icon" style="color:#6d28d9; background:#ede9fe">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 4v16M9 8l4-4 4 4M9 16l4 4 4-4"/></svg>
+    </span>
+    Yürüyüş Analizi
+  </a>
   <a href="/avatar-kurucu.html" class="mobile-link tool-link">
     <span class="mobile-link-icon" style="color:#7c3aed; background:#ede9fe">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
@@ -1745,6 +1779,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
     </span>
     AI Asistan
+    <span style="margin-left:auto; font-size:10px; font-weight:700; color:#6d28d9; background:#ede9fe; padding:2px 8px; border-radius:6px; letter-spacing:0.04em;">YAKINDA</span>
   </a>
   <a href="/panel.html" class="mobile-link tool-link">
     <span class="mobile-link-icon" style="color:var(--green-600); background:var(--green-50)">
@@ -2032,7 +2067,10 @@
         </div>
 
         <div class="how-step" data-step="2">
-          <div class="how-step-num"><span class="dot">2</span>Değerlendirme</div>
+          <div class="how-step-num">
+            <span class="dot">2</span>Değerlendirme
+            <span style="display:inline-block; margin-left:10px; font-size:10px; font-weight:700; color:#6d28d9; background:#ede9fe; padding:2px 8px; border-radius:6px; letter-spacing:0.06em; vertical-align:middle;">YAKINDA</span>
+          </div>
           <h3>AI asistanla görüş.</h3>
           <p>Rehabist'in AI asistanı analizini okur, soru sorar ve sana özel bir değerlendirme çıkarır. Her öneri kanıta dayalıdır, fizyoterapi literatürüne dayanır.</p>
           <a href="/asistan.html" class="how-step-link">
@@ -2254,7 +2292,7 @@
         </div>
         <h3>AI Asistan</h3>
         <p>Sana özel fizyoterapi danışmanı. 7/24 sorularını yanıtlar, egzersiz önerir, süreç takip eder.</p>
-        <span class="feature-card-tag tag-free">Ücretsiz</span>
+        <span class="feature-card-tag" style="background:#ede9fe; color:#6d28d9;">Yakında</span>
       </a>
 
       <a href="/panel.html" class="feature-card reveal">
@@ -2380,6 +2418,15 @@
         <span>Rehabist © 2026 · Fzt. Umut Yalçın</span>
       </div>
       <div>Aydın · Efeler · 0534 584 0913</div>
+    </div>
+    <div class="footer-legal">
+      <a href="/kvkk.html">KVKK</a>
+      <span class="footer-legal-sep">·</span>
+      <a href="/gizlilik.html">Gizlilik</a>
+      <span class="footer-legal-sep">·</span>
+      <a href="/cerez.html">Çerezler</a>
+      <span class="footer-legal-sep">·</span>
+      <a href="/kullanim-kosullari.html">Kullanım Koşulları</a>
     </div>
   </div>
 </footer>

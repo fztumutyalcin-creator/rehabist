@@ -71,6 +71,7 @@
         '<span class="rb-mobile-link-icon" style="color:#6d28d9; background:#ede9fe">' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>' +
         '</span>AI Asistan' +
+        '<span style="margin-left:auto; font-size:10px; font-weight:700; color:#6d28d9; background:#ede9fe; padding:2px 8px; border-radius:6px; letter-spacing:0.04em;">YAKINDA</span>' +
       '</a>' +
       '<a href="/panel.html" class="rb-mobile-link tool-link">' +
         '<span class="rb-mobile-link-icon" style="color:var(--green-600); background:var(--green-50)">' +
@@ -103,13 +104,24 @@
   var footerHTML =
     '<footer class="rb-footer">' +
       '<div class="rb-footer-inner">' +
-        '<div class="rb-footer-left">' +
-          '<span class="rb-footer-logo-mark">' +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>' +
-          '</span>' +
-          '<span>Rehabist © 2026 · Fzt. Umut Yalçın</span>' +
+        '<div class="rb-footer-top">' +
+          '<div class="rb-footer-left">' +
+            '<span class="rb-footer-logo-mark">' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>' +
+            '</span>' +
+            '<span>Rehabist © 2026 · Fzt. Umut Yalçın</span>' +
+          '</div>' +
+          '<div>Aydın · Efeler · 0534 584 0913</div>' +
         '</div>' +
-        '<div>Aydın · Efeler · 0534 584 0913</div>' +
+        '<div class="rb-footer-bottom">' +
+          '<a href="/kvkk.html" class="rb-footer-legal-link">KVKK</a>' +
+          '<span class="rb-footer-sep">·</span>' +
+          '<a href="/gizlilik.html" class="rb-footer-legal-link">Gizlilik</a>' +
+          '<span class="rb-footer-sep">·</span>' +
+          '<a href="/cerez.html" class="rb-footer-legal-link">Çerezler</a>' +
+          '<span class="rb-footer-sep">·</span>' +
+          '<a href="/kullanim-kosullari.html" class="rb-footer-legal-link">Kullanım Koşulları</a>' +
+        '</div>' +
       '</div>' +
     '</footer>';
 
