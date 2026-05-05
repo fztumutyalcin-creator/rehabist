@@ -2885,7 +2885,11 @@
 
   // Görüntüden pose landmarkları çıkar
   function detectPose(imageDataUrl) {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve) {
+      if (!window.Pose) {
+        resolve({ success: false, reason: 'MediaPipe Pose henüz yüklü değil' });
+        return;
+      }
       var img = new Image();
       img.onload = function() {
         try {
@@ -2899,11 +2903,15 @@
               modelComplexity: 1,
               smoothLandmarks: false,
               enableSegmentation: false,
-              minDetectionConfidence: 0.5,
-              minTrackingConfidence: 0.5
+              minDetectionConfidence: 0.3,
+              minTrackingConfidence: 0.3
             });
           }
+          // Her send'de onResults yeniden register etmemek için tek seferlik handler
+          var handled = false;
           poseInstance.onResults(function(results) {
+            if (handled) return;
+            handled = true;
             if (!results.poseLandmarks) {
               resolve({ success: false, reason: 'Vücut algılanamadı' });
               return;
@@ -2915,14 +2923,24 @@
               imageHeight: img.naturalHeight
             });
           });
+          // Timeout güvencesi
+          setTimeout(function() {
+            if (!handled) {
+              handled = true;
+              resolve({ success: false, reason: 'Timeout' });
+            }
+          }, 15000);
           poseInstance.send({ image: img }).catch(function(e) {
-            reject(e);
+            if (!handled) {
+              handled = true;
+              resolve({ success: false, reason: 'MediaPipe hatası: ' + (e && e.message ? e.message : e) });
+            }
           });
         } catch(e) {
-          reject(e);
+          resolve({ success: false, reason: 'detectPose istisna: ' + (e && e.message ? e.message : e) });
         }
       };
-      img.onerror = function() { reject(new Error('Görüntü yüklenemedi')); };
+      img.onerror = function() { resolve({ success: false, reason: 'Görüntü yüklenemedi' }); };
       img.src = imageDataUrl;
     });
   }
@@ -3374,108 +3392,137 @@
       modelAgreement: null
     };
 
-    var loadingEl = document.getElementById('aiLoading');
-    var statusEl = loadingEl ? loadingEl.querySelector('.ai-loading-status') : null;
-    function setStatus(text) { if (statusEl) statusEl.textContent = text; }
+    var loadingText = document.getElementById('aiLoadingText');
+    function setStatus(text) { if (loadingText) loadingText.textContent = text; }
 
-    setStatus('AI motoru hazırlanıyor — 3 model paralel...');
+    setStatus('MediaPipe ön foto analiz ediyor...');
 
-    var allResults = []; // tüm modellerden sonuçlar (debug + agreement için)
+    var allResults = []; // her modelden sonuç (debug + agreement için)
 
-    // Ön foto: 3 model ile dene
-    var frontTasks = [];
-    if (photoData.front) {
-      // MediaPipe (mevcut)
-      frontTasks.push(
-        detectPose(photoData.front).then(function(r) {
-          if (r && r.success) return { landmarks: r.landmarks, source: 'mediapipe', view: 'front' };
-          return null;
-        }).catch(function() { return null; })
-      );
-      // MoveNet
-      frontTasks.push(
-        detectPoseMoveNet(photoData.front).then(function(r) {
-          if (r) { r.view = 'front'; return r; }
-          return null;
-        }).catch(function() { return null; })
-      );
-      // BlazePose 3D
-      frontTasks.push(
-        detectPoseBlazePose3D(photoData.front).then(function(r) {
-          if (r) { r.view = 'front'; return r; }
-          return null;
-        }).catch(function() { return null; })
-      );
+    // FAZ 1: MediaPipe (en güvenilir) — seri çağrı
+    var mpFront = null, mpSide = null;
+
+    function runMediaPipe(callback) {
+      var queue = [];
+      if (photoData.front) {
+        queue.push(function(next) {
+          detectPose(photoData.front).then(function(r) {
+            if (r && r.success) {
+              mpFront = { landmarks: r.landmarks, source: 'mediapipe', view: 'front' };
+              allResults.push(mpFront);
+            }
+            next();
+          });
+        });
+      }
+      if (photoData.side) {
+        queue.push(function(next) {
+          setStatus('MediaPipe yan foto analiz ediyor...');
+          detectPose(photoData.side).then(function(r) {
+            if (r && r.success) {
+              mpSide = { landmarks: r.landmarks, source: 'mediapipe', view: 'side' };
+              allResults.push(mpSide);
+            }
+            next();
+          });
+        });
+      }
+      function runNext() {
+        if (queue.length === 0) { callback(); return; }
+        var task = queue.shift();
+        task(runNext);
+      }
+      runNext();
     }
 
-    var sideTasks = [];
-    if (photoData.side) {
-      sideTasks.push(
-        detectPose(photoData.side).then(function(r) {
-          if (r && r.success) return { landmarks: r.landmarks, source: 'mediapipe', view: 'side' };
-          return null;
-        }).catch(function() { return null; })
-      );
-      sideTasks.push(
-        detectPoseMoveNet(photoData.side).then(function(r) {
-          if (r) { r.view = 'side'; return r; }
-          return null;
-        }).catch(function() { return null; })
-      );
-      sideTasks.push(
-        detectPoseBlazePose3D(photoData.side).then(function(r) {
-          if (r) { r.view = 'side'; return r; }
-          return null;
-        }).catch(function() { return null; })
-      );
+    // FAZ 2: Ek modeller (best-effort, başarısızlık tolere edilir)
+    function runExtraModels(callback) {
+      setStatus('Ek modeller deneniyor (MoveNet, BlazePose)...');
+      var extraTasks = [];
+      if (photoData.front) {
+        extraTasks.push(
+          detectPoseMoveNet(photoData.front).then(function(r) {
+            if (r) { r.view = 'front'; allResults.push(r); }
+          }).catch(function(){})
+        );
+        extraTasks.push(
+          detectPoseBlazePose3D(photoData.front).then(function(r) {
+            if (r) { r.view = 'front'; allResults.push(r); }
+          }).catch(function(){})
+        );
+      }
+      if (photoData.side) {
+        extraTasks.push(
+          detectPoseMoveNet(photoData.side).then(function(r) {
+            if (r) { r.view = 'side'; allResults.push(r); }
+          }).catch(function(){})
+        );
+        extraTasks.push(
+          detectPoseBlazePose3D(photoData.side).then(function(r) {
+            if (r) { r.view = 'side'; allResults.push(r); }
+          }).catch(function(){})
+        );
+      }
+      // Ek modeller için 20 sn timeout
+      var timedOut = false;
+      var timer = setTimeout(function() {
+        timedOut = true;
+        callback();
+      }, 20000);
+      Promise.all(extraTasks).then(function() {
+        if (!timedOut) {
+          clearTimeout(timer);
+          callback();
+        }
+      }).catch(function() {
+        if (!timedOut) {
+          clearTimeout(timer);
+          callback();
+        }
+      });
     }
 
-    setStatus('Modeller pose arıyor...');
+    function finalize() {
+      setStatus('Klinik ölçümler hesaplanıyor...');
 
-    Promise.all(frontTasks).then(function(frontResults) {
-      setStatus('Yan profil işleniyor...');
-      var frontEnsemble = ensembleLandmarks(frontResults);
-      var frontAgreement = computeModelAgreement(frontResults);
-      frontResults.forEach(function(r) { if (r) allResults.push(r); });
+      // Front view: MediaPipe + diğer modelleri ensemble
+      var frontResults = allResults.filter(function(r) { return r.view === 'front'; });
+      var sideResults = allResults.filter(function(r) { return r.view === 'side'; });
 
-      return Promise.all(sideTasks).then(function(sideResults) {
-        var sideEnsemble = ensembleLandmarks(sideResults);
-        sideResults.forEach(function(r) { if (r) allResults.push(r); });
+      var frontEnsemble = frontResults.length > 0 ? ensembleLandmarks(frontResults) : null;
+      var sideEnsemble = sideResults.length > 0 ? ensembleLandmarks(sideResults) : null;
 
-        setStatus('Klinik ölçümler hesaplanıyor...');
+      if (frontEnsemble) {
+        measurements.shoulder = measureShoulderAsymmetry(frontEnsemble);
+        measurements.pelvis = measurePelvisTilt(frontEnsemble);
+        measurements.spineLateral = measureSpineLateral(frontEnsemble);
+        measurements.kneeAlignment = measureKneeAlignment(frontEnsemble);
+        measurements.legLength = measureLegLength(frontEnsemble);
+        measurements.symmetryIndex = measureSymmetryIndex(frontEnsemble);
+      }
+      if (sideEnsemble) {
+        measurements.forwardHead = measureForwardHead(sideEnsemble);
+        measurements.plumbLine = measurePlumbLine(sideEnsemble);
+      }
 
-        // ÖN GÖRÜNTÜDEN ÖLÇÜMLER
-        if (frontEnsemble) {
-          measurements.shoulder = measureShoulderAsymmetry(frontEnsemble);
-          measurements.pelvis = measurePelvisTilt(frontEnsemble);
-          measurements.spineLateral = measureSpineLateral(frontEnsemble);
-          measurements.kneeAlignment = measureKneeAlignment(frontEnsemble);
-          measurements.legLength = measureLegLength(frontEnsemble);
-          measurements.symmetryIndex = measureSymmetryIndex(frontEnsemble);
-        }
+      measurements.modelAgreement = computeModelAgreement(allResults);
 
-        // YAN GÖRÜNTÜDEN ÖLÇÜMLER
-        if (sideEnsemble) {
-          measurements.forwardHead = measureForwardHead(sideEnsemble);
-          measurements.plumbLine = measurePlumbLine(sideEnsemble);
-        }
+      state.aiLandmarks = {
+        front: frontEnsemble,
+        side: sideEnsemble
+      };
 
-        // Çoklu model uyum bilgisi
-        var agreement = computeModelAgreement(allResults);
-        measurements.modelAgreement = agreement;
+      document.getElementById('aiLoading').classList.remove('show');
+      document.getElementById('aiAnalyzeBtn').disabled = false;
+      renderAiResults(measurements);
 
-        // State'e landmark'ları kaydet (overlay çizimi için)
-        state.aiLandmarks = {
-          front: frontEnsemble,
-          side: sideEnsemble
-        };
+      try { drawLandmarkOverlay(); } catch(e) {}
+    }
 
-        document.getElementById('aiLoading').classList.remove('show');
-        document.getElementById('aiAnalyzeBtn').disabled = false;
-        renderAiResults(measurements);
-
-        // Landmark overlay çiz
-        try { drawLandmarkOverlay(); } catch(e) {}
+    // Akış: önce MediaPipe, sonra ek modeller, sonra finalize
+    runMediaPipe(function() {
+      runExtraModels(function() {
+        finalize();
       });
     });
   }
